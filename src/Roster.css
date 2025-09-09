@@ -64,7 +64,7 @@
 }
 
 /* SmackDown Profiles */
-.ALLSD   { background-image: url(Images/Roster/SD/SDBG.png); }
+.ALLSD   { background-image: url(/Images/Roster/SD/SDBG.png); }
 .WH      { background-image: url(/Images/Roster/Champions/WHBG.png); }
 .IC      { background-image: url(/Images/Roster/Champions/ICBG.png); }
 .WUS     { background-image: url(/Images/Roster/Champions/WUSBG.png); }
