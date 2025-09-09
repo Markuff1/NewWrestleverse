@@ -1,5 +1,5 @@
 .RAWBackground {
-    background: url(Images/RAWBackground.png);
+    background: var(--RAWbackground);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
@@ -9,7 +9,7 @@
 }
 
 .SDBackground {
-    background: url(Images/Wrestleverse2K25BackgroundOS.png);
+    background: var(--SDbackground);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
@@ -26,7 +26,7 @@
 }
 
 .RAWContainer, .SDContainer {
-    background: url(Images/Wrestleverse2K25Background.png);
+    background: var(--contentBackground);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;

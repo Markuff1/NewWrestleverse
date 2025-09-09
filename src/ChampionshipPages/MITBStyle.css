@@ -1,0 +1,36 @@
+.MITBContainer {
+    background: var(--contentBackground);
+    width: 80%;
+    min-height: 100vh; /* Ensures the container takes at least 100% of the viewport height */
+    height: auto; /* Allows the container to expand with content */
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto; /* Enables scroll for the content */
+    max-height: calc(100vh - 8vh); /* Keeps it within the available height minus the header space */
+    padding-bottom: 20px; /* Adds some space at the bottom for better scroll behavior */
+    box-shadow: 0 0 10vh rgb(0, 0, 0);
+}
+
+.InputContainer input {
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    font-family:Impact;
+    font-size: 0.9vw;
+}
+
+select {
+    padding: 1vw 0.5vh;
+    border-radius: 0.5vw;
+    font-family:Impact;
+    font-size: 0.9vw;
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0.5vw rgba(0, 123, 255, 0.4);
+}
+
+option {
+  padding: 1vh;
+  font-size: 1.1vw;
+}

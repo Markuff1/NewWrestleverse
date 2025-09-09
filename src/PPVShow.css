@@ -1,52 +1,66 @@
+/* Reset body and html to remove white border */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background); /* optional */
+}
+
+/* Ensure header does not overlap content */
+header {
+    position: relative; /* change to fixed if you want sticky */
+    z-index: 1000;
+}
+
 /* Background Styling */
 .PPVBackground {
-    background: url(src/Images/Wrestleverse2K25BackgroundOS.png);
-    background-size: contain;
+    background: var(--background);
+    background-size: cover; /* fills viewport nicely */
     background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* removed position: fixed to allow scrolling */
 }
 
 /* Main Title Text */
 .PPVText1 {
     color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 2vh;
+    margin-top: 0; /* reduced top margin */
     font-size: 4vh;
     font-family: 'Impact';
 }
 
-/* Banner Image */
 .PPVBanner {
+    display: block;           /* removes extra inline spacing below the image */
+    width: 100%;              /* keeps it responsive */
     height: auto;
-    width: 100%;
-    margin-top: 8vh;
+    box-shadow: 0 0 5vh rgba(0, 0, 0, 1); /* shadow wraps image exactly */
+    margin-top: 5rem;
+    max-width: 100%;          /* ensures shadow scales with image */
 }
 
 /* Main Container */
 .PPVContainer {
-    background: url(src/Images/Wrestleverse2K25Background.png);
+    background: var(--contentBackground);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
     width: 70%;
-    min-height: 100vh; /* Ensures the container takes at least 100% of the viewport height */
-    height: auto; /* Allows the container to expand with content */
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto; /* Enables scroll for the content */
-    max-height: calc(100vh - 8vh); /* Keeps it within the available height minus the header space */
-    padding-bottom: 20px; /* Adds some space at the bottom for better scroll behavior */
-    box-shadow: 0 0 10vh rgb(0, 0, 0);
+    margin: 10px auto 20px auto; /* reduced top spacing for first container */
+    padding: 40px 20px; /* space for banners and match cards */
+    box-shadow: 0 0 15vh rgb(0, 0, 0);
 }
 
+/* Reduce top margin specifically for the first PPV container */
+.PPVContainer:first-of-type {
+    margin-top: 10px; /* flush with header */
+}
 
-.PPVContainer::-webkit-scrollbar{
-    display: none; /* Hides scrollbar for a cleaner look */
+/* Hide internal scrollbars if any */
+.PPVContainer::-webkit-scrollbar {
+    display: none;
 }
 
 /* Event Information Styling */
@@ -74,13 +88,13 @@
     font-size: 5vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
-    -webkit-text-stroke: 0.05vh rgb(0, 0, 0)
+    -webkit-text-stroke: 0.05vh rgb(0, 0, 0);
 }
 
 /* Match Card Table */
 .MCList {
-    width:95%;
-    border-collapse: collapse;
+    width: 95%;
+    border-collapse: collapse; /* remove extra table spacing */
     margin: 1vh auto;
     text-align: center;
 }
@@ -100,7 +114,6 @@
     background-color: rgb(36, 44, 61);
 }
 
-
 .MCList th {
     background-color: #011a75;
     color: white;
@@ -115,21 +128,25 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Match Card Images Section */
 .MatchImages {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
+/* Individual Match Item */
 .MatchItem {
     text-align: center;
+    margin-bottom: 5vh; /* reduced spacing between matches */
 }
 
 .MatchTitle {
     font-size: 4.5vh;
     letter-spacing: 0.1vh;
-    font-weight: 5vh;
-    margin-top: 1.50vh;
+    font-weight: bold;
+    margin-top: 1.5vh;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
@@ -151,15 +168,23 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Match Image */
 .MatchImage {
-    width: 90%;
+    width: 100%;
     height: auto;
+    box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
     margin-bottom: 5vh;
 }
 
+/* Divider between matches */
 .MatchDivider {
     border: 0;
     height: 0.25vh;
     background: white;
-    margin-top: -2.5vh;
-  }
+    margin-top: 2vh;
+}
+
+/* Remove extra spacing caused by tables */
+table {
+    border-spacing: 0;
+}

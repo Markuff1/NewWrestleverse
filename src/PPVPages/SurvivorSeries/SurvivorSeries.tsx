@@ -4,13 +4,13 @@ import Footer from "../../Footer";
 
 function SurvivorSeries() {
   const matchCard = [
-    { match: "Umaga Vs ????", title: null, type: "Normal"},		
-    { match: "#DIY Vs New Catch Republic", title: null, type: "Normal"},
-    { match: "Michelle McCool Vs Raquel Rodriques", title: null, type: "Normal"},
-    { match: "Bron Breakker Vs Damian Priest", title: null, type: "Normal"},
-    { match: "Team RAW Vs Team Smackdown", title: null, type: "5 on 5 Elimination"},
-    { match: "Tiffany Stratton Vs Rhea Ripley", title: null, type: "Normal"},
-    { match: "Roman Reigns Vs Cody Rhodes", title: null, type: "Normal"}
+    { match: "Umaga Vs ???? (Seth Rollins)", Score: "0 : 1", type: "Normal"},		
+    { match: "#DIY Def. New Catch Republic", Score: "1 : 1", type: "Normal"},
+    { match: "Raquel Rodriques Def. Michelle McCool", Score: "1 : 2", type: "Normal"},
+    { match: "Bron Breakker Def. Damian Priest", Score: "2 : 2", type: "Normal"},
+    { match: "Team RAW Def. Team Smackdown", Score: "3 : 2", type: "5 on 5 Elimination"},
+    { match: "Rhea Ripley Def. Tiffany Stratton", Score: "3 : 3", type: "Normal"},
+    { match: "Roman Reigns Def. Cody Rhodes", Score: "4 : 3", type: "Normal"}
       
   ];
 
@@ -48,7 +48,7 @@ function SurvivorSeries() {
               <tr>
                 <th>Match Number</th>
                 <th>Match</th>
-                <th>Title</th>
+                <th>Score (RAW:SD)</th>
                 <th>Match Type</th>
               </tr>
             </thead>
@@ -57,19 +57,20 @@ function SurvivorSeries() {
                 <tr key={index} onClick={() => scrollToMatch(index)} style={{ cursor: "pointer" }}>
                   <td>{index + 1}</td>
                   <td>{match.match}</td>
-                  <td>{match.title}</td>
+                  <td>{match.Score}</td>
                   <td>{match.type} Match</td>
                 </tr>
               ))}
             </tbody>
           </table>
 
+          
           <div className="MCTitle">Match Card Summary</div>
           <div className="MatchImages">
             {matchCard.map((match, index) => (
               <div key={index} className="MatchItem" id={`match-${index}`}>
                 <h3 className="MatchTitle">{match.match}</h3>
-                <h3 className="MatchChampionship">{match.title}</h3>
+                <h3 className="MatchChampionship">{match.Score}</h3>
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"

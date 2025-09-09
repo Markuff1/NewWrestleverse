@@ -4,16 +4,16 @@ import Footer from "../../Footer";
 
 function CyberSunday() {
   const matchCard = [
-    {match: "New Catch Republic Vs Dudley Boys", title: "SmackDown Tag Team Championships", type: "Tables"},
-    {match: "Randy Orton Vs Sami Zayn", title: null, type: "Extreme Rules"},
-    {match: "Bron Breakker Vs Oba Femi", title: "United States Championship", type: "Last Man Standing"},
-    {match: "Piper Niven Vs Michelle McCool", title: "Women's Intercontinental Championship", type: "Extreme Rules"},
-    {match: "Baron Corbin Vs Dragon Lee Vs Ilja Dragunov Vs Damian Priest Vs Rey Mysterio", title: "Intercontinental Championship", type: "Ladder"},
-    {match: "Naomi Vs Rhea Ripley", title: "Women's World Championship", type: "Normal"},
-    {match: "AJ Styles Vs CM Punk", title: null, type: "Ambulance"},
-    {match: "Roxanne Perez Vs Tiffiany Stratton", title: "Women's Undisputed Championship", type: "Extreme Rules"},
-    {match: "Roman Reigns Vs RVD", title: "WWE Undisputed Championship", type: "Normal"},
-    {match: "Gunther Vs Cody Rhoads Vs Drew McIntyre", title: "World Heavyweight Championship", type: "Triple Threat"}
+    {match: "New Catch Republic (c) Def. Dudley Boys", title: "SmackDown Tag Team Championships", type: "Tables"},
+    {match: "Randy Orton Def. Sami Zayn", title: null, type: "Extreme Rules"},
+    {match: "Bron Breakker Def. Oba Femi", title: "United States Championship", type: "Last Man Standing"},
+    {match: "Michelle McCool Def. Piper Niven (c)", title: "Women's Intercontinental Championship", type: "Extreme Rules"},
+    {match: "Damian Priest Def. Baron Corbin (c) and Dragon Lee and Ilja Dragunov and Rey Mysterio", title: "Intercontinental Championship", type: "Ladder"},
+    {match: "Rhea Ripley Def. Naomi (c)", title: "Women's World Championship", type: "Normal"},
+    {match: "CM Punk Def. AJ Styles", title: null, type: "Ambulance"},
+    {match: "Tiffiany Stratton Def. Roxanne Perez (c)", title: "Women's Undisputed Championship", type: "Extreme Rules"},
+    {match: "Roman Reigns (c) Def. RVD", title: "WWE Undisputed Championship", type: "Normal"},
+    {match: "Cody Rhoads (c) Def. Gunther and Drew McIntyre", title: "World Heavyweight Championship", type: "Triple Threat"}
   ];
   
 

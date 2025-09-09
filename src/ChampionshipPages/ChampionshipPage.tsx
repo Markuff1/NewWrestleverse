@@ -1,7 +1,18 @@
 import "./ChampionshipStyle.css";
+import "../Home.css";
 import React, { useState, useEffect } from "react";
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import Header from "../Header";
+import Footer from "../Footer";
+
+// Utility to calculate weeks between two dates (never negative)
+const calculateWeeksBetween = (start: string, end: string) => {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const diffTime = endDate.getTime() - startDate.getTime();
+  return Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7)));
+};
 
 type ChampionshipPageProps = {
   collectionId: string;
@@ -11,22 +22,33 @@ type ChampionshipPageProps = {
 const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, bannerSrc }) => {
   const [titleHolders, setTitleHolders] = useState<any[]>([]);
   const [name, setName] = useState("");
-  const [days, setDays] = useState("");
   const [date, setDate] = useState("");
   const [event, setEvent] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [editData, setEditData] = useState<{ name: string; days: number; date: string; event: string }>({ name: "", days: 0, date: "", event: "" });
+  const [editData, setEditData] = useState<{ name: string; date: string; event: string }>({ name: "", date: "", event: "" });
 
   const [longestReign, setLongestReign] = useState<any | null>(null);
   const [mostReigns, setMostReigns] = useState<{ names: string[]; count: number } | null>(null);
 
   const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "Wrestleverse", "ChampionshipData", collectionId));
-    const records = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as any;
+    let records = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as any;
 
-    const sorted = records.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    setTitleHolders(sorted);
+    // sort newest first
+    records = records.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+    // update reign lengths
+    for (let i = 0; i < records.length; i++) {
+      if (i === 0) {
+        // Current champ: from win date until today
+        records[i].days = calculateWeeksBetween(records[i].date, new Date().toISOString().split("T")[0]);
+      } else {
+        // Past champs: from win date until the next champ’s win date
+        records[i].days = calculateWeeksBetween(records[i].date, records[i - 1].date);
+      }
+    }
+
+    setTitleHolders(records);
     calculateStats(records);
   };
 
@@ -37,11 +59,9 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
       return;
     }
 
-    // Longest reign
     const longest = records.reduce((prev, curr) => (curr.days > prev.days ? curr : prev));
     setLongestReign(longest);
 
-    // Most reigns (multiple)
     const countMap: Record<string, number> = {};
     records.forEach(record => {
       countMap[record.name] = (countMap[record.name] || 0) + 1;
@@ -60,16 +80,16 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
   }, []);
 
   const addRecord = async () => {
-    if (name && days && date && event) {
-      const newRecord = { name, days: Number(days), date, event };
+    if (name && date && event) {
+      const newRecord = { name, date, event, days: 0 };
       const docRef = await addDoc(collection(db, "Wrestleverse", "ChampionshipData", collectionId), newRecord);
       const newData = [{ id: docRef.id, ...newRecord }, ...titleHolders];
       setTitleHolders(newData);
       calculateStats(newData);
       setName("");
-      setDays("");
       setDate("");
       setEvent("");
+      fetchData(); // refresh reign lengths
     }
   };
 
@@ -82,59 +102,81 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
 
   const startEdit = (record: any) => {
     setEditingId(record.id);
-    setEditData({ name: record.name, days: record.days, date: record.date, event: record.event });
+    setEditData({ name: record.name, date: record.date, event: record.event });
   };
 
   const saveEdit = async (id: string) => {
     const ref = doc(db, "Wrestleverse", "ChampionshipData", collectionId, id);
     await updateDoc(ref, editData);
-    const updated = titleHolders.map(record => (record.id === id ? { id, ...editData } : record));
-    setTitleHolders(updated);
-    calculateStats(updated);
     setEditingId(null);
+    fetchData(); // refresh everything
   };
+
+  const currentChampion = titleHolders[0];
 
   return (
     <div>
+      <Header />
       <div className="ChampionshipBackground">
         <div className="ChampionshipContainer">
           <img className="TitleHeaderImage" src={bannerSrc} alt="Header Background" />
 
-          {/* 🏆 Stats Display */}
-          {(longestReign?.days > 0 || mostReigns) && (
-            <>
-              <div className="statstitle">Championship Stats</div>
-              <div className="StatsContainer">
-                {longestReign?.days > 0 && (
-                  <div className="statcard">
-                    🏅 <strong>Longest Reign</strong><br />
-                    {longestReign.name}<br />
-                    {longestReign.days} weeks
-                  </div>
-                )}
-                {mostReigns && (
-                  <div className="statcard">
-                    👑 <strong>Most Reigns</strong><br />
-                    {mostReigns.names.map(name => (
-                      <div key={name}>👤 {name}</div>
-                    ))}
-                    {mostReigns.count} time{mostReigns.count > 1 ? "s" : ""}
-                  </div>
-                )}
-              </div>
-            </>
+          {/* Current Champion */}
+          {currentChampion && (
+            <div className="CurrentChampionCard">
+              <h2 className="ccTitle"> -- Current Champion -- </h2>
+              <h3 className="ccName">{currentChampion.name}</h3>
+              <p className="ccDate">
+                Since {new Date(currentChampion.date).toLocaleDateString("en-GB")}({currentChampion.event})
+              </p>
+            </div>
           )}
 
 
-        <div className="reignstitle">Championship Reigns</div>
+           <div className="StatsGrid">
+              {longestReign && (
+                (() => {
+                  // Filter out "Vacant" from the array of possible reigns
+                  const validLongest = Array.isArray(longestReign) 
+                    ? longestReign.find(r => r.name.toLowerCase() !== "Vacant") 
+                    : longestReign.name.toLowerCase() !== "vacant" 
+                      ? longestReign 
+                      : null;
+
+                  if (!validLongest) return null;
+
+                  return (
+                    <div className="StatBox">
+                      <strong> -- Longest Reign -- </strong>
+                      <span>{validLongest.name} – {validLongest.days} weeks</span>
+                    </div>
+                  );
+                })()
+              )}
+
+              {mostReigns && (
+                <div className="StatBox">
+                  <strong> -- Most Reigns -- </strong>
+                  <span>
+                    {
+                      mostReigns.names
+                        .filter(n => n !== "Vacant")
+                        .join(', ')
+                    } – {mostReigns.count} times
+                  </span>
+                </div>
+              )}
+            </div>
+
 
           <div className="InputContainer">
             <input type="text" placeholder="Name of Title Holder" value={name} onChange={(e) => setName(e.target.value)} />
-            <input type="number" placeholder="Length of Reign (Weeks)" value={days} onChange={(e) => setDays(e.target.value)} />
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
             <input type="text" placeholder="Event Won At" value={event} onChange={(e) => setEvent(e.target.value)} />
             <button onClick={addRecord}>Add Record</button>
           </div>
+
+          
 
           <table className="TitleHolderTable">
             <thead>
@@ -151,13 +193,13 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
                 <tr key={holder.id}>
                   {editingId === holder.id ? (
                     <>
-                      <td><input className='editname' value={editData.name} onChange={(e) => setEditData({ ...editData, name: e.target.value })} /></td>
-                      <td><input className='editreign' type="number" value={editData.days} onChange={(e) => setEditData({ ...editData, days: Number(e.target.value) })} /></td>
-                      <td><input className='editdate' type="date" value={editData.date} onChange={(e) => setEditData({ ...editData, date: e.target.value })} /></td>
-                      <td><input className='editeventwon' value={editData.event} onChange={(e) => setEditData({ ...editData, event: e.target.value })} /></td>
+                      <td><input value={editData.name} onChange={(e) => setEditData({ ...editData, name: e.target.value })} /></td>
+                      <td>{holder.days}</td>
+                      <td><input type="date" value={editData.date} onChange={(e) => setEditData({ ...editData, date: e.target.value })} /></td>
+                      <td><input value={editData.event} onChange={(e) => setEditData({ ...editData, event: e.target.value })} /></td>
                       <td>
-                        <button className="savebutton" onClick={() => saveEdit(holder.id)}>Save</button>
-                        <button className="cancelbutton" onClick={() => setEditingId(null)}>Cancel</button>
+                        <button onClick={() => saveEdit(holder.id)}>Save</button>
+                        <button onClick={() => setEditingId(null)}>Cancel</button>
                       </td>
                     </>
                   ) : (
@@ -167,8 +209,8 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
                       <td>{holder.date}</td>
                       <td>{holder.event}</td>
                       <td>
-                        <button className="editbutton" onClick={() => startEdit(holder)}>Edit</button>
-                        <button className="deletebutton" onClick={() => deleteRecord(holder.id)}>Delete</button>
+                        <button onClick={() => startEdit(holder)}>Edit</button>
+                        <button onClick={() => deleteRecord(holder.id)}>Delete</button>
                       </td>
                     </>
                   )}
@@ -176,9 +218,10 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({ collectionId, banne
               ))}
             </tbody>
           </table>
-          <div className="statstitle">----</div>
+
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

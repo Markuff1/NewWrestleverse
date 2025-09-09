@@ -1,52 +1,96 @@
-.HomeBackground{
-    background: url(Images/Wrestleverse2K25BackgroundOS.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.HomeText1{
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 2vh;
-    font-size: 4vh;
-    font-family: 'Impact';
+:root{
+  --background: linear-gradient(to bottom, rgb(45, 45, 45), rgb(0, 31, 93), rgb(45, 45, 45));
+  --RAWbackground: linear-gradient(to bottom, rgb(33, 25, 25), rgb(109, 0, 0), rgb(30, 26, 26));
+  --SDbackground: linear-gradient(to bottom, rgb(19, 39, 68), rgb(0, 46, 139), rgb(23, 33, 57));
+  --contentBackground: linear-gradient(to right, rgb(23, 23, 23), rgb(56, 56, 56), rgb(58, 58, 58));
+  --LegendPbackground: radial-gradient(circle, rgb(71, 52, 0), rgb(100, 73, 0), rgb(246, 180, 0));
+  --UndraftPbackground: radial-gradient(circle, rgb(29, 29, 29), rgb(65, 65, 65), rgb(0, 0, 0));
+  
+
+  --font-1: Verdana, Geneva, Tahoma, sans-serif;
+  --font-2: 'Courier New', Courier, monospace;
+  --font-3: Impact, sans-serif;
 }
 
-.HomeText2{
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 1vh;
-    font-size: 2vh;
-    font-family: 'Impact';
-    font-weight: lighter;
-    margin-left: 5vh;
-    margin-right: 5vh;
+.HomeBackground {
+  background: var(--background);
+  position: fixed;
+  inset: 0; /* full viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.HomeContainer{
-    background: url(Images/Wrestleverse2K25Background.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    width: 70%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 0 10vh rgb(0, 0, 0);
+.home-content {
+  background: var(--contentBackground);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 1vh 5vh rgb(0, 0, 0);
+  padding: 10rem 10rem; /* reduced padding so content is closer */
+  border-radius: 3rem;
 }
 
-.Poster{
-    width: 60%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 8vh;
-    margin-left: auto;
-    margin-right: auto;
+.WVLogo {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5rem;
+  width: 55rem;
+  height: auto;
+}
+
+.WVText{
+  text-align: center;
+  font-size: 2rem;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 700;
+  color: rgb(184, 222, 255);
+}
+
+.WVText2{
+  text-align: center;
+  font-size: 1.5rem;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 400;
+  color: rgb(184, 222, 255);
+}
+
+.button-group {
+  display: flex;
+  gap: 2rem; /* space between buttons */
+  margin-top: 1rem; /* small gap after logo */
+}
+
+.shows-btn, .roster-btn {
+  background: linear-gradient(270deg, rgb(0, 21, 255), rgb(59, 0, 141), rgb(0, 127, 173));
+  background-size: 600% 600%;
+  box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7);
+  padding: 1.5rem 12.5rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.5s ease;
+}
+
+.shows-btn:hover, .roster-btn:hover {
+  transform: scale(1.03); /* Smaller scale change */
+  animation: gradientShift 4s ease infinite, shadowShift 5s ease-in-out infinite;
+}
+
+/* Animate the gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animate the box shadow */
+@keyframes shadowShift {
+  0% { box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7); }
+  50% { box-shadow: 0 0.5vh 2vh rgba(107, 1, 255, 0.6); }
+  100% { box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7); }
 }

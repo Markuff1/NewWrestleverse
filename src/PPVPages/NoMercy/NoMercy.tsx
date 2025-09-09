@@ -4,15 +4,15 @@ import Footer from "../../Footer";
 
 function NoMercy() {
   const matchCard = [
-    {match: "New Catch Republic Vs Dudley Boys", title:"SmackDown Tag Team Championships", type:"Normal"},
-    {match: "Raquel Roderiquez Vs Sol Ruca", title: "Women's United States Championship", type: "Normal"},
-    {match: "Bron Breakker Vs Oba Femi", title: "United States Championship", type: "Normal"},
-    {match: "CM Punk Vs AJ Styles", type: "Extreme Rules"},
-    {match: "Dragon Lee Vs Ilja Dragonov Vs Baron Corbin", title:"Intercontinetal Championship", type:"Triple Threat"},
-    {match: "Naomi Vs Becky Lynch", title:"Women's World Championship", type:"Normal"},
-    {match: "Gunther Vs Drew Mcintyre", title:"World Heavyweight Championship", type:"Normal"},
-    {match: "Roxanne Perez Vs Tiffany Stratton", title:"Women's Undisputed Championship", type:"Normal"},
-    {match: "Roman Reigns Vs Randy Orton", title:"WWE Undisputed Championship", type:"Extreme Rules"},
+    {match: "New Catch Republic (c) Def. Dudley Boys", title:"SmackDown Tag Team Championships", type:"Normal"},
+    {match: "Raquel Roderiquez (c) Def. Sol Ruca", title: "Women's United States Championship", type: "Normal"},
+    {match: "Bron Breakker (c) Def. Oba Femi", title: "United States Championship", type: "Normal"},
+    {match: "AJ Styles Def. CM Punk", type: "Extreme Rules"},
+    {match: "Baron Corbin Def. Dragon Lee and Ilja Dragonov", title:"Intercontinetal Championship", type:"Triple Threat"},
+    {match: "Naomi (c) Def Becky Lynch", title:"Women's World Championship", type:"Normal"},
+    {match: "Gunther (c) Def. Drew Mcintyre (Cody Rhoades Def. Gunther (Cash In))", title:"World Heavyweight Championship", type:"Normal"},
+    {match: "Roxanne Perez (c) Def. Tiffany Stratton", title:"Women's Undisputed Championship", type:"Normal"},
+    {match: "Roman Reigns (c) Def. Randy Orton", title:"WWE Undisputed Championship", type:"Extreme Rules"},
   ];
 
   // Function to scroll to match image

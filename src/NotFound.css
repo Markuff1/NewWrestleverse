@@ -1,0 +1,23 @@
+.NFBackground{
+    background: var(--background);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.NFContainer{
+    background: var(--contentBackground);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    width: 70%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10vh rgb(0, 0, 0);
+}

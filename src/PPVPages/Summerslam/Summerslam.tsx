@@ -5,17 +5,17 @@ import Footer from "../../Footer";
 function Summerslam() {
   const matchCard = [
     { match: "Seth Rollins Def. Kevin Owens", title: "--", type: "Extreme Rules Match" },
-    { match: "#DIY Def The New Bloodline", title: "RAW Tag Team Titles", type: "2 Out Of 3 Falls Match" },
-    { match: "Oba Femi Def Kane and Umaga", title: "United States Title", type: "Triple Threat Match" },
-    { match: "Piper Niven Def Nia Jax", title: "Women's Intercontinetal Title", type: "Normal Match" },
-    { match: "New Catch Republic Def. The Dudley Boys and Viking Raiders ", title: "Smackdown Tag Team Titles", type: "Triple Threat Tag Ladder Match" },
-    { match: "Raquel Roderiques Def. Sol Ruca ", title: "Women's United States Title", type: "Normal Match" },
-    { match: "Dragon Lee Def. Je'von Evans", title: "Intercontinental Title", type: "Normal Match" },
-    { match: "Naomi Def. Kairi Sane and Becky Lynch and Trish Stratus", title: "Women's World Title", type: "Fatal 4-Way Elimination Match" },
+    { match: "#DIY (c) Def The New Bloodline", title: "RAW Tag Team Titles", type: "2 Out Of 3 Falls Match" },
+    { match: "Oba Femi (c) Def Kane and Umaga", title: "United States Title", type: "Triple Threat Match" },
+    { match: "Piper Niven (c) Def Nia Jax", title: "Women's Intercontinetal Title", type: "Normal Match" },
+    { match: "New Catch Republic Def. The Dudley Boys (c) and Viking Raiders ", title: "Smackdown Tag Team Titles", type: "Triple Threat Tag Ladder Match" },
+    { match: "Raquel Roderiques Def. Sol Ruca (c)", title: "Women's United States Title", type: "Normal Match" },
+    { match: "Dragon Lee (c) Def. Je'von Evans", title: "Intercontinental Title", type: "Normal Match" },
+    { match: "Naomi (c) Def. Kairi Sane and Becky Lynch and Trish Stratus", title: "Women's World Title", type: "Fatal 4-Way Elimination Match" },
     { match: "CM Punk Def. AJ Styles", title: "--", type: "Normal Match" },
-    { match: "Gunther Def. Drew McIntyre", title: "World Heavyweight Title", type: "Normal Match" },
-    { match: "Roxanne Perez Def. Charlotte Flair", title: "Women's Undisputed Title", type: "Last Woman Standing - Final Chance" },
-    { match: "Roman Reigns Def. Randy Orton", title: "WWE Undisputed Title", type: "Normal Match" }
+    { match: "Gunther (c) Def. Drew McIntyre", title: "World Heavyweight Title", type: "Normal Match" },
+    { match: "Roxanne Perez (c) Def. Charlotte Flair", title: "Women's Undisputed Title", type: "Last Woman Standing - Final Chance" },
+    { match: "Roman Reigns Def. Randy Orton (c)", title: "WWE Undisputed Title", type: "Normal Match" }
 
   ];
 

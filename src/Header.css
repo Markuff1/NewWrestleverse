@@ -1,96 +1,98 @@
-/* Define color variables */
 :root {
     --primary-color: rgb(0, 68, 162);
+    --primary-colorV2: rgb(0, 174, 255);
     --text-color: white;
     --border-color: white;
     --hover-text-color: rgb(0, 4, 255);
-    --hover-bg-color: rgba(7, 172, 255, 0.253); /* Light transparent background */
+    --hover-bg-color: rgba(7, 172, 255, 0.253);
 }
 
 /* Header background */
 .HeaderBackground {
     background-color: var(--primary-color);
-    height: 7vh;
+    height: 6rem;
     width: 100%;
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
+/* Container */
 .HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    position: relative;
-    padding: 0px 0;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
 }
 
 /* Logo */
 .WLogo {
     height: 5vh;
     width: auto;
-    display: inline;
-    float: left;
-    margin-top: 1vh;
-    margin-left: 15vh;
+    transition: transform 0.5s ease-in-out;
+}
+
+.WLogo:hover{
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 /* Navigation */
 .nav {
-    float: right;
-    margin-right: 3vh;
-    margin-top: 0.5vh;
+    display: flex;
+    align-items: center;
 }
 
 .nav__links {
     list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav__links li {
-    display: inline-block;
-    margin-right: 2vw;
-    position: relative; /* Needed for dropdown positioning */
-}
-
-.nav__links li a {
-    padding: 0.5vh 0.5vh;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px;
-}
-
-/* Hover effect: Change text border */
-.nav__links li a:hover {
-    color: var(--hover-text-color);
-    background-color: var(--hover-bg-color);
-    -webkit-text-stroke: 0.05vh var(--border-color); /* Thinner white text border */
-}
-
-/* General link styling */
-li, a {
-    font-size: 3.2vh;
-    font-family: 'Impact';
-    color: var(--text-color);
-    text-decoration: none;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-}
-/* Dropdown styles */
-.dropdown {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 2vw;  /* spacing between items */
     position: relative;
 }
 
+/* Nav links */
+.nav__links li a {
+    font-size: 2.6rem;
+    font-family: var(--font-3);
+    color: var(--text-color);
+    text-decoration: none;
+    -webkit-text-stroke: 0.02vh black;
+    padding: 0.5vh 0.5vh;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav__links li a:hover {
+    color: var(--hover-text-color);
+    background-color: var(--hover-bg-color);
+    -webkit-text-stroke: 0.05vh var(--border-color);
+}
+
+/* Dropdown */
 .dropdown-content {
     position: absolute;
     background-color: var(--primary-color);
     min-width: 160px;
     z-index: 1;
     border: 1px solid var(--border-color);
-    border-radius: 1vh;
-    margin-top: 1vh;
-    
-    /* Smooth fade-in and fade-out */
+    border-radius: 0.5rem;
+    margin-top: 17rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .dropdown:hover .dropdown-content {
@@ -99,42 +101,57 @@ li, a {
     transform: translateY(0);
 }
 
-/* Dropdown link styling */
 .dropdown-content a {
+    display: block;
     color: var(--text-color);
     text-decoration: none;
-    display: block;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-text-stroke 0.3s ease-in-out;
+    padding: 0.8vh 1vh;
+    transition: background 0.3s ease, color 0.3s ease, -webkit-text-stroke 0.3s ease;
 }
 
-/* Hover effect for dropdown items */
 .dropdown-content a:hover {
     color: var(--hover-text-color);
-    -webkit-text-stroke: 0.03vh var(--border-color); /* Thinner white text border */
+    -webkit-text-stroke: 0.03vh var(--border-color);
 }
 
-/* Breaking News Banner */
+/* Logout button */
+.logoutButton {
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    background-color:var(--primary-colorV2);
+    color: white;
+    font-family: var(--font-3);
+    font-size: 1.5vh;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.logoutButton:hover {
+    background: var( --hover-text-color);
+    transform: translateY(-1px);
+}
+
+/* Breaking News Banner (optional) */
 .BreakingNewsBanner {
     width: 100%;
-    height: 2vw;
-    background-color: rgb(159, 0, 0);
-    -webkit-text-stroke: 0.015vh black;
+    height: 3rem;
+    background-color: rgb(159,0,0);
     color: white;
-    font-size: 2.5vh;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--font-2);
     text-transform: uppercase;
     display: flex;
     align-items: center;
     overflow: hidden;
     position: fixed;
-    letter-spacing: 0.5vh;
-    top: 6vh; /* Positioned right below the header */
+    top: 6rem;
     left: 0;
     z-index: 999;
+    letter-spacing: 0.5vh;
 }
 
-/* Animated News Text */
 .BreakingNewsContent {
     white-space: nowrap;
     padding-left: 40%;
@@ -142,32 +159,6 @@ li, a {
 }
 
 @keyframes scrollNews {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-.welcome-text {
-    font-size: 1.8vh;
-    font-family: 'Impact';
-    color: var(--text-color);
-    text-decoration: none;
-    text-transform: capitalize;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    margin-bottom: -2.25vh;
-}
-
-.logoutButton{
-    width: 100%;
-    height: 1.9vh;
-    margin-top: -1vh;
-    border-radius: 0.5vh;
-    background-color: rgb(181, 181, 255);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1vh;
-    cursor: pointer;
-
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
 }

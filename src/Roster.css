@@ -1,340 +1,199 @@
+/* -------------------- Global Layout -------------------- */
+
 .RosterBackground {
-    background: url(Images/Wrestleverse2K25BackgroundOS.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  background: var(--background);
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat;
+  position: fixed;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
 }
 
-
 .RBanner {
-    height: auto;
-    width: 100%;
-    margin-top: 8vh;
+  width: 100%;
+  margin-top: 8rem;
 }
 
 .RosterText1 {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 1vh;
-    font-size: 2.5vw;
-    font-family: 'Impact';
+  color: #fff;
+  text-align: center;
+  margin-top: 1vh;
+  text-transform: uppercase;
+  font-size: 2.5vw;
+  font-family: var(--font-2);
 }
 
 .RosterContainer {
-    background: url(Images/Wrestleverse2K25Background.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    width: 70%;
-    min-height: 100vh; /* Ensures the container takes at least 100% of the viewport height */
-    height: auto; /* Allows the container to expand with content */
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto; /* Enables scroll for the content */
-    max-height: calc(100vh - 8vh); /* Keeps it within the available height minus the header space */
-    padding-bottom: 20px; /* Adds some space at the bottom for better scroll behavior */
-    box-shadow: 0 0 10vh rgb(0, 0, 0);
+  background: var(--contentBackground);
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat;
+  width: 70%;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 8vh);
+  padding-bottom: 20px;
+  box-shadow: 0 0 10vh rgba(0, 0, 0, 1);
 }
 
 .RosterContainer::-webkit-scrollbar {
-    display: none; /* Hides scrollbar for a cleaner look */
+  display: none;
 }
 
 .centerRoster {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: 5vh;
-    margin-right: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 5vh;
 }
 
-
-
-
-/*Smackdown Profiles*/
-
-.ALLSD{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background-image: url(src/Images/Roster/SD/SDBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
+/* -------------------- Profile Cards -------------------- */
+.profile-card {
+  width: 16%;
+  margin-top: 2vh;
+  opacity: 1;
+  height: auto;
+  background-size: 100% 100%;
+  transition: transform 0.3s ease-in-out;
 }
 
-
-.WH{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WHBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-.IC{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/ICBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
+.profile-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-.WUS{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WUSBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
+/* SmackDown Profiles */
+.ALLSD   { background-image: url(src/Images/Roster/SD/SDBG.png); }
+.WH      { background-image: url(src/Images/Roster/Champions/WHBG.png); }
+.IC      { background-image: url(src/Images/Roster/Champions/ICBG.png); }
+.WUS     { background-image: url(src/Images/Roster/Champions/WUSBG.png); }
+.WWH     { background-image: url(src/Images/Roster/Champions/WWHBG.png); }
+.SDTT    { background-image: url(src/Images/Roster/Champions/SDTTBG.png); }
 
-.WWH{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WWHBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
+/* Raw Profiles */
+.ALLRAW  { background-image: url(src/Images/Roster/RAW/RAWBG.png); }
+.UC      { background-image: url(src/Images/Roster/Champions/UCBG.png); }
+.US      { background-image: url(src/Images/Roster/Champions/USBG.png); }
+.WIC     { background-image: url(src/Images/Roster/Champions/WICBG.png); }
+.WUC     { background-image: url(src/Images/Roster/Champions/WUCBG.png); }
+.RAWTT   { background-image: url(src/Images/Roster/Champions/RAWTTBG.png); }
 
-.SDTT{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/SDTTBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
+/* Other Groups */
+.ALLGeneral { background: var(--UndraftPbackground); }
+.ALLLegend  { background: var(--LegendPbackground); }
+.MMITB      { background-image: url(src/Images/Roster/Champions/MMITB.png); }
+.WMITB      { background-image: url(src/Images/Roster/Champions/WMITB.png); }
 
-
-
-/*RAW Profiles*/
-.ALLRAW{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background-image: url(src/Images/Roster/RAW/RAWBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.UC{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/UCBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-.US{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/USBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.WIC{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WICBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.WUC{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WUCBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.RAWTT{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/RAWTTBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.ALLGeneral{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background-image: url(src/Images/Roster/GeneralBG.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.ALLLegend{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background-image: url(src/Images/Roster/Legendbg.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.MMITB{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/MMITB.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-.WMITB{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background:url(src/Images/Roster/Champions/WMITB.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-/* Tab Navigation Styling */
+/* -------------------- Tab Navigation -------------------- */
 .Generaltab {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1vh;
-    margin-bottom: 2vh;
-    margin-top: 2vh
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1vh;
+  margin: 2vh 0;
 }
 
 .tablinks {
-    background: rgb(1, 63, 187);
-    color: white;
-    font-size: 1vh;
-    font-weight: bold;
-    padding: 0.8vh 1vh;
-    border: none;
-    border-radius: 1.2vh;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  background: rgb(0, 68, 162);
+  color: #fff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.8vh 1vh;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: var(--font-1);
 }
 
 .tablinks:hover {
-    background: rgb(0, 145, 255);
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(119, 196, 255, 0.5);
+  background: rgb(7, 172, 255);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(119, 196, 255, 0.5);
 }
 
 .tablinks.active {
-    background: #ffcc00;
-    color: #000;
-    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+  background: #ffcc00;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
 }
 
-/* Tab Content */
 .tabcontent {
-    display: none;
-    animation: fadeIn 0.5s ease-in-out;
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* -------------------- Search Bar -------------------- */
 .searchBar {
-    width: 50%;
-    padding: 10px;
-    margin: 20px auto;
-    display: block;
-    border: 2px solid #4c00ff;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .searchBar:focus {
-    border-color: #1301b8;
-    box-shadow: 0 0 10px rgba(17, 0, 255, 0.5);
-  }
-  
+  width: 50%;
+  padding: 10px;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid #4c00ff;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
 
+.searchBar:focus {
+  border-color: #1301b8;
+  box-shadow: 0 0 10px rgba(17, 0, 255, 0.5);
+}
 
-  /*Championship Bar*/
-  .championship-bar-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: black;
-    width: 100%;
-    margin-top: 2vh;
+/* -------------------- Championship Bar -------------------- */
+.championship-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  width: 100%;
+  margin-top: 2vh;
 }
 
 .championship-bar {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    margin: 1vh;
-    width: 100%;
-    white-space: nowrap;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin: 1vh;
+  width: 100%;
+  white-space: nowrap;
 }
 
 .championship-bar::-webkit-scrollbar {
-    display: none; /* Hides scrollbar for a cleaner look */
+  display: none;
 }
 
 .championship-image {
-    height: 6vw;
-    margin: 0 2vh;
-    transition: transform 0.3s ease-in-out;
+  height: 6vw;
+  margin: 0 2vh;
+  transition: transform 0.3s ease-in-out;
 }
 
 .championship-image:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .scroll-button {
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    color: white;
-    font-size: 2vh;
-    cursor: pointer;
-    transition: 0.3s;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2vh;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .scroll-button:hover {
-    background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.left {
-    margin-right: 1vh;
-}
-
-.right {
-    margin-left: 1vh;
-}
-
-.roster-image {
-    transition: transform 0.3s ease-in-out;
-}
-
-.roster-image:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
+.left { margin-right: 1vh; }
+.right { margin-left: 1vh; }

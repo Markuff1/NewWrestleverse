@@ -1,5 +1,11 @@
+:root {
+  --font-1: Verdana, Geneva, Tahoma, sans-serif;
+  --font-2: 'Courier New', Courier, monospace;
+  --font-3: Impact, sans-serif;
+}
+
 .ShowsBackground {
-    background: url(Images/Wrestleverse2K25BackgroundOS.png);
+    background: var(--background);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
@@ -11,20 +17,21 @@
 .ShowsText1 {
     color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 4vh;
-    margin-bottom: 2vh;
-    font-size: 4vh;
-    font-family: 'Impact';
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-family: var(--font-2);
+    text-transform: uppercase;
 }
 
 .SBanner {
     height: auto;
     width: 100%;
-    margin-top: 8vh;
+    margin-top: 8rem;
 }
 
 .ShowsContainer {
-    background: url(Images/Wrestleverse2K25Background.png);
+    background: var(--contentBackground);
     background-size: contain;
     background-position: center;
     background-repeat: repeat;
@@ -50,19 +57,27 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2vh;
+    border-radius: 1rem;
     border: 5px solid #000000;
     display: block;
     box-shadow: 0 0 1vh rgb(0, 0, 0);
+    transition: transform 0.2s ease, box-shadow 0.5s ease;
+}
+
+.WeeklyShow:hover, .PPVShows:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5vh 2vh rgba(166, 0, 255, 0.6);
+    border-radius: 1.5rem;
 }
 
 .centerPPV {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-template-rows: repeat(3, auto); /* 3 rows */
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    grid-template-rows: repeat(4, auto); /* 3 rows */
     gap: 0.2vw; /* Space between grid items */
     justify-items: center;
     align-items: center;
-    margin-left: 12.5%;
+    margin-left: auto;
     width: 100%;
 }
 
@@ -71,4 +86,6 @@
     height: 10vw ;
     border: 5px solid #000000;
     box-shadow: 0 0 3vh rgb(0, 0, 0);
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.5s ease;
 }

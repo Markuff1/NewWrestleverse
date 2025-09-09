@@ -1,8 +1,5 @@
 .ChampionshipBackground {
-    background: url(src/Images/Wrestleverse2K25BackgroundOS.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
+    background: var(--background);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -15,24 +12,20 @@
 }
 
 .ChampionshipContainer {
-    background: url(src/Images/Wrestleverse2K25Background.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
+    background: var(--contentBackground);
     width: 70%;
-    min-height: 100vh; /* Ensures the container takes at least 100% of the viewport height */
-    height: auto; /* Allows the container to expand with content */
+    min-height: 100vh;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
-    overflow-y: auto; /* Enables scroll for the content */
-    max-height: calc(100vh - 8vh); /* Keeps it within the available height minus the header space */
-    padding-bottom: 20px; /* Adds some space at the bottom for better scroll behavior */
+    overflow-y: auto;
+    max-height: calc(100vh - 8vh);
+    padding-bottom: 20px;
     box-shadow: 0 0 10vh rgb(0, 0, 0);
 }
 
-
 .ChampionshipContainer::-webkit-scrollbar{
-    display: none; /* Hides scrollbar for a cleaner look */
+    display: none;
 }
 
 .ChampionshipText1 {
@@ -70,108 +63,118 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Input Container */
+/* 🔹 Input Section */
 .InputContainer {
-    display: flex;
-    justify-content: center;
-    gap: 1.5vw;
-    margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  padding: 0.8rem;
+  width: 90%;
+  background: #004f98;
+  border-radius: 8px;
+}
+
+.InputContainer input,
+.InputContainer button {
+  font-family: var(--font-3);
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.6rem 0.8rem;
+  border-radius: 5px;
+  border: none;
 }
 
 .InputContainer input {
-    padding: 1vh;
-    border-radius: 5px;
-    font-family:Impact;
-    font-size: 1.2vh;
+  flex: 1;
+  min-width: 160px;
 }
 
 .InputContainer button {
-    padding: 10px 15px;
-    background-color: #0084ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    font-family:Impact;
+  background-color: #0084ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .InputContainer button:hover {
-    background-color: #004f98;
+  background-color: #004f98;
 }
+
 
 /* Table */
 .TitleHolderTable {
-    width: 95%;
-    border-collapse: collapse;
-    margin-top: 2vh;
-    margin-left: auto;
-    margin-right: auto;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    overflow: hidden;
+  width: 95%;
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+  margin-bottom: 5rem;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .TitleHolderTable th,
 .TitleHolderTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    font-size: 1.5vw;
+  padding: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .TitleHolderTable th {
-    background-color: #0084ff;
-    color: white;
-    font-size: 1.5vw;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    font-family:Impact;
+  background-color: #0084ff;
+  font-size: 1.1rem;
+  -webkit-text-stroke: 0.5px black;
+  font-family: var(--font-1);
+}
+
+.TitleHolderTable td {
+  -webkit-text-stroke: 0.5px black;
+  font-family: var(--font-3);
 }
 
 .TitleHolderTable tbody tr:nth-child(even) {
-    background-color: #606060;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    font-family:Impact;
-    font-size: 1vw;
+  background-color: #606060;
 }
 
 .TitleHolderTable tbody tr:nth-child(odd) {
-    background-color: #454545;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    font-family:Impact;
-    font-size: 1vw;
+  background-color: #454545;
 }
 
-.deletebutton, .editbutton, .savebutton, .cancelbutton {
-    padding: 5px 8px;
-    background-color: #0084ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    -webkit-text-stroke: 0.02vh black; /* Thinner default text border */
-    font-family:Impact;
-    font-size: 1vw;
-    margin-left: 0.5vw;
+.TitleHolderTable tbody tr:hover {
+  background-color: #2d2d2d;
+  transition: background 0.2s ease-in-out;
 }
 
-.deletebutton:hover, .editbutton:hover, .savebutton:hover, .cancelbutton:hover {
-    background-color: #004f98;
+
+
+
+
+/* Buttons inside Table */
+.TitleHolderTable button {
+  padding: 5px 10px;
+  margin: 0.25rem 0.25rem;
+  background-color: #0084ff;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-3);
+  -webkit-text-stroke: 0.3px black;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.reignstitle {
-    font-size: 1.5vw;
-    text-decoration: underline;
-    font-family: Impact;
-    text-align: center;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
-    color: white;
+.TitleHolderTable button:hover {
+  background-color: #004f98;
 }
 
+.reignstitle,
 .statstitle {
     font-size: 1.5vw;
     text-decoration: underline;
@@ -182,46 +185,6 @@
     color: white;
 }
 
-.StatsContainer {
-    background: linear-gradient(145deg, #5493e0, #3b77c2);
-    width: 50%;
-    margin: 1.5vh auto;
-    border-radius: 3vh;
-    padding: 1.5vh;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.statcard {
-    background-color: white;
-    border-radius: 2.5vh;
-    padding: 1.2vh;
-    margin: 0.8vh;
-    min-width: 220px;
-    flex: 1;
-    max-width: 300px;
-    text-align: center;
-    font-family: Impact;
-    font-size: 1vw;
-    color: #234d84;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-}
-
-.statcard:hover {
-    transform: scale(1.03);
-}
-
-@media (max-width: 768px) {
-    .statcard {
-        font-size: 2.5vw;
-        min-width: 100%;
-    }
-}
-
-
 .editname, .editreign, .editdate, .editeventwon{
     background-color: #34414e;
     color: white;
@@ -229,4 +192,138 @@
     border-radius: 1vh;
     font-family:Impact;
     text-align: center;
+}
+
+
+
+
+
+/* Current Champion Card */
+.CurrentChampionCard {
+  background: linear-gradient(145deg, #d97f00, #946f00);
+  color: #222;
+  text-align: center;
+  padding: 0.2rem 1rem;
+  margin: 2vh auto;
+  border-radius: 25px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  font-family: var(--font-3);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.CurrentChampionCard:hover {
+  transform: scale(1.01);
+  background: linear-gradient(90deg, #5a3500, #e3aa00);
+}
+
+.ccTitle {
+  font-size: 1.5rem;
+  font-family: var(--font-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.ccName {
+  font-size: 2rem;
+  font-family: var(--font-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin: -0.2vh 0;
+  font-weight: 800;
+  color: #fff;
+  -webkit-text-stroke: 0.8px black; 
+  text-stroke: 0.2px black;
+}
+
+.ccRegin,
+.ccDate {
+  font-size: 1rem;
+  font-family: var(--font-2);
+  margin: 0.5vh 0;
+  font-weight: bolder;
+  color: #222222;
+  text-transform: uppercase;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 768px) {
+  .CurrentChampionCard {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .ccTitle { font-size: 5vw; }
+  .ccName { font-size: 6vw; padding: 0.3rem 0.8rem; }
+  .ccRegin, .ccDate { font-size: 3.5vw; }
+}
+
+/* Stats Bar */
+.StatsGrid {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 2vh auto;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgb(119, 169, 239), rgb(53, 55, 211), rgb(7, 8, 61));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-3);
+  color: #fff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.StatsGrid:hover {
+  transform: scale(1.01);
+  background: linear-gradient(145deg, rgb(7, 8, 61), rgb(53, 55, 211), rgb(119, 169, 239));
+}
+
+.StatBox {
+  flex: 1;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.4rem;
+  transition: background 0.2s ease;
+}
+
+.StatBox p {
+  margin: 0.3rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--font-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin: -0.2vh 0;
+  font-weight: 800;
+  color: #fff;
+  -webkit-text-stroke: 0.8px black; 
+  text-stroke: 0.2px black;
+}
+
+.StatBox strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-2);
+  text-transform: uppercase;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .StatsGrid {
+    flex-direction: column;
+    padding: 0.8rem;
+  }
+
+  .StatBox {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
 }

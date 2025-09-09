@@ -3,21 +3,21 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [breakingNews] = useState();
+  const [breakingNews] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
-      setUsername(storedUsername);  //Gets the username to display
+      setUsername(storedUsername);
     }
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("username");
-    setUsername("");                     //Removes the username when you logout so that it secures the website for unauthorised users
-    navigate("/")                        //And takes you back to the login page
+    setUsername("");
+    navigate("/");
   }
 
   return (
@@ -31,28 +31,30 @@ function Header() {
         </div>
       )}
 
-      {/* Header Section */}
+      {/* Header */}
       <div className="HeaderBackground">
         <div className="HeaderContainer">
-          <img className="WLogo" src="/src/Images/Wrestleverse2K25.png" alt="Logo" />
+          <Link to="/Home"><img className="WLogo" src="/src/Images/Wrestleverse2K25.png" alt="Logo" /></Link>
+
           <nav className="nav">
             <ul className="nav__links" id="sidemenu">
               <li><Link to="/Home">HOME</Link></li>
-              <li><Link to="/news">NEWS</Link></li>
               <li className="dropdown">
                 <Link to="/shows">SHOWS</Link>
                 <div className="dropdown-content">
                   <Link to="/raw">RAW</Link>
                   <Link to="/SD">SMACKDOWN</Link>
-                  <Link to="/Draft">DRAFT</Link>
-                  <Link to="/SurvivorSeries">LATEST PPV</Link>
+                  <Link to="/RoyalRumble">LATEST PPV</Link>
                 </div>
               </li>
               <li><Link to="/Roster">ROSTER</Link></li>
-              <li>
-                  <div className="welcome-text">{username ? `Hi ${username}!!!!!` : ''}</div>
-                  <button className="logoutButton" onClick={handleLogout}>LogOut</button>
-              </li>
+
+              {/* Logout button */}
+              {username && (
+                <li>
+                  <button className="logoutButton" onClick={handleLogout}>SIGN OUT</button>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

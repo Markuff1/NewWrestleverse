@@ -12,7 +12,9 @@ const championships = [
     { id: 5, image: "src/Images/Championships/WomenIC.png", alt: "Women's Intercontinental Championship", link: "/WomenIntercontinentalChamp" },
     { id: 6, image: "src/Images/Championships/WomenUS.png", alt: "Women's United States Championship", link: "/WomenUnitedStatesChamp" },
     { id: 7, image: "src/Images/Championships/RawTag.png", alt: "Raw Tag Team Championships", link: "/RawTagTeamChamps" },
-    { id: 8, image: "src/Images/Championships/SDTag.png", alt: "Smackdown Tag Team Championships", link: "/SmackdownTagTeamChamps" }
+    { id: 8, image: "src/Images/Championships/SDTag.png", alt: "Smackdown Tag Team Championships", link: "/SmackdownTagTeamChamps" },
+    { id: 9, image: "src/Images/Championships/MenMITB.png", alt: "Men's Money In The Bank", link: "/MMITB" },
+    { id: 10, image: "src/Images/Championships/WomenMITB.png", alt: "Women's Money In The Bank", link: "/WMITB" }
 ];
 
 const ChampionshipBar: React.FC = () => {
