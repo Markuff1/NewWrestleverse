@@ -7,17 +7,18 @@ import rosterData from "./RosterData"; // ✅ Import from RosterData.ts
 
 const tabs = ["ALL", "Men", "Women", "Tag Teams", "Champions", "GM"];
 
-const RAWData: Record<
-  string,
-  {
-    className: string;
-    src: string;
-    name: string;
-    gender?: string;
-    Champion?: string;
-    championRank?: number;
-  }[]
-> = {
+// ✅ Type for each RAW item
+type RAWItem = {
+  className: string;
+  src: string;
+  name: string;
+  gender?: string;
+  Champion?: string;
+  championRank?: number;
+};
+
+// ✅ RAW data structure
+const RAWData: Record<string, RAWItem[]> = {
   ALL: [],
   Men: [],
   Women: [],
@@ -31,15 +32,13 @@ const RAWData: Record<
     { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline" },
     { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits" },
     { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/VikingRaiders.png", name: "Viking Raiders" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" }
+    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" },
   ],
   Champions: [],
-  GM: [
-    { className: "ALLRAW", src: "/src/Images/Roster/WadeBarrett.png", name: "Wade Barrett", gender: "Man" },
-  ]
+  GM: [{ className: "ALLRAW", src: "/src/Images/Roster/WadeBarrett.png", name: "Wade Barrett", gender: "Man" }],
 };
 
-// ✅ Populate RAWData.ALL from rosterData.ALL with tag === "R"
+// ✅ Populate RAWData.ALL from rosterData
 RAWData.ALL = rosterData.ALL
   .filter((item) => item.tag === "R")
   .map((item) => ({
@@ -78,7 +77,7 @@ const RAWTabs: React.FC = () => {
 
   useEffect(() => {
     updateGenderTabs();
-    const updatedData = { ...RAWData };
+    const updatedData: Record<string, RAWItem[]> = { ...RAWData };
 
     for (let tab of tabs) {
       updatedData[tab] = RAWData[tab].filter((item) =>
@@ -128,12 +127,12 @@ const RAWTabs: React.FC = () => {
             <div key={tab} className="RAWtabcontent" style={{ display: activeTab === tab ? "block" : "none" }}>
               <div className="RAWText3">Current {tab} Roster</div>
               {filteredRAW(tab)
-                ?.reduce((acc, item, index) => {
+                ?.reduce((acc: RAWItem[][], item: RAWItem, index: number) => {
                   const groupSize = tab === "Champions" ? 4 : 6;
                   if (index % groupSize === 0) acc.push([]);
                   acc[acc.length - 1].push(item);
                   return acc;
-                }, [] as typeof RAWData.ALL[][])
+                }, [])
                 .map((group, groupIndex) => (
                   <div key={groupIndex} className="centerRoster">
                     {group.map((item, index) => (

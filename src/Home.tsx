@@ -1,7 +1,7 @@
 import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Home() {
