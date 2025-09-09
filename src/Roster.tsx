@@ -112,6 +112,7 @@ const RosterTabs: React.FC = () => {
                       src={item.src}
                       alt={item.name}
                       title={item.name}
+                      loading="lazy"
                     />
                   ))}
                 </div>
