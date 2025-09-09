@@ -32,7 +32,7 @@ function CyberSunday() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/CyberSunday/CyberSundayHeader.png"
+            src="/Images/PPV/CyberSunday/CyberSundayHeader.png"
             alt="CyberSunday Banner"
           />
 
@@ -76,7 +76,7 @@ function CyberSunday() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/CyberSunday/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/CyberSunday/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

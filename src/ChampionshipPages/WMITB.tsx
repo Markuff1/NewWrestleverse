@@ -58,7 +58,7 @@ const WMITB: React.FC = () => {
       <Header />
       <div className="ChampionshipBackground">
         <div className="MITBContainer">
-          <img className="TitleHeaderImage" src="src/Images/CBanners/WMITBBanner.png" alt="MITB Banner" />
+          <img className="TitleHeaderImage" src="/Images/CBanners/WMITBBanner.png" alt="MITB Banner" />
 
           <div className="reignstitle">MITB Records</div>
 

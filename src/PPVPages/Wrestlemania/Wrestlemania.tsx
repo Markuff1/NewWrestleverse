@@ -23,7 +23,7 @@ function Backlash() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/Backlash/BacklashHeader.png"
+            src="/Images/PPV/Backlash/BacklashHeader.png"
             alt="Backlash Banner"
           />
 
@@ -63,7 +63,7 @@ function Backlash() {
                 <h3 className="MatchTitle">{match.match}</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/Backlash/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/Backlash/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

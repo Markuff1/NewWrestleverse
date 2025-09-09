@@ -1,5 +1,5 @@
 import ChampionshipPage from "./ChampionshipPage";
 const WorldHeavyweightChamp = () => (
-  <ChampionshipPage collectionId="WorldHeavyweight" bannerSrc="src/Images/CBanners/WHCBanner.png" />
+  <ChampionshipPage collectionId="WorldHeavyweight" bannerSrc="/Images/CBanners/WHCBanner.png" />
 );
 export default WorldHeavyweightChamp;

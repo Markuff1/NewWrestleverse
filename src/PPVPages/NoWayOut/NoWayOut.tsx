@@ -14,7 +14,7 @@ function NoWayOut() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/NoWayOut/NoWayOutHeader.png"
+            src="/Images/PPV/NoWayOut/NoWayOutHeader.png"
             alt="NoWayOut Banner"
           />
 
@@ -54,7 +54,7 @@ function NoWayOut() {
                 <h3 className="MatchTitle">{match.match}</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/NoWayOut/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/NoWayOut/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

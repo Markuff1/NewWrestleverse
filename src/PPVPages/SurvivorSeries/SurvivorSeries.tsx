@@ -29,7 +29,7 @@ function SurvivorSeries() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/SurvivorSeries/SurvivorSeriesHeader.png"
+            src="/Images/PPV/SurvivorSeries/SurvivorSeriesHeader.png"
             alt="SurvivorSeries Banner"
           />
 
@@ -74,7 +74,7 @@ function SurvivorSeries() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/SurvivorSeries/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/SurvivorSeries/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

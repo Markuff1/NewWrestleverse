@@ -23,7 +23,7 @@ function Home() {
         <div className="home-content">
           <img
             className="WVLogo"
-            src="/src/Images/Wrestleverse2K25.png"
+            src="/Images/Wrestleverse2K25.png"
             alt="Logo"
           />
           <h1 className="WVText">WELCOME TO WRESTLEVERSE</h1>

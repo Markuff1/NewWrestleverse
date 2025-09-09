@@ -33,7 +33,7 @@ function NYR() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/NYR/NYRHeader.png"
+            src="/Images/PPV/NYR/NYRHeader.png"
             alt="NYR Banner"
           />
 
@@ -77,7 +77,7 @@ function NYR() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/NYR/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/NYR/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

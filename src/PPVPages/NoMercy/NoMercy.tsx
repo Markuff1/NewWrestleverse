@@ -30,7 +30,7 @@ function NoMercy() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/NoMercy/NoMercyHeader.png"
+            src="/Images/PPV/NoMercy/NoMercyHeader.png"
             alt="NoMercy Banner"
           />
 
@@ -74,7 +74,7 @@ function NoMercy() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/NoMercy/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/NoMercy/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

@@ -31,7 +31,7 @@ function TLC() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/TLC/TLCHeader.png"
+            src="/Images/PPV/TLC/TLCHeader.png"
             alt="TLC Banner"
           />
 
@@ -75,7 +75,7 @@ function TLC() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/TLC/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/TLC/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

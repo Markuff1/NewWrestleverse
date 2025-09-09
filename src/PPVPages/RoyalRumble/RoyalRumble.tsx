@@ -28,7 +28,7 @@ function RoyalRumble() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/RoyalRumble/RoyalRumbleHeader.png"
+            src="/Images/PPV/RoyalRumble/RoyalRumbleHeader.png"
             alt="RoyalRumble Banner"
           />
 
@@ -72,7 +72,7 @@ function RoyalRumble() {
                 <h3 className="MatchType">{match.type} match</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/RoyalRumble/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/RoyalRumble/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

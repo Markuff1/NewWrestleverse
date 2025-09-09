@@ -42,7 +42,7 @@ const matchCard2026: Match[] = [
 const backlashEvents: PPVEvent[] = [
   {
     year: 2026,
-    banner: "src/Images/PPV/Backlash/BacklashHeaderV2.png",
+    banner: "/Images/PPV/Backlash/BacklashHeaderV2.png",
     location: "Gainbridge Fieldhouse, Indianapolis, Indiana",
     date: "Saturday, May 23rd, 2026",
     matches: matchCard2026,
@@ -50,7 +50,7 @@ const backlashEvents: PPVEvent[] = [
   },
   {
     year: 2025,
-    banner: "src/Images/PPV/Backlash/BacklashHeader.png",
+    banner: "/Images/PPV/Backlash/BacklashHeader.png",
     location: "Allstate Arena, Rosemont, Illinois",
     date: "Saturday, May 24th, 2025",
     matches: matchCard2025,
@@ -106,7 +106,7 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
             <h3 className="MatchTitle">{match.match}</h3>
             <img
               className="MatchImage"
-              src={`src/Images/PPV/Backlash/${imageFolder}/M${index + 1}.png`}
+              src={`/Images/PPV/Backlash/${imageFolder}/M${index + 1}.PNG`}
               alt={match.match}
             />
             <div className="MatchDivider"></div>

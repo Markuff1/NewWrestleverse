@@ -22,7 +22,7 @@ function MITB() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/MITB/MITBHeader.png"
+            src="/Images/PPV/MITB/MITBHeader.png"
             alt="MITB Banner"
           />
 
@@ -62,7 +62,7 @@ function MITB() {
                 <h3 className="MatchTitle">{match.match}</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/MITB/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/MITB/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

@@ -1,5 +1,5 @@
 import ChampionshipPage from "./ChampionshipPage";
 const RawTagTeamChamps = () => (
-  <ChampionshipPage collectionId="RawTagTeam" bannerSrc="src/Images/CBanners/RAWTTBanner.png" />
+  <ChampionshipPage collectionId="RawTagTeam" bannerSrc="/Images/CBanners/RAWTTBanner.png" />
 );
 export default RawTagTeamChamps;

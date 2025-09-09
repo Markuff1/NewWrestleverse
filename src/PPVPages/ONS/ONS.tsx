@@ -23,7 +23,7 @@ function ONS() {
         <div className="PPVContainer">
           <img
             className="PPVBanner"
-            src="/src/Images/PPV/ONS/ONSHeader.png"
+            src="/Images/PPV/ONS/ONSHeader.png"
             alt="ONS Banner"
           />
 
@@ -63,7 +63,7 @@ function ONS() {
                 <h3 className="MatchTitle">{match.match}</h3>
                 <img
                   className="MatchImage"
-                  src={`src/Images/PPV/ONS/2025MC/M${index + 1}.png`}
+                  src={`/Images/PPV/ONS/2025MC/M${index + 1}.PNG`}
                   alt={match.match}
                 />
                 <div className="MatchDivider"></div>

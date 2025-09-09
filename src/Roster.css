@@ -64,26 +64,26 @@
 }
 
 /* SmackDown Profiles */
-.ALLSD   { background-image: url(src/Images/Roster/SD/SDBG.png); }
-.WH      { background-image: url(src/Images/Roster/Champions/WHBG.png); }
-.IC      { background-image: url(src/Images/Roster/Champions/ICBG.png); }
-.WUS     { background-image: url(src/Images/Roster/Champions/WUSBG.png); }
-.WWH     { background-image: url(src/Images/Roster/Champions/WWHBG.png); }
-.SDTT    { background-image: url(src/Images/Roster/Champions/SDTTBG.png); }
+.ALLSD   { background-image: url(public/Images/Roster/SD/SDBG.png); }
+.WH      { background-image: url(/Images/Roster/Champions/WHBG.png); }
+.IC      { background-image: url(/Images/Roster/Champions/ICBG.png); }
+.WUS     { background-image: url(/Images/Roster/Champions/WUSBG.png); }
+.WWH     { background-image: url(/Images/Roster/Champions/WWHBG.png); }
+.SDTT    { background-image: url(/Images/Roster/Champions/SDTTBG.png); }
 
 /* Raw Profiles */
-.ALLRAW  { background-image: url(src/Images/Roster/RAW/RAWBG.png); }
-.UC      { background-image: url(src/Images/Roster/Champions/UCBG.png); }
-.US      { background-image: url(src/Images/Roster/Champions/USBG.png); }
-.WIC     { background-image: url(src/Images/Roster/Champions/WICBG.png); }
-.WUC     { background-image: url(src/Images/Roster/Champions/WUCBG.png); }
-.RAWTT   { background-image: url(src/Images/Roster/Champions/RAWTTBG.png); }
+.ALLRAW  { background-image: url(/Images/Roster/RAW/RAWBG.png); }
+.UC      { background-image: url(/Images/Roster/Champions/UCBG.png); }
+.US      { background-image: url(/Images/Roster/Champions/USBG.png); }
+.WIC     { background-image: url(/Images/Roster/Champions/WICBG.png); }
+.WUC     { background-image: url(/Images/Roster/Champions/WUCBG.png); }
+.RAWTT   { background-image: url(/Images/Roster/Champions/RAWTTBG.png); }
 
 /* Other Groups */
 .ALLGeneral { background: var(--UndraftPbackground); }
 .ALLLegend  { background: var(--LegendPbackground); }
-.MMITB      { background-image: url(src/Images/Roster/Champions/MMITB.png); }
-.WMITB      { background-image: url(src/Images/Roster/Champions/WMITB.png); }
+.MMITB      { background-image: url(/Images/Roster/Champions/MMITB.png); }
+.WMITB      { background-image: url(/Images/Roster/Champions/WMITB.png); }
 
 /* -------------------- Tab Navigation -------------------- */
 .Generaltab {

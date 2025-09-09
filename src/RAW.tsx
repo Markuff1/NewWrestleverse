@@ -23,19 +23,19 @@ const RAWData: Record<string, RAWItem[]> = {
   Men: [],
   Women: [],
   "Tag Teams": [
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/AlphaAcadamy.png", name: "Alpha Acadamy" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/Angel&Berto.png", name: "Angel & Berto" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/AOP.png", name: "AOP" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/DudleyBoys.png", name: "Dudley Boys" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/JudgementDay.png", name: "Judgement Day" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/LWO.png", name: "LWO" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/VikingRaiders.png", name: "Viking Raiders" },
-    { className: "ALLRAW", src: "/src/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/AlphaAcadamy.png", name: "Alpha Acadamy" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/Angel&Berto.png", name: "Angel & Berto" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/AOP.png", name: "AOP" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/DudleyBoys.png", name: "Dudley Boys" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/JudgementDay.png", name: "Judgement Day" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/LWO.png", name: "LWO" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/VikingRaiders.png", name: "Viking Raiders" },
+    { className: "ALLRAW", src: "/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" },
   ],
   Champions: [],
-  GM: [{ className: "ALLRAW", src: "/src/Images/Roster/WadeBarrett.png", name: "Wade Barrett", gender: "Man" }],
+  GM: [{ className: "ALLRAW", src: "/Images/Roster/WadeBarrett.png", name: "Wade Barrett", gender: "Man" }],
 };
 
 // ✅ Populate RAWData.ALL from rosterData
@@ -93,7 +93,7 @@ const RAWTabs: React.FC = () => {
       <Header />
       <div className="RAWBackground">
         <div className="RAWContainer">
-          <img className="RAWBanner" src="/src/Images/RAWHeader.png" alt="RAW Header" />
+          <img className="RAWBanner" src="/Images/RAWHeader.png" alt="RAW Header" />
           <div className="RAWInfo">
             <div className="RAWLocation">Location: Arena Near You</div>
             <div className="RAWDate">Date/Time: Every Monday Night</div>

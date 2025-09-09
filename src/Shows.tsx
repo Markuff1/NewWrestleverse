@@ -5,36 +5,36 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 const weeklyShows = [
-  { name: "RAW", image: "/src/Images/RAW.png" },
-  { name: "SD", image: "/src/Images/SD.png" },
+  { name: "RAW", image: "/Images/RAW.png" },
+  { name: "SD", image: "/Images/SD.png" },
 ];
 
 const ppvShows = [
   [
-    { name: "NYR", image: "/src/Images/PPV/NYR/NYR.png" },
-    { name: "RoyalRumble", image: "/src/Images/PPV/RoyalRumble/RoyalRumble.png" },
-    { name: "NoWayOut", image: "/src/Images/PPV/NoWayOut/NoWayOut.png" },
+    { name: "NYR", image: "/Images/PPV/NYR/NYR.png" },
+    { name: "RoyalRumble", image: "/Images/PPV/RoyalRumble/RoyalRumble.png" },
+    { name: "NoWayOut", image: "/Images/PPV/NoWayOut/NoWayOut.png" },
   ],
   [
-    { name: "Wrestlemania", image: "/src/Images/PPV/Wrestlemania/Wrestlemania40.png" },
-    { name: "Backlash", image: "/src/Images/PPV/Backlash/Backlash2026.png" },
-    { name: "OverTheLimit", image: "/src/Images/PPV/OverTheLimit/OTL2026.png" },
+    { name: "Wrestlemania", image: "/Images/PPV/Wrestlemania/Wrestlemania40.png" },
+    { name: "Backlash", image: "/Images/PPV/Backlash/Backlash2026.png" },
+    { name: "OverTheLimit", image: "/Images/PPV/OverTheLimit/OTL2026.png" },
   ],
   [
-    { name: "MITB", image: "/src/Images/PPV/MITB/MITB.png" },
-    { name: "SummerSlam", image: "/src/Images/PPV/SummerSlam/SummerSlam.png" },
-    { name: "NoMercy", image: "/src/Images/PPV/NoMercy/NoMercy.png" },
+    { name: "MITB", image: "/Images/PPV/MITB/MITB.png" },
+    { name: "SummerSlam", image: "/Images/PPV/SummerSlam/Summerslam.png" },
+    { name: "NoMercy", image: "/Images/PPV/NoMercy/NoMercy.png" },
   ],
   [
-    { name: "CyberSunday", image: "/src/Images/PPV/CyberSunday/CyberSunday.png" },
-    { name: "SurvivorSeries", image: "/src/Images/PPV/SurvivorSeries/SurvivorSeries.png" },
-    { name: "TLC", image: "/src/Images/PPV/TLC/TLC.png" }
+    { name: "CyberSunday", image: "/Images/PPV/CyberSunday/CyberSunday.png" },
+    { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SurvivorSeries.png" },
+    { name: "TLC", image: "/Images/PPV/TLC/TLC.png" }
   ]
 ];
 
 const retiredPPVs = [
   [
-    { name: "ONS", image: "/src/Images/PPV/ONS/ONS.png" },
+    { name: "ONS", image: "/Images/PPV/ONS/ONS.png" },
   ]
 ];
 
@@ -44,7 +44,7 @@ function Shows() {
       <Header />
       <div className="ShowsBackground">
         <div className="ShowsContainer">
-          <img className="SBanner" src="/src/Images/ShowsHeader.png" alt="Shows Banner" />
+          <img className="SBanner" src="/Images/ShowsHeader.png" alt="Shows Banner" />
           
           <div className="ShowsText1">Weekly Shows</div>
           {weeklyShows.map((show) => (
