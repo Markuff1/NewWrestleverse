@@ -6,7 +6,7 @@
     margin-left: auto;
     margin-right: auto;
     height: 100vh;
-    background-color: #4885ff;
+    background-color: var(--primary-color);
 }
 
 .Logo1{
@@ -30,7 +30,7 @@
   
   .login-title {
     font-size: 3vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--font-2);
     margin-top: 0vh;
     margin-bottom: 1vh;
     text-align: center;
@@ -38,13 +38,13 @@
   
   .login-input {
     width: 95%;
-    background-color: rgb(235, 240, 255);
+    background-color: rgb(231, 237, 255);
     padding: 1vh;
     margin-bottom: 1.5vh;
     border: 0.05 solid #000000;
     border-radius: 0.90vh;
     font-size: 2.5vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--font-1);
   }
   
   .login-error {
@@ -52,12 +52,12 @@
     text-align: center;
     font-size: 2vh;
     margin-bottom: 1.5vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: var(--font-1);
   }
   
   .login-button {
     width: 100%;
-    background-color: #3b82f6;
+    background-color: var(--Secondary-color);
     color: white;
     padding: 2vh;
     border: none;

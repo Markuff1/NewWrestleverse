@@ -1,5 +1,5 @@
 :root{
-  --background: linear-gradient(to bottom, rgb(45, 45, 45), rgb(0, 31, 93), rgb(45, 45, 45));
+  --background: linear-gradient(to bottom, rgb(45, 45, 45), var(--primary-color-dark), rgb(45, 45, 45));
   --RAWbackground: linear-gradient(to bottom, rgb(33, 25, 25), rgb(109, 0, 0), rgb(30, 26, 26));
   --SDbackground: linear-gradient(to bottom, rgb(19, 39, 68), rgb(0, 46, 139), rgb(23, 33, 57));
   --contentBackground: linear-gradient(to right, rgb(23, 23, 23), rgb(56, 56, 56), rgb(58, 58, 58));
@@ -10,6 +10,15 @@
   --font-1: Verdana, Geneva, Tahoma, sans-serif;
   --font-2: 'Courier New', Courier, monospace;
   --font-3: Impact, sans-serif;
+
+  --primary-color: rgb(0, 59, 162);
+  --primary-colorV2: rgb(74, 201, 255);
+  --Secondary-color:rgb(132, 0, 255);
+  --primary-color-dark:rgb(0, 27, 89);
+  --text-color: white;
+  --border-color: white;
+  --hover-text-color: rgb(0, 4, 255);
+  --hover-bg-color: rgba(7, 172, 255, 0.253);
 }
 
 .HomeBackground {
@@ -62,7 +71,7 @@
 }
 
 .shows-btn, .roster-btn {
-  background: linear-gradient(270deg, rgb(0, 21, 255), rgb(59, 0, 141), rgb(0, 127, 173));
+  background: linear-gradient(270deg, var(--primary-color), var(--Secondary-color), var(--primary-colorV2));
   background-size: 600% 600%;
   box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7);
   padding: 1.5rem 12.5rem;

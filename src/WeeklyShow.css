@@ -174,13 +174,21 @@
 
 
 
-/*Smackdown Profiles*/
+
+.ALLRAW{
+    height: auto;
+    width: 16%;
+    opacity: 1;
+    background-image: url(/Images/Roster/RAW/RAWBG.png);
+    background-size: 100% 100%;
+    margin-top: 2vh;
+}
 
 .ALLSD{
     height: auto;
     width: 16%;
     opacity: 1;
-    background-image: url(src/Images/Roster/SD/SDBG.png);
+    background-image: url(/Images/Roster/SD/SDBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -189,7 +197,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/WHBG.png);
+    background:url(/Images/Roster/Champions/WHBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -197,7 +205,16 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/ICBG.png);
+    background:url(/Images/Roster/Champions/ICBG.png);
+    background-size: 100% 100%;
+    margin-top: 2vh;
+}
+
+.WIC{
+    height: auto;
+    width: 16%;
+    opacity: 1;
+    background:url(/Images/Roster/Champions/WICBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -206,7 +223,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/WWHBG.png);
+    background:url(/Images/Roster/Champions/WWHBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -215,7 +232,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/SDTTBG.png);
+    background:url(/Images/Roster/Champions/SDTTBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -224,7 +241,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/MMITB.png);
+    background:url(/Images/Roster/Champions/MMITB.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -233,18 +250,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/WMITB.png);
-    background-size: 100% 100%;
-    margin-top: 2vh;
-}
-
-/*RAW Profiles*/
-
-.ALLRAW{
-    height: auto;
-    width: 16%;
-    opacity: 1;
-    background-image: url(src/Images/Roster/RAW/RAWBG.png);
+    background:url(/Images/Roster/Champions/WMITB.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -253,7 +259,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/UCBG.png);
+    background:url(/Images/Roster/Champions/UCBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -261,7 +267,16 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/USBG.png);
+    background:url(/Images/Roster/Champions/USBGV2.png);
+    background-size: 100% 100%;
+    margin-top: 2vh;
+}
+
+.WUS{
+    height: auto;
+    width: 16%;
+    opacity: 1;
+    background:url(/Images/Roster/Champions/WUSBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -270,7 +285,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/WUCBG.png);
+    background:url(/Images/Roster/Champions/WUCBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }
@@ -279,7 +294,7 @@
     height: auto;
     width: 16%;
     opacity: 1;
-    background:url(src/Images/Roster/Champions/RAWTTBG.png);
+    background:url(/Images/Roster/Champions/RAWTTBG.png);
     background-size: 100% 100%;
     margin-top: 2vh;
 }

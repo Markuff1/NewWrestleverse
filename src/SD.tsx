@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./WeeklyShow.css";
+import "./Roster.css";
 import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -11,7 +12,7 @@ const SDData: Record<
   string,
   { className: string; src: string; name: string; gender?: string; Champion?: string }[]
 > = {
-  ALL: [], // Will be dynamically populated
+  ALL: [],
   Men: [],
   Women: [],
   "Tag Teams": [
@@ -43,7 +44,7 @@ SDData.ALL = rosterData.ALL
     Champion: item.champion
   }));
 
-// Update Men/Women/Champions tabs based on SDData.ALL
+// ✅ Update Men/Women/Champions tabs
 const updateGenderTabs = () => {
   SDData.Men = SDData.ALL.filter((item) => item.gender === "Man");
   SDData.Women = SDData.ALL.filter((item) => item.gender === "Women");
@@ -84,14 +85,18 @@ const SDTabs: React.FC = () => {
       <div className="SDBackground">
         <div className="SDContainer">
           <img className="SDBanner" src="/Images/SDHeader.png" alt="SD Header" />
+
           <div className="SDInfo">
             <div className="SDLocation">Location: Arena Near You</div>
             <div className="SDDate">Date/Time: Every Friday Night</div>
           </div>
 
-          <div className="SDText1">Friday night Smackdown</div>
-          <div className="SDText2">Friday night’s WWE spectacle brings high-energy action, intense rivalries, and unforgettable moments every week.</div>
+          <div className="SDText1">Friday Night Smackdown</div>
+          <div className="SDText2">
+            WWE’s blue brand delivers high-energy action, intense rivalries, and unforgettable moments every week.
+          </div>
 
+          {/* ✅ Search + Tabs */}
           <input
             type="text"
             placeholder="Search for a wrestler..."
@@ -99,6 +104,7 @@ const SDTabs: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="SDsearchBar"
           />
+
           <div className="SDTab">
             {tabs.map((tab) => (
               <button
@@ -111,6 +117,7 @@ const SDTabs: React.FC = () => {
             ))}
           </div>
 
+          {/* ✅ Tab Content */}
           {tabs.map((tab) => (
             <div key={tab} className="SDtabcontent" style={{ display: activeTab === tab ? "block" : "none" }}>
               <div className="SDText3">Current {tab} Roster</div>
@@ -136,6 +143,7 @@ const SDTabs: React.FC = () => {
                 ))}
             </div>
           ))}
+
           <div className="SDText1">.....</div>
         </div>
       </div>

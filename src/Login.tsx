@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDocs, query, where, collection, addDoc } from 'firebase/firestore';
-import './Login.css'; // Import the CSS file
+import './Login.css';
+import './Home.css';
 import { db } from './firebaseConfig';
 
 const Login: React.FC = () => {

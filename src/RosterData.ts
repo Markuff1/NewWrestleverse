@@ -11,6 +11,21 @@ export interface Wrestler {
   championRank?: number;
 }
 
+const championshipOrder: Record<string, number> = {
+  UC:1,
+  WH:2,
+  WUC:3,
+  WWH:4,
+  IC:5,
+  WIC:6,
+  US:7,
+  WUS:8,
+  RAWTT:9,
+  SDTT:10,
+  MMITB:11,
+  WMITB:12,
+};
+
 const rosterData: Record<string, Wrestler[]> = {
    ALL: [
         { src: "/Images/Roster/AJStyles.png", name: "AJ Styles", gender: "Man", tag: "SD", champion:""},
@@ -182,7 +197,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/OroMensah.png", name: "Oro Mensah", gender: "Man", tag: "UNDRAFTED" , champion:""},
         { src: "/Images/Roster/Otis.png", name: "Otis", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PatMcafee.png", name: "Pat Mcafee", gender: "Man", tag: "L" , champion:""},
-        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:""},
+        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:"IC"},
         { src: "/Images/Roster/PeteDunne.png", name: "Pete Dunne", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/PiperNiven.png", name: "Piper Niven", gender: "Women", tag: "R"},
         { src: "/Images/Roster/R-Truth.png", name: "R-Truth", gender: "Man", tag: "SD" , champion:""},
@@ -191,7 +206,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/RazorRamon.png", name: "Razor Ramon", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/ReyMysterio.png", name: "Rey Mysterio", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/Rezar.png", name: "Rezar", gender: "Man", tag: "R" , champion:""},
-        { src: "/Images/Roster/RheaRipley.png", name: "Rhea Ripley", gender: "Women", tag: "R" , champion:""},
+        { src: "/Images/Roster/RheaRipley.png", name: "Rhea Ripley", gender: "Women", tag: "R" , champion:"WUC"},
         { src: "/Images/Roster/RickySteamboat.png", name: "Ricky Steamboat", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/RidgeHolland.png", name: "Ridge Holland", gender: "Man", tag: "UNDRAFTED" , champion:""},
         { src: "/Images/Roster/Rikishi.png", name: "Rikishi", gender: "Man", tag: "L" , champion:""},
@@ -219,7 +234,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/StacyKeibler.png", name: "Stacy Keibler", gender: "Women", tag: "L" , champion:""},
         { src: "/Images/Roster/Stardust.png", name: "Stardust", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/StephanieMcmahon.png", name: "Stephanie Mcmahon", gender: "Women", tag: "L" , champion:""},
-        { src: "/Images/Roster/StephanieVaquer.png", name: "Stephanie Vaquer", gender: "Women", tag: "SD" , champion:""},
+        { src: "/Images/Roster/StephanieVaquer.png", name: "Stephanie Vaquer", gender: "Women", tag: "SD" , champion:"WUS"},
         { src: "/Images/Roster/StoneColdSteveAustin.png", name: "Stone Cold Steve Austin", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/Syxx.png", name: "Syxx", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/TamaTonga.png", name: "Tama Tonga", gender: "Man", tag: "R" , champion:""},
@@ -279,7 +294,7 @@ const rosterData: Record<string, Wrestler[]> = {
     { src: "/Images/Roster/TagTeam/JudgementDay.png", name: "Judgement Day", tag: "R", champion:""},
     { src: "/Images/Roster/TagTeam/Lorenzo&D'Angelo.png", name: "Lorenzo & D'Angelo", tag: "UNDRAFTED", champion:""},
     { src: "/Images/Roster/TagTeam/LWO.png", name: "LWO", tag: "R", champion:""},
-    { src: "/Images/Roster/TagTeam/MCMG.png", name: "MCMG", tag: "SD", champion:""},
+    { src: "/Images/Roster/TagTeam/MCMG.png", name: "MCMG", tag: "SD", champion:"SDTT"},
     { src: "/Images/Roster/TagTeam/NCR.png", name: "New Catch Republic", tag: "SD", champion:""},
     { src: "/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline", tag: "R", champion:""},
     { src: "/Images/Roster/TagTeam/NewDay.png", name: "New Day", tag: "SD", champion:""},
@@ -294,10 +309,14 @@ const rosterData: Record<string, Wrestler[]> = {
   GM: []
 };
 
-// Assign appropriate className based on champion
+// Assign appropriate className & push champions
 rosterData.ALL.forEach(wrestler => {
   if (wrestler.champion) {
     wrestler.className = wrestler.champion;
+
+    // 👇 automatically assign championRank based on championshipOrder
+    wrestler.championRank = championshipOrder[wrestler.champion] ?? 999;
+
     rosterData.Champions.push(wrestler);
   } else if (wrestler.tag === "R") {
     wrestler.className = "ALLRAW";
@@ -310,10 +329,14 @@ rosterData.ALL.forEach(wrestler => {
   }
 });
 
-// Update "Tag Teams" to include champions in the "Champions" tab
+// Do the same for Tag Teams
 rosterData["Tag Teams"].forEach(tagTeam => {
   if (tagTeam.champion) {
     tagTeam.className = tagTeam.champion;
+
+    // 👇 auto-assign rank here too
+    tagTeam.championRank = championshipOrder[tagTeam.champion] ?? 999;
+
     rosterData.Champions.push(tagTeam);
   } else if (tagTeam.tag === "R") {
     tagTeam.className = "ALLRAW";

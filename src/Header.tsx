@@ -1,4 +1,5 @@
 import "./Header.css";
+import "./Home.css";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -44,7 +45,7 @@ function Header() {
                 <div className="dropdown-content">
                   <Link to="/raw">RAW</Link>
                   <Link to="/SD">SMACKDOWN</Link>
-                  <Link to="/RoyalRumble">LATEST PPV</Link>
+                  <Link to="/Backlash">LATEST PPV</Link>
                 </div>
               </li>
               <li><Link to="/Roster">ROSTER</Link></li>

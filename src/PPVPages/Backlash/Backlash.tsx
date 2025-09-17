@@ -33,10 +33,20 @@ const matchCard2025: Match[] = [
   { match: "Randy Orton Def. CM Punk", title: "Men's Undisputed", type: "Singles Match" },
 ];
 
-const matchCard2026: Match[] = [
-  { match: "Sheamus Vs Gunther", title: "US Title", type: "Singles Match" },
-  { match: "Roman Reigns Vs Seth Rollins", title: "WWE Title", type: "Extreme Rules Match" },
+const matchCard2026: Match[] = [ 
+  { match: "Penta Vs Carmelo Hayes", title: "Intercontinental", type: "Singles Match" },
+  { match: "MCMG Vs #DIY", title: "Smackdown Tag Team", type: "Tag Team Match" },
+  { match: "Stephanie Vaquer Vs Jade Gargill", title: "Women's United States", type: "Singles Match" },
+  { match: "Dominic Mysterio Vs ??? (Abyss)", title: "", type: "Singles Match" },
+  { match: "Jordynne Grace Vs Michelle McCool", title: "Women's Intercontinental", type: "Singles Match" },
+  { match: "Aliester Black Vs Finn Balor", title: "United States", type: "Singles Match" },
+  { match: "AOP Vs Dudley Boys", title: "Raw Tag Team", type: "Tag Team Match" },
+  { match: "Becky Lynch Vs Asuka", title: "Women's World", type: "Singles Match" },
+  { match: "John Cena Vs Drew McIntyre", title: "WWE Undisputed", type: "Singles Match" },
+  { match: "Rhea Ripley Vs Naomi", title: "Women's Undisputed", type: "Singles Match" },
+  { match: "CM Punk Vs AJ Styles Vs Kevin Owens", title: "WWE World Heavyweight", type: "Triple Threat Match" },
 ];
+
 
 // ---------- Event Data ----------
 const backlashEvents: PPVEvent[] = [

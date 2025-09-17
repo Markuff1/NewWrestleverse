@@ -55,9 +55,7 @@ RAWData.ALL = rosterData.ALL
 const updateGenderTabs = () => {
   RAWData.Men = RAWData.ALL.filter((item) => item.gender === "Man");
   RAWData.Women = RAWData.ALL.filter((item) => item.gender === "Women");
-  RAWData.Champions = RAWData.ALL
-    .filter((item) => item.Champion)
-    .sort((a, b) => (a.championRank ?? 999) - (b.championRank ?? 999));
+  RAWData.Champions = RAWData.ALL.filter((item) => item.Champion);
 };
 
 updateGenderTabs();
@@ -94,16 +92,18 @@ const RAWTabs: React.FC = () => {
       <div className="RAWBackground">
         <div className="RAWContainer">
           <img className="RAWBanner" src="/Images/RAWHeader.png" alt="RAW Header" />
+
           <div className="RAWInfo">
             <div className="RAWLocation">Location: Arena Near You</div>
             <div className="RAWDate">Date/Time: Every Monday Night</div>
           </div>
+
           <div className="RAWText1">Monday Night RAW</div>
           <div className="RAWText2">
-            Monday Night’s flagship WWE show delivers top superstars, thrilling matches, and exciting storylines every
-            week.
+            Monday Night’s flagship WWE show delivers top superstars, thrilling matches, and exciting storylines every week.
           </div>
 
+          {/* ✅ Search + Tabs */}
           <input
             type="text"
             placeholder="Search for a wrestler..."
@@ -111,6 +111,7 @@ const RAWTabs: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="RAWsearchBar"
           />
+
           <div className="RAWTab">
             {tabs.map((tab) => (
               <button
@@ -123,6 +124,7 @@ const RAWTabs: React.FC = () => {
             ))}
           </div>
 
+          {/* ✅ Tab Content */}
           {tabs.map((tab) => (
             <div key={tab} className="RAWtabcontent" style={{ display: activeTab === tab ? "block" : "none" }}>
               <div className="RAWText3">Current {tab} Roster</div>
@@ -148,6 +150,7 @@ const RAWTabs: React.FC = () => {
                 ))}
             </div>
           ))}
+
           <div className="RAWText1">.....</div>
         </div>
       </div>
