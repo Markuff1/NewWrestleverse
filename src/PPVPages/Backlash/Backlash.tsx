@@ -34,12 +34,12 @@ const matchCard2025: Match[] = [
 ];
 
 const matchCard2026: Match[] = [ 
-  { match: "Penta Vs Carmelo Hayes", title: "Intercontinental", type: "Singles Match" },
+  { match: "Penta Vs Carmelo Hayes Vs LA Knight Vs Solo Sikoa", title: "Intercontinental", type: "Fatal 4-Way Match" },
   { match: "MCMG Vs #DIY", title: "Smackdown Tag Team", type: "Tag Team Match" },
   { match: "Stephanie Vaquer Vs Jade Gargill", title: "Women's United States", type: "Singles Match" },
-  { match: "Dominic Mysterio Vs ??? (Abyss)", title: "", type: "Singles Match" },
+  { match: "Dominic Mysterio Vs ??? (Mark Henry)", title: "", type: "Singles Match" },
   { match: "Jordynne Grace Vs Michelle McCool", title: "Women's Intercontinental", type: "Singles Match" },
-  { match: "Aliester Black Vs Finn Balor", title: "United States", type: "Singles Match" },
+  { match: "Aleister Black Vs Finn Balor", title: "United States", type: "Singles Match" },
   { match: "AOP Vs Dudley Boys", title: "Raw Tag Team", type: "Tag Team Match" },
   { match: "Becky Lynch Vs Asuka", title: "Women's World", type: "Singles Match" },
   { match: "John Cena Vs Drew McIntyre", title: "WWE Undisputed", type: "Singles Match" },

@@ -22,7 +22,7 @@
 
 /* Logo */
 .WLogo {
-    height: 5vh;
+    height: 3.5rem;
     width: auto;
     transition: transform 0.5s ease-in-out;
 }
@@ -107,13 +107,13 @@
 
 /* Logout button */
 .logoutButton {
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 0.50rem;
     background-color:var(--primary-colorV2);
     color: rgb(0, 0, 0);
     font-family: var(--font-3);
     letter-spacing: 0.15rem;
-    font-size: 1.5vh;
+    font-size: 1.2rem;
     font-weight: 100;
     cursor: pointer;
     border: none;
