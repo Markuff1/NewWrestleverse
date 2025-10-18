@@ -33,6 +33,7 @@ import Login from "./Login";
 import NotFound from "./NotFound";
 import MMITB from "./ChampionshipPages/MMITB";
 import WMITB from "./ChampionshipPages/WMITB";
+import OverTheLimit from "./PPVPages/OverTheLimit/OverTheLimit";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
         <Route path="/NYR" element={<ProtectedRoute><NYR /></ProtectedRoute>} />
         <Route path="/RoyalRumble" element={<ProtectedRoute><RoyalRumble /></ProtectedRoute>} />
         <Route path="/NoWayOut" element={<ProtectedRoute><NoWayOut /></ProtectedRoute>} />
+        <Route path="/OverTheLimit" element={<ProtectedRoute><OverTheLimit /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

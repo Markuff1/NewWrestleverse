@@ -1,4 +1,5 @@
 import "../../PPVShow.css";
+import "../../Home.css";
 import Header from "../../Header";
 import Footer from "../../Footer";
 
@@ -19,41 +20,30 @@ type PPVEvent = {
 };
 
 // ---------- Match Cards ----------
-const matchCard2025: Match[] = [
-    { match: "Seth Rollins Def. Kevin Owens", title: "--", type: "Extreme Rules Match" },
-    { match: "#DIY (c) Def The New Bloodline", title: "RAW Tag Team Titles", type: "2 Out Of 3 Falls Match" },
-    { match: "Oba Femi (c) Def Kane and Umaga", title: "United States Title", type: "Triple Threat Match" },
-    { match: "Piper Niven (c) Def Nia Jax", title: "Women's Intercontinetal Title", type: "Normal Match" },
-    { match: "New Catch Republic Def. The Dudley Boys (c) and Viking Raiders ", title: "Smackdown Tag Team Titles", type: "Triple Threat Tag Ladder Match" },
-    { match: "Raquel Roderiques Def. Sol Ruca (c)", title: "Women's United States Title", type: "Normal Match" },
-    { match: "Dragon Lee (c) Def. Je'von Evans", title: "Intercontinental Title", type: "Normal Match" },
-    { match: "Naomi (c) Def. Kairi Sane and Becky Lynch and Trish Stratus", title: "Women's World Title", type: "Fatal 4-Way Elimination Match" },
-    { match: "CM Punk Def. AJ Styles", title: "--", type: "Normal Match" },
-    { match: "Gunther (c) Def. Drew McIntyre", title: "World Heavyweight Title", type: "Normal Match" },
-    { match: "Roxanne Perez (c) Def. Charlotte Flair", title: "Women's Undisputed Title", type: "Last Woman Standing - Final Chance" },
-    { match: "Roman Reigns Def. Randy Orton (c)", title: "WWE Undisputed Title", type: "Normal Match" }
-];
 
 const matchCard2026: Match[] = [
+  { match: "Ilja Dragunov Def. Aleister Black(c)", title: "Intercontinental", type: "Normal Match" },
+  { match: "Sol Ruca Def. Jordynne Grace(c)", title: "Women's Intercontinental", type: "Normal Match" },
+  { match: "Sami Zayn Def. Seth Rollins", title: "", type: "Extreme Rules Match" },
+  { match: "Stephanie Vaquer(c) Def. Roxanne Perez", title: "Women's US", type: "Normal Match" },
+  { match: "LA Knight(c) Def. Penta", title: "United States", type: "Normal Match" },
+  { match: "Auska(c) Def. Dakota Kai", title: "Women's World", type: "Normal Match" },
+  { match: "Mark Henry Def. Dominic Mysterio", title: "", type: "Steel Cage Match" },
+  { match: "CM Punk Def. AJ Styles(c)", title: "World Heavyweight", type: "Normal Match" },
+  { match: "Rhea Ripley(c) Def. Shayna Baszler", title: "Women's Undisputed", type: "Normal Match" },
+  { match: "John Cena(c) Def. Drew McIntyre", title: "Undisputed", type: "Normal Match" },
+
 ];
 
 // ---------- Event Data ----------
-const SummerSlamEvents: PPVEvent[] = [
+const overthelimitEvents: PPVEvent[] = [
   {
     year: 2026,
-    banner: "/Images/PPV/SummerSlam/SummerSlamHeader26.png",
-    location: "SoFi Stadium, Los Angeles, CA",
-    date: "Saturday, August 8th 2026, 7e/5p",
+    banner: "/Images/PPV/OverTheLimit/OTLHeader2026.png",
+    location: "Madison Square Garden, New York",
+    date: "Saturday, June 27th 2026",
     matches: matchCard2026,
-    imageFolder: "2026MC",
-  },
-  {
-    year: 2025,
-    banner: "/Images/PPV/SummerSlam/SummerslamHeader.png",
-    location: "Cleveland Browns Stadium, Cleveland, Ohio",
-    date: "30th August 2025, 7e/5p",
-    matches: matchCard2025,
-    imageFolder: "2025MC",
+    imageFolder: "OverTheLimit/2026MC",
   },
 ];
 
@@ -63,7 +53,7 @@ type PPVSectionProps = PPVEvent;
 function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
   return (
     <>
-      <img className="PPVBanner" src={banner} alt="SummerSlam Banner" />
+      <img className="PPVBanner" src={banner} alt="Over The Limit Banner" />
 
       {/* Event Info */}
       <div className="PPVInfo">
@@ -104,9 +94,15 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
         {matches.map((match, index) => (
           <div key={index} className="MatchItem" id={`match-${index + 1}`}>
             <h3 className="MatchTitle">{`${match.match}`}</h3>
+            {match.title && (
+              <h4 className="MatchChampionship">
+                ----- {match.title} Championship -----
+              </h4>
+            )}
+            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
             <img
               className="MatchImage"
-              src={`/Images/PPV/SummerSlam/${imageFolder}/M${index + 1}.PNG`}
+              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
               alt={match.match}
             />
             <div className="MatchDivider"></div>
@@ -118,13 +114,13 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
 }
 
 // ---------- Main Component ----------
-function SummerSlam() {
+function OverTheLimit() {
   return (
     <>
       <Header />
       <div className="PPVBackground">
         <div className="PPVContainer">
-          {SummerSlamEvents.map((event) => (
+          {overthelimitEvents.map((event) => (
             <PPVSection key={event.year} {...event} />
           ))}
         </div>
@@ -134,4 +130,4 @@ function SummerSlam() {
   );
 }
 
-export default SummerSlam;
+export default OverTheLimit;

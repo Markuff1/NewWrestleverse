@@ -1,190 +1,155 @@
-/* Reset body and html to remove white border */
+/* ---------- Global Reset ---------- */
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--background); /* optional */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--text-color);
+  font-family: var(--font-1);
 }
 
-/* Ensure header does not overlap content */
+/* Header */
 header {
-    position: relative; /* change to fixed if you want sticky */
-    z-index: 1000;
+  position: relative; /* change to fixed if sticky header desired */
+  z-index: 1000;
 }
 
-/* Background Styling */
+/* ---------- PPV Background ---------- */
 .PPVBackground {
-    background: var(--background);
-    background-size: cover; /* fills viewport nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    /* removed position: fixed to allow scrolling */
+  background: var(--background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
-/* Main Title Text */
-.PPVText1 {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 0; /* reduced top margin */
-    font-size: 4vh;
-    font-family: 'Impact';
-}
-
+/* ---------- PPV Banner ---------- */
 .PPVBanner {
-    display: block;           /* removes extra inline spacing below the image */
-    width: 100%;              /* keeps it responsive */
-    height: auto;
-    box-shadow: 0 0 5vh rgba(0, 0, 0, 1); /* shadow wraps image exactly */
-    margin-top: 5rem;
-    max-width: 100%;          /* ensures shadow scales with image */
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 5rem;
+  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
 }
 
-/* Main Container */
+/* ---------- Container ---------- */
 .PPVContainer {
-    background: var(--contentBackground);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    width: 70%;
-    margin: 10px auto 20px auto; /* reduced top spacing for first container */
-    padding: 40px 20px; /* space for banners and match cards */
-    box-shadow: 0 0 15vh rgb(0, 0, 0);
+  background: var(--contentBackground);
+  width: 70%;
+  margin: 10px auto 20px;
+  padding: 40px 20px;
+  box-shadow: 0 0 15vh rgba(0, 0, 0, 1);
 }
 
-/* Reduce top margin specifically for the first PPV container */
 .PPVContainer:first-of-type {
-    margin-top: 10px; /* flush with header */
+  margin-top: 10px;
 }
 
-/* Hide internal scrollbars if any */
 .PPVContainer::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-/* Event Information Styling */
+/* ---------- Event Info ---------- */
 .PPVInfo {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 4vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4vh;
 }
 
 .PPVLocation, .PPVDate {
-    color: rgb(255, 255, 255);
-    font-size: 2.5vh;
-    margin-top: 2vh;
-    font-weight: bold;
-    font-family: Impact, sans-serif;
-    -webkit-text-stroke: 0.01vh rgb(0, 0, 0);
+  font-size: 2.5vh;
+  margin-top: 2vh;
+  font-weight: bold;
+  font-family: var(--font-3);
+  -webkit-text-stroke: 0.01vh black;
 }
 
-/* Match Card Title */
+/* ---------- Titles ---------- */
 .MCTitle {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 2vh;
-    margin-bottom: 0.5vh;
-    font-size: 5vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;
-    -webkit-text-stroke: 0.05vh rgb(0, 0, 0);
+  text-align: center;
+  margin: 2vh 0 0.5vh;
+  font-size: 5vh;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: underline;
+  -webkit-text-stroke: 0.05vh black;
+  color: var(--text-color);
 }
 
-/* Match Card Table */
+/* ---------- Match Card Table ---------- */
 .MCList {
-    width: 95%;
-    border-collapse: collapse; /* remove extra table spacing */
-    margin: 1vh auto;
-    text-align: center;
+  width: 95%;
+  margin: 1vh auto;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2vh;
 }
 
 .MCList th, .MCList td {
-    border: 0.2vh solid #000000;
-    background-color: rgb(56, 56, 56);
-    padding: 0.5vh;
-    height: 2.5vh;
-    color: white;
-    text-align: center;
-    font-size: 2vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.MCList td:hover {
-    background-color: rgb(36, 44, 61);
+  border: 0.2vh solid var(--border-color);
+  padding: 0.5vh;
+  height: 2.5vh;
 }
 
 .MCList th {
-    background-color: #011a75;
-    color: white;
-    font-weight: bold;
+  background-color: var(--primary-color-dark);
+  color: var(--text-color);
+  font-weight: bold;
 }
 
-/* Match Row */
-.Match {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 2.5vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.MCList td {
+  background-color: rgb(56, 56, 56);
+  color: var(--text-color);
 }
 
-/* Match Card Images Section */
+/* Highlight entire row on hover */
+.MCList tbody tr:hover td {
+  background-color: rgb(36, 44, 61);
+  cursor: pointer;
+}
+
+/* ---------- Match Summary Section ---------- */
 .MatchImages {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Individual Match Item */
 .MatchItem {
-    text-align: center;
-    margin-bottom: 5vh; /* reduced spacing between matches */
+  text-align: center;
+  margin-bottom: 5vh;
 }
 
 .MatchTitle {
-    font-size: 4.5vh;
-    letter-spacing: 0.1vh;
-    font-weight: bold;
-    margin-top: 1.5vh;
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;
+  font-size: 2.25vw;
+  letter-spacing: 0.1vh;
+  font-weight: bold;
+  margin-top: 0.5vw;
+  color: var(--text-color);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.MatchChampionship {
-    font-size: 2.5vh;
-    letter-spacing: 0.1vh;
-    color: white;
-    margin-top: -3vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.MatchChampionship, .MatchType {
+  font-size: 1.25vw;
+  letter-spacing: 0.1vh;
+  margin-top: -1.5vw;
+  color: var(--text-color);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.MatchType {
-    font-size: 2.5vh;
-    letter-spacing: 0.1vh;
-    color: white;
-    margin-top: -2vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-/* Match Image */
 .MatchImage {
-    width: 100%;
-    height: auto;
-    box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
-    margin-bottom: 5vh;
+  width: 50vw;
+  height: auto;
+  margin-bottom: 5vw;
+  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
 }
 
-/* Divider between matches */
 .MatchDivider {
-    border: 0;
-    height: 0.25vh;
-    background: white;
-    margin-top: 2vh;
-}
-
-/* Remove extra spacing caused by tables */
-table {
-    border-spacing: 0;
+  border: 0;
+  height: 0.25vh;
+  background: var(--text-color);
+  margin-top: 0.2vw;
+  margin-bottom: -1vw;
 }

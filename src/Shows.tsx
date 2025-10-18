@@ -21,8 +21,8 @@ const ppvShows = [
     { name: "OverTheLimit", image: "/Images/PPV/OverTheLimit/OTL2026.png" },
   ],
   [
-    { name: "MITB", image: "/Images/PPV/MITB/MITB.png" },
-    { name: "SummerSlam", image: "/Images/PPV/SummerSlam/Summerslam.png" },
+    { name: "MITB", image: "/Images/PPV/MITB/MITB2026.png" },
+    { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SummerSlam2026V1.png" },
     { name: "NoMercy", image: "/Images/PPV/NoMercy/NoMercy.png" },
   ],
   [

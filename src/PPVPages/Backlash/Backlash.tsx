@@ -33,20 +33,19 @@ const matchCard2025: Match[] = [
   { match: "Randy Orton Def. CM Punk", title: "Men's Undisputed", type: "Singles Match" },
 ];
 
-const matchCard2026: Match[] = [ 
-  { match: "Penta Vs Carmelo Hayes Vs LA Knight Vs Solo Sikoa", title: "Intercontinental", type: "Fatal 4-Way Match" },
-  { match: "MCMG Vs #DIY", title: "Smackdown Tag Team", type: "Tag Team Match" },
-  { match: "Stephanie Vaquer Vs Jade Gargill", title: "Women's United States", type: "Singles Match" },
-  { match: "Dominic Mysterio Vs ??? (Mark Henry)", title: "", type: "Singles Match" },
-  { match: "Jordynne Grace Vs Michelle McCool", title: "Women's Intercontinental", type: "Singles Match" },
-  { match: "Aleister Black Vs Finn Balor", title: "United States", type: "Singles Match" },
-  { match: "AOP Vs Dudley Boys", title: "Raw Tag Team", type: "Tag Team Match" },
-  { match: "Becky Lynch Vs Asuka", title: "Women's World", type: "Singles Match" },
-  { match: "John Cena Vs Drew McIntyre", title: "WWE Undisputed", type: "Singles Match" },
-  { match: "Rhea Ripley Vs Naomi", title: "Women's Undisputed", type: "Singles Match" },
-  { match: "CM Punk Vs AJ Styles Vs Kevin Owens", title: "WWE World Heavyweight", type: "Triple Threat Match" },
+const matchCard2026: Match[] = [
+  { match: "LA Knight Def. Penta (c) and Carmelo Hayes and Solo Sikoa", title: "Intercontinental", type: "Fatal 4-Way Match" },
+  { match: "MCMG (c) Def. #DIY", title: "Smackdown Tag Team", type: "Tag Team Match" },
+  { match: "Stephanie Vaquer (c) Def. Nia Jax", title: "Women's United States", type: "Singles Match" },
+  { match: "Mark Henry Def. Dominic Mysterio", title: "", type: "Singles Match" },
+  { match: "Jordynne Grace Def. Michelle McCool", title: "Women's Intercontinental", type: "Singles Match" },
+  { match: "Aleister Black Def. Finn Balor", title: "United States", type: "Singles Match" },
+  { match: "Dudley Boys Def. AOP", title: "Raw Tag Team", type: "Tag Team Match" },
+  { match: "Becky Lynch Def. Asuka", title: "Women's World", type: "Singles Match" },
+  { match: "John Cena Def. Drew McIntyre", title: "WWE Undisputed", type: "Singles Match" },
+  { match: "Rhea Ripley (c) Def Naomi", title: "Women's Undisputed", type: "Singles Match" },
+  { match: "AJ Styles Def CM Punk and Kevin Owens", title: "WWE World Heavyweight", type: "Triple Threat Match" },
 ];
-
 
 // ---------- Event Data ----------
 const backlashEvents: PPVEvent[] = [
@@ -67,7 +66,6 @@ const backlashEvents: PPVEvent[] = [
     imageFolder: "2025MC",
   },
 ];
-
 
 // ---------- Reusable Component ----------
 type PPVSectionProps = PPVEvent;
@@ -92,6 +90,7 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
       <table className="MCList">
         <thead>
           <tr>
+            <th>#</th>
             <th>Match</th>
             <th>Title</th>
             <th>Match Type</th>
@@ -100,8 +99,9 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
         <tbody>
           {matches.map((match, index) => (
             <tr key={index}>
+              <td>{index + 1}</td>
               <td>{match.match}</td>
-              <td>{match.title}</td>
+              <td>{match.title || "-"}</td>
               <td>{match.type}</td>
             </tr>
           ))}
@@ -112,8 +112,14 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
       <div className="MCTitle">Match Card Summary</div>
       <div className="MatchImages">
         {matches.map((match, index) => (
-          <div key={index} className="MatchItem">
-            <h3 className="MatchTitle">{match.match}</h3>
+          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
+            <h3 className="MatchTitle">{`${match.match}`}</h3>
+            {match.title && (
+              <h4 className="MatchChampionship">
+                ----- {match.title} Championship -----
+              </h4>
+            )}
+            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
             <img
               className="MatchImage"
               src={`/Images/PPV/Backlash/${imageFolder}/M${index + 1}.PNG`}
