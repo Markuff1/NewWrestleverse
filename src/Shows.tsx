@@ -23,10 +23,10 @@ const ppvShows = [
   [
     { name: "MITB", image: "/Images/PPV/MITB/MITB2026.png" },
     { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SummerSlam2026V1.png" },
-    { name: "NoMercy", image: "/Images/PPV/NoMercy/NoMercy.png" },
+    { name: "NOC", image: "/Images/PPV/NOC/NOC2026.png" },
   ],
   [
-    { name: "CyberSunday", image: "/Images/PPV/CyberSunday/CyberSunday.png" },
+    { name: "HIAC", image: "/Images/PPV/HIAC/HIAC2026.png" },
     { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SurvivorSeries.png" },
     { name: "TLC", image: "/Images/PPV/TLC/TLC.png" }
   ]
@@ -35,6 +35,8 @@ const ppvShows = [
 const retiredPPVs = [
   [
     { name: "ONS", image: "/Images/PPV/ONS/ONS.png" },
+    { name: "NoMercy", image: "/Images/PPV/NoMercy/NoMercy.png" },
+    { name: "CyberSunday", image: "/Images/PPV/CyberSunday/CyberSunday.png" },
   ]
 ];
 

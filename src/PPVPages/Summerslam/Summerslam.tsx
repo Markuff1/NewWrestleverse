@@ -35,7 +35,21 @@ const matchCard2025: Match[] = [
 ];
 
 const matchCard2026: Match[] = [
+  { "match": "LA Knight Vs Penta", "title": "IC", "type": "Special Guest Ref" },
+  { "match": "Aleister Black Vs Kevin Owens", "title": "", "type": "Normal Match" },
+  { "match": "Sol Ruca Vs Shayna Baszler", "title": "Women's IC", "type": "Normal Match" },
+  { "match": "Sami Zayn Vs Seth Rollins", "title": "MITB", "type": "Ladder Match" },
+  { "match": "MCMG Vs New Catch Republic", "title": "Smackdown Tag Team", "type": "Tag Team" },
+  { "match": "Ilja Draunov Vs Gunther Vs Sheamus", "title": "US", "type": "Triple Threat" },
+  { "match": "Stephanie Vaquer Vs Nikki Bella", "title": "Women's US", "type": "Normal Match" },
+  { "match": "Dudley Boys Vs Viking Raides", "title": "Raw Tag Team", "type": "Tag Team" },
+  { "match": "Asuka Vs Kairi Sane", "title": "Women's World", "type": "Normal" },
+  { "match": "CM Punk Vs Randy Oton", "title": "World Heavyweight", "type": "Normal" },
+  { "match": "Iyo Sky Vs Rhea Ripley Vs Charlotte Flair", "title": "Women's Undisputed", "type": "Normal" },
+  { "match": "Mark Henry Vs John Cena Vs Roman Reigns Vs Drew McIntyre", "title": "Undisputed", "type": "Fatal 4-way" },
+  { "match": "Roman Reigns Def. Randy Orton (c)", "title": "WWE Undisputed Title", "type": "Normal Match" }
 ];
+
 
 // ---------- Event Data ----------
 const SummerSlamEvents: PPVEvent[] = [
