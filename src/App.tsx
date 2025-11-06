@@ -28,12 +28,14 @@ import TLC from "./PPVPages/TLC/TLC";
 import NYR from "./PPVPages/NYR/NYR";
 import RoyalRumble from "./PPVPages/RoyalRumble/RoyalRumble";
 import NoWayOut from "./PPVPages/NoWayOut/NoWayOut";
+import OverTheLimit from "./PPVPages/OverTheLimit/OverTheLimit";
+import NOC from "./PPVPages/NOC/NightOfChampions";
 
 import Login from "./Login";
 import NotFound from "./NotFound";
 import MMITB from "./ChampionshipPages/MMITB";
 import WMITB from "./ChampionshipPages/WMITB";
-import OverTheLimit from "./PPVPages/OverTheLimit/OverTheLimit";
+
 
 function App() {
   return (
@@ -79,6 +81,7 @@ function App() {
         <Route path="/RoyalRumble" element={<ProtectedRoute><RoyalRumble /></ProtectedRoute>} />
         <Route path="/NoWayOut" element={<ProtectedRoute><NoWayOut /></ProtectedRoute>} />
         <Route path="/OverTheLimit" element={<ProtectedRoute><OverTheLimit /></ProtectedRoute>} />
+        <Route path="/NOC" element={<ProtectedRoute><NOC /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

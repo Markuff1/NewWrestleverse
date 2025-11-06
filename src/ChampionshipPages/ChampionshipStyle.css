@@ -1,329 +1,325 @@
+/* 🌟 Background & Container */
 .ChampionshipBackground {
     background: var(--background);
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0; /* shorthand for top/right/bottom/left */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 .ChampionshipContainer {
     background: var(--contentBackground);
     width: 70%;
     min-height: 100vh;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto;
     max-height: calc(100vh - 8vh);
+    margin: 0 auto;
     padding-bottom: 20px;
+    overflow-y: auto;
     box-shadow: 0 0 10vh rgb(0, 0, 0);
 }
 
-.ChampionshipContainer::-webkit-scrollbar{
+.ChampionshipContainer::-webkit-scrollbar {
     display: none;
 }
 
+/* 🌟 Text */
 .ChampionshipText1 {
-    color: rgb(255, 255, 255);
+    color: #fff;
     text-align: center;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin: 2vh 0;
     font-size: 3vh;
     font-family: 'Impact';
 }
 
-/* Logo */
+/* 🌟 Logo */
 .ChampionshipLogo {
-    height: 15vh;
-    margin-top: 5vh;
-    margin-right: auto;
-    margin-left: auto;
     display: block;
-    justify-content: center;
-    align-items: center;
+    height: 15vh;
+    margin: 5vh auto 0;
 }
 
-/* Header */
+/* 🌟 Header */
 .TitleHeaderImage {
     width: 100%;
-    height: auto;
     margin-top: 10vh;
 }
 
 .ChampionshipTitle {
-    color: white;
+    color: #fff;
     font-size: 4vh;
     font-family: 'Impact';
     margin-top: 2vh;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 }
 
-/* 🔹 Input Section */
+/* 🌟 Input Section */
 .InputContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem auto;
-  padding: 0.8rem;
-  width: 90%;
-  background: #004f98;
-  border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem auto;
+    padding: 0.8rem;
+    width: 90%;
+    background: #004f98;
+    border-radius: 8px;
 }
 
 .InputContainer input,
 .InputContainer button {
-  font-family: var(--font-3);
-  font-size: 1rem;
-  text-transform: uppercase;
-  padding: 0.6rem 0.8rem;
-  border-radius: 5px;
-  border: none;
+    font-family: var(--font-3);
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.6rem 0.8rem;
+    border-radius: 5px;
+    border: none;
 }
 
 .InputContainer input {
-  flex: 1;
-  min-width: 160px;
+    flex: 1;
+    min-width: 160px;
 }
 
 .InputContainer button {
-  background-color: #0084ff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  -webkit-text-stroke: 0.5px black;
+    background-color: #0084ff;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    -webkit-text-stroke: 0.5px black;
 }
 
 .InputContainer button:hover {
-  background-color: #004f98;
+    background-color: #004f98;
 }
 
-
-/* Table */
+/* 🌟 Table */
 .TitleHolderTable {
-  width: 95%;
-  border-collapse: collapse;
-  margin: 1.5rem auto;
-  margin-bottom: 5rem;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    width: 95%;
+    margin: 1.5rem auto 5rem;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.85);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-.TitleHolderTable th,
+.TitleHolderTable th{
+    padding: 1rem 0.8rem;   /* larger padding for readability */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.25rem;        /* larger font-size for readability */
+}
+
 .TitleHolderTable td {
-  padding: 0.8rem;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  color: white;
+    padding: 1rem 0.8rem;   /* larger padding for readability */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.75rem;        /* larger font-size for readability */
 }
 
 .TitleHolderTable th {
-  background-color: #0084ff;
-  font-size: 1.1rem;
-  -webkit-text-stroke: 0.5px black;
-  font-family: var(--font-1);
+    background-color: #0084ff;
+    font-family: var(--font-1);
+    color: #fff;
+    -webkit-text-stroke: 0.5px black;
+    font-weight: bold;
 }
 
 .TitleHolderTable td {
-  -webkit-text-stroke: 0.5px black;
-  font-family: var(--font-3);
+    font-family: var(--font-3);
+    color: #fff;
+    -webkit-text-stroke: 0.5px black;
 }
 
-.TitleHolderTable tbody tr:nth-child(even) {
-  background-color: #606060;
+.TitleHolderTable tbody tr:nth-child(even) { background-color: #606060; }
+.TitleHolderTable tbody tr:nth-child(odd)  { background-color: #454545; }
+.TitleHolderTable tbody tr:hover           { background-color: #2d2d2d; transition: background 0.2s; }
+
+/* Edit Mode */
+.edit-row { background-color: #000d62 !important; }
+.edit-input {
+    width: 95%;
+    padding: 4px 6px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 2px solid #0077cc;
+    border-radius: 6px;
+    background-color: #f9fcff;
+    color: #111;
 }
 
-.TitleHolderTable tbody tr:nth-child(odd) {
-  background-color: #454545;
-}
-
-.TitleHolderTable tbody tr:hover {
-  background-color: #2d2d2d;
-  transition: background 0.2s ease-in-out;
-}
-
-
-
-
-
-/* Buttons inside Table */
+/* Table Buttons */
 .TitleHolderTable button {
-  padding: 5px 10px;
-  margin: 0.25rem 0.25rem;
-  background-color: #0084ff;
-  color: #fff;
-  border: none;
-  text-transform: uppercase;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-family: var(--font-3);
-  -webkit-text-stroke: 0.3px black;
-  transition: background-color 0.3s ease-in-out;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+    margin: 0.25rem;
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-3);
+    -webkit-text-stroke: 0.3px black;
+    transition: 0.3s;
 }
 
 .TitleHolderTable button:hover {
-  background-color: #004f98;
+    background-color: #004f98;
 }
 
+/* Misc Titles */
 .reignstitle,
 .statstitle {
     font-size: 1.5vw;
     text-decoration: underline;
     font-family: Impact;
     text-align: center;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
-    color: white;
+    margin: 1.5vh 0;
+    color: #fff;
 }
 
-.editname, .editreign, .editdate, .editeventwon{
+.editname,
+.editreign,
+.editdate,
+.editeventwon {
     background-color: #34414e;
-    color: white;
+    color: #fff;
     font-size: 1.2vw;
     border-radius: 1vh;
-    font-family:Impact;
+    font-family: Impact;
     text-align: center;
 }
 
-
-
-
-
-/* Current Champion Card */
+/* 🌟 Current Champion Card */
 .CurrentChampionCard {
-  background: linear-gradient(145deg, #d97f00, #946f00);
-  color: #222;
-  text-align: center;
-  padding: 0.2rem 1rem;
-  margin: 2vh auto;
-  border-radius: 25px;
-  width: 90%;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  font-family: var(--font-3);
-  transition: transform 0.2s ease, background 0.2s ease;
+    width: 90%;
+    margin: 2vh auto;
+    padding: 0.2rem 1rem;
+    background: linear-gradient(145deg,#d97f00,#946f00);
+    color: #222;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    font-family: var(--font-3);
+    transition: transform 0.2s, background 0.2s;
 }
 
 .CurrentChampionCard:hover {
-  transform: scale(1.01);
-  background: linear-gradient(90deg, #5a3500, #e3aa00);
+    transform: scale(1.01);
+    background: linear-gradient(90deg,#5a3500,#e3aa00);
 }
 
 .ccTitle {
-  font-size: 1.5rem;
-  font-family: var(--font-2);
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-  margin-bottom: 0.5rem;
-  margin-top: 0.2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    font-size: 1.5rem;
+    font-family: var(--font-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    margin: 0.2rem 0 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 .ccName {
-  font-size: 2rem;
-  font-family: var(--font-1);
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-  margin: -0.2vh 0;
-  font-weight: 800;
-  color: #fff;
-  -webkit-text-stroke: 0.8px black; 
-  text-stroke: 0.2px black;
+    font-size: 2rem;
+    font-family: var(--font-1);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-weight: 800;
+    color: #fff;
+    -webkit-text-stroke: 0.8px black;
+    margin: -0.2vh 0;
 }
 
 .ccRegin,
 .ccDate {
-  font-size: 1rem;
-  font-family: var(--font-2);
-  margin: 0.5vh 0;
-  font-weight: bolder;
-  color: #222222;
-  text-transform: uppercase;
+    font-size: 1rem;
+    font-family: var(--font-2);
+    font-weight: bolder;
+    color: #222;
+    text-transform: uppercase;
+    margin: 0.5vh 0;
 }
 
-/* 📱 Responsive tweaks */
-@media (max-width: 768px) {
-  .CurrentChampionCard {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .ccTitle { font-size: 5vw; }
-  .ccName { font-size: 6vw; padding: 0.3rem 0.8rem; }
-  .ccRegin, .ccDate { font-size: 3.5vw; }
-}
-
-/* Stats Bar */
+/* 🌟 Stats Grid */
 .StatsGrid {
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  margin: 2vh auto;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  background: linear-gradient(145deg, rgb(119, 169, 239), rgb(53, 55, 211), rgb(7, 8, 61));
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  font-family: var(--font-3);
-  color: #fff;
-  transition: transform 0.2s ease, background 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 2vh auto;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: linear-gradient(145deg, rgb(119,169,239), rgb(53,55,211), rgb(7,8,61));
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    font-family: var(--font-3);
+    color: #fff;
+    transition: transform 0.2s, background 0.2s;
 }
 
 .StatsGrid:hover {
-  transform: scale(1.01);
-  background: linear-gradient(145deg, rgb(7, 8, 61), rgb(53, 55, 211), rgb(119, 169, 239));
+    transform: scale(1.01);
+    background: linear-gradient(145deg, rgb(7,8,61), rgb(53,55,211), rgb(119,169,239));
 }
 
 .StatBox {
-  flex: 1;
-  text-align: center;
-  padding: 0.8rem 1rem;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  margin: 0 0.5rem;
-  font-size: 1.5rem;
-  line-height: 1.4rem;
-  transition: background 0.2s ease;
-}
-
-.StatBox p {
-  margin: 0.3rem 0 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: var(--font-1);
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-  margin: -0.2vh 0;
-  font-weight: 800;
-  color: #fff;
-  -webkit-text-stroke: 0.8px black; 
-  text-stroke: 0.2px black;
+    flex: 1;
+    text-align: center;
+    margin: 0 0.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    transition: background 0.2s;
 }
 
 .StatBox strong {
-  display: block;
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
-  font-family: var(--font-2);
-  text-transform: uppercase;
+    margin: -0.2vh 0 0;
+    font-family: var(--font-1);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    -webkit-text-stroke: 0.8px black;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    display: block;
+    font-family: var(--font-2);
+    margin-bottom: 0.3rem;
 }
 
-/* Mobile tweaks */
-@media (max-width: 768px) {
-  .StatsGrid {
-    flex-direction: column;
-    padding: 0.8rem;
-  }
+.StatBox span {
+    text-transform: capitalize;
+}
 
-  .StatBox {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
-  }
+/* 🌟 Responsive */
+@media (max-width: 768px) {
+    .CurrentChampionCard {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    .ccTitle { font-size: 5vw; }
+    .ccName { font-size: 6vw; padding: 0.3rem 0.8rem; }
+    .ccRegin, .ccDate { font-size: 3.5vw; }
+
+    .StatsGrid {
+        flex-direction: column;
+        padding: 0.8rem;
+    }
+    .StatBox {
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+    }
+
+    /* Table text scaling for smaller screens */
+    .TitleHolderTable th,
+    .TitleHolderTable td {
+        font-size: 1.5rem;  /* smaller but still readable */
+        padding: 0.8rem 0.5rem;
+    }
+
+    .TitleHolderTable button {
+        font-size: 1rem;
+        padding: 4px 8px;
+    }
 }
