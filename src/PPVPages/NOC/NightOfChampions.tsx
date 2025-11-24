@@ -21,18 +21,17 @@ type PPVEvent = {
 // ---------- Match Cards ----------
 
 const matchCard2026: Match[] = [
-{ "match": "John Cena Vs Drew McIntyre", "title": "", "type": "Extreme Rules Match" },
-{ "match": "Shayna Baszler Vs Sol Ruca", "title": "Women's IC", "type": "Normal Match" },
-{ "match": "Sheamus Vs Gunther Vs Ilja Dragunov", "title": "United States", "type": "Normal Match" },
-{ "match": "Viking Raiders Vs Dudley Boys", "title": "Raw Tag Team", "type": "Tag Team Match" },
-{ "match": "Stephanie Vaquer Vs Nikki Bella", "title": "Women's US", "type": "Normal Match" },
-{ "match": "Rey Mysterio Vs Seth Rollins", "title": "", "type": "Normal Match" },
-{ "match": "Penta Vs Cody Rhodes", "title": "Intercontinetal", "type": "Normal Match" },
-{ "match": "Kairi Sane Vs Dakota Kai", "title": "Women's World", "type": "Normal Match" },
-{ "match": "Mark Henry Vs Roman Reigns", "title": "Undisputed", "type": "Normal Match" },
-{ "match": "Raquel Roderiques Vs Iyo Sky Vs Charlotte Flair", "title": "Women's Undisputed", "type": "Normal Match" },
-{ "match": "CM Punk Vs Randy Orton", "title": "World Heavyweight", "type": "Extreme Rules Match" }
-
+{ "match": "Drew McIntyre Def. John Cena", "title": "", "type": "Extreme Rules Match" },
+{ "match": "Shayna Baszler (c) Def. Sol Ruca", "title": "Women's IC", "type": "Normal Match" },
+{ "match": "Sheamus (c) Def. Gunther and Ilja Dragunov", "title": "United States", "type": "Normal Match" },
+{ "match": "Viking Raiders (c) Def. Dudley Boys", "title": "Raw Tag Team", "type": "Tag Team Match" },
+{ "match": "Nikki Bella Def. Stephanie Vaquer (c)", "title": "Women's US", "type": "Normal Match" },
+{ "match": "Seth Rollins Def. Rey Mysterio", "title": "", "type": "Normal Match" },
+{ "match": "Penta (c) Def. Cody Rhodes", "title": "Intercontinetal", "type": "Normal Match" },
+{ "match": "Kairi Sane (c) Def. Dakota Kai", "title": "Women's World", "type": "Normal Match" },
+{ "match": "Roman Reigns Def. Mark Henry (c)", "title": "Undisputed", "type": "Normal Match" },
+{ "match": "Raquel Roderiques (c) Def. Iyo Sky and Charlotte Flair", "title": "Women's Undisputed", "type": "Normal Match" },
+{ "match": "Randy Orton Def. CM Punk (c)", "title": "World Heavyweight", "type": "Extreme Rules Match" }
 ];
 
 
