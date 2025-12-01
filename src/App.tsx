@@ -35,6 +35,7 @@ import Login from "./Login";
 import NotFound from "./NotFound";
 import MMITB from "./ChampionshipPages/MMITB";
 import WMITB from "./ChampionshipPages/WMITB";
+import HIAC from "./PPVPages/HIAC/HIAC";
 
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
         <Route path="/NoWayOut" element={<ProtectedRoute><NoWayOut /></ProtectedRoute>} />
         <Route path="/OverTheLimit" element={<ProtectedRoute><OverTheLimit /></ProtectedRoute>} />
         <Route path="/NOC" element={<ProtectedRoute><NOC /></ProtectedRoute>} />
+        <Route path="/HIAC" element={<ProtectedRoute><HIAC /></ProtectedRoute>} />
       </Routes>
     </Router>
   );
