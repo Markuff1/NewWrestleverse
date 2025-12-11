@@ -27,7 +27,7 @@ const ppvShows = [
   ],
   [
     { name: "HIAC", image: "/Images/PPV/HIAC/HIAC2026.png" },
-    { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SurvivorSeries.png" },
+    { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SS1.png" },
     { name: "TLC", image: "/Images/PPV/TLC/TLC.png" }
   ]
 ];

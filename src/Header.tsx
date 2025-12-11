@@ -45,7 +45,7 @@ function Header() {
                 <div className="dropdown-content">
                   <Link to="/raw">RAW</Link>
                   <Link to="/SD">SMACKDOWN</Link>
-                  <Link to="/HIAC">LATEST PPV</Link>
+                  <Link to="/SurvivorSeries">LATEST PPV</Link>
                 </div>
               </li>
               <li><Link to="/Roster">ROSTER</Link></li>
