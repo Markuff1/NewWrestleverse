@@ -21,15 +21,15 @@ type PPVEvent = {
 // ---------- Match Cards ----------
 
 const matchCard2026: Match[] = [
-  { match: "Penta Vs Rob Van Dam Vs Carmelo Hayes", title: "Intercontinental Championship", type: "Ladder Match" },
-  { match: "Viking Raiders Vs Dudley Boys", title: "Raw Tag Team Championships", type: "Tables Match" },
-  { match: "Shayna Baszler Vs Bianca Belair", title: "Women's Intercontinental Championship", type: "Normal Match" },
-  { match: "Sheamus Vs Umaga", title: "United States Championship", type: "Chairs Match" },
-  { match: "Kairi Sane Vs Alexa Bliss", title: "Womens World Championship", type: "Table Match" },
-  { match: "Roman Reigns Vs Oba Femi", title: "WWE Undisputed Championship", type: "TLC Match" },
-  { match: "Raquel Roderiques Vs Charlotte Flair", title: "Women's Undisputed Championship", type: "Chairs Match" },
-  { match: "The New Day Vs MCMG Vs DIY", title: "SD Tag Team Championships", type: "TLC Triple Threat Tag" },
-  { match: "Seth Rollins Vs Randy Orton Vs Rey Mysterio Vs Kevin Owens", title: "World Heavyweigt Championship", type: "TLC Match" }
+  { match: "Penta (c) Def. Rob Van Dam and Carmelo Hayes", title: "Intercontinental Championship", type: "Ladder Match" },
+  { match: "Dudley Boys Def. Viking Raiders (c)", title: "Raw Tag Team Championships", type: "Tables Match" },
+  { match: "Shayna Baszler (c) Def. Bianca Belair", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Sheamus (c) Def. Umaga", title: "United States Championship", type: "Chairs Match" },
+  { match: "Alexa Bliss Def. Kairi Sane (c)", title: "Womens World Championship", type: "Table Match" },
+  { match: "Roman Reigns (c) Def. Oba Femi", title: "WWE Undisputed Championship", type: "TLC Match" },
+  { match: "Raquel Roderiques (c) Def. Charlotte Flair", title: "Women's Undisputed Championship", type: "Chairs Match" },
+  { match: "The New Day (c) Def. MCMG and DIY", title: "SD Tag Team Championships", type: "TLC Triple Threat Tag" },
+  { match: "Seth Rollins (c) Def. Randy Orton and Rey Mysterio and Kevin Owens", title: "World Heavyweigt Championship", type: "TLC Match" }
 ];
 
 const matchCard2025: Match[] = [
