@@ -158,7 +158,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/KitWilson.png", name: "Kit Wilson", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/KofiKingston.png", name: "Kofi Kingston", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/KurtAngle.png", name: "Kurt Angle", gender: "Man", tag: "UNDRAFTED" , champion:""},
-        { src: "/Images/Roster/LAKnight.png", name: "LA Knight", gender: "Man", tag: "R" , champion:""},
+        { src: "/Images/Roster/LAKnight.png", name: "LA Knight", gender: "Man", tag: "R" , champion:"IC "},
 
 
         { src: "/Images/Roster/LashLegend.png", name: "Lash Legend", gender: "Women", tag: "UNDRAFTED" , champion:""},
@@ -199,7 +199,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/OroMensah.png", name: "Oro Mensah", gender: "Man", tag: "UNDRAFTED" , champion:""},
         { src: "/Images/Roster/Otis.png", name: "Otis", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PatMcafee.png", name: "Pat Mcafee", gender: "Man", tag: "L" , champion:""},
-        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:"IC"},
+        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PeteDunne.png", name: "Pete Dunne", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/PiperNiven.png", name: "Piper Niven", gender: "Women", tag: "R"},
         { src: "/Images/Roster/R-Truth.png", name: "R-Truth", gender: "Man", tag: "SD" , champion:""},

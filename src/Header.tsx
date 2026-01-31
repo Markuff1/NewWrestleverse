@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [breakingNews] = useState("");
+  const [breakingNews] = useState("WWE 2K26 PRE ORDER STARTS NOW");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 

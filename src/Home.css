@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 1vh 5vh rgb(0, 0, 0);
-  padding: 10rem 10rem; /* reduced padding so content is closer */
+  padding: 10rem 12.5vw; /* reduced padding so content is closer */
   border-radius: 3rem;
 }
 
@@ -47,8 +47,8 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5rem;
-  width: 55rem;
-  height: auto;
+  width: 80rem;
+  height: 15rem;
 }
 
 .WVText{
