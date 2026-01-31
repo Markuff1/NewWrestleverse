@@ -21,16 +21,16 @@ type PPVEvent = {
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
-  { match: "Penta Vs LA Knight", title: "Intercontinental", type: "Normal" },
-  { match: "Shayna Baszler Vs Bianca Belair", title: "Women's IC", type: "Normal Match" },
-  { match: "Dudley Boys Vs Viking Raiders", title: "Raw Tag Team", type: "Normal Match" },
-  { match: "Sheamus Vs AJ Styles Vs Bronson Reed Vs Sami Zayn", title: "United States", type: "Normal Match" },
-  { match: "Nikki Bella Vs Natayla", title: "Women's US", type: "Normal Match" },
-  { match: "CM Punk Vs Gunther", title: "", type: "Last Man Standing Match" },
-  { match: "Raquel Roderiques Vs Rhea Ripley", title: "Women's Undisputed", type: "Normal Match" },
-  { match: "Seth Rollins Vs Randy Orton", title: "World Heavyweight", type: "Extreme Rules Match" },
-  { match: "Alexa Bliss Vs Kairi Sane", title: "Women's World", type: "Normal Match" },
-  { match: "Roman Regins Vs The Fiend", title: "Undisputed", type: "Normal Match" },
+  { match: "LA Knight Def. Penta (c)", title: "Intercontinental", type: "Normal" },
+  { match: "Shayna Baszler (c) Def. Bianca Belair", title: "Women's IC", type: "Normal Match" },
+  { match: "Dudley Boys (c) Def. Viking Raiders", title: "Raw Tag Team", type: "Normal Match" },
+  { match: "Bronson Reed Def. Sheamus (c) and AJ Styles and Sami Zayn", title: "United States", type: "Normal Match" },
+  { match: "Nikki Bella (c) Def. Natayla", title: "Women's US", type: "Normal Match" },
+  { match: "CM Punk Def. Gunther", title: "", type: "Last Man Standing Match" },
+  { match: "Raquel Roderiques (c) Def. Rhea Ripley", title: "Women's Undisputed", type: "Normal Match" },
+  { match: "Seth Rollins (c) Def. Randy Orton", title: "World Heavyweight", type: "Extreme Rules Match" },
+  { match: "Alexa Bliss (c) Def. Kairi Sane", title: "Women's World", type: "Normal Match" },
+  { match: "Roman Regins (c) Def. The Fiend", title: "Undisputed", type: "Normal Match" },
 ];
 
 

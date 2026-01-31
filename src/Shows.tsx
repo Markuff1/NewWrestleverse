@@ -12,7 +12,7 @@ const weeklyShows = [
 const ppvShows = [
   [
     { name: "NYR", image: "/Images/PPV/NYR/NYR2027.png" },
-    { name: "RoyalRumble", image: "/Images/PPV/RoyalRumble/RoyalRumble.png" },
+    { name: "RoyalRumble", image: "/Images/PPV/RoyalRumble/RoyalRumble2027.png" },
     { name: "NoWayOut", image: "/Images/PPV/NoWayOut/NoWayOut.png" },
   ],
   [
