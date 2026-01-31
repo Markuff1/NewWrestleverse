@@ -63,14 +63,14 @@
     margin: 1.5rem auto;
     padding: 0.8rem;
     width: 90%;
-    background: #004f98;
+    background: var(--primary-color);
     border-radius: 8px;
 }
 
 .InputContainer input,
 .InputContainer button {
     font-family: var(--font-3);
-    font-size: 1rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     padding: 0.6rem 0.8rem;
     border-radius: 5px;
@@ -83,7 +83,7 @@
 }
 
 .InputContainer button {
-    background-color: #0084ff;
+    background-color: var(--primary-colorV2);
     color: #fff;
     cursor: pointer;
     transition: 0.3s;
@@ -91,7 +91,7 @@
 }
 
 .InputContainer button:hover {
-    background-color: #004f98;
+    background-color: var(--hover-bg-colorV2);
 }
 
 /* 🌟 Table */
@@ -120,7 +120,7 @@
 }
 
 .TitleHolderTable th {
-    background-color: #0084ff;
+    background-color: var(--primary-color);
     font-family: var(--font-1);
     color: #fff;
     -webkit-text-stroke: 0.5px black;
@@ -138,13 +138,13 @@
 .TitleHolderTable tbody tr:hover           { background-color: #2d2d2d; transition: background 0.2s; }
 
 /* Edit Mode */
-.edit-row { background-color: #000d62 !important; }
+.edit-row { background-color: var(--Secondary-color) !important; }
 .edit-input {
     width: 95%;
     padding: 4px 6px;
     font-size: 1rem;
     text-transform: uppercase;
-    border: 2px solid #0077cc;
+    border: 2px solid var(--primary-color);
     border-radius: 6px;
     background-color: #f9fcff;
     color: #111;
@@ -153,9 +153,9 @@
 /* Table Buttons */
 .TitleHolderTable button {
     padding: 6px 12px;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     margin: 0.25rem;
-    background-color: #0084ff;
+    background-color: var(--primary-colorV2);
     color: #fff;
     border: none;
     text-transform: uppercase;
@@ -167,7 +167,7 @@
 }
 
 .TitleHolderTable button:hover {
-    background-color: #004f98;
+    background-color: var(--hover-bg-colorV2);
 }
 
 /* Misc Titles */
@@ -214,7 +214,7 @@
 
 .ccTitle {
     font-size: 1.5rem;
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     text-transform: uppercase;
     letter-spacing: 0.5rem;
     margin: 0.2rem 0 0.5rem;
@@ -235,7 +235,7 @@
 .ccRegin,
 .ccDate {
     font-size: 1rem;
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     font-weight: bolder;
     color: #222;
     text-transform: uppercase;
@@ -250,16 +250,16 @@
     margin: 2vh auto;
     padding: 0.5rem 1rem;
     border-radius: 25px;
-    background: linear-gradient(145deg, rgb(119,169,239), rgb(53,55,211), rgb(7,8,61));
+    background: linear-gradient(145deg, var(--primary-color), var(--primary-colorV2));
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    font-family: var(--font-3);
+    font-family: var(--font-1);
     color: #fff;
     transition: transform 0.2s, background 0.2s;
 }
 
 .StatsGrid:hover {
     transform: scale(1.01);
-    background: linear-gradient(145deg, rgb(7,8,61), rgb(53,55,211), rgb(119,169,239));
+    background: linear-gradient(145deg, var(--Secondary-color), var(--primary-color));
 }
 
 .StatBox {
@@ -276,20 +276,18 @@
 
 .StatBox strong {
     margin: -0.2vh 0 0;
-    font-family: var(--font-1);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-    -webkit-text-stroke: 0.8px black;
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    display: block;
     font-family: var(--font-2);
-    margin-bottom: 0.3rem;
+    font-size: 1.8rem;
+    font-weight: 10;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    display: block;
+    margin-bottom: 0.5em;
 }
 
 .StatBox span {
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 /* 🌟 Responsive */

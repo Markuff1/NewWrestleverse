@@ -69,7 +69,9 @@ const RosterTabs: React.FC = () => {
       <Header />
       <div className="RosterBackground">
         <div className="RosterContainer">
-          <img className="RBanner" src="/Images/RosterHeader.png" alt="Roster Header" />
+          <div className="RBanner">
+            <h1 className="RBanner__title">ROSTER</h1>
+          </div>
 
           <ChampionshipBar />
 

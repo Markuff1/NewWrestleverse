@@ -70,7 +70,7 @@ const Login: React.FC = () => {
     <div className="login-Background">
       
       <div className="login-box">
-        <img className="Logo1" src="/Images/Wrestleverse2K25.png" alt="Logo" />
+        <img className="Logo1" src="/Images/Wrestleverse2K26S.png" alt="Logo" />
         <h2 className="login-title">{isRegistering ? 'Register' : 'Login'}</h2>
         {error && <p className="login-error">{error}</p>}
         <input

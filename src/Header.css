@@ -22,8 +22,8 @@
 
 /* Logo */
 .WLogo {
-    height: 3.5rem;
-    width: auto;
+    height: 4rem;
+    width: 22rem;
     transition: transform 0.5s ease-in-out;
 }
 

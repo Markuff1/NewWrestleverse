@@ -35,7 +35,7 @@ function Header() {
       {/* Header */}
       <div className="HeaderBackground">
         <div className="HeaderContainer">
-          <Link to="/Home"><img className="WLogo" src="/Images/Wrestleverse2K25.png" alt="Logo" /></Link>
+          <Link to="/Home"><img className="WLogo" src="/Images/Wrestleverse2K26.png" alt="Logo" /></Link>
 
           <nav className="nav">
             <ul className="nav__links" id="sidemenu">

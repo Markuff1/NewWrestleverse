@@ -10,9 +10,10 @@
 }
 
 .Logo1{
-    height: auto;
-    width:  25vw;
-    margin-top: -5vh;
+    height: 15rem;
+    width: auto;
+    margin-top: -10rem;
+    margin-bottom: 2rem;
 }
   
 .login-box {
@@ -21,19 +22,24 @@
     border-radius: 5vh;
     box-shadow: 0 1vh 5vh rgb(0, 0, 0);
     width: 25vw;
-    justify-content: center;
-    align-items: center;
+
+    display: flex;             /* change from block to flex */
+    flex-direction: column;    /* stack children vertically */
+    justify-content: center;   /* vertical centering inside box */
+    align-items: center;       /* horizontal centering */
+    
     margin-left: auto;
     margin-right: auto;
-    display: block;
 }
   
   .login-title {
-    font-size: 3vh;
+    font-size: 4rem;
     font-family: var(--font-2);
     margin-top: 0vh;
     margin-bottom: 1vh;
     text-align: center;
+    text-transform: uppercase;
+    color: var(--primary-color);
   }
   
   .login-input {
@@ -50,34 +56,39 @@
   .login-error {
     color: red;
     text-align: center;
+    text-transform: uppercase;
     font-size: 2vh;
+    margin-top: -0.5vh;
     margin-bottom: 1.5vh;
     font-family: var(--font-1);
   }
   
   .login-button {
     width: 100%;
+    text-transform: uppercase;
     background-color: var(--Secondary-color);
     color: white;
     padding: 2vh;
     border: none;
     border-radius: 0.90vh;
     cursor: pointer;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.2vw;
+    font-family: var(--font-2);
+    font-size: 1.7vw;
     transition: background-color 0.2s ease-in-out;
   }
   
   .login-button:hover {
-    background-color: #0033a2;
+    background-color: var(--hover-bg-colorV2);
   }
   
   .toggle-text {
     text-align: center;
     margin-top: 1vh;
-    font-size: 2vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #0062ff;
+    font-size: 1.5vh;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: var(--font-1);
+    color: var(--primary-color);
     cursor: pointer;
   }
   

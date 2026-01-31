@@ -46,7 +46,10 @@ function Shows() {
       <Header />
       <div className="ShowsBackground">
         <div className="ShowsContainer">
-          <img className="SBanner" src="/Images/ShowsHeader.png" alt="Shows Banner" />
+          <div className="SBanner">
+            <h1 className="SBanner__title">SHOWS</h1>
+          </div>
+
           
           <div className="ShowsText1">Weekly Shows</div>
           {weeklyShows.map((show) => (

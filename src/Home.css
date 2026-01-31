@@ -2,23 +2,26 @@
   --background: linear-gradient(to bottom, rgb(45, 45, 45), var(--primary-color-dark), rgb(45, 45, 45));
   --RAWbackground: linear-gradient(to bottom, rgb(33, 25, 25), rgb(109, 0, 0), rgb(30, 26, 26));
   --SDbackground: linear-gradient(to bottom, rgb(19, 39, 68), rgb(0, 46, 139), rgb(23, 33, 57));
-  --contentBackground: linear-gradient(to right, rgb(23, 23, 23), rgb(56, 56, 56), rgb(58, 58, 58));
+  --contentBackground: linear-gradient(to right, rgb(23, 23, 23), rgb(46, 34, 28), rgb(58, 58, 58));
   --LegendPbackground: radial-gradient(circle, rgb(71, 52, 0), rgb(100, 73, 0), rgb(246, 180, 0));
   --UndraftPbackground: radial-gradient(circle, rgb(29, 29, 29), rgb(65, 65, 65), rgb(0, 0, 0));
   
 
   --font-1: Verdana, Geneva, Tahoma, sans-serif;
-  --font-2: 'Courier New', Courier, monospace;
+  --font-2: Cartoonish;
   --font-3: Impact, sans-serif;
 
-  --primary-color: rgb(0, 59, 162);
-  --primary-colorV2: rgb(74, 201, 255);
-  --Secondary-color:rgb(132, 0, 255);
-  --primary-color-dark:rgb(0, 27, 89);
+  --primary-color: rgb(161, 35, 0);
+  --primary-colorV2: rgb(210, 95, 65);
+  --primary-colorV3: rgb(255, 192, 171);
+  --Secondary-color:rgb(180, 123, 0);
+  --primary-color-dark: rgb(110, 20, 0);
+  --primary-color-washout: rgba(161, 35, 0, 0.299);
   --text-color: white;
   --border-color: white;
-  --hover-text-color: rgb(0, 4, 255);
-  --hover-bg-color: rgba(7, 172, 255, 0.253);
+  --hover-text-color: rgb(200, 60, 20);
+  --hover-bg-color: rgb(255, 255, 255);
+  --hover-bg-colorV2: rgb(205, 51, 0);
 }
 
 .HomeBackground {
@@ -53,7 +56,7 @@
   font-size: 2rem;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: 700;
-  color: rgb(184, 222, 255);
+  color: var(--primary-colorV3);
 }
 
 .WVText2{
@@ -61,7 +64,7 @@
   font-size: 1.5rem;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: 400;
-  color: rgb(184, 222, 255);
+  color: var(--primary-colorV3);
 }
 
 .button-group {
@@ -100,6 +103,6 @@
 /* Animate the box shadow */
 @keyframes shadowShift {
   0% { box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7); }
-  50% { box-shadow: 0 0.5vh 2vh rgba(107, 1, 255, 0.6); }
+  50% { box-shadow: 0 0.5vh 2vh var(--primary-colorV2) }
   100% { box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7); }
 }
