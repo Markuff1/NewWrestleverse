@@ -1,47 +1,27 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
-
-// ---------- Types ----------
-type Match = {
-  match: string;
-  title: string;
-  type: string;
-};
-
-type PPVEvent = {
-  year: number;
-  banner: string;
-  location: string;
-  date: string;
-  matches: Match[];
-  imageFolder: string;
-};
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
 // ---------- Match Cards ----------
-
 const matchCard2027: Match[] = [
-  { match: "30 Woman Royal Rumble Match", title: "Wrestlemania Championship Match", type: "Royal Rumble Match" },
+  { match: "30 Woman Royal Rumble Match", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
   { match: "Seth Rollins Vs Kevin Owens", title: "World Heavyweight Championship", type: "Normal Match" },
   { match: "Alexa Bliss Vs Nia Jax", title: "Women's World Championship", type: "Normal Match" },
   { match: "Roman Reigns Vs The Fiend", title: "WWE Undisputed Championship", type: "Extreme Rules Match" },
-  { match: "30 Man Royal Rumble Match", title: "Wrestlemania Championship Match", type: "Royal Rumble Match" },
+  { match: "30 Man Royal Rumble Match", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
 ];
 
 const matchCard2026: Match[] = [
-  { match: "30 Woman Royal Rumble Match - Jade Cargill Won", title: "Wrestlemania Championship Match", type: "Royal Rumble" },
-  { match: "Shawn Spears Def. JD McDonugh(c) and Ilja Dragunov", title: "IC Title", type: "Triple Threat" },
-  { match: "Axiom(c) Def. Bron Breakker", title: "US Title", type: "Normal" },
-  { match: "Stephanie Vaquer Def. Tiffany Stratton(c) and Nia Jax", title: "Women's Undisputed", type: "Triple Threat" },
-  { match: "Seth Rollins(c) Def. Rey Mysterio", title: "World Heavyweight", type: "Normal" },
-  { match: "Liv Morgan(c) Def. Rhea Ripley", title: "Women's World", type: "Normal" },
-  { match: "30 Man Royal Rumble Match - The Rock Won", title: "Wrestlemania Championship Match", type: "Royal Rumble" },
-  { match: "Roman Reigns(c) Def. John Cena", title: "WWE Undisputed", type: "Normal" }
+  { match: "30 Woman Royal Rumble Match - Jade Cargill Won", title: "Wrestlemania Championship Match", type: "Royal Rumble Match" },
+  { match: "Shawn Spears Def. JD McDonugh(c) and Ilja Dragunov", title: "Intercontinental Championship", type: "Triple Threat Match" },
+  { match: "Axiom(c) Def. Bron Breakker", title: "United States Championship", type: "Normal Match" },
+  { match: "Stephanie Vaquer Def. Tiffany Stratton(c) and Nia Jax", title: "Women's Undisputed Championship", type: "Triple Threat Match" },
+  { match: "Seth Rollins(c) Def. Rey Mysterio", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Liv Morgan(c) Def. Rhea Ripley", title: "Women's World Championship", type: "Normal Match" },
+  { match: "30 Man Royal Rumble Match - The Rock Won", title: "Wrestlemania Championship Match", type: "Royal Rumble Match" },
+  { match: "Roman Reigns(c) Def. John Cena", title: "WWE Undisputed Championship", type: "Normal Match" },
 ];
 
-
 // ---------- Event Data ----------
-const RREvents: PPVEvent[] = [
+const RoyalRumbleEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2027.png",
@@ -50,7 +30,6 @@ const RREvents: PPVEvent[] = [
     matches: matchCard2027,
     imageFolder: "RoyalRumble/2027MC",
   },
-
   {
     year: 2026,
     banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2026.png",
@@ -61,87 +40,11 @@ const RREvents: PPVEvent[] = [
   },
 ];
 
-// ---------- Reusable Component ----------
-type PPVSectionProps = PPVEvent;
-
-function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
+export default function RoyalRumble() {
   return (
-    <>
-      <img className="PPVBanner" src={banner} alt="RR Banner" />
-
-      {/* Event Info */}
-      <div className="PPVInfo">
-        <div className="PPVLocation">
-          <strong>Location:</strong> {location}
-        </div>
-        <div className="PPVDate">
-          <strong>Date/Time:</strong> {date}
-        </div>
-      </div>
-
-      {/* Match Card Table */}
-      <div className="MCTitle">Match Card</div>
-      <table className="MCList">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Match</th>
-            <th>title</th>
-            <th>Match Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{match.match}</td>
-              <td>{match.title}</td>
-              <td>{match.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Match Card Summary */}
-      <div className="MCTitle">Match Card Summary</div>
-      <div className="MatchImages">
-        {matches.map((match, index) => (
-          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
-            <h3 className="MatchTitle">{`${match.match}`}</h3>
-            {match.title && (
-              <h4 className="MatchChampionship">
-                ----- {match.title}    -----
-              </h4>
-            )}
-            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
-            <img
-              className="MatchImage"
-              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
-              alt={match.match}
-            />
-            <div className="MatchDivider"></div>
-          </div>
-        ))}
-      </div>
-    </>
+    <PPVShow
+      events={RoyalRumbleEvents}
+      bannerAlt="Royal Rumble Banner"
+    />
   );
 }
-
-// ---------- Main Component ----------
-function RoyalRumble() {
-  return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          {RREvents.map((event) => (
-            <PPVSection key={event.year} {...event} />
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
-
-export default RoyalRumble;

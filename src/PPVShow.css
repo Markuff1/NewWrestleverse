@@ -131,14 +131,28 @@ header {
   font-family: var(--font-2);
 }
 
-.MatchChampionship, .MatchType {
+.MatchChampionship {
   font-size: 1.25vw;
   letter-spacing: 0.1vh;
   font-weight: 100;
-  margin-top: -1.5vw;
+  margin-top: -1.7vw;
   color: var(--text-color);
   font-family: var(--font-3);
 }
+
+.MatchType {
+  display: flex;
+  font-size: 1.1vw;
+  letter-spacing: 0.1vh;
+  font-weight: 100;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: -1.7vw; /* keep this here */
+  color: var(--text-color);
+  font-family: var(--font-3);
+}
+
 
 .MatchImage {
   width: 50vw;

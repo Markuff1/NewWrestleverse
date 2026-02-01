@@ -1,9 +1,7 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
-function ONS() {
-  const matchCard = [
+// ---------- Match Cards ----------
+const matchCard2025: Match[] = [
     { match: "CM Punk Def. Roman Reigns", title: "Number 1 Contendership", type: "Extreme Rules"},	
     { match: "Oba Femi (C) Def. Sheamus ", title: "US Title", type: "2 Out Of 3 Falls"},			
     { match: "Piper Niven (C) Def. Chelsea Green", title: "WIC Title", type: "Table Match"},		
@@ -16,65 +14,23 @@ function ONS() {
     { match: "Randy Orton (C) Def. Wade Barrett and Umaga", title: "WWE Undisputed Title", type: "3-Way Elimination"},		
   ];
 
+// ---------- Event Data ----------
+const ONSEvent: PPVEvent[] = [
+  {
+    year: 2025,
+    banner: "/Images/PPV/ONS/ONSHeader.png",
+    location: "Wells Fargo Center, Philadelphia, Pennsylvania",
+    date: "Saturday, July 26th, 2025, 7e/5p",
+    matches: matchCard2025,
+    imageFolder: "ONS/2025MC",
+  },
+];
+
+export default function ONS() {
   return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          <img
-            className="PPVBanner"
-            src="/Images/PPV/ONS/ONSHeader.png"
-            alt="ONS Banner"
-          />
-
-          <div className="PPVInfo">
-            <div className="PPVLocation">
-              <strong>Location:</strong> Wells Fargo Center, Philadelphia, Pennsylvania
-            </div>
-            <div className="PPVDate">
-              <strong>Date/Time:</strong> Saturday, July 26th, 2025
-            </div>
-          </div>
-
-          <div className="MCTitle">Match Card</div>
-          <table className="MCList">
-            <thead>
-              <tr>
-                <th>Match</th>
-                <th>Title</th>
-                <th>Match Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchCard.map((match, index) => (
-                <tr key={index}>
-                  <td>{match.match}</td>
-                  <td>{match.title}</td>
-                  <td>{match.type}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="MCTitle">Match Card Summary</div>
-          <div className="MatchImages">
-            {matchCard.map((match, index) => (
-              <div key={index} className="MatchItem">
-                <h3 className="MatchTitle">{match.match}</h3>
-                <img
-                  className="MatchImage"
-                  src={`/Images/PPV/ONS/2025MC/M${index + 1}.PNG`}
-                  alt={match.match}
-                />
-                <div className="MatchDivider"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
+    <PPVShow
+      events={ONSEvent}
+      bannerAlt="One Night Stand Banner"
+    />
   );
 }
-
-export default ONS;

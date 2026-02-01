@@ -113,7 +113,7 @@ function PPVSection({ banner, location, date, matches, imageFolder }: PPVSection
             <h3 className="MatchTitle">{`${match.match}`}</h3>
             {match.Score && (
               <h4 className="MatchChampionship">
-                ----- {match.Score}    -----
+                ----- {match.Score} -----
               </h4>
             )}
             <h4 className="MatchType">----- {`${match.type}`} -----</h4>

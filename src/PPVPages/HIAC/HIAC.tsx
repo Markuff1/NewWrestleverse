@@ -1,34 +1,16 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
-
-// ---------- Types ----------
-type Match = {
-  match: string;
-  title: string;
-  type: string;
-};
-
-type PPVEvent = {
-  year: number;
-  banner: string;
-  location: string;
-  date: string;
-  matches: Match[];
-  imageFolder: string;
-};
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
 // ---------- Match Cards ----------
 
 const matchCard2026: Match[] = [
-  { "match": "Raquel Rodrigues Vs Charlotte Flair", "title": "Women's Undisputed", "type": "Hell In A Cell Match" },
-  { "match": "Sheamus Vs Gunther", "title": "United States", "type": "Normal Match" },
-  { "match": "Nikki Bella Vs Stephanie Vaquer", "title": "Women's US", "type": "Normal Match" },
-  { "match": "MCMG Vs New Day", "title": "SD Tag Team", "type": "Tag Team Match" },
-  { "match": "Penta Vs Oba Femi", "title": "Intercontinental", "type": "Normal Match" },
-  { "match": "Randy Orton Vs CM Punk", "title": "World Heavyweight", "type": "Hell In A Cell Match" },
-  { "match": "Kairi Sane Vs Dakota Kai Vs Alexa Bliss", "title": "Women's World", "type": "Triple Threat Match" },
-  { "match": "Roman Reigns Vs Mark Henry", "title": "Undisputed", "type": "Hell In A Cell Match" }
+  { match: "Raquel Rodrigues Vs Charlotte Flair", title: "Women's Undisputed Championship", type: "Hell In A Cell Match" },
+  { match: "Sheamus Vs Gunther", title: "United States Championship", type: "Normal Match" },
+  { match: "Nikki Bella Vs Stephanie Vaquer", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "MCMG Vs New Day", title: "SD Tag Team Championships", type: "Tag Team Match" },
+  { match: "Penta Vs Oba Femi", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Randy Orton Vs CM Punk", title: "World Heavyweight Championship", type: "Hell In A Cell Match" },
+  { match: "Kairi Sane Vs Dakota Kai Vs Alexa Bliss", title: "Women's World Championship", type: "Triple Threat Match" },
+  { match: "Roman Reigns Vs Mark Henry", title: "WWE Undisputed Championship", type: "Hell In A Cell Match" }
 ];
 
 
@@ -44,87 +26,11 @@ const HIACEvents: PPVEvent[] = [
   },
 ];
 
-// ---------- Reusable Component ----------
-type PPVSectionProps = PPVEvent;
-
-function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
+export default function HIAC() {
   return (
-    <>
-      <img className="PPVBanner" src={banner} alt="HIAC Banner" />
-
-      {/* Event Info */}
-      <div className="PPVInfo">
-        <div className="PPVLocation">
-          <strong>Location:</strong> {location}
-        </div>
-        <div className="PPVDate">
-          <strong>Date/Time:</strong> {date}
-        </div>
-      </div>
-
-      {/* Match Card Table */}
-      <div className="MCTitle">Match Card</div>
-      <table className="MCList">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Match</th>
-            <th>Title</th>
-            <th>Match Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{match.match}</td>
-              <td>{match.title + " Championship" || "-"}</td>
-              <td>{match.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Match Card Summary */}
-      <div className="MCTitle">Match Card Summary</div>
-      <div className="MatchImages">
-        {matches.map((match, index) => (
-          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
-            <h3 className="MatchTitle">{`${match.match}`}</h3>
-            {match.title && (
-              <h4 className="MatchChampionship">
-                ----- {match.title} Championship -----
-              </h4>
-            )}
-            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
-            <img
-              className="MatchImage"
-              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
-              alt={match.match}
-            />
-            <div className="MatchDivider"></div>
-          </div>
-        ))}
-      </div>
-    </>
+    <PPVShow
+      events={HIACEvents}
+      bannerAlt="Hell In A Cell Banner"
+    />
   );
 }
-
-// ---------- Main Component ----------
-function HIAC() {
-  return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          {HIACEvents.map((event) => (
-            <PPVSection key={event.year} {...event} />
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
-
-export default HIAC;

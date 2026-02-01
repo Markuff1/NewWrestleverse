@@ -1,0 +1,65 @@
+.MatchTypeTooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.1rem;
+  cursor: pointer;
+}
+
+/* Info icon styling */
+.InfoIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: 10%;
+  background-color: var(--primary-color);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-1);
+  font-weight:  800;
+}
+
+/* Tooltip box */
+.TooltipContent {
+  visibility: hidden;
+  opacity: 0;
+
+  min-width: 20rem;
+  max-width: 30rem;
+
+  background-color: rgba(52, 52, 52, 0.85);
+  color: #fff;
+
+  border-radius: 0.25rem;
+  padding: 1rem 5rem;
+
+  position: absolute;
+  z-index: 100;
+
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: opacity 0.2s ease;
+  font-size: 0.8rem;
+  font-family: var(--font-1);
+  text-align: center;
+}
+
+/* Tooltip title spacing */
+.TooltipContent strong {
+  display: block;
+  margin-bottom: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+/* Show on hover */
+.MatchTypeTooltip:hover .TooltipContent {
+  visibility: visible;
+  opacity: 1;
+}

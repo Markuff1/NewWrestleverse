@@ -1,22 +1,4 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
-
-// ---------- Types ----------
-type Match = {
-  match: string;
-  title: string;
-  type: string;
-};
-
-type PPVEvent = {
-  year: number;
-  banner: string;
-  location: string;
-  date: string;
-  matches: Match[];
-  imageFolder: string;
-};
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
 // ---------- Match Cards ----------
 
@@ -25,23 +7,23 @@ const matchCard2026: Match[] = [
   { match: "Dudley Boys Def. Viking Raiders (c)", title: "Raw Tag Team Championships", type: "Tables Match" },
   { match: "Shayna Baszler (c) Def. Bianca Belair", title: "Women's Intercontinental Championship", type: "Normal Match" },
   { match: "Sheamus (c) Def. Umaga", title: "United States Championship", type: "Chairs Match" },
-  { match: "Alexa Bliss Def. Kairi Sane (c)", title: "Womens World Championship", type: "Table Match" },
+  { match: "Alexa Bliss Def. Kairi Sane (c)", title: "Womens World Championship", type: "Tables Match" },
   { match: "Roman Reigns (c) Def. Oba Femi", title: "WWE Undisputed Championship", type: "TLC Match" },
   { match: "Raquel Roderiques (c) Def. Charlotte Flair", title: "Women's Undisputed Championship", type: "Chairs Match" },
-  { match: "The New Day (c) Def. MCMG and DIY", title: "SD Tag Team Championships", type: "TLC Triple Threat Tag" },
+  { match: "The New Day (c) Def. MCMG and DIY", title: "Smackdown Tag Team Championships", type: "TLC Triple Threat Tag Team Match" },
   { match: "Seth Rollins (c) Def. Randy Orton and Rey Mysterio and Kevin Owens", title: "World Heavyweigt Championship", type: "TLC Match" }
 ];
 
 const matchCard2025: Match[] = [
-    { match: "Bron Breakker (c) Def. Axiom and Wes Lee and Karrion Kross", title: "US Title", type: "Ladder Match" },
-    { match: "AOP Def. New Catch Republic (c)", title: "SD Tag Title", type: "Tables Match" },
-    { match: "The Fiend Def. Dominic Mysterio", title: "", type: "Extreme Rules" },
-    { match: "Tiffany Stratton (c) Def. Bayley", title: "Women's World", type: "Ladder Match" },
-    { match: "JD McDonagh Def. Damian Priest (c) and Jacob Fatu", title: "IC Title", type: "Chairs Match" },
+    { match: "Bron Breakker (c) Def. Axiom and Wes Lee and Karrion Kross", title: "United States Championship", type: "Ladder Match" },
+    { match: "AOP Def. New Catch Republic (c)", title: "Smackdown Tag Team Championships", type: "Tables Match" },
+    { match: "The Fiend Def. Dominic Mysterio", title: "", type: "Extreme Rules Match" },
+    { match: "Tiffany Stratton (c) Def. Bayley", title: "Women's World Championship", type: "Ladder Match" },
+    { match: "JD McDonagh Def. Damian Priest (c) and Jacob Fatu", title: "Intercontinental Championship", type: "Chairs Match" },
     { match: "Stephanie Vaquer Def. Chelsea Green", title: "", type: "Normal Match" },
-    { match: "Roman Reigns (c) Def. AJ Styles", title: "WWE Undisputed", type: "TLC Match" },
-    { match: "Rhea Ripley (c) Def. Jade Cargill (Liv Morgan Cash In)", title: "Women's Undisputed", type: "Chair Match" },
-    { match: "Seth Rollins Def. Cody Rhodes (c)", title: "World Heavyweight", type: "TLC Match" }
+    { match: "Roman Reigns (c) Def. AJ Styles", title: "WWE Undisputed Championship", type: "TLC Match" },
+    { match: "Rhea Ripley (c) Def. Jade Cargill (Liv Morgan Cash In)", title: "Women's Undisputed Championship", type: "Chairs Match" },
+    { match: "Seth Rollins Def. Cody Rhodes (c)", title: "World Heavyweight Championship", type: "TLC Match" }
 ];
 
 
@@ -66,87 +48,11 @@ const TLCEvents: PPVEvent[] = [
   },
 ];
 
-// ---------- Reusable Component ----------
-type PPVSectionProps = PPVEvent;
-
-function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
+export default function TLC() {
   return (
-    <>
-      <img className="PPVBanner" src={banner} alt="TLC Banner" />
-
-      {/* Event Info */}
-      <div className="PPVInfo">
-        <div className="PPVLocation">
-          <strong>Location:</strong> {location}
-        </div>
-        <div className="PPVDate">
-          <strong>Date/Time:</strong> {date}
-        </div>
-      </div>
-
-      {/* Match Card Table */}
-      <div className="MCTitle">Match Card</div>
-      <table className="MCList">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Match</th>
-            <th>title</th>
-            <th>Match Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{match.match}</td>
-              <td>{match.title}</td>
-              <td>{match.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Match Card Summary */}
-      <div className="MCTitle">Match Card Summary</div>
-      <div className="MatchImages">
-        {matches.map((match, index) => (
-          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
-            <h3 className="MatchTitle">{`${match.match}`}</h3>
-            {match.title && (
-              <h4 className="MatchChampionship">
-                ----- {match.title}    -----
-              </h4>
-            )}
-            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
-            <img
-              className="MatchImage"
-              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
-              alt={match.match}
-            />
-            <div className="MatchDivider"></div>
-          </div>
-        ))}
-      </div>
-    </>
+    <PPVShow
+      events={TLCEvents}
+      bannerAlt="TLC Banner"
+    />
   );
 }
-
-// ---------- Main Component ----------
-function TLC() {
-  return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          {TLCEvents.map((event) => (
-            <PPVSection key={event.year} {...event} />
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
-
-export default TLC;

@@ -1,50 +1,32 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
-
-// ---------- Types ----------
-type Match = {
-  match: string;
-  title: string;
-  type: string;
-};
-
-type PPVEvent = {
-  year: number;
-  banner: string;
-  location: string;
-  date: string;
-  matches: Match[];
-  imageFolder: string;
-};
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
-  { match: "LA Knight Def. Penta (c)", title: "Intercontinental", type: "Normal" },
-  { match: "Shayna Baszler (c) Def. Bianca Belair", title: "Women's IC", type: "Normal Match" },
-  { match: "Dudley Boys (c) Def. Viking Raiders", title: "Raw Tag Team", type: "Normal Match" },
-  { match: "Bronson Reed Def. Sheamus (c) and AJ Styles and Sami Zayn", title: "United States", type: "Normal Match" },
-  { match: "Nikki Bella (c) Def. Natayla", title: "Women's US", type: "Normal Match" },
+  { match: "LA Knight Def. Penta (c)", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Shayna Baszler (c) Def. Bianca Belair", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Dudley Boys (c) Def. Viking Raiders", title: "Raw Tag Team Championships", type: "Normal Match" },
+  { match: "Bronson Reed Def. Sheamus (c) and AJ Styles and Sami Zayn", title: "United States Championship", type: "Normal Match" },
+  { match: "Nikki Bella (c) Def. Natayla", title: "Women's United States Championship", type: "Normal Match" },
   { match: "CM Punk Def. Gunther", title: "", type: "Last Man Standing Match" },
-  { match: "Raquel Roderiques (c) Def. Rhea Ripley", title: "Women's Undisputed", type: "Normal Match" },
-  { match: "Seth Rollins (c) Def. Randy Orton", title: "World Heavyweight", type: "Extreme Rules Match" },
-  { match: "Alexa Bliss (c) Def. Kairi Sane", title: "Women's World", type: "Normal Match" },
-  { match: "Roman Regins (c) Def. The Fiend", title: "Undisputed", type: "Normal Match" },
+  { match: "Raquel Roderiques (c) Def. Rhea Ripley", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Seth Rollins (c) Def. Randy Orton", title: "World Heavyweight Championship", type: "Extreme Rules Match" },
+  { match: "Alexa Bliss (c) Def. Kairi Sane", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Roman Regins (c) Def. The Fiend", title: "WWE Undisputed Championship", type: "Normal Match" },
 ];
 
 
 const matchCard2026: Match[] = [
-  { match: "Nia Jax Def. Stephanie Vaquer", title: "", type: "Normal" },
-  { match: "JD McDonagh (c) Def. Damian Priest", title: "Intercontinental Title", type: "Normal" },
-  { match: "Liv Morgan (c) Def. Rhea Ripley", title: "Women's World Title", type: "Normal" },
-  { match: "OC Def. #DIY (c)", title: "Raw Tag Team Titles", type: "Normal" },
-  { match: "Bron Breakker (c) Def. Axiom", title: "US Title", type: "Normal" },
-  { match: "John Cena Def. Logan Paul", title: "", type: "Normal" },
-  { match: "MCMG Def. AOP (c)", title: "SD Tag Team Titles", type: "Normal" },
-  { match: "Roman Reigns (c) Def. AJ Styles", title: "WWE Undisputed Title", type: "Steel Cage" },
-  { match: "Tiffany Stratton (c) Def. Michelle McCool", title: "Women's Undisputed Title", type: "Normal" },
-  { match: "Seth Rollins (c) Def. Cody Rhodes", title: "World Heavyweight Title", type: "Normal" }
+  { match: "Nia Jax Def. Stephanie Vaquer", title: "", type: "Normal Match" },
+  { match: "JD McDonagh (c) Def. Damian Priest", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Liv Morgan (c) Def. Rhea Ripley", title: "Women's World Championship", type: "Normal Match" },
+  { match: "OC Def. #DIY (c)", title: "Raw Tag Team Championships", type: "Normal Match" },
+  { match: "Bron Breakker (c) Def. Axiom", title: "United States Championship", type: "Normal Match" },
+  { match: "John Cena Def. Logan Paul", title: "", type: "Normal Match" },
+  { match: "MCMG Def. AOP (c)", title: "SD Tag Team Championships", type: "Normal Match" },
+  { match: "Roman Reigns (c) Def. AJ Styles", title: "WWE Undisputed Championship", type: "Steel Cage Match" },
+  { match: "Tiffany Stratton (c) Def. Michelle McCool", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Seth Rollins (c) Def. Cody Rhodes", title: "World Heavyweight Championship", type: "Normal Match" }
 ];
 
 
@@ -69,87 +51,11 @@ const NYREvents: PPVEvent[] = [
   },
 ];
 
-// ---------- Reusable Component ----------
-type PPVSectionProps = PPVEvent;
-
-function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
+export default function NYR() {
   return (
-    <>
-      <img className="PPVBanner" src={banner} alt="NYR Banner" />
-
-      {/* Event Info */}
-      <div className="PPVInfo">
-        <div className="PPVLocation">
-          <strong>Location:</strong> {location}
-        </div>
-        <div className="PPVDate">
-          <strong>Date/Time:</strong> {date}
-        </div>
-      </div>
-
-      {/* Match Card Table */}
-      <div className="MCTitle">Match Card</div>
-      <table className="MCList">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Match</th>
-            <th>title</th>
-            <th>Match Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{match.match}</td>
-              <td>{match.title}</td>
-              <td>{match.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Match Card Summary */}
-      <div className="MCTitle">Match Card Summary</div>
-      <div className="MatchImages">
-        {matches.map((match, index) => (
-          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
-            <h3 className="MatchTitle">{`${match.match}`}</h3>
-            {match.title && (
-              <h4 className="MatchChampionship">
-                ----- {match.title}    -----
-              </h4>
-            )}
-            <h4 className="MatchType">----- {`${match.type}`} -----</h4>
-            <img
-              className="MatchImage"
-              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
-              alt={match.match}
-            />
-            <div className="MatchDivider"></div>
-          </div>
-        ))}
-      </div>
-    </>
+    <PPVShow
+      events={NYREvents}
+      bannerAlt="NYR Banner"
+    />
   );
 }
-
-// ---------- Main Component ----------
-function NYR() {
-  return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          {NYREvents.map((event) => (
-            <PPVSection key={event.year} {...event} />
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
-
-export default NYR;
