@@ -2,11 +2,11 @@ import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
 // ---------- Match Cards ----------
 const matchCard2027: Match[] = [
-  { match: "30 Woman Royal Rumble Match", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
-  { match: "Seth Rollins Vs Kevin Owens", title: "World Heavyweight Championship", type: "Normal Match" },
-  { match: "Alexa Bliss Vs Nia Jax", title: "Women's World Championship", type: "Normal Match" },
-  { match: "Roman Reigns Vs The Fiend", title: "WWE Undisputed Championship", type: "Extreme Rules Match" },
-  { match: "30 Man Royal Rumble Match", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
+  { match: "30 Woman Royal Rumble Match - WINNER: LIV MORGAN", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
+  { match: "Seth Rollins (c) DEF. Kevin Owens", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Alexa Bliss (c) DEF. Nia Jax", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Roman Reigns Vs The Fiend", title: "WWE Undisputed Championship", type: "Ambulance Match" },
+  { match: "30 Man Royal Rumble Match - WINNER: REY MYSTERIO", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
 ];
 
 const matchCard2026: Match[] = [

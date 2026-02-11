@@ -13,10 +13,10 @@ const ppvShows = [
   [
     { name: "NYR", image: "/Images/PPV/NYR/NYR2027.png" },
     { name: "RoyalRumble", image: "/Images/PPV/RoyalRumble/RoyalRumble2027.png" },
-    { name: "NoWayOut", image: "/Images/PPV/NoWayOut/NoWayOut.png" },
+    { name: "EC", image: "/Images/PPV/EC/EC1.png" },
   ],
   [
-    { name: "Wrestlemania", image: "/Images/PPV/Wrestlemania/Wrestlemania40.png" },
+    { name: "Wrestlemania", image: "/Images/PPV/Wrestlemania/Wrestlemania41.png" },
     { name: "Backlash", image: "/Images/PPV/Backlash/Backlash2026.png" },
     { name: "OverTheLimit", image: "/Images/PPV/OverTheLimit/OTL2026.png" },
   ],
@@ -37,6 +37,9 @@ const retiredPPVs = [
     { name: "ONS", image: "/Images/PPV/ONS/ONS.png" },
     { name: "NoMercy", image: "/Images/PPV/NoMercy/NoMercy.png" },
     { name: "CyberSunday", image: "/Images/PPV/CyberSunday/CyberSunday.png" },
+  ],
+  [
+    { name: "NoWayOut", image: "/Images/PPV/NoWayOut/NoWayOut.png" },
   ]
 ];
 

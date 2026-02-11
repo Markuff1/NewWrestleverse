@@ -30,12 +30,14 @@ import RoyalRumble from "./PPVPages/RoyalRumble/RoyalRumble";
 import NoWayOut from "./PPVPages/NoWayOut/NoWayOut";
 import OverTheLimit from "./PPVPages/OverTheLimit/OverTheLimit";
 import NOC from "./PPVPages/NOC/NightOfChampions";
+import EC from "./PPVPages/EC/EC";
 
 import Login from "./Login";
 import NotFound from "./NotFound";
 import MMITB from "./ChampionshipPages/MMITB";
 import WMITB from "./ChampionshipPages/WMITB";
 import HIAC from "./PPVPages/HIAC/HIAC";
+import Wrestlemania from "./PPVPages/Wrestlemania/Wrestlemania";
 
 
 function App() {
@@ -84,6 +86,8 @@ function App() {
         <Route path="/OverTheLimit" element={<ProtectedRoute><OverTheLimit /></ProtectedRoute>} />
         <Route path="/NOC" element={<ProtectedRoute><NOC /></ProtectedRoute>} />
         <Route path="/HIAC" element={<ProtectedRoute><HIAC /></ProtectedRoute>} />
+        <Route path="/EC" element={<ProtectedRoute><EC /></ProtectedRoute>} />
+        <Route path="/Wrestlemania" element={<ProtectedRoute><Wrestlemania /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

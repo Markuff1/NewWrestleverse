@@ -1,80 +1,120 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
+import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
-function Backlash() {
-  const matchCard = [
-    { match: "Sheamus Def. Jey Uso", title: "US Title", type: "Singles Match" },
-    { match: "Piper Niven Def. Chelsea Green", title: "Women's IC", type: "Singles Match" },
-    { match: "Dudley Boys Def. AOP", title: "SD Tag", type: "Tag Team Match" },
-    { match: "Sol Ruca Def. Jade Cargill", title: "Women's US", type: "Singles Match" },
-    { match: "Andrade Def. Jacob Fatu and Je'von Evans", title: "IC Title", type: "Triple Threat" },
-    { match: "Kairi Sane Def. Liv Morgan", title: "Women's World", type: "Singles Match" },
-    { match: "#DIY Def. Street Profits", title: "RAW Tag", type: "Tag Team Match" },
-    { match: "Kevin Owens Def. Seth Rollins", title: "Men's World", type: "Singles Match" },
-    { match: "Roxanne Perez Def. Charlotte Flair", title: "Women's Undisputed", type: "Singles Match" },
-    { match: "Randy Orton Def. CM Punk", title: "Men's Undisputed", type: "Singles Match" },
-  ];
+// ---------- Match Card ----------
+const WM2027Matches: Match[] = [
+  // ---------- Night 1 ----------
+  {
+    night: 1,
+    match: "Mark Henry Vs Oba Femi",
+    title: "",
+    type: "Normal Match",
+  },
+  {
+    night: 1,
+    match: "Shayna Baszler Vs Naomi Vs Sol Ruca Vs Bianca Belair",
+    title: "Women's Intercontinental Championship",
+    type: "Fatal 4-Way Match",
+  },
+  {
+    night: 1,
+    match: "Gunther Vs CM Punk",
+    title: "",
+    type: "2 Out of 3 Falls Match",
+  },
+  {
+    night: 1,
+    match: "New Day Vs Usos",
+    title: "Smackdown Tag Team Championship",
+    type: "Tag Team Match",
+  },
+  {
+    night: 1,
+    match: "Bronson Reed Vs Dragon Lee Vs Sheamus Vs Ilja Dragunov",
+    title: "United States Championship",
+    type: "Fatal 4-Way Match",
+  },
+  {
+    night: 1,
+    match: "Undertaker Vs Randy Orton",
+    title: "",
+    type: "No Holds Barred Match",
+  },
+  {
+    night: 1,
+    match: "Raquel Rodriguez Vs Liv Morgan",
+    title: "WWE Women's Championship",
+    type: "Normal Match",
+  },
+  {
+    night: 1,
+    match: "Seth Rollins Vs Rey Mysterio",
+    title: "World Heavyweight Championship",
+    type: "Normal Match",
+  },
 
+  // ---------- Night 2 ----------
+  {
+    night: 2,
+    match:
+      "Penta Vs Jevon Evans Vs RVD Vs Cody Rhodes Vs Carmelo Hayes Vs Drew McIntyre",
+    title: "Intercontinental Championship",
+    type: "Ladder Match",
+  },
+  {
+    night: 2,
+    match: "Nikki Bella Vs Dakota Kai",
+    title: "Women's United States Championship",
+    type: "Steel Cage Match",
+  },
+  {
+    night: 2,
+    match: "John Cena Vs The Fiend",
+    title: "",
+    type: "Normal Match",
+  },
+  {
+    night: 2,
+    match: "Dudley Boys Vs Street Profits",
+    title: "RAW Tag Team Championship",
+    type: "Tag Team Match",
+  },
+  {
+    night: 2,
+    match: "LA Knight Vs Wade Barrett",
+    title: "",
+    type: "Extreme Rules Match",
+  },
+  {
+    night: 2,
+    match: "Alexa Bliss Vs Roxanne Perez",
+    title: "Women's World Championship",
+    type: "Normal Match",
+  },
+  {
+    night: 2,
+    match: "Roman Reigns Vs Shawn Michaels",
+    title: "WWE Championship",
+    type: "Extreme Rules Match",
+  },
+];
+
+// ---------- Event ----------
+const WMEvents: PPVEvent[] = [
+  {
+    year: 2027,
+    banner: "Images/PPV/Wrestlemania/WrestlemaniaHeader2027.png",
+    location: "Allegiant Stadium, Las Vegas, Nevada",
+    date: "April 10–11, 2027",
+    matches: WM2027Matches,
+    imageFolder: "Wrestlemania/2027MC"
+  },
+];
+
+export default function WrestleMania() {
   return (
-    <>
-      <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
-          <img
-            className="PPVBanner"
-            src="/Images/PPV/Backlash/BacklashHeader.png"
-            alt="Backlash Banner"
-          />
-
-          <div className="PPVInfo">
-            <div className="PPVLocation">
-              <strong>Location:</strong> Allstate Arena, Rosemont, Illinois
-            </div>
-            <div className="PPVDate">
-              <strong>Date/Time:</strong> Saturday, May 24th, 2025
-            </div>
-          </div>
-
-          <div className="MCTitle">Match Card</div>
-          <table className="MCList">
-            <thead>
-              <tr>
-                <th>Match</th>
-                <th>Title</th>
-                <th>Match Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchCard.map((match, index) => (
-                <tr key={index}>
-                  <td>{match.match}</td>
-                  <td>{match.title}</td>
-                  <td>{match.type}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="MCTitle">Match Card Summary</div>
-          <div className="MatchImages">
-            {matchCard.map((match, index) => (
-              <div key={index} className="MatchItem">
-                <h3 className="MatchTitle">{match.match}</h3>
-                <img
-                  className="MatchImage"
-                  src={`/Images/PPV/Backlash/2025MC/M${index + 1}.PNG`}
-                  alt={match.match}
-                />
-                <div className="MatchDivider"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
+    <PPVShow
+      events={WMEvents}
+      bannerAlt="WrestleMania Banner"
+    />
   );
 }
-
-export default Backlash;

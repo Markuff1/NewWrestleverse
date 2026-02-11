@@ -107,4 +107,8 @@ export const MatchTypeInfo: Record<string, string> = {
 
   "Chairs Match":
     "The only legal weapon is a chair. Repeatedly. Loudly.",
+
+  "No Holds Barred Match":
+  "There are no rules, no disqualifications, and no mercy. Anything goes as long as someone stays down."
+
 };

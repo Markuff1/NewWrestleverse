@@ -8,6 +8,7 @@ export type Match = {
   match: string;
   title?: string;
   type: string;
+  night?: number; // ✅ OPTIONAL — WrestleMania only
 };
 
 export type PPVEvent = {
@@ -72,44 +73,72 @@ function PPVShow({ events, bannerAlt }: PPVShowProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {event.matches.map((match, i) => (
-                    <tr key={i}>
-                      <td>{i + 1}</td>
-                      <td>{match.match}</td>
-                      <td>{stripChampionship(match.title)}</td>
-                      <td>{match.type}</td>
-                    </tr>
-                  ))}
+                  {event.matches.map((match, i) => {
+                    const showNightHeader =
+                      match.night &&
+                      (i === 0 ||
+                        match.night !== event.matches[i - 1].night);
+
+                    return (
+                      <>
+                        {showNightHeader && (
+                          <tr className="NightRow">
+                            <td colSpan={4}>Night {match.night}</td>
+                          </tr>
+                        )}
+
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>{match.match}</td>
+                          <td>{stripChampionship(match.title)}</td>
+                          <td>{match.type}</td>
+                        </tr>
+                      </>
+                    );
+                  })}
                 </tbody>
               </table>
 
               {/* Match Card Summary */}
               <div className="MCTitle">Match Card Summary</div>
               <div className="MatchImages">
-                {event.matches.map((match, i) => (
-                  <div key={i} className="MatchItem">
-                    <h3 className="MatchTitle">{match.match}</h3>
+                {event.matches.map((match, i) => {
+                  const showNightHeader =
+                    match.night &&
+                    (i === 0 ||
+                      match.night !== event.matches[i - 1].night);
 
-                    {match.title && (
-                      <h4 className="MatchChampionship">
-                        ----- {match.title} -----
-                      </h4>
-                    )}
+                  return (
+                    <div key={i}>
+                      {showNightHeader && (
+                        <h2 className="MCTitle">Night {match.night}</h2>
+                      )}
 
-                    <h4 className="MatchType">
-                      ----- {match.type}{" "}
-                      <MatchTypeTooltip matchType={match.type} /> -----
-                    </h4>
+                      <div className="MatchItem">
+                        <h3 className="MatchTitle">{match.match}</h3>
 
-                    <img
-                      className="MatchImage"
-                      src={`/Images/PPV/${event.imageFolder}/M${i + 1}.PNG`}
-                      alt={match.match}
-                    />
+                        {match.title && (
+                          <h4 className="MatchChampionship">
+                            ----- {match.title} -----
+                          </h4>
+                        )}
 
-                    <div className="MatchDivider" />
-                  </div>
-                ))}
+                        <h4 className="MatchType">
+                          ----- {match.type}{" "}
+                          <MatchTypeTooltip matchType={match.type} /> -----
+                        </h4>
+
+                        <img
+                          className="MatchImage"
+                          src={`/Images/PPV/${event.imageFolder}/M${i + 1}.PNG`}
+                          alt={match.match}
+                        />
+
+                        <div className="MatchDivider" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </section>
           ))}

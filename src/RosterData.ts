@@ -47,7 +47,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/Axiom.png", name: "Axiom", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/B-Fab.png", name: "B Fab", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/BaronCorbin.png", name: "Baron Corbin", gender: "Man", tag: "R" , champion:""},
-        { src: "/Images/Roster/Batista.png", name: "Batista", gender: "Man", tag: "UNDRAFTED" , champion:""},
+        { src: "/Images/Roster/Batista.png", name: "Batista", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/Bayley.png", name: "Bayley", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/BeckyLynch.png", name: "Becky Lynch", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/Berto.png", name: "Berto", gender: "Man", tag: "R" , champion:""},
@@ -59,7 +59,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
 
         { src: "/Images/Roster/BraunStrowman.png", name: "Braun Strowman", gender: "Man", tag: "R" , champion:""},
-        { src: "/Images/Roster/BrayWyatt.png", name: "Bray Wyatt", gender: "Man", tag: "UNDRAFTED" , champion:""},
+        { src: "/Images/Roster/BrayWyatt.png", name: "Bray Wyatt", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BronBreakker.png", name: "Bron Breakker", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BronsonReed.png", name: "Bronson Reed", gender: "Man", tag: "SD" , champion:"US"},
         { src: "/Images/Roster/BrooksJensen.png", name: "Brooks Jensen", gender: "Man", tag: "UNDRAFTED" , champion:""},
@@ -157,8 +157,8 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/KianaJames.png", name: "Kiana James", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/KitWilson.png", name: "Kit Wilson", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/KofiKingston.png", name: "Kofi Kingston", gender: "Man", tag: "SD" , champion:""},
-        { src: "/Images/Roster/KurtAngle.png", name: "Kurt Angle", gender: "Man", tag: "UNDRAFTED" , champion:""},
-        { src: "/Images/Roster/LAKnight.png", name: "LA Knight", gender: "Man", tag: "R" , champion:"IC "},
+        { src: "/Images/Roster/KurtAngle.png", name: "Kurt Angle", gender: "Man", tag: "L" , champion:""},
+        { src: "/Images/Roster/LAKnight.png", name: "LA Knight", gender: "Man", tag: "R" , champion:""},
 
 
         { src: "/Images/Roster/LashLegend.png", name: "Lash Legend", gender: "Women", tag: "UNDRAFTED" , champion:""},
@@ -199,7 +199,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/OroMensah.png", name: "Oro Mensah", gender: "Man", tag: "UNDRAFTED" , champion:""},
         { src: "/Images/Roster/Otis.png", name: "Otis", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PatMcafee.png", name: "Pat Mcafee", gender: "Man", tag: "L" , champion:""},
-        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:""},
+        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:"IC"},
         { src: "/Images/Roster/PeteDunne.png", name: "Pete Dunne", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/PiperNiven.png", name: "Piper Niven", gender: "Women", tag: "R"},
         { src: "/Images/Roster/R-Truth.png", name: "R-Truth", gender: "Man", tag: "SD" , champion:""},
@@ -224,7 +224,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/ScottHall.png", name: "Scott Hall", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/ScottSteiner.png", name: "Scott Steiner", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/SethRollins.png", name: "Seth Rollins", gender: "Man", tag: "SD" , champion:"WH"},
-        { src: "/Images/Roster/ShawnMichaels.png", name: "Shawn Michaels", gender: "Man", tag: "UNDRAFTED" , champion:""},
+        { src: "/Images/Roster/ShawnMichaels.png", name: "Shawn Michaels", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/ShawnSpears.png", name: "Shawn Spears", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/ShaynaBaszler.png", name: "Shayna Baszler", gender: "Women", tag: "R" , champion:"WIC"},
         { src: "/Images/Roster/Sheamus.png", name: "Sheamus", gender: "Man", tag: "SD" , champion:""},
