@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const weeklyShows = [
   { name: "RAW", image: "/Images/RAW.png" },
   { name: "SD", image: "/Images/SD.png" },
+  { name: "Draft", image: "/Images/Draft2K26.png" },
 ];
 
 const ppvShows = [
@@ -17,7 +18,7 @@ const ppvShows = [
   ],
   [
     { name: "Wrestlemania", image: "/Images/PPV/Wrestlemania/Wrestlemania41.png" },
-    { name: "Backlash", image: "/Images/PPV/Backlash/Backlash2026.png" },
+    { name: "Backlash", image: "/Images/PPV/Backlash/Backlash2027.png" },
     { name: "OverTheLimit", image: "/Images/PPV/OverTheLimit/OTL2026.png" },
   ],
   [

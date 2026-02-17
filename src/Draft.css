@@ -1,0 +1,133 @@
+.DraftBackground {
+    background: var(--background);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    position: fixed;
+    inset: 0;
+    overflow-y: scroll;
+}
+
+.DraftText1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-family: var(--font-2);
+    text-transform: uppercase;
+}
+
+.DraftTableSubtext {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 0.3rem;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+}
+
+
+.DraftBanner {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 8rem;
+  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
+}
+
+.DraftContainer {
+    background: var(--contentBackground);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    width: 70%;
+    min-height: 100vh;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 8vh);
+    padding-bottom: 20px;
+    box-shadow: 0 0 10vh rgb(0, 0, 0);
+}
+
+.DraftContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.DraftTableWrapper {
+    width: 90%;
+    margin: 0 auto 4rem auto;
+    overflow-x: auto;
+}
+
+.DraftTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-transform: uppercase;
+    font-family: var(--font-1);
+    color: var(--text-color);
+}
+
+.DraftTable thead th {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.DraftTable tbody td {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.DraftPickNumber {
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.DraftRaw {
+    color: hsl(0, 100%, 50%);
+    font-weight: 600;
+}
+
+.DraftSmackdown {
+    color: #0084ff;
+    font-weight: 600;
+}
+
+/* Table background */
+.DraftTable {
+    background: rgba(15, 0, 0, 0.80); /* subtle dark panel */
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header background */
+.DraftTable thead {
+    background: var(--primary-color-dark);
+}
+
+/* Pick Number column — make smaller */
+.DraftTable th:first-child,
+.DraftTable td:first-child {
+    width: 10%;
+    min-width: 70px;
+}
+
+/* Raw / SmackDown columns take priority */
+.DraftTable th:nth-child(2),
+.DraftTable td:nth-child(2),
+.DraftTable th:nth-child(3),
+.DraftTable td:nth-child(3) {
+    width: 45%;
+}
+
+/* Slight row hover (nice draft-board feel) */
+.DraftTable tbody tr:hover {
+    background: rgba(61, 13, 0, 0.986);
+}

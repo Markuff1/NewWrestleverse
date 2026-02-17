@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [breakingNews] = useState("WWE 2K26 PRE ORDER STARTS NOW");
+  const [breakingNews] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
@@ -45,6 +45,7 @@ function Header() {
                 <div className="dropdown-content">
                   <Link to="/raw">RAW</Link>
                   <Link to="/SD">SMACKDOWN</Link>
+                  <Link to="/Draft">DRAFT</Link>
                   <Link to="/Wrestlemania">LATEST PPV</Link>
                 </div>
               </li>

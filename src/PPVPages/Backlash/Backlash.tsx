@@ -1,17 +1,7 @@
 import PPVShow, { Match, PPVEvent } from "../PPVShow";
 
-const matchCard2025: Match[] = [
-  { match: "Sheamus Def. Jey Uso", title: "United States Championship", type: "Normal Match" },
-  { match: "Piper Niven Def. Chelsea Green", title: "Women's Intercontinental Championship", type: "Normal Match" },
-  { match: "Dudley Boys Def. AOP", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
-  { match: "Sol Ruca Def. Jade Cargill", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "Andrade Def. Jacob Fatu and Je'von Evans", title: "Intercontinental Championship", type: "Triple Threat" },
-  { match: "Kairi Sane Def. Liv Morgan", title: "Women's World Championship", type: "Normal Match" },
-  { match: "#DIY Def. Street Profits", title: "RAW Tag Team Championships", type: "Tag Team Match" },
-  { match: "Kevin Owens Def. Seth Rollins", title: "World Heavyweight Championship", type: "Normal Match" },
-  { match: "Roxanne Perez Def. Charlotte Flair", title: "Women's Undisputed Championship", type: "Normal Match" },
-  { match: "Randy Orton Def. CM Punk", title: "Men's Undisputed Championship", type: "Normal Match" },
-];
+const matchCard2027: Match[] = [
+]
 
 const matchCard2026: Match[] = [
   { match: "LA Knight Def. Penta (c) and Carmelo Hayes and Solo Sikoa", title: "Intercontinental Championship", type: "Fatal 4-Way Match" },
@@ -27,8 +17,30 @@ const matchCard2026: Match[] = [
   { match: "AJ Styles Def CM Punk and Kevin Owens", title: "WWE World Heavyweight Championship", type: "Triple Threat Match" },
 ];
 
+const matchCard2025: Match[] = [
+  { match: "Sheamus Def. Jey Uso", title: "United States Championship", type: "Normal Match" },
+  { match: "Piper Niven Def. Chelsea Green", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Dudley Boys Def. AOP", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
+  { match: "Sol Ruca Def. Jade Cargill", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Andrade Def. Jacob Fatu and Je'von Evans", title: "Intercontinental Championship", type: "Triple Threat" },
+  { match: "Kairi Sane Def. Liv Morgan", title: "Women's World Championship", type: "Normal Match" },
+  { match: "#DIY Def. Street Profits", title: "RAW Tag Team Championships", type: "Tag Team Match" },
+  { match: "Kevin Owens Def. Seth Rollins", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Roxanne Perez Def. Charlotte Flair", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Randy Orton Def. CM Punk", title: "Men's Undisputed Championship", type: "Normal Match" },
+];
+
 // ---------- Event Data ----------
 const BacklashEvents: PPVEvent[] = [
+  {
+    year: 2027,
+    banner: "/Images/PPV/Backlash/Backlash2027Header.png",
+    location: "Ryoguko Arena, Tokyo, Japan",
+    date: "Saturday, May 8th, 2026",
+    matches: matchCard2027,
+    imageFolder: "Backlash/2027MC",
+  },
+
   {
     year: 2026,
     banner: "/Images/PPV/Backlash/BacklashHeaderV2.png",

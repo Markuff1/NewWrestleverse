@@ -110,6 +110,7 @@
 
 /* Other Groups */
 .ALLGeneral { background: var(--UndraftPbackground); }
+.AllAlumni {background: var(--AlumniPbackground);}
 .ALLLegend  { background: var(--LegendPbackground); }
 .MMITB      { background-image: url(/Images/Roster/Champions/MMITB.png); }
 .WMITB      { background-image: url(/Images/Roster/Champions/WMITB.png); }

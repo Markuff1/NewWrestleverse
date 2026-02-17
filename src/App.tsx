@@ -6,6 +6,7 @@ import Roster from "./Roster";
 import Shows from "./Shows";
 import SD from "./SD";
 import RAW from "./RAW";
+import Draft from "./Draft";
 import WWEUndisputed from "./ChampionshipPages/WWEUndisputedChamp";
 import WomenUndisputed from "./ChampionshipPages/WomenUndisputedChamp";
 import WorldHeavyweight from "./ChampionshipPages/WorldHeavyweightChamp";
@@ -56,6 +57,7 @@ function App() {
         {/* Weekly Shows */}
         <Route path="/RAW" element={<ProtectedRoute><RAW /></ProtectedRoute>} />
         <Route path="/SD" element={<ProtectedRoute><SD /></ProtectedRoute>} />
+        <Route path="/Draft" element={<ProtectedRoute><Draft /></ProtectedRoute>} />
 
         {/* Championship Pages */}
         <Route path="/WWEUndisputedChamp" element={<ProtectedRoute><WWEUndisputed /></ProtectedRoute>} />
