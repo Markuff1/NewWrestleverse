@@ -53,7 +53,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
         { src: "/Images/Roster/B-Fab.png", name: "B Fab", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/BaronCorbin.png", name: "Baron Corbin", gender: "Man", tag: "A" , champion:""},
-        { src: "/Images/Roster/Batista.png", name: "Batista", gender: "Man", tag: "L" , champion:""},
+        { src: "/Images/Roster/Batista.png", name: "Batista", gender: "Man", tag: "U" , champion:""},
         { src: "/Images/Roster/Bayley.png", name: "Bayley", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/BeckyLynch.png", name: "Becky Lynch", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/Berto.png", name: "Berto", gender: "Man", tag: "R" , champion:""},
@@ -66,7 +66,6 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/BraunStrowman.png", name: "Braun Strowman", gender: "Man", tag: "A" , champion:""},
         { src: "/Images/Roster/BrayWyatt.png", name: "Bray Wyatt", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BrockLesnar.png", name: "Brock Lesnar", gender: "Man", tag: "U" , champion:""},
-        { src: "/Images/Roster/BronBreakker.png", name: "Bron Breakker", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BronBreakker.png", name: "Bron Breakker", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BronsonReed.png", name: "Bronson Reed", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/BrooksJensen.png", name: "Brooks Jensen", gender: "Man", tag: "U" , champion:""},

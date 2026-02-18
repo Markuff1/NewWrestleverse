@@ -1,4 +1,6 @@
-/* -------------------- Global Layout -------------------- */
+/* =========================================================
+   GLOBAL LAYOUT
+========================================================= */
 
 .RosterBackground {
   background: var(--background);
@@ -6,29 +8,25 @@
   background-position: center;
   background-repeat: repeat;
   position: fixed;
-  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
+  inset: 0;
 }
 
 .RBanner {
   width: 100%;
   min-height: 8rem;
   margin-top: 8rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Minimalist patterned background */
   background-color: var(--primary-color);
   background-image:
     repeating-linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.05) 10px,
       transparent 10px,
       transparent 20px
     );
-
 }
 
 .RBanner__title {
@@ -37,9 +35,7 @@
   text-transform: uppercase;
   font-weight: 50;
   color: var(--text-color);
-
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
 }
 
 .RosterText1 {
@@ -53,16 +49,13 @@
 
 .RosterContainer {
   background: var(--contentBackground);
-  background-size: contain;
-  background-position: center;
-  background-repeat: repeat;
   width: 70%;
   min-height: 100vh;
   margin: 0 auto;
   overflow-y: auto;
   max-height: calc(100vh - 8vh);
   padding-bottom: 20px;
-  box-shadow: 0 0 10vh rgba(0, 0, 0, 1);
+  box-shadow: 0 0 10vh rgba(0,0,0,1);
 }
 
 .RosterContainer::-webkit-scrollbar {
@@ -71,19 +64,22 @@
 
 .centerRoster {
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  align-items: center;
   margin: 0 5vh;
 }
 
-/* -------------------- Profile Cards -------------------- */
+/* =========================================================
+   PROFILE CARD SYSTEM (UNIFIED)
+========================================================= */
+
 .profile-card {
   width: 10vw;
   margin-top: 2vh;
-  opacity: 1;
   border-radius: 0.5rem;
-  height: auto;
   background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -92,30 +88,167 @@
   cursor: pointer;
 }
 
-/* SmackDown Profiles */
-.ALLSD   { background-image: url(/Images/Roster/SD/SDBG.png); }
-.WH      { background-image: url(/Images/Roster/Champions/WHBG.png); }
-.IC      { background-image: url(/Images/Roster/Champions/ICBG.png); }
-.WUS     { background-image: url(/Images/Roster/Champions/WUSBG.png); }
-.WWH     { background-image: url(/Images/Roster/Champions/WWHBG.png); }
-.SDTT    { background-image: url(/Images/Roster/Champions/SDTTBG.png); }
+/* Wrestler image */
+/* FIX: removes bottom background overhang */
+.wrestler-img {
+  width: 100%;
+  height: auto;
+  display: block; /* <-- critical fix */
+  position: relative;
+  z-index: 2;
+}
 
-/* Raw Profiles */
-.ALLRAW  { background-image: url(/Images/Roster/RAW/RAWBG.png); }
-.UC      { background-image: url(/Images/Roster/Champions/UCBG.png); }
-.US      { background-image: url(/Images/Roster/Champions/USBG.png); }
-.WIC     { background-image: url(/Images/Roster/Champions/WICBG.png); }
-.WUC     { background-image: url(/Images/Roster/Champions/WUCBG.png); }
-.RAWTT   { background-image: url(/Images/Roster/Champions/RAWTTBG.png); }
+/* Champion gold aura */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
 
-/* Other Groups */
+/* Title overlay (front layer) */
+.profile-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin-top: 5vh;
+  background-repeat: no-repeat;
+  background-position: center 65%;
+  background-size: 85%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* =========================================================
+   BRAND BACKGROUNDS (BASE LAYER)
+========================================================= */
+
+.ALLRAW { background: var(--RAWPbackground); }
+.ALLSD  { background: var(--SDPbackground); }
+
 .ALLGeneral { background: var(--UndraftPbackground); }
-.AllAlumni {background: var(--AlumniPbackground);}
+.AllAlumni  { background: var(--AlumniPbackground); }
 .ALLLegend  { background: var(--LegendPbackground); }
-.MMITB      { background-image: url(/Images/Roster/Champions/MMITB.png); }
-.WMITB      { background-image: url(/Images/Roster/Champions/WMITB.png); }
 
-/* -------------------- Tab Navigation -------------------- */
+/* =========================================================
+   CHAMPION LOGIC (INHERIT BRAND BACKGROUND)
+========================================================= */
+
+/* Champions keep whatever background the card already has */
+.UC,
+.IC,
+.WIC,
+.WUC,
+.RAWTT
+{
+  background-size: 100% 100%;
+  background: var(--RAWPChampbackground);
+}
+
+.WH,
+.US,
+.WUS,
+.WWH,
+.SDTT {
+  background-size: 100% 100%;
+  background: var(--SDPChampbackground);
+  
+}
+
+/* Champion aura only */
+.WH::before,
+.UC::before,
+.IC::before,
+.US::before,
+.WIC::before,
+.WUS::before,
+.WWH::before,
+.WUC::before,
+.RAWTT::before,
+.SDTT::before {
+  opacity: 1;
+}
+
+/* World titles */
+.WH::after {
+  background-image: url(/Images/Championships/WorldHeavyweight.png);
+}
+
+.UC::after {
+  background-image: url(/Images/Championships/UndisputedWWE.png);
+}
+
+/* Mid-card */
+.IC::after {
+  background-image: url(/Images/Championships/Intercontinental.png);
+}
+
+.US::after {
+  background-image: url(/Images/Championships/UnitedStates.png);
+}
+
+/* Tag titles */
+.RAWTT::after {
+  background-image: url(/Images/Championships/RawTag.png);
+}
+
+.SDTT::after {
+  background-image: url(/Images/Championships/SDTag.png);
+}
+
+/* Women */
+.WIC::after {
+  background-image: url(/Images/Championships/WomenIC.png);
+}
+
+.WUS::after {
+  background-image: url(/Images/Championships/WomenUS.png);
+}
+
+.WWH::after {
+  background-image: url(/Images/Championships/WomenWorld.png);
+}
+
+.WUC::after {
+  background-image: url(/Images/Championships/WomenUndisputed.png);
+}
+
+/* =========================================================
+   MITB SPECIAL CASE (SMALLER OVERLAY)
+========================================================= */
+
+.MMITB {
+  background: var(--RAWPbackground);
+}
+
+.MMITB::before {
+  opacity: 1;
+}
+
+.MMITB::after {
+  background-image: url(/Images/Championships/MenMITB.png);
+  background-size: 50%; /* smaller than titles */
+}
+
+.WMITB {
+  background: var(--SDPbackground);
+}
+
+.WMITB::before {
+  opacity: 1;
+}
+
+.WMITB::after {
+  background-image: url(/Images/Championships/WomenMITB.png);
+  background-size: 50%; /* smaller than titles */
+}
+
+/* =========================================================
+   TAB NAVIGATION
+========================================================= */
+
 .Generaltab {
   display: flex;
   justify-content: center;
@@ -147,7 +280,7 @@
 .tablinks.active {
   background: #ffcc00;
   color: #000;
-  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+  box-shadow: 0 4px 10px rgba(255,204,0,0.5);
 }
 
 .tabcontent {
@@ -160,7 +293,10 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* -------------------- Search Bar -------------------- */
+/* =========================================================
+   SEARCH BAR
+========================================================= */
+
 .searchBar {
   width: 50%;
   padding: 10px;
@@ -178,7 +314,10 @@
   box-shadow: 0 0 10px var(--primary-color);
 }
 
-/* -------------------- Championship Bar -------------------- */
+/* =========================================================
+   CHAMPIONSHIP BAR
+========================================================= */
+
 .championship-bar-container {
   display: flex;
   align-items: center;
@@ -222,8 +361,8 @@
 }
 
 .scroll-button:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255,255,255,0.5);
 }
 
-.left { margin-right: 1vh; }
+.left  { margin-right: 1vh; }
 .right { margin-left: 1vh; }

@@ -187,14 +187,18 @@ const RosterTabs: React.FC = () => {
                 {groupedRoster.map((group, groupIndex) => (
                   <div key={groupIndex} className="centerRoster">
                     {group.map((item, index) => (
-                      <img
+                      <div
                         key={index}
                         className={`profile-card ${item.className}`}
-                        src={item.src}
-                        alt={item.name}
                         title={item.name}
-                        loading="lazy"
-                      />
+                      >
+                        <img
+                          src={item.src}
+                          alt={item.name}
+                          className="wrestler-img"
+                          loading="lazy"
+                        />
+                      </div>
                     ))}
                   </div>
                 ))}

@@ -131,13 +131,18 @@ const SDTabs: React.FC = () => {
                 .map((group, groupIndex) => (
                   <div key={groupIndex} className="centerRoster">
                     {group.map((item, index) => (
-                      <img
+                      <div
                         key={index}
-                        className={`SD-image ${item.Champion || "ALLSD"}`}
-                        src={item.src}
-                        alt={item.name}
+                        className={`profile-card ${item.Champion || "ALLSD"}`}
                         title={item.name}
-                      />
+                      >
+                        <img
+                          src={item.src}
+                          alt={item.name}
+                          className="wrestler-img"
+                          loading="lazy"
+                        />
+                      </div>
                     ))}
                   </div>
                 ))}

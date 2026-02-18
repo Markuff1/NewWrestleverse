@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./WeeklyShow.css";
+import "./Roster.css";
 import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -138,14 +139,20 @@ const RAWTabs: React.FC = () => {
                 .map((group, groupIndex) => (
                   <div key={groupIndex} className="centerRoster">
                     {group.map((item, index) => (
-                      <img
+                      <div
                         key={index}
-                        className={`RAW-image ${item.Champion || "ALLRAW"}`}
-                        src={item.src}
-                        alt={item.name}
+                        className={`profile-card ${item.Champion || "ALLRAW"}`}
                         title={item.name}
-                      />
+                      >
+                        <img
+                          src={item.src}
+                          alt={item.name}
+                          className="wrestler-img"
+                          loading="lazy"
+                        />
+                      </div>
                     ))}
+
                   </div>
                 ))}
             </div>
