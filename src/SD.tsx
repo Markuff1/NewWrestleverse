@@ -16,16 +16,6 @@ const SDData: Record<
   Men: [],
   Women: [],
   "Tag Teams": [
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/AmericanMade.png", name: "American Made" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/ChaseU.png", name: "Chase U" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/DIY.png", name: "DIY" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/Gallus.png", name: "Gallus" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/MCMG.png", name: "MCMG" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/NCR.png", name: "New Catch Republic" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/NewDay.png", name: "New Day" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/OC.png", name: "OC" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/PrettyDeadly.png", name: "Pretty Deadly" },
-    { className: "ALLSD", src: "/Images/Roster/TagTeam/Theory&Waller.png", name: "Theory & Waller" }
   ],
   Champions: [],
   GM: [

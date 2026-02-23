@@ -88,10 +88,12 @@
     cursor: pointer;
     transition: 0.3s;
     -webkit-text-stroke: 0.5px black;
+    transition: transform 0.5s;
 }
 
 .InputContainer button:hover {
     background-color: var(--hover-bg-colorV2);
+    transform: scale(1.05);
 }
 
 /* 🌟 Table */
@@ -168,6 +170,7 @@
 
 .TitleHolderTable button:hover {
     background-color: var(--hover-bg-colorV2);
+    transform: scale(1.05);
 }
 
 /* Misc Titles */
@@ -203,12 +206,11 @@
     text-align: center;
     border-radius: 25px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.5s;
 }
 
 .CurrentChampionCard:hover {
-    transform: scale(1.01);
-    background: linear-gradient(90deg,#5a3500,#e3aa00);
+    transform: scale(1.05);
 }
 
 .ccTitle {
@@ -253,12 +255,11 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     font-family: var(--font-1);
     color: #fff;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.5s;
 }
 
 .StatsGrid:hover {
-    transform: scale(1.01);
-    background: linear-gradient(145deg, var(--Secondary-color), var(--primary-color));
+    transform: scale(1.05);
 }
 
 .StatBox {

@@ -155,8 +155,8 @@
 }
 
 .logoutButton:hover {
-    background-color: var(--primary-colorV3);
-    color: #000;
+    background-color: var(--Secondary-color);
+    color: #ffffff;
     transform: translateY(-1px);
 }
 

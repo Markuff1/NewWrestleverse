@@ -76,16 +76,17 @@
 .profile-card {
   width: 10vw;
   margin-top: 2vh;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background-size: 100% 100%;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .profile-card:hover {
   transform: scale(1.1);
   cursor: pointer;
+  box-shadow: 0px 0px 50px var(--primary-color);
 }
 
 /* Wrestler image */
@@ -113,10 +114,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  margin-top: 5vh;
+  margin-top: 2vw;
   background-repeat: no-repeat;
   background-position: center 65%;
-  background-size: 85%;
+  background-size: 80%;
   z-index: 3;
   pointer-events: none;
 }
@@ -140,7 +141,7 @@
 .UC,
 .IC,
 .WIC,
-.WUC,
+.WWH,
 .RAWTT
 {
   background-size: 100% 100%;
@@ -150,7 +151,7 @@
 .WH,
 .US,
 .WUS,
-.WWH,
+.WUC,
 .SDTT {
   background-size: 100% 100%;
   background: var(--SDPChampbackground);
@@ -173,46 +174,46 @@
 
 /* World titles */
 .WH::after {
-  background-image: url(/Images/Championships/WorldHeavyweight.png);
+  background-image: url(/Images/ChampionshipGraphics/WorldHeavyweight.png);
 }
 
 .UC::after {
-  background-image: url(/Images/Championships/UndisputedWWE.png);
+  background-image: url(/Images/ChampionshipGraphics/Undisputed.png);
 }
 
 /* Mid-card */
 .IC::after {
-  background-image: url(/Images/Championships/Intercontinental.png);
+  background-image: url(/Images/ChampionshipGraphics/IC.png);
 }
 
 .US::after {
-  background-image: url(/Images/Championships/UnitedStates.png);
+  background-image: url(/Images/ChampionshipGraphics/US.png);
 }
 
 /* Tag titles */
 .RAWTT::after {
-  background-image: url(/Images/Championships/RawTag.png);
+  background-image: url(/Images/ChampionshipGraphics/RAWTT.png);
 }
 
 .SDTT::after {
-  background-image: url(/Images/Championships/SDTag.png);
+  background-image: url(/Images/ChampionshipGraphics/SDTT.png);
 }
 
 /* Women */
 .WIC::after {
-  background-image: url(/Images/Championships/WomenIC.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenIC.png);
 }
 
 .WUS::after {
-  background-image: url(/Images/Championships/WomenUS.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenUS.png);
 }
 
 .WWH::after {
-  background-image: url(/Images/Championships/WomenWorld.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenWorld.png);
 }
 
 .WUC::after {
-  background-image: url(/Images/Championships/WomenUndisputed.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenUndisputed.png);
 }
 
 /* =========================================================
@@ -260,10 +261,10 @@
 .tablinks {
   background: var(--Secondary-color);
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   font-weight: bold;
-  padding: 0.8vh 1vh;
+  padding: 0.5rem 0.8rem;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -273,13 +274,13 @@
 
 .tablinks:hover {
   background: var(--hover-bg-colorV2);
-  transform: scale(1.05);
-  box-shadow: 0 3px 5px var(--primary-colorV3);
+  transform: scale(1.06);
+  box-shadow: 0px 0px 10px var(--primary-colorV2);
 }
 
 .tablinks.active {
-  background: #ffcc00;
-  color: #000;
+  background: var(--hover-bg-colorV2);
+  color: #ffffff;
   box-shadow: 0 4px 10px rgba(255,204,0,0.5);
 }
 
@@ -341,7 +342,7 @@
 }
 
 .championship-image {
-  height: 6vw;
+  height: 9rem;
   margin: 0 2vh;
   transition: transform 0.3s ease-in-out;
 }
@@ -349,6 +350,7 @@
 .championship-image:hover {
   transform: scale(1.1);
   cursor: pointer;
+  
 }
 
 .scroll-button {

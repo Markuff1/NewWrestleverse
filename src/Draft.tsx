@@ -27,8 +27,8 @@ const championPicks = [
   },
   {
     title: "Tag Team Champions",
-    raw: "Dudley Boyz",
-    smackdown: "New Day"
+    raw: "The Street Profits",
+    smackdown: "The New Day"
   }
 ];
 
