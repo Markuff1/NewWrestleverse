@@ -1,13 +1,3 @@
-.DraftBackground {
-    background: var(--background);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    inset: 0;
-    overflow-y: scroll;
-}
-
 .DraftText1 {
     color: rgb(255, 255, 255);
     text-align: center;
@@ -27,34 +17,15 @@
     letter-spacing: 0.5px;
 }
 
-
 .DraftBanner {
   display: block;
-  width: 100%;
+  width: 110rem;
   height: auto;
   max-width: 100%;
   margin-top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
-}
-
-.DraftContainer {
-    background: var(--contentBackground);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    width: 70%;
-    min-height: 100vh;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto;
-    max-height: calc(100vh - 8vh);
-    padding-bottom: 20px;
-    box-shadow: 0 0 10vh rgb(0, 0, 0);
-}
-
-.DraftContainer::-webkit-scrollbar {
-    display: none;
 }
 
 .DraftTableWrapper {

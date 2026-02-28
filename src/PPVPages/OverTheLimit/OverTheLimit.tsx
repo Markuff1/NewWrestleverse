@@ -1,4 +1,4 @@
-import PPVShow, { Match, PPVEvent } from "../PPVShow";
+import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 const matchCard2026: Match[] = [
   { match: "Ilja Dragunov Def. Aleister Black(c)", title: "Intercontinental Championship", type: "Normal Match" },

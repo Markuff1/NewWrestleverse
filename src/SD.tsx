@@ -72,8 +72,8 @@ const SDTabs: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="SDBackground">
-        <div className="SDContainer">
+      <div className="PageBackground">
+        <div className="PageContainer">
           <img className="SDBanner" src="/Images/SDHeader.png" alt="SD Header" />
 
           <div className="SDInfo">

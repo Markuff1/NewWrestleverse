@@ -1,4 +1,4 @@
-import PPVShow, { Match, PPVEvent } from "../PPVShow";
+import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 const matchCard2027: Match[] = [
 ]
@@ -36,7 +36,7 @@ const BacklashEvents: PPVEvent[] = [
     year: 2027,
     banner: "/Images/PPV/Backlash/Backlash2027Header.png",
     location: "Ryoguko Arena, Tokyo, Japan",
-    date: "Saturday, May 8th, 2026",
+    date: "Saturday, May 8th, 2027",
     matches: matchCard2027,
     imageFolder: "Backlash/2027MC",
   },

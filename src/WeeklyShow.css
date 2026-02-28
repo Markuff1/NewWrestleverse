@@ -1,48 +1,7 @@
-.RAWBackground {
-    background: var(--RAWbackground);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    inset: 0;
-    overflow-y: scroll;
-}
-
-.SDBackground {
-    background: var(--SDbackground);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    position: fixed;
-    inset: 0;
-    overflow-y: scroll;
-}
-
-
 .RAWBanner, .SDBanner {
     height: auto;
     width: 100%;
     margin-top: 8vh;
-}
-
-.RAWContainer, .SDContainer {
-    background: var(--contentBackground);
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    width: 70%;
-    min-height: 100vh; /* Ensures the container takes at least 100% of the viewport height */
-    height: auto; /* Allows the container to expand with content */
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto; /* Enables scroll for the content */
-    max-height: calc(100vh - 8vh); /* Keeps it within the available height minus the header space */
-    padding-bottom: 20px; /* Adds some space at the bottom for better scroll behavior */
-    box-shadow: 0 0 10vh rgb(0, 0, 0);
-}
-
-.RAWContainer::-webkit-scrollbar, .SDContainer::-webkit-scrollbar {
-    display: none; /* Hides scrollbar for a cleaner look */
 }
 
 .RAWText1, .SDText1{

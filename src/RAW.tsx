@@ -36,7 +36,7 @@ const RAWData: Record<string, RAWItem[]> = {
     { className: "ALLRAW", src: "/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" },
   ],
   Champions: [],
-  GM: [{ className: "ALLRAW", src: "/Images/Roster/WadeBarrett.png", name: "Wade Barrett", gender: "Man" }],
+  GM: [{ className: "ALLRAW", src: "/Images/Roster/JBL.png", name: "Wade Barrett", gender: "Man" }],
 };
 
 // ✅ Populate RAWData.ALL from rosterData
@@ -90,8 +90,8 @@ const RAWTabs: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="RAWBackground">
-        <div className="RAWContainer">
+      <div className="PageBackground">
+        <div className="PageContainer">
           <img className="RAWBanner" src="/Images/RAWHeader.png" alt="RAW Header" />
 
           <div className="RAWInfo">

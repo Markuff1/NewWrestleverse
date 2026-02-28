@@ -1,4 +1,4 @@
-import PPVShow, { Match, PPVEvent } from "../PPVShow";
+import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
 

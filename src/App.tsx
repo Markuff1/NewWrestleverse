@@ -39,6 +39,8 @@ import MMITB from "./ChampionshipPages/MMITB";
 import WMITB from "./ChampionshipPages/WMITB";
 import HIAC from "./PPVPages/HIAC/HIAC";
 import Wrestlemania from "./PPVPages/Wrestlemania/Wrestlemania";
+import CIP from "./PPVPages/ClashInParis/CIP";
+import Armageddon from "./PPVPages/Armageddon/Armageddon";
 
 
 function App() {
@@ -90,6 +92,8 @@ function App() {
         <Route path="/HIAC" element={<ProtectedRoute><HIAC /></ProtectedRoute>} />
         <Route path="/EC" element={<ProtectedRoute><EC /></ProtectedRoute>} />
         <Route path="/Wrestlemania" element={<ProtectedRoute><Wrestlemania /></ProtectedRoute>} />
+        <Route path="/ClashInParis" element={<ProtectedRoute><CIP /></ProtectedRoute>} />
+        <Route path="/Armageddon" element={<ProtectedRoute><Armageddon /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

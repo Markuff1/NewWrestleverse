@@ -18,6 +18,7 @@ const tabs = [
   "Current",
   "Raw",
   "Smackdown",
+  "AAA",
   "Champions",
   "Undrafted",
   "GM",
@@ -50,6 +51,10 @@ const RosterTabs: React.FC = () => {
       case "Smackdown":
         filteredData = rosterData.ALL.filter(item => item.tag === "SD");
         break;
+
+      case "AAA":
+        filteredData = rosterData.ALL.filter(item => item.tag === "AAA");
+        break; 
 
       case "Legend":
         filteredData = rosterData.ALL.filter(item => item.tag === "L");
@@ -138,12 +143,12 @@ const RosterTabs: React.FC = () => {
     <>
       <Header />
 
-      <div className="RosterBackground">
-        <div className="RosterContainer">
+      <div className="PageBackground">
+        <div className="PageContainer">
 
           {/* Banner */}
-          <div className="RBanner">
-            <h1 className="RBanner__title">ROSTER</h1>
+          <div className="PageBanner">
+            <h1 className="PageBanner__title">ROSTER</h1>
           </div>
 
           {/* Championship display bar */}

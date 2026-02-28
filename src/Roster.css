@@ -2,42 +2,6 @@
    GLOBAL LAYOUT
 ========================================================= */
 
-.RosterBackground {
-  background: var(--background);
-  background-size: contain;
-  background-position: center;
-  background-repeat: repeat;
-  position: fixed;
-  inset: 0;
-}
-
-.RBanner {
-  width: 100%;
-  min-height: 8rem;
-  margin-top: 8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-color);
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.05) 10px,
-      transparent 10px,
-      transparent 20px
-    );
-}
-
-.RBanner__title {
-  font-family: var(--font-2);
-  font-size: 6rem;
-  text-transform: uppercase;
-  font-weight: 50;
-  color: var(--text-color);
-  margin: 2rem 0 1rem;
-}
-
 .RosterText1 {
   color: #fff;
   text-align: center;
@@ -45,21 +9,6 @@
   text-transform: uppercase;
   font-size: 2.5vw;
   font-family: var(--font-2);
-}
-
-.RosterContainer {
-  background: var(--contentBackground);
-  width: 70%;
-  min-height: 100vh;
-  margin: 0 auto;
-  overflow-y: auto;
-  max-height: calc(100vh - 8vh);
-  padding-bottom: 20px;
-  box-shadow: 0 0 10vh rgba(0,0,0,1);
-}
-
-.RosterContainer::-webkit-scrollbar {
-  display: none;
 }
 
 .centerRoster {
@@ -128,6 +77,7 @@
 
 .ALLRAW { background: var(--RAWPbackground); }
 .ALLSD  { background: var(--SDPbackground); }
+.ALLAAA  { background: var(--AAAPbackground); }
 
 .ALLGeneral { background: var(--UndraftPbackground); }
 .AllAlumni  { background: var(--AlumniPbackground); }
@@ -342,7 +292,7 @@
 }
 
 .championship-image {
-  height: 9rem;
+  height: 6vw;
   margin: 0 2vh;
   transition: transform 0.3s ease-in-out;
 }

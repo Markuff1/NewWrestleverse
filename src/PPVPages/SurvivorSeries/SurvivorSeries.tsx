@@ -20,6 +20,9 @@ type PPVEvent = {
 
 // ---------- Match Cards ----------
 
+const matchCard2027: Match[] = [
+]
+
 const matchCard2026: Match[] = [
   { match: "Women's 4 VS 4 Elimination Tag Match", Score: "1 : 0", type: "4 V 4 Elimination Tag Team Match" },
   { match: "Penta Vs Sheamus", Score: "1 : 1", type: "Normal Match" },
@@ -45,9 +48,18 @@ const matchCard2025: Match[] = [
 
 // ---------- Event Data ----------
 const SurvivorSeriesEvents: PPVEvent[] = [
+ {
+    year: 2027,
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2027.png",
+    location: "Petco Park, San Diego, CA",
+    date: "Saturday, November 13th 2027, 7e/5p",
+    matches: matchCard2027,
+    imageFolder: "SurvivorSeries/2027MC",
+  },
+
   {
     year: 2026,
-    banner: "/Images/PPV/SurvivorSeries/SurvivorSeriesHeader2026.png",
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2026.png",
     location: "Enterprise Center, St Louis, Mi",
     date: "Saturday, November 21st 2026, 7e/5p",
     matches: matchCard2026,
@@ -56,7 +68,7 @@ const SurvivorSeriesEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/SurvivorSeries/SurvivorSeriesHeader2025.png",
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2025.png",
     location: "TD Garden, Boston, Massachusetts",
     date: "Saturday, November 22nd 2025, 7e/5p",
     matches: matchCard2025,
@@ -135,8 +147,8 @@ function SurvivorSeries() {
   return (
     <>
       <Header />
-      <div className="PPVBackground">
-        <div className="PPVContainer">
+      <div className="PageBackground">
+        <div className="PageContainer">
           {SurvivorSeriesEvents.map((event) => (
             <PPVSection key={event.year} {...event} />
           ))}

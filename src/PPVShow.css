@@ -3,74 +3,51 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background: var(--background);
   color: var(--text-color);
   font-family: var(--font-1);
 }
 
-/* Header */
+/* ---------- Header ---------- */
 header {
-  position: relative; /* change to fixed if sticky header desired */
+  position: relative;
   z-index: 1000;
-}
-
-/* ---------- PPV Background ---------- */
-.PPVBackground {
-  background: var(--background);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
 }
 
 /* ---------- PPV Banner ---------- */
 .PPVBanner {
   display: block;
-  width: 100%;
+  width: min(95%, 115rem);
   height: auto;
-  max-width: 100%;
-  margin-top: 5rem;
+  margin: clamp(4rem, 8vh, 8rem) auto 0;
   box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
-}
-
-/* ---------- Container ---------- */
-.PPVContainer {
-  background: var(--contentBackground);
-  width: 70%;
-  margin: 10px auto 20px;
-  padding: 40px 20px;
-  box-shadow: 0 0 15vh rgba(0, 0, 0, 1);
-}
-
-.PPVContainer:first-of-type {
-  margin-top: 10px;
-}
-
-.PPVContainer::-webkit-scrollbar {
-  display: none;
 }
 
 /* ---------- Event Info ---------- */
 .PPVInfo {
   display: flex;
   justify-content: space-between;
-  padding: 0 4vh;
+  align-items: center;
+  padding: 0 clamp(1rem, 4vw, 4vh);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.PPVLocation, .PPVDate {
-  font-size: 2.25vh;
-  margin-top: 2vh;
-  font-weight: 50;
+.PPVLocation,
+.PPVDate {
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  margin-top: 1.5rem;
+  font-weight: 400;
   font-family: var(--font-2);
-  -webkit-text-stroke: 0.01vh rgb(255, 255, 255);
+  -webkit-text-stroke: 0.01vh #fff;
 }
 
 /* ---------- Titles ---------- */
 .MCTitle {
   text-align: center;
-  margin: 2vh 0 0.5vh;
-  font-size: 5vh;
+  margin: 1vh 0 0.5vh;
+  font-size: clamp(1.8rem, 3vw, 3rem);
   font-family: var(--font-3);
   text-decoration: underline;
   -webkit-text-stroke: 0.05vh black;
@@ -79,18 +56,19 @@ header {
 
 /* ---------- Match Card Table ---------- */
 .MCList {
-  width: 95%;
+  width: min(90%, 110rem);   /* KEY FIX */
   margin: 1vh auto;
   border-collapse: collapse;
   text-align: center;
   font-family: var(--font-1);
-  font-size: 2vh;
+  font-size: clamp(0.7rem, 0.9vw, 1rem); /* scales DOWN cleanly */
 }
 
-.MCList th, .MCList td {
-  border: 0.2vh solid var(--border-color);
-  padding: 0.5vh;
-  height: 2.5vh;
+.MCList th,
+.MCList td {
+  border: 0.15vh solid var(--border-color);
+  padding: clamp(0.3rem, 0.6vw, 0.6rem); /* shrinks with screen */
+  height: auto;
 }
 
 .MCList th {
@@ -122,49 +100,47 @@ header {
   margin-bottom: 5vh;
 }
 
+/* ---------- Match Text ---------- */
 .MatchTitle {
-  font-size: 2.25vw;
-  letter-spacing: 0.1vh;
-  font-weight: 50;
-  margin-top: 0.5vw;
-  color: var(--text-color);
+  font-size: clamp(1.4rem, 2.25vw, 2.25rem);
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
   font-family: var(--font-2);
 }
 
 .MatchChampionship {
-  font-size: 1.25vw;
-  letter-spacing: 0.1vh;
-  font-weight: 100;
-  margin-top: -1.7vw;
-  color: var(--text-color);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  letter-spacing: 0.05rem;
+  font-weight: 300;
+  margin-top: -0.8rem;
   font-family: var(--font-3);
 }
 
 .MatchType {
   display: flex;
-  font-size: 1.1vw;
-  letter-spacing: 0.1vh;
-  font-weight: 100;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: -1.7vw; /* keep this here */
-  color: var(--text-color);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  letter-spacing: 0.05rem;
+  font-weight: 300;
+  margin-top: -0.8rem;
   font-family: var(--font-3);
 }
 
-
+/* ---------- Match Image ---------- */
 .MatchImage {
-  width: 50vw;
+  width: min(95%, 75rem);
   height: auto;
-  margin-bottom: 5vw;
+  margin-bottom: 2rem;
   box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
 }
 
+/* ---------- Divider ---------- */
 .MatchDivider {
   border: 0;
   height: 0.25vh;
   background: var(--text-color);
-  margin-top: 0.2vw;
-  margin-bottom: -1vw;
+  margin: 0.5vw 0;
 }

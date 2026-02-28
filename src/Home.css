@@ -7,11 +7,9 @@
 
   --SDbackground: linear-gradient(to bottom, rgb(19, 39, 68), rgb(0, 46, 139), rgb(23, 33, 57));
   --SDPbackground: linear-gradient(to bottom, rgb(0, 80, 199), rgb(0, 46, 139), rgb(0, 80, 199));
-  --SDPChampbackground: linear-gradient(
-  to bottom,
-  rgb(0, 80, 199) 0%,
-  rgb(187, 137, 0) 80%
-);
+  --SDPChampbackground: linear-gradient(to bottom, rgb(0, 80, 199) 0%,rgb(187, 137, 0) 80%);
+
+  --AAAPbackground: linear-gradient(to bottom, rgb(12, 142, 0), rgb(0, 46, 1), rgb(12, 142, 0));
 
   --contentBackground: linear-gradient(to right, rgb(23, 23, 23), rgb(46, 34, 28), rgb(58, 58, 58));
   --LegendPbackground: radial-gradient(circle, rgb(71, 52, 0), rgb(100, 73, 0), rgb(246, 180, 0));
@@ -118,3 +116,72 @@
   50% { box-shadow: 0 0.5vh 2vh var(--primary-colorV2) }
   100% { box-shadow: 0 1vh 5vh rgba(0, 0, 0, 0.7); }
 }
+
+
+
+/* General CSS For all Pages */
+
+.PageBackground {
+    background: var(--background);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    position: fixed;
+    inset: 0;
+    overflow-y: scroll;
+}
+
+.PageBackground::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for a cleaner look */
+}
+
+
+.PageContainer {
+  background: var(--contentBackground);
+  width: 70%;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 8vh);
+  padding-bottom: 20px;
+  box-shadow: 0 0 10vh rgba(0,0,0,1);
+}
+
+.PageContainer::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for a cleaner look */
+}
+
+
+.PageBanner {
+  width: 100%;
+  min-height: 8rem;
+  margin-top: 8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Minimalist patterned background */
+  background-color: var(--primary-color);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+
+}
+
+.PageBanner__title {
+  font-family: var(--font-2);
+  font-size: 6rem;
+  text-transform: uppercase;
+  font-weight: 50;
+  color: var(--text-color);
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
