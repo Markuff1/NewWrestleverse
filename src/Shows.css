@@ -31,7 +31,7 @@
 .retiredPPVShows:hover {
   transform: scale(1.05);
   box-shadow: 0 0.5vh 2vh var(--primary-colorV2);
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
 }
 
 /* =========================
@@ -40,17 +40,16 @@
 .centerPPV {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1vw;
   place-items: center;
-  width: 100%;
-  margin: 0 auto;
+  width: 90%;
+  margin: 0.75vw auto;
 }
 
 /* =========================
    PPV Cards
 ========================= */
 .PPVShows {
-  width: 90%;
+  width: min(90%, 60rem);
   max-width: 30rem;
   aspect-ratio: 16 / 9;
   border: 0.3rem solid #000;

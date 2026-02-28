@@ -19,7 +19,7 @@ const ppvShows = [
   [
     { name: "Wrestlemania", image: "/Images/PPV/Wrestlemania/Wrestlemania41.png" },
     { name: "Backlash", image: "/Images/PPV/Backlash/Backlash2027.png" },
-    { name: "ClashInParis", image: "/Images/PPV/ClashInParis/CIP1.png" },
+    { name: "ClashInParis", image: "/Images/PPV/ClashInParis/CIP2027.png" },
   ],
   [
     { name: "MITB", image: "/Images/PPV/MITB/MITB2026.png" },
