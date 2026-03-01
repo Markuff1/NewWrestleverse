@@ -36,7 +36,7 @@ header {
 
 .PPVLocation,
 .PPVDate {
-  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  font-size: 1.25rem;
   margin-top: 1.5rem;
   font-weight: 400;
   font-family: var(--font-2);

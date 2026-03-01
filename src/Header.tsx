@@ -2,6 +2,7 @@ import "./Header.css";
 import "./Home.css";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { currentPPV } from "./currentPPV";
 
 function Header() {
   const [breakingNews] = useState("");
@@ -46,7 +47,7 @@ function Header() {
                   <Link to="/raw">RAW</Link>
                   <Link to="/SD">SMACKDOWN</Link>
                   <Link to="/Draft">DRAFT</Link>
-                  <Link to="/Wrestlemania">LATEST PPV</Link>
+                  <Link to={currentPPV.link}>LATEST PPV</Link>
                 </div>
               </li>
               <li><Link to="/Roster">ROSTER</Link></li>

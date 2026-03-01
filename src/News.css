@@ -1,0 +1,41 @@
+.NewsArticle {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.NewsTitle{
+  font-family: var(--font-1);
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.NewsDate {
+  opacity: 0.6;
+  font-size: 1.2rem;
+  font-family: var(--font-1);
+  margin-bottom: 0.5rem;
+  margin-top: -1.25rem;
+}
+
+.NewsDate::before,
+.NewsDate::after {
+  content: "---";
+  margin: 0 0.75rem;
+  opacity: 0.7;
+}
+
+.NewsImage {
+  width: 80%;
+  max-width: 50rem;
+  border-radius: 0.5rem;
+  margin: 20px 0;
+}
+
+.NewsDescription {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}

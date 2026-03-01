@@ -41,6 +41,7 @@ import HIAC from "./PPVPages/HIAC/HIAC";
 import Wrestlemania from "./PPVPages/Wrestlemania/Wrestlemania";
 import CIP from "./PPVPages/ClashInParis/CIP";
 import Armageddon from "./PPVPages/Armageddon/Armageddon";
+import News from "./News";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Route path="/Home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/Roster" element={<ProtectedRoute><Roster /></ProtectedRoute>} />
         <Route path="/Shows" element={<ProtectedRoute><Shows /></ProtectedRoute>} />
+        <Route path="/News" element={<ProtectedRoute><News /></ProtectedRoute>} />
 
         {/* Weekly Shows */}
         <Route path="/RAW" element={<ProtectedRoute><RAW /></ProtectedRoute>} />

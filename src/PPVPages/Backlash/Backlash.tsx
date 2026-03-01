@@ -1,6 +1,9 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 const matchCard2027: Match[] = [
+  { match: "John Cena Vs The Fiend", title: "", type: "Inferno Match" },
+  { match: "Rey Mysterio Vs Seth Rollins", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Shawn Michaels Vs Randy Orton", title: "WWE Undisputed Championship", type: "Normal Match" }
 ]
 
 const matchCard2026: Match[] = [

@@ -22,7 +22,7 @@ const ppvShows = [
     { name: "ClashInParis", image: "/Images/PPV/ClashInParis/CIP2027.png" },
   ],
   [
-    { name: "MITB", image: "/Images/PPV/MITB/MITB2026.png" },
+    { name: "MITB", image: "/Images/PPV/MITB/MITB2027.png" },
     { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SS2027.png" },
     { name: "NOC", image: "/Images/PPV/NOC/NOC2026.png" },
   ],
@@ -62,7 +62,7 @@ function Shows() {
             </Link>
           ))}
           
-          <div className="ShowDivider" />
+          <div className="PageDivider" />
 
           <div className="ShowsText1">Current PPVs</div>
           {ppvShows.map((row, rowIndex) => (
@@ -75,7 +75,7 @@ function Shows() {
             </div>
           ))}
 
-          <div className="ShowDivider" />
+          <div className="PageDivider" />
 
           <div className="ShowsText1">Retired PPVs</div>
           {retiredPPVs.map((row, rowIndex) => (
