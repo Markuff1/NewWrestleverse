@@ -7,7 +7,7 @@ import { currentPPV } from "./currentPPV";
 import { newsArticles } from "./newsData";
 
 function Home() {
-  const [username, setUsername] = useState("");
+  const [, setUsername] = useState("");
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");

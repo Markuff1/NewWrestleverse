@@ -1,94 +1,177 @@
-.login-Background {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100vh;
-    background-color: var(--primary-color);
+/* Page layout */
+.LoginPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100%;
+  font-family: var(--font-1);
+  overflow: hidden;
 }
 
-.Logo1{
-    height: 15rem;
-    width: auto;
-    margin-top: -10rem;
-    margin-bottom: 2rem;
+/* Page exit animation */
+.LoginPage.fadeOut {
+  animation: pageExit 0.35s ease forwards;
 }
-  
-.login-box {
-    background-color: white;
-    padding: 10vw;
-    border-radius: 5vh;
-    box-shadow: 0 1vh 5vh rgb(0, 0, 0);
-    width: 25vw;
 
-    display: flex;             /* change from block to flex */
-    flex-direction: column;    /* stack children vertically */
-    justify-content: center;   /* vertical centering inside box */
-    align-items: center;       /* horizontal centering */
-    
-    margin-left: auto;
-    margin-right: auto;
+@keyframes pageExit {
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
 }
-  
-  .login-title {
-    font-size: 4rem;
-    font-family: var(--font-2);
-    margin-top: 0vh;
-    margin-bottom: 1vh;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--primary-color);
+
+/* =========================
+   Left branding panel
+========================= */
+.LoginBrand {
+  background: linear-gradient(135deg, #000000, #5b0000);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 4rem;
+  text-align: center;
+}
+
+.LoginBrand img {
+  width: 16rem;
+  margin-bottom: 2rem;
+}
+
+.LoginBrand h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.LoginBrand p {
+  font-size: 1.2rem;
+  max-width: 30rem;
+  opacity: 0.85;
+}
+
+/* =========================
+   Right login panel
+========================= */
+.LoginPanel {
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 6rem;
+
+  animation: panelEnter 0.45s ease;
+}
+
+@keyframes panelEnter {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
   }
-  
-  .login-input {
-    width: 95%;
-    background-color: rgb(231, 237, 255);
-    padding: 1vh;
-    margin-bottom: 1.5vh;
-    border: 0.05 solid #000000;
-    border-radius: 0.90vh;
-    font-size: 2.5vh;
-    font-family: var(--font-1);
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .login-error {
-    color: red;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 2vh;
-    margin-top: -0.5vh;
-    margin-bottom: 1.5vh;
-    font-family: var(--font-1);
+}
+
+/* Panel state change */
+.LoginPanel.register {
+  animation: panelSwitch 0.45s ease;
+}
+
+@keyframes panelSwitch {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
   }
-  
-  .login-button {
-    width: 100%;
-    text-transform: uppercase;
-    background-color: var(--Secondary-color);
-    color: white;
-    padding: 2vh;
-    border: none;
-    border-radius: 0.90vh;
-    cursor: pointer;
-    font-family: var(--font-2);
-    font-size: 1.7vw;
-    transition: background-color 0.2s ease-in-out;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .login-button:hover {
-    background-color: var(--hover-bg-colorV2);
+}
+
+/* Panel title */
+.LoginPanel h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+/* Inputs */
+.LoginPanel input {
+  font-size: 1.1rem;
+  padding: 0.9rem;
+  margin-bottom: 1.2rem;
+
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+/* Button */
+.LoginPanel button {
+  margin-top: 1rem;
+  padding: 1rem;
+
+  background: var(--Secondary-color);
+  color: white;
+
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.LoginPanel button:hover {
+  background: var(--hover-bg-colorV2);
+  transform: translateY(-1px);
+}
+
+/* Error */
+.LoginError {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Toggle text */
+.LoginToggle {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: 600;
+
+  transition: opacity 0.25s ease;
+}
+
+.LoginToggle:hover {
+  opacity: 0.7;
+}
+
+/* =========================
+   Mobile fallback
+========================= */
+@media (max-width: 900px) {
+  .LoginPage {
+    grid-template-columns: 1fr;
   }
-  
-  .toggle-text {
-    text-align: center;
-    margin-top: 1vh;
-    font-size: 1.5vh;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-family: var(--font-1);
-    color: var(--primary-color);
-    cursor: pointer;
+
+  .LoginBrand {
+    display: none;
   }
-  
+
+  .LoginPanel {
+    padding: 3rem;
+  }
+}
