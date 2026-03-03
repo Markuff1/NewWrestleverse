@@ -42,6 +42,7 @@ import Wrestlemania from "./PPVPages/Wrestlemania/Wrestlemania";
 import CIP from "./PPVPages/ClashInParis/CIP";
 import Armageddon from "./PPVPages/Armageddon/Armageddon";
 import News from "./News";
+import ER from "./PPVPages/ER/ER";
 
 
 function App() {
@@ -96,6 +97,7 @@ function App() {
         <Route path="/Wrestlemania" element={<ProtectedRoute><Wrestlemania /></ProtectedRoute>} />
         <Route path="/ClashInParis" element={<ProtectedRoute><CIP /></ProtectedRoute>} />
         <Route path="/Armageddon" element={<ProtectedRoute><Armageddon /></ProtectedRoute>} />
+        <Route path="/ER" element={<ProtectedRoute><ER /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

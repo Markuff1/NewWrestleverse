@@ -14,7 +14,7 @@
    Weekly Shows
 ========================= */
 .WeeklyShow {
-  width: min(80%, 60rem);
+  width: min(80%, 65rem);
   margin: 0 auto 2vh;
   border-radius: 1rem;
   border: 0.3rem solid #000;

@@ -2,6 +2,9 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
 
+const matchCard2027: Match[] = [
+]
+
 const matchCard2026: Match[] = [
 { match: "Drew McIntyre Def. John Cena", title: "", type: "Extreme Rules Match" },
 { match: "Shayna Baszler (c) Def. Sol Ruca", title: "Women's Intercontinental Championship", type: "Normal Match" },
@@ -19,6 +22,14 @@ const matchCard2026: Match[] = [
 
 // ---------- Event Data ----------
 const NOCEvents: PPVEvent[] = [
+  {
+    year: 2027,
+    banner: "/Images/PPV/NOC/NOCHeader2027.png",
+    location: "Kingdom Arena, Riyadh, Saudi Arabia",
+    date: "Saturday, September 25th 2027, 2pm ET / 11am PT",
+    matches: matchCard2027,
+    imageFolder: "NOC/2027MC",
+  },
   {
     year: 2026,
     banner: "/Images/PPV/NOC/NOCHeader2026.png",

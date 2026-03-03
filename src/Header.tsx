@@ -21,6 +21,7 @@ function Header() {
   return (
     <header className="HeaderBackground">
       <div className="HeaderContainer">
+
         {/* Logo */}
         <Link to="/Home">
           <img
@@ -70,15 +71,27 @@ function Header() {
             </li>
 
             {username && (
-              <li>
-                <button className="LogoutBtn" onClick={handleLogout}>
-                  Sign Out
-                </button>
-              </li>
+              <>
+                {/* Next PPV box */}
+                <li className="NextPPVBox">
+                  <Link to={currentPPV.link} className="NextPPVLink">
+                    <span className="NextPPVLabel">Next PPV</span>
+                    <span className="NextPPVName">{currentPPV.name}</span>
+                  </Link>
+                </li>
+
+                {/* Logout icon */}
+                <li>
+                  <button className="LogoutIconBtn" onClick={handleLogout}>
+                    <img src="/Images/Icons/SignOut.png" alt="Sign Out" />
+                  </button>
+                </li>
+              </>
             )}
 
           </ul>
         </nav>
+
       </div>
     </header>
   );

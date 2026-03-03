@@ -2,7 +2,15 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 const matchCard2027: Match[] = [
   { match: "John Cena Vs The Fiend", title: "", type: "Inferno Match" },
+  { match: "Nikki Bella Vs Sol Ruca", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Penta Vs Shinsuke Nakamura", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "LA Knight Vs Wade Barrett", title: "", type: "Extreme Rules Match" },
+  { match: "Naomi Vs Stephanie Vaquer", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Street Profit Vs Usos", title: "Raw Tag Team Championship", type: "Normal Match" },
+  { match: "Dragon Lee Vs Rey Fenix", title: "United States Championship", type: "Normal Match" },
+  { match: "Liv Morgan Vs Asuka", title: "Women's World Championship", type: "Normal Match" },
   { match: "Rey Mysterio Vs Seth Rollins", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Alexa Bliss Vs Rhea Ripley", title: "Women's Undisputed Championship", type: "Normal Match" },
   { match: "Shawn Michaels Vs Randy Orton", title: "WWE Undisputed Championship", type: "Normal Match" }
 ]
 

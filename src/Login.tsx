@@ -66,7 +66,7 @@ const Login: React.FC = () => {
         <img src="/Images/Wrestleverse2K26S.png" alt="Wrestleverse" />
         <h1>Wrestleverse</h1>
         <p>
-          Your universe. Your roster. Your story.
+          Control the <span className="textImp">Chaos</span>
           <br />
           Log in to continue your journey.
         </p>

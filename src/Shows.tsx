@@ -24,10 +24,10 @@ const ppvShows = [
   [
     { name: "MITB", image: "/Images/PPV/MITB/MITB2027.png" },
     { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SS2027.png" },
-    { name: "NOC", image: "/Images/PPV/NOC/NOC2026.png" },
+    { name: "NOC", image: "/Images/PPV/NOC/NOC2027.png" },
   ],
   [
-    { name: "HIAC", image: "/Images/PPV/HIAC/HIAC2026.png" },
+    { name: "ER", image: "/Images/PPV/ER/ER2027.png" },
     { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SS2027.png" },
     { name: "Armageddon", image: "/Images/PPV/Armageddon/Armageddon2027.png" }
   ]
@@ -40,6 +40,7 @@ const retiredPPVs = [
     { name: "CyberSunday", image: "/Images/PPV/CyberSunday/CyberSunday.png" },
     { name: "NoWayOut", image: "/Images/PPV/NoWayOut/NoWayOut.png" },
     { name: "OverTheLimit", image: "/Images/PPV/OverTheLimit/OTL2026.png" },
+    { name: "HIAC", image: "/Images/PPV/HIAC/HIAC2026.png" },
     { name: "TLC", image: "/Images/PPV/TLC/TLC2026.png" },
   ]
 ];

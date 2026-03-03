@@ -34,24 +34,6 @@ const championPicks = [
 
 const generalDraftPicks = [
   { pick: 1, raw: "Roman Reigns", smackdown: "Seth Rollins" },
-  { pick: 2, raw: "Brock Lesnar", smackdown: "John Cena" },
-  { pick: 3, raw: "Randy Orton", smackdown: "AJ Styles" },
-  { pick: 4, raw: "Drew Mcintyre", smackdown: "Charlotte Flair" },
-  { pick: 5, raw: "Rhea Ripley", smackdown: "CM Punk" },
-  { pick: 6, raw: "The Usos", smackdown: "Cody Rhoades" },
-  { pick: 7, raw: "Iyo Sky", smackdown: "Dudley Boys" },
-  { pick: 8, raw: "LA Knight", smackdown: "Roxanne Perez" },
-  { pick: 9, raw: "Blake Monroe", smackdown: "Oba Femi" },
-  { pick: 10, raw: "Rusev", smackdown: "Rey Fenix" },
-  { pick: 11, raw: "Wade Barrett", smackdown: "Sol Ruca" },
-  { pick: 12, raw: "Bron Breakker", smackdown: "AJ Lee" },
-  { pick: 13, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 14, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 15, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 16, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 17, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 18, raw: "Sami Zayn", smackdown: "Kevin Owens" },
-  { pick: 19, raw: "Sami Zayn", smackdown: "Kevin Owens" }
 ];
 
 function Draft() {

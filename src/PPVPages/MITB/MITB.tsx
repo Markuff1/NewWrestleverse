@@ -33,8 +33,8 @@ const MITBEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/MITB/MITBHeader2027.png",
-    location: "",
-    date: "Saturday",
+    location: "Intuit Dome, Los Angles, CA",
+    date: "Saturday 10th July 2027",
     matches: matchCard2027,
     imageFolder: "MITB/2027MC",
   },

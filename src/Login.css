@@ -53,6 +53,17 @@
   opacity: 0.85;
 }
 
+
+.LoginBrand p .textImp {
+  color: var(--primary-colorV3);
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.25rem;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
 /* =========================
    Right login panel
 ========================= */

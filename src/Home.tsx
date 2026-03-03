@@ -41,7 +41,7 @@ function Home() {
             </section>
 
             {/* UPCOMING PPV */}
-            <section className="HomeBoxS PPVBox">
+            <section className="HomeBox PPVBox">
               <h2>Next PPV</h2>
 
               <Link to={currentPPV.link} className="PPVWrapper">
@@ -80,14 +80,15 @@ function Home() {
             </section>
 
             {/* LINKS */}
-            <section className="HomeBoxS LinksBox">
-              <h2>Explore</h2>
-              <Link to="/Shows" className="Hbutton">Shows</Link>
-              <Link to="/RAW" className="Hbutton">RAW</Link>
-              <Link to="/SD" className="Hbutton">Smackdown</Link>
-              <Link to="/Draft" className="Hbutton">Draft</Link>
-              <Link to="/News" className="Hbutton">News</Link>
-              <Link to="/Roster" className="Hbutton">Roster</Link>
+            <section className="HomeBox LinksBox"> 
+              <Link to="/Home" className="Linkbutton">Home</Link>
+              <Link to="/News" className="Linkbutton">News</Link>
+              <Link to="/Roster" className="Linkbutton">Roster</Link>
+              <Link to="/Shows" className="Linkbutton">Shows</Link>
+              <Link to="/RAW" className="Linkbutton">RAW</Link>
+              <Link to="/SD" className="Linkbutton">Smackdown</Link>
+              <Link to="/Draft" className="Linkbutton">Draft</Link>
+              <Link to={currentPPV.link} className="Linkbutton">Latest PPV</Link>
             </section>
 
           </div>
