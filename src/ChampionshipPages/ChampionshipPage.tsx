@@ -152,8 +152,8 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   return (
     <div>
       <Header />
-      <div className="ChampionshipBackground">
-        <div className="ChampionshipContainer">
+      <div className="PageBackground">
+        <div className="PageContainer">
           <img
             className="TitleHeaderImage"
             src={bannerSrc}
@@ -163,8 +163,8 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
           {/* Current Champion */}
           {currentChampion && (
             <div className="CurrentChampionCard">
-              <h2 className="ccTitle"> -- Current Champion -- </h2>
-              <h3 className="ccName">{currentChampion.name}</h3>
+              <h2 className="ccTitle"> - Current Champion - </h2>
+              <h3 className="ccName">{currentChampion.name} </h3>
               <p className="ccDate">
                 Since {new Date(currentChampion.date).toLocaleDateString("en-GB")} (
                 {currentChampion.event})
@@ -187,7 +187,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
 
                 return (
                   <div className="StatBox">
-                    <strong> -- Longest Reign -- </strong>
+                    <strong> - Longest Reign - </strong>
                     <span>
                       {validLongest.name} – {validLongest.days} weeks
                     </span>
@@ -197,7 +197,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
 
             {mostReigns && (
               <div className="StatBox">
-                <strong> -- Most Reigns -- </strong>
+                <strong> - Most Reigns - </strong>
                 <span>
                   {mostReigns.names.filter((n) => n !== "Vacant").join(", ")} –{" "}
                   {mostReigns.count} times
@@ -206,7 +206,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
             )}
           </div>
 
-          <div className="InputContainer">
+          <div className="InputContainerChamp">
             <input
               type="text"
               placeholder="Name of Title Holder"
@@ -224,15 +224,21 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
               value={event}
               onChange={(e) => setEvent(e.target.value)}
             />
-            <button onClick={addRecord}>Add Record</button>
+            <button 
+              className="icon-btn"
+              onClick={addRecord}
+              aria-label="Add Record"
+            >
+              <img src="/Images/Icons/Add.png" alt="Add" />
+            </button>
           </div>
 
           <table className="TitleHolderTable">
             <thead>
               <tr>
-                <th>Name of Title Holder</th>
-                <th>Length of Reign (Weeks)</th>
-                <th>Date Won</th>
+                <th>Name</th>
+                <th>Length (Weeks)</th>
+                <th>Date</th>
                 <th>Event Won at</th>
                 <th>Actions</th>
               </tr>
@@ -292,14 +298,17 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
                           <button
                             className="edit-save-btn"
                             onClick={() => saveEdit(holder.id)}
+                            aria-label="Save"
                           >
-                            Save
+                            <img src="/Images/Icons/Tick.png" alt="Save" />
                           </button>
+
                           <button
                             className="edit-cancel-btn"
                             onClick={() => setEditingId(null)}
+                            aria-label="Cancel"
                           >
-                            Cancel
+                            <img src="/Images/Icons/cross.png" alt="Cancel" />
                           </button>
                         </td>
                       </>
@@ -310,11 +319,20 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
                         <td>{formattedDate}</td>
                         <td>{holder.event}</td>
                         <td>
-                          <button onClick={() => startEdit(holder)}>
-                            Edit
+                          <button
+                            className="icon-btn"
+                            onClick={() => startEdit(holder)}
+                            aria-label="Edit"
+                          >
+                            <img src="/Images/Icons/Edit.png" alt="Edit" />
                           </button>
-                          <button onClick={() => deleteRecord(holder.id)}>
-                            Delete
+
+                          <button
+                            className="icon-btn delete-btn"
+                            onClick={() => deleteRecord(holder.id)}
+                            aria-label="Delete"
+                          >
+                            <img src="/Images/Icons/Delete.png" alt="Delete" />
                           </button>
                         </td>
                       </>

@@ -11,7 +11,7 @@ const EREvents: PPVEvent[] = [
   {
     year: 2026,
     banner: "/Images/PPV/ER/ERHeader2027.png",
-    location: "",
+    location: "American Airlines Center, Dallas, TX",
     date: "Saturday, October 16th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "ER/2027MC",
