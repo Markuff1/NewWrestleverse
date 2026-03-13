@@ -12,7 +12,7 @@ const CIPEvents: PPVEvent[] = [
     year: 2027,
     banner: "/Images/PPV/ClashInParis/CIPHeader2027.png",
     location: "Paris La Défense Arena, Nanterre, France",
-    date: "Saturday, June 12th 2027, 2e/11p",
+    date: "Saturday, June 26th 2027, 2e/11p",
     matches: matchCard2027,
     imageFolder: "CIP/2027MC",
   },

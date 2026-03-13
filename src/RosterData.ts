@@ -350,6 +350,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
         { src: "/Images/Roster/Vader.png", name: "Vader", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/Valhalla.png", name: "Valhalla", gender: "Women", tag: "A" , champion:""},
+        { src: "/Images/Roster/Victoria.png", name: "Victoria", gender: "Women", tag: "SD" , champion:""},
 
  // ------- W ---------
 
