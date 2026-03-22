@@ -1,9 +1,9 @@
 // currentPPV.ts
 
 export const currentPPV = {
-  name: "Backlash",
-  location: "Tokyo, Japan",
-  date: "May 22nd, 2027",
-  image: "/Images/PPV/Backlash/Backlash2027.png",
-  link: "/Backlash"
+  name: "Clash In Paris",
+  location: "Paris, France",
+  date: "June 26th, 2027",
+  image: "/Images/PPV/ClashInParis/CIP2027.png",
+  link: "/ClashInParis"
 };

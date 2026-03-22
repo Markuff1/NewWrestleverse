@@ -129,7 +129,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
         { src: "/Images/Roster/Faarooq.png", name: "Faarooq", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/FallonHenley.png", name: "Fallon Henley", gender: "Women", tag: "R" , champion:""},
-        { src: "/Images/Roster/FinnBalor.png", name: "Finn Balor", gender: "Man", tag: "SD" , champion:""},
+        { src: "/Images/Roster/FinnBalor.png", name: "Finn Balor", gender: "Man", tag: "SD" , champion:"WH"},
         { src: "/Images/Roster/Flammer.png", name: "Flammer", gender: "Women", tag: "AAA" , champion:""},
 
  // ------- G ---------
@@ -241,7 +241,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/NathanFrazer.png", name: "Nathan Frazer", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/NewJack.png", name: "New Jack", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/NiaJax.png", name: "Nia Jax", gender: "Women", tag: "R" , champion:""},
-        { src: "/Images/Roster/NikkiBella.png", name: "Nikki Bella", gender: "Women", tag: "SD" , champion:"WUS"},
+        { src: "/Images/Roster/NikkiBella.png", name: "Nikki Bella", gender: "Women", tag: "SD" , champion:""},
         { src: "/Images/Roster/NikkiCross.png", name: "Nikki Cross", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/NikkitaLyons.png", name: "Nikkita Lyons", gender: "Women", tag: "U" , champion:""},
         { src: "/Images/Roster/NoamDar.png", name: "Noam Dar", gender: "Man", tag: "R" , champion:""},
@@ -257,7 +257,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
         { src: "/Images/Roster/PatMcafee.png", name: "Pat Mcafee", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/PaulOrndorff.png", name: "Paul Orndorff", gender: "Man", tag: "L" , champion:""},
-        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:"IC"},
+        { src: "/Images/Roster/Penta.png", name: "Penta", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PeteDunne.png", name: "Pete Dunne", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/PiperNiven.png", name: "Piper Niven", gender: "Women", tag: "SD"},
         { src: "/Images/Roster/PsychoClown.png", name: "Psycho Clown", gender: "Man", tag: "AAA"},
@@ -269,7 +269,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/RaquelRodriguez.png", name: "Raquel Rodriguez", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/RazorRamon.png", name: "Razor Ramon", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/ReyFenix.png", name: "Rey Fenix", gender: "Man", tag: "SD" , champion:""},
-        { src: "/Images/Roster/ReyMysterio.png", name: "Rey Mysterio", gender: "Man", tag: "SD" , champion:"WH"},
+        { src: "/Images/Roster/ReyMysterio.png", name: "Rey Mysterio", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/Rezar.png", name: "Rezar", gender: "Man", tag: "A" , champion:""},
         { src: "/Images/Roster/RheaRipley.png", name: "Rhea Ripley", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/RickySaints.png", name: "Ricky Saints", gender: "Man", tag: "SD" , champion:""},
@@ -282,7 +282,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/RomanReigns.png", name: "Roman Reigns", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/Rosey.png", name: "Rosey", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/RoxannePerez.png", name: "Roxanne Perez", gender: "Women", tag: "SD"},
-        { src: "/Images/Roster/Rusev.png", name: "Rusev", gender: "Man", tag: "R"},
+        { src: "/Images/Roster/Rusev.png", name: "Rusev", gender: "Man", tag: "R", champion:"IC"},
 
  // ------- S ---------
 
@@ -300,7 +300,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/ShinsukeNakamura.png", name: "Shinsuke Nakamura", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/Shotzi.png", name: "Shotzi", gender: "Women", tag: "A" , champion:""},
         { src: "/Images/Roster/SidJustice.png", name: "Sid Justice", gender: "Man", tag: "L" , champion:""},
-        { src: "/Images/Roster/SolRuca.png", name: "Sol Ruca", gender: "Women", tag: "SD" , champion:""},
+        { src: "/Images/Roster/SolRuca.png", name: "Sol Ruca", gender: "Women", tag: "SD" , champion:"WUS"},
         { src: "/Images/Roster/SoloSikoa.png", name: "Solo Sikoa", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/SonyaDeville.png", name: "Sonya Deville", gender: "Women", tag: "A" , champion:""},
         { src: "/Images/Roster/StacyKeibler.png", name: "Stacy Keibler", gender: "Women", tag: "L" , champion:""},
@@ -396,8 +396,8 @@ const rosterData: Record<string, Wrestler[]> = {
     { src: "/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline", tag: "SD", champion:""},
     { src: "/Images/Roster/TagTeam/NewDay.png", name: "New Day", tag: "SD", champion:"SDTT"},
     { src: "/Images/Roster/TagTeam/PrettyDeadly.png", name: "Pretty Deadly", tag: "SD", champion:""},
-    { src: "/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits", tag: "R", champion:"RAWTT"},
-    { src: "/Images/Roster/TagTeam/Usos.png", name: "The Usos", tag: "R", champion:""},
+    { src: "/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits", tag: "R", champion:""},
+    { src: "/Images/Roster/TagTeam/Usos.png", name: "The Usos", tag: "R", champion:"RAWTT"},
     { src: "/Images/Roster/TagTeam/VikingRaiders.png", name: "Viking Raiders", tag: "SD", champion:""},
     { src: "/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six", tag: "R", champion:""},
   ],
