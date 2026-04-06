@@ -3,17 +3,17 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
-  { match: "Brock Lesnar Vs Bron Breakker Match", title: "", type: "Normal Match" },
-  { match: "Naomi Vs Gulia Match", title: "Women's Intercontinental Championship", type: "Normal Match" },
-  { match: "Dragon Lee Vs Oba Femi Vs Ilja Dragunov Match", title: "United States Championship", type: "Triple Threat Match" },
-  { match: "Wade Barrett Vs LA Knight Match", title: "", type: "I Quit Match" },
-  { match: "Rusev Vs Penta Match", title: "Intercontinental Championship", type: "Normal Match" },
-  { match: "Sol Ruca Vs Nikki Bella Match", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "CM Punk Vs Batista Match", title: "", type: "Normal Match" },
-  { match: "Liv Morgan Vs Charlotte Flair Match", title: "Women's World Championship", type: "Normal Match" },
-  { match: "Finn Balor Vs Rey Mysterio Vs AJ Styles Vs Seth Rollins Match", title: "World Heavyweight Championship", type: "Triple Threat Match" },
-  { match: "Alexa Bliss Vs Rhea Ripley Match", title: "Women's Undisputed Championship", type: "Normal Match" },
-  { match: "Shawn Michaels Vs Randy Orton Vs Gunther Match", title: "WWE Championship", type: "Triple Threat Match" }
+  { match: "Brock Lesnar Def. Bron Breakker", title: "", type: "Normal Match" },
+  { match: "Naomi (c) Def. Giulia", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Dragon Lee (c) Def. Oba Femi and Ilja Dragunov", title: "United States Championship", type: "Triple Threat Match" },
+  { match: "LA Knight Def. Wade Barrett", title: "", type: "I Quit Match" },
+  { match: "Rusev (c) Def. Penta", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Sol Ruca (c) Def. Nikki Bella", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "CM Punk Def. Batista", title: "", type: "Normal Match" },
+  { match: "Liv Morgan (c) Def. Charlotte Flair", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Finn Balor (c) Def. Rey Mysterio and AJ Styles and Seth Rollins", title: "World Heavyweight Championship", type: "Fatal 4-Way Elimination Match" },
+  { match: "Alexa Bliss (c) Def. Rhea Ripley", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Gunther Def. Shawn Michaels (c) and Randy Orton", title: "WWE Championship", type: "Triple Threat Match" }
 ];
 
 

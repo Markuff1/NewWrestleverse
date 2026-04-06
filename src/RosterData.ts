@@ -139,7 +139,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/Giulia.png", name: "Giulia", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/Goldberg.png", name: "Goldberg", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/GraysonWaller.png", name: "Grayson Waller", gender: "Man", tag: "R" , champion:""},
-        { src: "/Images/Roster/Gunther.png", name: "Gunther", gender: "Man", tag: "R" , champion:""},
+        { src: "/Images/Roster/Gunther.png", name: "Gunther", gender: "Man", tag: "R" , champion:"UC"},
 
  // ------- H ---------
         {src: "/Images/Roster/HankWalker.png", name: "Hank Walker", gender: "Man", tag: "R" , champion:""},
@@ -293,7 +293,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/ScottHall.png", name: "Scott Hall", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/ScottSteiner.png", name: "Scott Steiner", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/SethRollins.png", name: "Seth Rollins", gender: "Man", tag: "SD" , champion:""},
-        { src: "/Images/Roster/ShawnMichaels.png", name: "Shawn Michaels", gender: "Man", tag: "R" , champion:"UC"},
+        { src: "/Images/Roster/ShawnMichaels.png", name: "Shawn Michaels", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/ShawnSpears.png", name: "Shawn Spears", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/ShaynaBaszler.png", name: "Shayna Baszler", gender: "Women", tag: "A" , champion:""},
         { src: "/Images/Roster/Sheamus.png", name: "Sheamus", gender: "Man", tag: "SD" , champion:""},
