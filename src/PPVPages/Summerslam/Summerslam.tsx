@@ -3,6 +3,19 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
+  { match: "Bron Breakker Def. Rusev (c) and Carmelo Hayes and Jacob Fatu", title: "Intercontinental Championship", type: "Fatal 4-Way Match" },
+  { match: "Sol Ruca (c) Def. Chelsea Green", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Aleister Black Def. Logan Paul", title: "", type: "Ladder Match" },
+  { match: "Dudley Boys Def. The New Day (c)", title: "SmackDown Tag Team Championships", type: "Normal Match" },
+  { match: "Tiffany Stratton Def. Becky Lynch", title: "", type: "Extreme Rules Match" },
+  { match: "Oba Femi (c) Def. Cody Rhodes", title: "United States Championship", type: "Normal Match" },
+  { match: "Jaida Parker Def. Naomi (c)", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "The Usos (c) Def. MCMG", title: "Raw Tag Team Championships", type: "Tag Team Match" },
+  { match: "Seth Rollins Def. The Fiend", title: "", type: "Extreme Rules Match" },
+  { match: "Rhea Ripley Def. Alexa Bliss (c) and Bianca Belair and Nia Jax", title: "Women's World Championship", type: "Fatal 4-Way Match" },
+  { match: "AJ Styles Def. Finn Balor (c) and CM Punk", title: "World Heavyweight Championship", type: "Triple Threat Match" },
+  { match: "Charlotte Flair (c) Def. Nikki Bella", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Gunther (c) Def Brock Lesnar and Shawn Michaels", title: "WWE Undisputed Championship", type: "Triple Threat Match" }
 ];
 
 const matchCard2026: Match[] = [

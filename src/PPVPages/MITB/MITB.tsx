@@ -2,17 +2,17 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------//
 const matchCard2027: Match[] = [
-  { match: "Parker Vs Belair Vs Vaquer Vs Stratton Vs Bayley Vs Bella Vs Perez Vs Lee", title: "Women's MITB Briefcase", type: "Women's MITB Ladder Match" },
-  { match: "John Cena Vs The Fiend", title: "", type: "Last Man Standing Match" },
-  { match: "Dragon Lee Vs Oba Femi", title: "United States", type: "Normal Match" },
-  { match: "Sol Ruca Vs Jordynne Grace", title: "Women's United States", type: "Normal Match" },
-  { match: "Rusev Vs Carmelo Hayes", title: "Intercontinental", type: "Normal Match" },
-  { match: "Brock Lesnar Vs Bron Breakker", title: "", type: "Extreme Rules Match" },
-  { match: "Liv Morgan Vs Charlotte Flair", title: "Women's World", type: "Normal Match" },
-  { match: "Finn Balor Vs AJ Styles", title: "World Heavyweight", type: "Normal Match" },
-  { match: "McIntyre Vs Penta Vs Knight Vs Black Vs Punk Vs Owens Vs Rhoades Vs Williams", title: "Men's MITB Briefcase", type: "Men's MITB Ladder Match" },
-  { match: "Alexa Bliss Vs Rhea Ripley", title: "Women's Undisputed", type: "Steel Cage Match" },
-  { match: "Gunther Vs Shawn Michaels", title: "WWE Champion", type: "Normal Match" }
+  { match: "Stratton Def. Parker and Belair and Vaquer and Bayley and Bella and Perez and Lee", title: "Women's MITB Briefcase", type: "Women's MITB Ladder Match" },
+  { match: "The Fiend Def. John Cena", title: "", type: "Last Man Standing Match" },
+  { match: "Oba Femi Def. Dragon Lee (c)", title: "United States Championship", type: "Normal Match" },
+  { match: "Sol Ruca (c) Def. Jordynne Grace", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Rusev (c) Def. Carmelo Hayes", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Brock Lesnar Def. Bron Breakker", title: "", type: "Extreme Rules Match" },
+  { match: "Charlotte Flair Def. Liv Morgan (c)", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Finn Balor (c) Def. AJ Styles", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Black Def. McIntyre and Penta and Knight and Punk and Owens and Rhoades and Williams", title: "Men's MITB Briefcase", type: "Men's MITB Ladder Match" },
+  { match: "Alexa Bliss (c) Def. Rhea Ripley", title: "Women's Undisputed Championship", type: "Steel Cage Match" },
+  { match: "Gunther (c) Def. Shawn Michaels", title: "WWE Champion Championship", type: "Normal Match" }
 ]
 
 const matchCard2026: Match[] = [
