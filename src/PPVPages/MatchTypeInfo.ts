@@ -26,7 +26,7 @@ export const MatchTypeInfo: Record<string, string> = {
   "No Disqualification Match":
     "Anything goes. Literally. If it fits in the arena, it’s probably legal.",
 
-  "Hardcore Match":
+  "Falls Count Anywhere Match":
     "Falls count anywhere. Backstage, ringside, maybe the parking lot—good luck, cameraman.",
 
   "Street Fight":
@@ -75,6 +75,9 @@ export const MatchTypeInfo: Record<string, string> = {
 
   "Iron Man Match":
     "Most falls within the time limit wins. Stamina, strategy, and sheer stubbornness required.",
+
+"Submission Match":
+  "Victory comes only by making your opponent tap out or pass out. Technical skill, pain tolerance, and relentless pressure decide the winner.",
 
   /* Specialty */
   "Ambulance Match":

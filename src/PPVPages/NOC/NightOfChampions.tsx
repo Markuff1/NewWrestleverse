@@ -3,18 +3,18 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
-  { match: "Bron Breakker Vs Logan Paul Vs Rusev", title: "Intercontinental Championship", type: "Triple Threat Match" },
-  { match: "Sol Ruca Vs Kelly Kelly", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "Dudley Boys Vs The New Day", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
-  { match: "CM Punk Vs Kevin Owens", title: "", type: "Normal Match" },
-  { match: "Jaida Parker Vs Naomi", title: "Women's Intercontinental Championship", type: "Normal Match" },
-  { match: "Oba Femi Vs Ilja Dragunov", title: "United States Championship", type: "Normal Match" },
-  { match: "The Usos Vs Wyatt Six", title: "Raw Tag Team Championships", type: "Tag Team Match" },
-  { match: "Rhea Ripley Vs Becky Lynch", title: "Women's World Championship", type: "Normal Match" },
-  { match: "AJ Styles Vs Finn Balor", title: "World Heavyweight Championship", type: "Normal Match" },
-  { match: "Brock Lesnar Vs Shawn Michaels", title: "", type: "Extreme Rules Match" },
-  { match: "Charlotte Flair Vs AJ Lee", title: "Women's Undisputed Championship", type: "Normal Match" },
-  { match: "Gunther Vs Drew Mcintyre", title: "WWE Undisputed Championship", type: "Normal Match" }
+  { match: "Bron Breakker (c) Def. Logan Paul and Rusev", title: "Intercontinental Championship", type: "Triple Threat Match" },
+  { match: "Sol Ruca (c) Def. Kelly Kelly", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Dudley Boys (c) Def.The New Day", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
+  { match: "Kevin Owens Def. CM Punk", title: "", type: "Normal Match" },
+  { match: "Jaida Parker (c) Def. Naomi", title: "Women's Intercontinental Championship", type: "Normal Match" },
+  { match: "Oba Femi (c) Def. Ilja Dragunov", title: "United States Championship", type: "Normal Match" },
+  { match: "The Usos (c) Def. Wyatt Six", title: "Raw Tag Team Championships", type: "Tag Team Match" },
+  { match: "Rhea Ripley (c) Def. Becky Lynch", title: "Women's World Championship", type: "Normal Match" },
+  { match: "AJ Styles (c) Def. Finn Balor", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Brock Lesnar Def. Shawn Michaels", title: "", type: "Extreme Rules Match" },
+  { match: "Charlotte Flair (c) Def. AJ Lee", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Gunther (c) Def. Drew Mcintyre", title: "WWE Undisputed Championship", type: "Normal Match" }
 ];
 
 const matchCard2026: Match[] = [
