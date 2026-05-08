@@ -35,13 +35,14 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   const [date, setDate] = useState("");
   const [event, setEvent] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [editData, setEditData] = useState<{
-    name: string;
-    date: string;
-    event: string;
-  }>({ name: "", date: "", event: "" });
+  const [editData, setEditData] = useState({
+    name: "",
+    date: "",
+    event: "",
+  });
 
   const [longestReign, setLongestReign] = useState<any | null>(null);
+  const [shortestReign, setShortestReign] = useState<any | null>(null);
   const [mostReigns, setMostReigns] = useState<{
     names: string[];
     count: number;
@@ -51,26 +52,26 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     const querySnapshot = await getDocs(
       collection(db, "Wrestleverse", "ChampionshipData", collectionId)
     );
+
     let records = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    })) as any;
+    })) as any[];
 
     // sort newest first
     records = records.sort(
-      (a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a: any, b: any) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    // update reign lengths
+    // calculate reign lengths
     for (let i = 0; i < records.length; i++) {
       if (i === 0) {
-        // Current champ: from win date until today
         records[i].days = calculateWeeksBetween(
           records[i].date,
           new Date().toISOString().split("T")[0]
         );
       } else {
-        // Past champs: from win date until the next champ’s win date
         records[i].days = calculateWeeksBetween(
           records[i].date,
           records[i - 1].date
@@ -85,26 +86,60 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   const calculateStats = (records: any[]) => {
     if (records.length === 0) {
       setLongestReign(null);
+      setShortestReign(null);
       setMostReigns(null);
       return;
     }
 
-    const longest = records.reduce((prev, curr) =>
+    const valid = records.filter(
+      (r) => r.name && r.name.toLowerCase() !== "vacant"
+    );
+
+    // LONGEST REIGN
+    const longest = valid.reduce((prev, curr) =>
       curr.days > prev.days ? curr : prev
     );
     setLongestReign(longest);
 
+    // SHORTEST REIGN (exclude current champ)
+    const pastReigns = records.slice(1).filter(
+      (r) => r.name && r.name.toLowerCase() !== "vacant"
+    );
+
+    if (pastReigns.length > 0) {
+      const shortest = pastReigns.reduce((prev, curr) =>
+        curr.days < prev.days ? curr : prev
+      );
+      setShortestReign(shortest);
+    } else {
+      setShortestReign(null);
+    }
+
+    // MOST REIGNS (FIXED - handles duplicates properly)
     const countMap: Record<string, number> = {};
-    records.forEach((record) => {
-      countMap[record.name] = (countMap[record.name] || 0) + 1;
+
+    records.forEach((r) => {
+      if (!r.name) return;
+
+      const key = r.name.trim().toLowerCase();
+      countMap[key] = (countMap[key] || 0) + 1;
     });
 
     const maxCount = Math.max(...Object.values(countMap));
+
     const topNames = Object.entries(countMap)
       .filter(([_, count]) => count === maxCount)
-      .map(([name]) => name);
+      .map(([name]) => {
+        const original = records.find(
+          (r) => r.name.trim().toLowerCase() === name
+        );
+        return original?.name || name;
+      });
 
-    setMostReigns({ names: topNames, count: maxCount });
+    setMostReigns({
+      names: topNames,
+      count: maxCount,
+    });
   };
 
   useEffect(() => {
@@ -114,37 +149,48 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   const addRecord = async () => {
     if (name && date && event) {
       const newRecord = { name, date, event, days: 0 };
+
       const docRef = await addDoc(
         collection(db, "Wrestleverse", "ChampionshipData", collectionId),
         newRecord
       );
+
       const newData = [{ id: docRef.id, ...newRecord }, ...titleHolders];
+
       setTitleHolders(newData);
       calculateStats(newData);
+
       setName("");
       setDate("");
       setEvent("");
-      fetchData(); // refresh reign lengths
+      fetchData();
     }
   };
 
   const deleteRecord = async (id: string) => {
-    await deleteDoc(doc(db, "Wrestleverse", "ChampionshipData", collectionId, id));
-    const updated = titleHolders.filter((record) => record.id !== id);
+    await deleteDoc(
+      doc(db, "Wrestleverse", "ChampionshipData", collectionId, id)
+    );
+
+    const updated = titleHolders.filter((r) => r.id !== id);
     setTitleHolders(updated);
     calculateStats(updated);
   };
 
   const startEdit = (record: any) => {
     setEditingId(record.id);
-    setEditData({ name: record.name, date: record.date, event: record.event });
+    setEditData({
+      name: record.name,
+      date: record.date,
+      event: record.event,
+    });
   };
 
   const saveEdit = async (id: string) => {
     const ref = doc(db, "Wrestleverse", "ChampionshipData", collectionId, id);
     await updateDoc(ref, editData);
     setEditingId(null);
-    fetchData(); // refresh everything
+    fetchData();
   };
 
   const currentChampion = titleHolders[0];
@@ -152,55 +198,47 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   return (
     <div>
       <Header />
+
       <div className="PageBackground">
         <div className="PageContainer">
-          <img
-            className="TitleHeaderImage"
-            src={bannerSrc}
-            alt="Header Background"
-          />
+          <img className="TitleHeaderImage" src={bannerSrc} alt="Header" />
 
-          {/* Current Champion */}
           {currentChampion && (
             <div className="CurrentChampionCard">
               <h2 className="ccTitle"> - Current Champion - </h2>
-              <h3 className="ccName">{currentChampion.name} </h3>
+              <h3 className="ccName">{currentChampion.name}</h3>
               <p className="ccDate">
-                Since {new Date(currentChampion.date).toLocaleDateString("en-GB")} (
+                Since{" "}
+                {new Date(currentChampion.date).toLocaleDateString("en-GB")} (
                 {currentChampion.event})
               </p>
             </div>
           )}
 
           <div className="StatsGrid">
-            {longestReign &&
-              (() => {
-                const validLongest = Array.isArray(longestReign)
-                  ? longestReign.find(
-                      (r) => r.name.toLowerCase() !== "vacant"
-                    )
-                  : longestReign.name.toLowerCase() !== "vacant"
-                  ? longestReign
-                  : null;
+            {longestReign && (
+              <div className="StatBox">
+                <strong> - Longest Reign - </strong>
+                <span>
+                  {longestReign.name} – {longestReign.days} weeks
+                </span>
+              </div>
+            )}
 
-                if (!validLongest) return null;
-
-                return (
-                  <div className="StatBox">
-                    <strong> - Longest Reign - </strong>
-                    <span>
-                      {validLongest.name} – {validLongest.days} weeks
-                    </span>
-                  </div>
-                );
-              })()}
+            {shortestReign && (
+              <div className="StatBox">
+                <strong> - Shortest Reign - </strong>
+                <span>
+                  {shortestReign.name} – {shortestReign.days} weeks
+                </span>
+              </div>
+            )}
 
             {mostReigns && (
               <div className="StatBox">
                 <strong> - Most Reigns - </strong>
                 <span>
-                  {mostReigns.names.filter((n) => n !== "Vacant").join(", ")} –{" "}
-                  {mostReigns.count} times
+                  {mostReigns.names.join(", ")} – {mostReigns.count} times
                 </span>
               </div>
             )}
@@ -209,7 +247,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
           <div className="InputContainerChamp">
             <input
               type="text"
-              placeholder="Name of Title Holder"
+              placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -220,15 +258,11 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
             />
             <input
               type="text"
-              placeholder="Event Won At"
+              placeholder="Event"
               value={event}
               onChange={(e) => setEvent(e.target.value)}
             />
-            <button 
-              className="icon-btn"
-              onClick={addRecord}
-              aria-label="Add Record"
-            >
+            <button className="icon-btn" onClick={addRecord}>
               <img src="/Images/Icons/Add.png" alt="Add" />
             </button>
           </div>
@@ -239,111 +273,86 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
                 <th>Name</th>
                 <th>Length (Weeks)</th>
                 <th>Date</th>
-                <th>Event Won at</th>
+                <th>Event</th>
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
-              {titleHolders.map((holder) => {
-                const formattedDate = holder.date
-                  ? new Date(holder.date).toLocaleDateString("en-GB")
-                  : "";
-
-                return (
-                  <tr
-                    key={holder.id}
-                    className={editingId === holder.id ? "edit-row" : ""}
-                  >
-                    {editingId === holder.id ? (
-                      <>
-                        <td>
-                          <input
-                            className="edit-input"
-                            value={editData.name}
-                            onChange={(e) =>
-                              setEditData({
-                                ...editData,
-                                name: e.target.value,
-                              })
-                            }
-                          />
-                        </td>
-                        <td>{holder.days}</td>
-                        <td>
-                          <input
-                            className="edit-input"
-                            type="date"
-                            value={editData.date}
-                            onChange={(e) =>
-                              setEditData({
-                                ...editData,
-                                date: e.target.value,
-                              })
-                            }
-                          />
-                        </td>
-                        <td>
-                          <input
-                            className="edit-input"
-                            value={editData.event}
-                            onChange={(e) =>
-                              setEditData({
-                                ...editData,
-                                event: e.target.value,
-                              })
-                            }
-                          />
-                        </td>
-                        <td>
-                          <button
-                            className="edit-save-btn"
-                            onClick={() => saveEdit(holder.id)}
-                            aria-label="Save"
-                          >
-                            <img src="/Images/Icons/Tick.png" alt="Save" />
-                          </button>
-
-                          <button
-                            className="edit-cancel-btn"
-                            onClick={() => setEditingId(null)}
-                            aria-label="Cancel"
-                          >
-                            <img src="/Images/Icons/cross.png" alt="Cancel" />
-                          </button>
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td>{holder.name}</td>
-                        <td>{holder.days}</td>
-                        <td>{formattedDate}</td>
-                        <td>{holder.event}</td>
-                        <td>
-                          <button
-                            className="icon-btn"
-                            onClick={() => startEdit(holder)}
-                            aria-label="Edit"
-                          >
-                            <img src="/Images/Icons/Edit.png" alt="Edit" />
-                          </button>
-
-                          <button
-                            className="icon-btn delete-btn"
-                            onClick={() => deleteRecord(holder.id)}
-                            aria-label="Delete"
-                          >
-                            <img src="/Images/Icons/Delete.png" alt="Delete" />
-                          </button>
-                        </td>
-                      </>
-                    )}
-                  </tr>
-                );
-              })}
+              {titleHolders.map((holder) => (
+                <tr key={holder.id}>
+                  {editingId === holder.id ? (
+                    <>
+                      <td>
+                        <input
+                          value={editData.name}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              name: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                      <td>{holder.days}</td>
+                      <td>
+                        <input
+                          type="date"
+                          value={editData.date}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              date: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={editData.event}
+                          onChange={(e) =>
+                            setEditData({
+                              ...editData,
+                              event: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                      <td>
+                        <button onClick={() => saveEdit(holder.id)}>
+                          Save
+                        </button>
+                        <button onClick={() => setEditingId(null)}>
+                          Cancel
+                        </button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{holder.name}</td>
+                      <td>{holder.days}</td>
+                      <td>
+                        {holder.date &&
+                          new Date(holder.date).toLocaleDateString("en-GB")}
+                      </td>
+                      <td>{holder.event}</td>
+                      <td>
+                        <button onClick={() => startEdit(holder)}>
+                          Edit
+                        </button>
+                        <button onClick={() => deleteRecord(holder.id)}>
+                          Delete
+                        </button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
+
       <Footer />
     </div>
   );
