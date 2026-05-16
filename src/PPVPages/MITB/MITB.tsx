@@ -2,7 +2,7 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------//
 const matchCard2027: Match[] = [
-  { match: "Stratton Def. Parker and Belair and Vaquer and Bayley and Bella and Perez and Lee", title: "Women's MITB Briefcase", type: "Women's MITB Ladder Match" },
+  { match: "Stratton Def. Parker and Belair and Vaquer and Bayley and Bella and Perez and Lee", title: "Women's MITB Briefcase", type: "Money In The Bank Ladder Match" },
   { match: "The Fiend Def. John Cena", title: "", type: "Last Man Standing Match" },
   { match: "Oba Femi Def. Dragon Lee (c)", title: "United States Championship", type: "Normal Match" },
   { match: "Sol Ruca (c) Def. Jordynne Grace", title: "Women's United States Championship", type: "Normal Match" },
@@ -10,7 +10,7 @@ const matchCard2027: Match[] = [
   { match: "Brock Lesnar Def. Bron Breakker", title: "", type: "Extreme Rules Match" },
   { match: "Charlotte Flair Def. Liv Morgan (c)", title: "Women's World Championship", type: "Normal Match" },
   { match: "Finn Balor (c) Def. AJ Styles", title: "World Heavyweight Championship", type: "Normal Match" },
-  { match: "Black Def. McIntyre and Penta and Knight and Punk and Owens and Rhoades and Williams", title: "Men's MITB Briefcase", type: "Men's MITB Ladder Match" },
+  { match: "Black Def. McIntyre and Penta and Knight and Punk and Owens and Rhoades and Williams", title: "Men's MITB Briefcase", type: "Money In The Bank Ladder Match" },
   { match: "Alexa Bliss (c) Def. Rhea Ripley", title: "Women's Undisputed Championship", type: "Steel Cage Match" },
   { match: "Gunther (c) Def. Shawn Michaels", title: "WWE Champion Championship", type: "Normal Match" }
 ]
