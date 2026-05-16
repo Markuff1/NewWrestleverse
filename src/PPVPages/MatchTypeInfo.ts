@@ -60,6 +60,9 @@ export const MatchTypeInfo: Record<string, string> = {
   "Hell In A Cell Match":
     "A massive steel structure designed purely to ruin careers and shorten entrances.",
 
+  "Wargames Match":
+    "Two teams battle inside two connected rings surrounded by a steel cage. After all competitors enter, the match officially begins and victory can only be achieved by pinfall or submission.",
+
   "Elimination Chamber Match":
     "Locked inside steel and glass. Survive, eliminate everyone else, and try not to panic.",
 
@@ -76,8 +79,8 @@ export const MatchTypeInfo: Record<string, string> = {
   "Iron Man Match":
     "Most falls within the time limit wins. Stamina, strategy, and sheer stubbornness required.",
 
-"Submission Match":
-  "Victory comes only by making your opponent tap out or pass out. Technical skill, pain tolerance, and relentless pressure decide the winner.",
+  "Submission Match":
+    "Victory comes only by making your opponent tap out or pass out. Technical skill, pain tolerance, and relentless pressure decide the winner.",
 
   /* Specialty */
   "Ambulance Match":

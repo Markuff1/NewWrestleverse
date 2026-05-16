@@ -12,7 +12,7 @@ function MatchTypeTooltip({ matchType }: Props) {
 
   return (
     <span className="MatchTypeTooltip">
-      <span className="InfoIcon">I</span>
+      <span className="InfoIcon">i</span>
       <span className="TooltipContent">
         <strong>{matchType}</strong>
         <br />
