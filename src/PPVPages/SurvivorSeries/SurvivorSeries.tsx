@@ -1,38 +1,22 @@
-import "../../PPVShow.css";
-import Header from "../../Header";
-import Footer from "../../Footer";
-
-// ---------- Types ----------
-type Match = {
-  match: string;
-  score?: string;
-  title?: string;
-  type: string;
-};
-
-type PPVEvent = {
-  year: number;
-  banner: string;
-  location: string;
-  date: string;
-  matches: Match[];
-  imageFolder: string;
-};
+import PPVShow, {
+  Match,
+  PPVEvent
+} from "../../PPVShow";
 
 // ---------- Match Cards -----------
 
 const matchCard2027: Match[] = [
-  { match: "CM Punk, Dudley Boys, RVD Vs Seth Rollins, New Day, Ricky Saints", title: "", type: "Wargames" },
-  { match: "Sol Ruca Vs Roxanne Perez", title: "Women's United States", type: "Normal" },
-  { match: "Ilja Dragunov Vs Oba Femi", title: "United States", type: "Normal" },
-  { match: "Usos Vs DIY", title: "RAW Tag Team", type: "Tag Team Match" },
-  { match: "Blake Monroe Vs Jaida Parker Vs Lola Vice", title: "Women's Intercontinental", type: "Triple Threat" },
-  { match: "Bron Breakker Vs Ethan Page", title: "", type: "Normal" },
-  { match: "Logan Paul Open Challenge (Randy Orton)", title: "", type: "Normal" },
-  { match: "Ripley, Sky, Vaquer, Belair Vs Lynch, Stratton, Naomi, Nia Jax", title: "", type: "Wargames" },
-  { match: "Aleister Black Vs AJ Styles Vs Rey Mysterio Vs Kevin Owens", title: "World Heavyweight", type: "Fatal 4-way" },
-  { match: "Charlotte Flair Vs Auska", title: "Women's Undisputed", type: "Normal" },
-  { match: "Gunther Vs Brock Lesnar", title: "WWE Undisputed", type: "Extreme Rules" },
+  { match: "CM Punk, Dudley Boys, RVD Vs Seth Rollins, New Day, Ricky Saints", title: "", type: "Wargames Match" },
+  { match: "Sol Ruca Vs Roxanne Perez", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Ilja Dragunov Vs Oba Femi", title: "United States Championship", type: "Normal Match" },
+  { match: "Usos Vs DIY", title: "RAW Tag Team Championships", type: "Tag Team Match" },
+  { match: "Blake Monroe Vs Jaida Parker Vs Lola Vice", title: "Women's Intercontinental Championship", type: "Triple Threat Match" },
+  { match: "Bron Breakker Vs Ethan Page", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Dominic Mysterio Open Challenge (Randy Orton)", title: "", type: "Normal Match" },
+  { match: "Ripley, Sky, Vaquer, Belair Vs Lynch, Stratton, Naomi, Nia Jax", title: "", type: "Wargames Match" },
+  { match: "Aleister Black Vs AJ Styles Vs Rey Mysterio Vs Kevin Owens", title: "World Heavyweight Championship", type: "Fatal 4-way Match" },
+  { match: "Charlotte Flair Vs Auska", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Gunther Vs Brock Lesnar", title: "WWE Undisputed Championship", type: "Extreme Rules Match" },
 ];
 
 const matchCard2026: Match[] = [
@@ -66,7 +50,18 @@ const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 13th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "SurvivorSeries/2027MC",
+
+    previousEvent: {
+      label: "Extreme Rules 2027",
+      link: "/ER#2027",
+    },
+
+    nextEvent: {
+      label: "Armageddon 2027",
+      link: "/Armageddon#2027",
+    },
   },
+
   {
     year: 2026,
     banner: "/Images/PPV/SurvivorSeries/SSHeader2026.png",
@@ -74,7 +69,18 @@ const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 21st 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "SurvivorSeries/2026MC",
+
+    previousEvent: {
+      label: "Hell In A Cell 2026",
+      link: "/HIAC#2026",
+    },
+
+    nextEvent: {
+      label: "TLC 2026",
+      link: "/TLC#2026",
+    },
   },
+
   {
     year: 2025,
     banner: "/Images/PPV/SurvivorSeries/SSHeader2025.png",
@@ -82,121 +88,24 @@ const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 22nd 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "SurvivorSeries/2025MC",
+
+    previousEvent: {
+      label: "Cyber Sunday 2025",
+      link: "/CyberSunday#2025",
+    },
+
+    nextEvent: {
+      label: "TLC 2025",
+      link: "/TLC#2025",
+    },
   },
 ];
 
-// ---------- Component ----------
-type PPVSectionProps = PPVEvent;
-
-function PPVSection({ banner, location, date, matches, imageFolder }: PPVSectionProps) {
-
-  const showScoreColumn = matches.some(m => m.score);
-  const showTitleColumn = !showScoreColumn && matches.some(m => m.title);
-
-  const columnLabel = showScoreColumn ? "Score" : showTitleColumn ? "Title" : "Info";
-
+export default function SurvivorSeries() {
   return (
-    <>
-      <img className="PPVBanner" src={banner} alt="Survivor Series Banner" />
-
-      {/* Event Info */}
-      <div className="PPVInfo">
-        <div className="PPVLocation">
-          <strong>Location:</strong> {location}
-        </div>
-        <div className="PPVDate">
-          <strong>Date/Time:</strong> {date}
-        </div>
-      </div>
-
-      {/* Match Card Table */}
-      <div className="MCTitle">Match Card</div>
-
-      <table className="MCList">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Match</th>
-            <th>{columnLabel}</th>
-            <th>Match Type</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-
-              <td>{match.match}</td>
-
-              <td>
-                {showScoreColumn
-                  ? (match.score ?? "-")
-                  : showTitleColumn
-                  ? (match.title ?? "-")
-                  : "-"}
-              </td>
-
-              <td>{match.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Match Card Summary */}
-      <div className="MCTitle">Match Card Summary</div>
-
-      <div className="MatchImages">
-        {matches.map((match, index) => (
-          <div key={index} className="MatchItem" id={`match-${index + 1}`}>
-
-            <h3 className="MatchTitle">{match.match}</h3>
-
-            {match.score && (
-              <h4 className="MatchChampionship">
-                ----- {match.score} -----
-              </h4>
-            )}
-
-            {!match.score && match.title && (
-              <h4 className="MatchChampionship">
-                ----- {match.title} -----
-              </h4>
-            )}
-
-            <h4 className="MatchType">
-              ----- {match.type} -----
-            </h4>
-
-            <img
-              className="MatchImage"
-              src={`/Images/PPV/${imageFolder}/M${index + 1}.PNG`}
-              alt={match.match}
-            />
-
-            <div className="MatchDivider"></div>
-          </div>
-        ))}
-      </div>
-    </>
+    <PPVShow
+      events={SurvivorSeriesEvents}
+      bannerAlt="Survivor Series Banner"
+    />
   );
 }
-
-// ---------- Main Component ----------
-function SurvivorSeries() {
-  return (
-    <>
-      <Header />
-      <div className="PageBackground">
-        <div className="PageContainer">
-          {SurvivorSeriesEvents.map((event) => (
-            <PPVSection key={event.year} {...event} />
-          ))}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
-
-export default SurvivorSeries;

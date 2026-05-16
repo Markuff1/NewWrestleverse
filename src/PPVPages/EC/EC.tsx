@@ -53,7 +53,19 @@ const ECEvents: PPVEvent[] = [
     date: "Saturday, 27th February 2027, 7pm ET / 5pm PT",
     matches: matchCard2027,
     imageFolder: "EC/2027MC",
+
+    previousEvent: {
+      label: "Royal Rumble 2027",
+      link: "/RoyalRumble#2027",
+    },
+
+    nextEvent: {
+      label: "Wrestlemania 2027",
+      link: "/Wrestlemania#2027",
+    },
+  
   },
+
 ];
 
 export default function EC() {

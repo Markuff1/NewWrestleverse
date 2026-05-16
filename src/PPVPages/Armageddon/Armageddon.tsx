@@ -15,6 +15,16 @@ const ArmageddonEvents: PPVEvent[] = [
     date: "Saturday, December 18th 2027, 2e/11p",
     matches: matchCard2027,
     imageFolder: "Armageddon/2027MC",
+
+    previousEvent: {
+      label: "Survivor Series 2027",
+      link: "/SurvivorSeries#2027",
+    },
+
+    nextEvent: {
+      label: "BraggingRights 2028",
+      link: "/BraggingRights#2028",
+    },
   },
 ];
 

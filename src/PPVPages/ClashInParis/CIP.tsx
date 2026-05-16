@@ -26,6 +26,16 @@ const CIPEvents: PPVEvent[] = [
     date: "Saturday, June 26th 2027, 2e/11p",
     matches: matchCard2027,
     imageFolder: "ClashInParis/2027MC",
+
+    previousEvent: {
+      label: "Backlash 2027",
+      link: "/Backlash#2027",
+    },
+
+    nextEvent: {
+      label: "Money In The Bank 2027",
+      link: "/MITB#2027",
+    },
   },
 ];
 

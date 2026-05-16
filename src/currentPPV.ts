@@ -1,9 +1,9 @@
 // currentPPV.ts
 
 export const currentPPV = {
-  name: "Extreme Rules",
-  location: "American Airlines Center, Dallas, TX",
-  date: "Saturday, October 16th 2027, 7e/5p",
-  image: "/Images/PPV/ER/ER2027.png",
-  link: "/ER"
+  name: "Survivor Series",
+  location: "Petco Park, San Diego, CA",
+  date: "Saturday, November 13th 2027, 7e/5p",
+  image: "/Images/PPV/SurvivorSeries/SS2027.png",
+  link: "/SurvivorSeries"
 };

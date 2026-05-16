@@ -25,6 +25,16 @@ const EREvents: PPVEvent[] = [
     date: "Saturday, October 16th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "ER/2027MC",
+
+    previousEvent: {
+      label: "Night Of Champions 2027",
+      link: "/NOC#2027",
+    },
+
+    nextEvent: {
+      label: "Survivor Series 2027",
+      link: "/SurvivorSeries#2027",
+    },
   },
 ];
 

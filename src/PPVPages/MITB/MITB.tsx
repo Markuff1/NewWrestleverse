@@ -48,7 +48,18 @@ const MITBEvents: PPVEvent[] = [
     date: "Saturday 10th July 2027",
     matches: matchCard2027,
     imageFolder: "MITB/2027MC",
+
+    previousEvent: {
+      label: "Clash In Paris 2027",
+      link: "/ClashInParis#2027",
+    },
+
+    nextEvent: {
+      label: "Summerslam 2027",
+      link: "/Summerslam#2027",
+    },
   },
+
   {
     year: 2026,
     banner: "/Images/PPV/MITB/MITBHeader2026.png",
@@ -56,7 +67,18 @@ const MITBEvents: PPVEvent[] = [
     date: "Saturday, July 18th 2026",
     matches: matchCard2026,
     imageFolder: "MITB/2026MC",
+
+    previousEvent: {
+      label: "Over The Limit 2026",
+      link: "/OverTheLimit#2026",
+    },
+
+    nextEvent: {
+      label: "Summerslam 2026",
+      link: "/Summerslam#2026",
+    },
   },
+
   {
     year: 2025,
     banner: "/Images/PPV/MITB/MITBHeader2025.png",
@@ -64,6 +86,16 @@ const MITBEvents: PPVEvent[] = [
     date: "Saturday, 21st June 2025",
     matches: matchCard2025,
     imageFolder: "MITB/2025MC",
+
+    previousEvent: {
+      label: "Backlash 2025",
+      link: "/Backlash#2025",
+    },
+
+    nextEvent: {
+      label: "One Night Stand 2025",
+      link: "/ONS#2025",
+    },
   },
 ];
 

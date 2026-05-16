@@ -106,7 +106,17 @@ const WMEvents: PPVEvent[] = [
     location: "Allegiant Stadium, Las Vegas, Nevada",
     date: "April 10–11, 2027, 7e/5p",
     matches: WM2027Matches,
-    imageFolder: "Wrestlemania/2027MC"
+    imageFolder: "Wrestlemania/2027MC",
+
+    previousEvent: {
+      label: "Elimination Chamber 2027",
+      link: "/EC#2027",
+    },
+
+    nextEvent: {
+      label: "Royal Rumble 2027",
+      link: "/RoyalRumble#2027",
+    },
   },
 ];
 

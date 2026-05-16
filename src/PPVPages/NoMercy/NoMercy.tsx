@@ -16,11 +16,21 @@ const matchCard2025: Match[] = [
 const NoMercyEvents: PPVEvent[] = [
   {
     year: 2025,
-    banner: "/Images/PPV/NoMercy/NoMercyHeader.png.png",
+    banner: "/Images/PPV/NoMercy/NoMercyHeader.png",
     location: "State Farm Arena, Atlanta, Georgia",
     date: "Saturday, September 20th 2025, 7e/5",
     matches: matchCard2025,
     imageFolder: "NoMercy/2025MC",
+    
+    previousEvent: {
+      label: "Summerslam 2025",
+      link: "/Summerslam#2025",
+    },
+
+    nextEvent: {
+      label: "Cyber Sunday 2025",
+      link: "/CyberSunday#2025",
+    },
   },
 ];
 

@@ -41,6 +41,16 @@ const NOCEvents: PPVEvent[] = [
     date: "Saturday, September 25th 2027, 2pm ET / 11am PT",
     matches: matchCard2027,
     imageFolder: "NOC/2027MC",
+
+    previousEvent: {
+      label: "Summerslam 2027",
+      link: "/SummerSlam#2026",
+    },
+
+    nextEvent: {
+      label: "Extreme Rules 2027",
+      link: "/ER#2026",
+    },
   },
   {
     year: 2026,
@@ -49,6 +59,16 @@ const NOCEvents: PPVEvent[] = [
     date: "Saturday, September 19th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "NOC/2026MC",
+
+    previousEvent: {
+      label: "Summerslam 2026",
+      link: "/SummerSlam#2026",
+    },
+
+    nextEvent: {
+      label: "Hell In A Cell 2026",
+      link: "/HIAC#2026",
+    },
   },
 ];
 

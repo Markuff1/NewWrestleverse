@@ -36,6 +36,16 @@ const TLCEvents: PPVEvent[] = [
     date: "Saturday, December 12th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "TLC/2026MC",
+
+    previousEvent: {
+      label: "Survivor Series 2026",
+      link: "/SurvivorSeries#2026",
+    },
+
+    nextEvent: {
+      label: "New Year's Revolution 2027",
+      link: "/NYR#2027",
+    },
   },
 
   {
@@ -45,6 +55,16 @@ const TLCEvents: PPVEvent[] = [
     date: "Saturday, December 13th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "TLC/2025MC",
+
+    previousEvent: {
+      label: "Survivor Series 2025",
+      link: "/SurvivorSeries#2025",
+    },
+
+    nextEvent: {
+      label: "New Year's Revolution 2026",
+      link: "/NYR#2026",
+    },
   },
 ];
 

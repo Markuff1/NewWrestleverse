@@ -23,6 +23,16 @@ const ONSEvent: PPVEvent[] = [
     date: "Saturday, July 26th, 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "ONS/2025MC",
+
+    previousEvent: {
+      label: "Money In The Bank 2025",
+      link: "/MITB#2025",
+    },
+
+    nextEvent: {
+      label: "Summerslam 2025",
+      link: "/Summerslam#2025",
+    },
   },
 ];
 

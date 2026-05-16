@@ -50,6 +50,16 @@ const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 22nd, 2027",
     matches: matchCard2027,
     imageFolder: "Backlash/2027MC",
+
+    previousEvent: {
+      label: "Wrestlemania 2027",
+      link: "/Wrestlemania#2027",
+    },
+
+    nextEvent: {
+      label: "Clash In Paris 2027",
+      link: "/ClashInParis#2027",
+    },
   },
 
   {
@@ -59,7 +69,18 @@ const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 23rd, 2026",
     matches: matchCard2026,
     imageFolder: "Backlash/2026MC",
+
+    previousEvent: {
+      label: "Wrestlemania 2026",
+      link: "/Wrestlemania#2026",
+    },
+
+    nextEvent: {
+      label: "Over the limit 2026",
+      link: "/OverTheLimit#2026",
+    },
   },
+
   {
     year: 2025,
     banner: "/Images/PPV/Backlash/BacklashHeader.png",
@@ -67,6 +88,16 @@ const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 24th, 2025",
     matches: matchCard2025,
     imageFolder: "Backlash/2025MC",
+
+    previousEvent: {
+      label: "Wrestlemania 2025",
+      link: "/Wrestlemania#2025",
+    },
+
+    nextEvent: {
+      label: "Money In The Bank 2025",
+      link: "/MITB#2025",
+    },
   },
 ];
 

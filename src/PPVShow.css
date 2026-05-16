@@ -26,21 +26,42 @@ header {
 
 /* ---------- Event Info ---------- */
 .PPVInfo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 clamp(1rem, 4vw, 4vh);
-  flex-wrap: wrap;
-  gap: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid var(--primary-color);
+  color: white;
+  padding: 5px 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.2s ease;
 }
 
-.PPVLocation,
-.PPVDate {
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-  font-weight: 400;
-  font-family: var(--font-2);
-  -webkit-text-stroke: 0.01vh #fff;
+.PPVNavButtonPlacement {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.PPVNavButton {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid var(--primary-color);
+  color: white;
+  padding: 2.5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: 0.2s ease;
+}
+
+.PPVNavButton:hover {
+  background: var(--primary-color);
+  transform: scale(1.05);
 }
 
 /* ---------- Titles ---------- */
@@ -97,37 +118,47 @@ header {
 
 .MatchItem {
   text-align: center;
-  margin-bottom: 5vh;
+  margin-bottom: 2.5vh;
 }
 
 /* ---------- Match Text ---------- */
+
 .MatchTitle {
-  font-size: clamp(1.4rem, 2.25vw, 2.25rem);
-  letter-spacing: 0.05rem;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  font-family: var(--font-2);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid var(--primary-color);
+  color: white;
+  padding: 15px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: -25px;
+  transition: 0.2s ease;
 }
 
-.MatchChampionship {
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
-  letter-spacing: 0.05rem;
-  font-weight: 300;
-  margin-top: -0.8rem;
-  font-family: var(--font-3);
+.MatchChampionship, .MatchType {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid var(--primary-color);
+  color: white;
+  padding: 10px 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.2s ease;
 }
 
-.MatchType {
+.MatchInfo {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
-  letter-spacing: 0.05rem;
-  font-weight: 300;
-  margin-top: -0.8rem;
-  font-family: var(--font-3);
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
+
 
 /* ---------- Match Image ---------- */
 .MatchImage {

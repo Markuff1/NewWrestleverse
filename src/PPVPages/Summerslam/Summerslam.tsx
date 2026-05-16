@@ -57,7 +57,18 @@ const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 7th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "SummerSlam/2027MC",
+
+    previousEvent: {
+      label: "Money In The Bank 2027",
+      link: "/MITB#2027",
+    },
+
+    nextEvent: {
+      label: "Night Of Champions 2027",
+      link: "/NOC#2027",
+    },
   },
+
   {
     year: 2026,
     banner: "/Images/PPV/SummerSlam/SSHeader2026.png",
@@ -65,7 +76,18 @@ const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 8th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "SummerSlam/2026MC",
+
+    previousEvent: {
+      label: "Money In The Bank 2026",
+      link: "/MITB#2026",
+    },
+
+    nextEvent: {
+      label: "Night Of Champions 2026",
+      link: "/NOC#2026",
+    },
   },
+
   {
     year: 2025,
     banner: "/Images/PPV/SummerSlam/SSHeader2025.png",
@@ -73,6 +95,16 @@ const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 30th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "SummerSlam/2025MC",
+
+    previousEvent: {
+      label: "One Night Stand 2025",
+      link: "/ONS#2025",
+    },
+
+    nextEvent: {
+      label: "No Mercy 2025",
+      link: "/NoMercy#2025",
+    },
   },
 ];
 

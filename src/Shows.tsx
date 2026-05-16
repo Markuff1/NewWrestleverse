@@ -49,28 +49,43 @@ function Shows() {
   return (
     <>
       <Header />
+
       <div className="PageBackground">
         <div className="PageContainer">
+
           <div className="PageBanner">
             <h1 className="PageBanner__title">SHOWS</h1>
           </div>
 
-          
           <div className="ShowsText1">Weekly Shows</div>
-          {weeklyShows.map((show) => (
+
+          {weeklyShows.map((show, index) => (
             <Link key={show.name} to={`/${show.name}`}>
-              <img className="WeeklyShow" src={show.image} alt={show.name} />
+              <img
+                className="WeeklyShow"
+                src={show.image}
+                alt={show.name}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
             </Link>
           ))}
-          
+
           <div className="PageDivider" />
 
           <div className="ShowsText1">Current PPVs</div>
+
           {ppvShows.map((row, rowIndex) => (
             <div className="centerPPV" key={rowIndex}>
               {row.map((ppv) => (
                 <Link key={ppv.name} to={`/${ppv.name}`}>
-                  <img className="PPVShows" src={ppv.image} alt={ppv.name} />
+                  <img
+                    className="PPVShows"
+                    src={ppv.image}
+                    alt={ppv.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </Link>
               ))}
             </div>
@@ -79,19 +94,28 @@ function Shows() {
           <div className="PageDivider" />
 
           <div className="ShowsText1">Retired PPVs</div>
+
           {retiredPPVs.map((row, rowIndex) => (
             <div className="retiredPPVGrid" key={rowIndex}>
               {row.map((ppv) => (
                 <Link key={ppv.name} to={`/${ppv.name}`}>
-                  <img className="retiredPPVShows" src={ppv.image} alt={ppv.name} />
+                  <img
+                    className="retiredPPVShows"
+                    src={ppv.image}
+                    alt={ppv.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </Link>
               ))}
             </div>
           ))}
-          
+
           <div className="ShowsText1">.....</div>
+
         </div>
       </div>
+
       <Footer />
     </>
   );

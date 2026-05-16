@@ -23,6 +23,16 @@ const OTLEvents: PPVEvent[] = [
     date: "Saturday, June 27th 2026",
     matches: matchCard2026,
     imageFolder: "OverTheLimit/2026MC",
+
+    previousEvent: {
+      label: "Backlash 2025",
+      link: "/Backlash#2025",
+    },
+
+    nextEvent: {
+      label: "Money In The Bank 2025",
+      link: "/MoneyInTheBank#2025",
+    },
   },
 ];
 

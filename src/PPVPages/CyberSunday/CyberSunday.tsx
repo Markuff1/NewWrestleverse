@@ -24,6 +24,16 @@ const CyberSundayEvents: PPVEvent[] = [
     date: "Saturday, October 25th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "CyberSunday/2025MC",
+
+    previousEvent: {
+      label: "No Mercy 2025",
+      link: "/NoMercy#2025",
+    },
+
+    nextEvent: {
+      label: "Survivor Series 2025",
+      link: "/SurvivorSeries#2025",
+    },
   },
 ];
 
