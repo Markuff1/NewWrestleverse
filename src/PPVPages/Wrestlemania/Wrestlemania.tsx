@@ -114,8 +114,8 @@ const WMEvents: PPVEvent[] = [
     },
 
     nextEvent: {
-      label: "Royal Rumble 2027",
-      link: "/RoyalRumble#2027",
+      label: "Backlash 2027",
+      link: "/Backlash#2027",
     },
   },
 ];
