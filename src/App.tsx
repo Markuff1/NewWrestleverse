@@ -43,6 +43,7 @@ import CIP from "./PPVPages/ClashInParis/CIP";
 import Armageddon from "./PPVPages/Armageddon/Armageddon";
 import News from "./News";
 import ER from "./PPVPages/ER/ER";
+import BraggingRights from "./PPVPages/BR/BraggingRights";
 
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
         <Route path="/ClashInParis" element={<ProtectedRoute><CIP /></ProtectedRoute>} />
         <Route path="/Armageddon" element={<ProtectedRoute><Armageddon /></ProtectedRoute>} />
         <Route path="/ER" element={<ProtectedRoute><ER /></ProtectedRoute>} />
+        <Route path="/BraggingRights" element={<ProtectedRoute><BraggingRights /></ProtectedRoute>} />
       </Routes>
     </Router>
   );

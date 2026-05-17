@@ -1,6 +1,9 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
+const matchCard2028: Match[] = [
+];
+
 const matchCard2027: Match[] = [
   { match: "30 Woman Royal Rumble Match - WINNER: LIV MORGAN", title: "Wrestlemania Main Event Title Match", type: "Royal Rumble Match" },
   { match: "Seth Rollins (c) DEF. Kevin Owens", title: "World Heavyweight Championship", type: "Normal Match" },
@@ -23,10 +26,28 @@ const matchCard2026: Match[] = [
 // ---------- Event Data ----------
 const RoyalRumbleEvents: PPVEvent[] = [
   {
+    year: 2028,
+    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2028.png",
+    location: "Lucas Oil Stadium, Indianapolis, Indiana",
+    date: "Saturday, February 5th 2027, 7pm ET / 5pm PT",
+    matches: matchCard2028,
+    imageFolder: "RoyalRumble/2028MC",
+
+    previousEvent: {
+      label: "Bragging Rights 2028",
+      link: "/BraggingRights#2028",
+    },
+
+    nextEvent: {
+      label: "Elimination Chamber 2028",
+      link: "/EC#2028",
+    },
+  },
+  {
     year: 2027,
     banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2027.png",
     location: "Kingdom Arena, Riyadh, Saudi Arabia",
-    date: "Saturday, January 30th 2026, 2pm ET / 11am PT",
+    date: "Saturday, January 30th 2027, 2pm ET / 11am PT",
     matches: matchCard2027,
     imageFolder: "RoyalRumble/2027MC",
 
@@ -44,7 +65,7 @@ const RoyalRumbleEvents: PPVEvent[] = [
     year: 2026,
     banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2026.png",
     location: "Wembly Stadium, London, England",
-    date: "Saturday, January 31st 2025, 2pm ET / 11am PT",
+    date: "Saturday, January 31st 2026, 2pm ET / 11am PT",
     matches: matchCard2026,
     imageFolder: "RoyalRumble/2026MC",
 

@@ -1,9 +1,9 @@
 // currentPPV.ts
 
 export const currentPPV = {
-  name: "Survivor Series",
-  location: "Petco Park, San Diego, CA",
-  date: "Saturday, November 13th 2027, 7e/5p",
-  image: "/Images/PPV/SurvivorSeries/SS2027.png",
-  link: "/SurvivorSeries"
+  name: "Armageddon",
+  location: "Smoothie King Centre, New Orleans, LA",
+  date: "Saturday, December 18th 2027, 7e/5p",
+  image: "/Images/PPV/Armageddon/Armageddon2027.png",
+  link: "/Armageddon"
 };

@@ -6,17 +6,17 @@ import PPVShow, {
 // ---------- Match Cards -----------
 
 const matchCard2027: Match[] = [
-  { match: "CM Punk, Dudley Boys, RVD Vs Seth Rollins, New Day, Ricky Saints", title: "", type: "Wargames Match" },
-  { match: "Sol Ruca Vs Roxanne Perez", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "Ilja Dragunov Vs Oba Femi", title: "United States Championship", type: "Normal Match" },
-  { match: "Usos Vs DIY", title: "RAW Tag Team Championships", type: "Tag Team Match" },
-  { match: "Blake Monroe Vs Jaida Parker Vs Lola Vice", title: "Women's Intercontinental Championship", type: "Triple Threat Match" },
-  { match: "Bron Breakker Vs Ethan Page", title: "Intercontinental Championship", type: "Normal Match" },
-  { match: "Dominic Mysterio Open Challenge (Randy Orton)", title: "", type: "Normal Match" },
-  { match: "Ripley, Sky, Vaquer, Belair Vs Lynch, Stratton, Naomi, Nia Jax", title: "", type: "Wargames Match" },
-  { match: "Aleister Black Vs AJ Styles Vs Rey Mysterio Vs Kevin Owens", title: "World Heavyweight Championship", type: "Fatal 4-way Match" },
-  { match: "Charlotte Flair Vs Auska", title: "Women's Undisputed Championship", type: "Normal Match" },
-  { match: "Gunther Vs Brock Lesnar", title: "WWE Undisputed Championship", type: "Extreme Rules Match" },
+  { match: "Seth Rollins, New Day, Ricky Saints Def. CM Punk, Dudley Boys, RVD", title: "", type: "Wargames Match" },
+  { match: "Sol Ruca (c) Def. Roxanne Perez", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Ilja Dragunov (c) Def. Oba Femi", title: "United States Championship", type: "Normal Match" },
+  { match: "Usos (c) Def. DIY", title: "RAW Tag Team Championships", type: "Tag Team Match" },
+  { match: "Lola Vice Def. Blake Monroe (c) and Jaida Parker", title: "Women's Intercontinental Championship", type: "Triple Threat Match" },
+  { match: "Bron Breakker (c) Def. Ethan Page", title: "Intercontinental Championship", type: "Normal Match" },
+  { match: "Randy Orton Def. Dominic Mysterio", title: "", type: "Normal Match" },
+  { match: "Ripley, Sky, Vaquer, Belair Def. Lynch, Stratton, Naomi, Nia Jax", title: "", type: "Wargames Match" },
+  { match: "Aleister Black (c) Def. AJ Styles and Rey Mysterio and Kevin Owens", title: "World Heavyweight Championship", type: "Fatal 4-way Match" },
+  { match: "Charlotte Flair (c) Def. Auska", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Brock Lesnar Def. Gunther (c)", title: "WWE Undisputed Championship", type: "Extreme Rules Match" },
 ];
 
 const matchCard2026: Match[] = [
