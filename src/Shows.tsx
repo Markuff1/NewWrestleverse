@@ -12,7 +12,7 @@ const weeklyShows = [
 
 const ppvShows = [
   [
-    { name: "BraggingRights", image: "/Images/PPV/BR/BR2027.png" },
+    { name: "BraggingRights", image: "/Images/PPV/BR/BR2028.png" },
     { name: "RoyalRumble", image: "/Images/PPV/RoyalRumble/RoyalRumble2028.png" },
     { name: "EC", image: "/Images/PPV/EC/EC1.png" },
   ],

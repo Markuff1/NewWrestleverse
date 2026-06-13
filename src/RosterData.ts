@@ -55,7 +55,7 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/BaronCorbin.png", name: "Baron Corbin", gender: "Man", tag: "A" , champion:""},
         { src: "/Images/Roster/Batista.png", name: "Batista", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/Bayley.png", name: "Bayley", gender: "Women", tag: "SD" , champion:""},
-        { src: "/Images/Roster/BeckyLynch.png", name: "Becky Lynch", gender: "Women", tag: "R" , champion:""},
+        { src: "/Images/Roster/BeckyLynch.png", name: "Becky Lynch", gender: "Women", tag: "R" , champion:"WWH"},
         { src: "/Images/Roster/Berto.png", name: "Berto", gender: "Man", tag: "R" , champion:""},
         { src: "/Images/Roster/BiancaBelair.png", name: "Bianca Belair", gender: "Women", tag: "R" , champion:""},
         { src: "/Images/Roster/BigE.png", name: "Big E", gender: "Man", tag: "L" , champion:""},
@@ -148,7 +148,7 @@ const rosterData: Record<string, Wrestler[]> = {
 
 // ------- I ---------       
         
-        { src: "/Images/Roster/IljaDragunov.png", name: "Ilja Dragunov", gender: "Man", tag: "SD" , champion:"US"},
+        { src: "/Images/Roster/IljaDragunov.png", name: "Ilja Dragunov", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/IndiHartwell.png", name: "Indi Hartwell", gender: "Women", tag: "A" , champion:""},
         { src: "/Images/Roster/IslaDawn.png", name: "Isla Dawn", gender: "Women", tag: "A" , champion:""},
         { src: "/Images/Roster/Ivar.png", name: "Ivar", gender: "Man", tag: "SD" , champion:""},
@@ -271,8 +271,8 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/ReyFenix.png", name: "Rey Fenix", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/ReyMysterio.png", name: "Rey Mysterio", gender: "Man", tag: "SD" , champion:""},
         { src: "/Images/Roster/Rezar.png", name: "Rezar", gender: "Man", tag: "A" , champion:""},
-        { src: "/Images/Roster/RheaRipley.png", name: "Rhea Ripley", gender: "Women", tag: "R" , champion:"WWH"},
-        { src: "/Images/Roster/RickySaints.png", name: "Ricky Saints", gender: "Man", tag: "SD" , champion:""},
+        { src: "/Images/Roster/RheaRipley.png", name: "Rhea Ripley", gender: "Women", tag: "R" , champion:""},
+        { src: "/Images/Roster/RickySaints.png", name: "Ricky Saints", gender: "Man", tag: "SD" , champion:"US"},
         { src: "/Images/Roster/RickySteamboat.png", name: "Ricky Steamboat", gender: "Man", tag: "L" , champion:""},
         { src: "/Images/Roster/RidgeHolland.png", name: "Ridge Holland", gender: "Man", tag: "U" , champion:""},
         { src: "/Images/Roster/Rikishi.png", name: "Rikishi", gender: "Man", tag: "L" , champion:""},
