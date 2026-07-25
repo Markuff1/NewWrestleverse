@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./Roster.css";
 import "./Home.css";
 import Header from "./Header.tsx";
@@ -29,104 +29,98 @@ const tabs = [
   "Tag Teams"
 ]
 
-const RosterTabs: React.FC = () => {
-  // Currently selected tab
-  const [activeTab, setActiveTab] = useState("ALL");
+/*
+  Returns filtered roster data for a single tab and search term.
+  Pulled out of the component so it can be called once per tab
+  from a memoized map instead of being recomputed inline.
+*/
+function filteredRoster(tab: string, searchTerm: string): Wrestler[] {
+  let filteredData: Wrestler[] = [];
 
-  // Search input value
-  const [searchTerm, setSearchTerm] = useState("");
+  switch (tab) {
+    case "Raw":
+      filteredData = rosterData.ALL.filter(item => item.tag === "R");
+      break;
 
-  /*
-    Returns filtered roster data based on selected tab
-    and search term.
-  */
-  const filteredRoster = (tab: string): Wrestler[] => {
-    let filteredData: Wrestler[] = [];
+    case "Smackdown":
+      filteredData = rosterData.ALL.filter(item => item.tag === "SD");
+      break;
 
-    switch (tab) {
-      case "Raw":
-        filteredData = rosterData.ALL.filter(item => item.tag === "R");
-        break;
+    case "AAA":
+      filteredData = rosterData.ALL.filter(item => item.tag === "AAA");
+      break;
 
-      case "Smackdown":
-        filteredData = rosterData.ALL.filter(item => item.tag === "SD");
-        break;
+    case "Legend":
+      filteredData = rosterData.ALL.filter(item => item.tag === "L");
+      break;
 
-      case "AAA":
-        filteredData = rosterData.ALL.filter(item => item.tag === "AAA");
-        break; 
+    case "Undrafted":
+      filteredData = rosterData.ALL.filter(item => item.tag === "U");
+      break;
 
-      case "Legend":
-        filteredData = rosterData.ALL.filter(item => item.tag === "L");
-        break;
-
-      case "Undrafted":
-        filteredData = rosterData.ALL.filter(item => item.tag === "U");
-        break;
-
-      case "Current":
-        // Includes Raw, Smackdown and Undrafted
-        filteredData = rosterData.ALL.filter(
-          item =>
-            item.tag === "R" ||
-            item.tag === "SD" ||
-            item.tag === "U"
-        );
-        break;
+    case "Current":
+      // Includes Raw, Smackdown and Undrafted
+      filteredData = rosterData.ALL.filter(
+        item =>
+          item.tag === "R" ||
+          item.tag === "SD" ||
+          item.tag === "U"
+      );
+      break;
 
 
-      case "Alumni":
-        filteredData = rosterData.ALL.filter(item => item.tag === "A");
-        break;
+    case "Alumni":
+      filteredData = rosterData.ALL.filter(item => item.tag === "A");
+      break;
 
-      case "Men":
-        filteredData = rosterData.ALL.filter(item => item.gender === "Man");
-        break;
+    case "Men":
+      filteredData = rosterData.ALL.filter(item => item.gender === "Man");
+      break;
 
-      case "Women":
-        filteredData = rosterData.ALL.filter(item => item.gender === "Women");
-        break;
+    case "Women":
+      filteredData = rosterData.ALL.filter(item => item.gender === "Women");
+      break;
 
-      case "GM":
-        filteredData = rosterData.ALL.filter(item => item.tag2 === "GM");
-        break;
+    case "GM":
+      filteredData = rosterData.ALL.filter(item => item.tag2 === "GM");
+      break;
 
-      case "Champions":
-        // Champions use separate dataset and are sorted by champion rank
-        filteredData = rosterData.Champions
-          .slice()
-          .sort((a, b) => (a.championRank ?? 999) - (b.championRank ?? 999));
-        break;
+    case "Champions":
+      // Champions use separate dataset and are sorted by champion rank
+      filteredData = rosterData.Champions
+        .slice()
+        .sort((a, b) => (a.championRank ?? 999) - (b.championRank ?? 999));
+      break;
 
-      case "Tag Teams":
-        // Tag teams use their own dataset
-        return rosterData["Tag Teams"]
-          .filter(item =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          .sort((a, b) => a.name.localeCompare(b.name));
+    case "Tag Teams":
+      // Tag teams use their own dataset
+      return rosterData["Tag Teams"]
+        .filter(item =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .sort((a, b) => a.name.localeCompare(b.name));
 
-      default:
-        filteredData = rosterData.ALL;
-    }
+    default:
+      filteredData = rosterData.ALL;
+  }
 
-    // Apply search filter to all non Tag Team tabs
-    filteredData = filteredData.filter(item =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  // Apply search filter to all non Tag Team tabs
+  filteredData = filteredData.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    // Sort alphabetically except for Champions
-    if (tab !== "Champions") {
-      filteredData.sort((a, b) => a.name.localeCompare(b.name));
-    }
+  // Sort alphabetically except for Champions
+  if (tab !== "Champions") {
+    filteredData.sort((a, b) => a.name.localeCompare(b.name));
+  }
 
-    return filteredData;
-  };
+  return filteredData;
+}
 
-  /*
-    Groups wrestlers into rows of 6 for display layout.
-  */
-  const groupRoster = (data: Wrestler[], groupSize = 6): Wrestler[][] => {
+/*
+  Groups wrestlers into rows of 6 for display layout.
+*/
+function groupRoster(data: Wrestler[], groupSize = 6): Wrestler[][] {
     const groups: Wrestler[][] = [];
 
     data.forEach((item, index) => {
@@ -137,7 +131,26 @@ const RosterTabs: React.FC = () => {
     });
 
     return groups;
-  };
+}
+
+const RosterTabs: React.FC = () => {
+  // Currently selected tab
+  const [activeTab, setActiveTab] = useState("ALL");
+
+  // Search input value
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Filter every tab once per search-term change, reused for both
+  // the tab-button counts and the tab content below.
+  const rosterByTab = useMemo(() => {
+    const result: Record<string, Wrestler[]> = {};
+
+    for (const tab of tabs) {
+      result[tab] = filteredRoster(tab, searchTerm);
+    }
+
+    return result;
+  }, [searchTerm]);
 
   return (
     <>
@@ -162,7 +175,7 @@ const RosterTabs: React.FC = () => {
                 className={`tablinks ${activeTab === tab ? "active" : ""}`}
                 onClick={() => setActiveTab(tab)}
               >
-                {`${tab} (${filteredRoster(tab).length})`}
+                {`${tab} (${rosterByTab[tab].length})`}
               </button>
             ))}
           </div>
@@ -178,8 +191,7 @@ const RosterTabs: React.FC = () => {
 
           {/* Tab content rendering */}
           {tabs.map(tab => {
-            const roster = filteredRoster(tab);
-            const groupedRoster = groupRoster(roster);
+            const groupedRoster = groupRoster(rosterByTab[tab]);
 
             return (
               <div

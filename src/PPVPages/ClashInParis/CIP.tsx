@@ -21,7 +21,7 @@ const matchCard2027: Match[] = [
 const CIPEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/ClashInParis/CIPHeader2027.png",
+    banner: "/Images/PPV/ClashInParis/CIPHeader2027.webp",
     location: "Paris La Défense Arena, Nanterre, France",
     date: "Saturday, June 26th 2027, 2e/11p",
     matches: matchCard2027,

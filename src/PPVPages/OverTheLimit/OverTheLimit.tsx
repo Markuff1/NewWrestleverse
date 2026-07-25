@@ -18,7 +18,7 @@ const matchCard2026: Match[] = [
 const OTLEvents: PPVEvent[] = [
   {
     year: 2026,
-    banner: "/Images/PPV/OverTheLimit/OTLHeader2026.png",
+    banner: "/Images/PPV/OverTheLimit/OTLHeader2026.webp",
     location: "Madison Square Garden, New York",
     date: "Saturday, June 27th 2026",
     matches: matchCard2026,

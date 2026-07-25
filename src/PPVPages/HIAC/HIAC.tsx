@@ -18,7 +18,7 @@ const matchCard2026: Match[] = [
 const HIACEvents: PPVEvent[] = [
   {
     year: 2026,
-    banner: "/Images/PPV/HIAC/HIACHeader2026.png",
+    banner: "/Images/PPV/HIAC/HIACHeader2026.webp",
     location: "Wells Fargo Center, Philadelphia, PA",
     date: "Saturday, October 24th 2026, 7e/5p",
     matches: matchCard2026,

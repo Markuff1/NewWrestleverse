@@ -1,169 +1,34 @@
-import React, { useState, useEffect } from "react";
-import "./WeeklyShow.css";
-import "./Roster.css";
-import "./Home.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import rosterData from "./RosterData"; // ✅ Import from RosterData.ts
+import WeeklyShowPage, { WeeklyShowItem } from "./WeeklyShow";
 
-const tabs = ["ALL", "Men", "Women", "Tag Teams", "Champions", "GM"];
+const tagTeams: WeeklyShowItem[] = [
+  { src: "/Images/Roster/TagTeam/AlphaAcadamy.webp", name: "Alpha Acadamy" },
+  { src: "/Images/Roster/TagTeam/Angel&Berto.webp", name: "Angel & Berto" },
+  { src: "/Images/Roster/TagTeam/AOP.webp", name: "AOP" },
+  { src: "/Images/Roster/TagTeam/DudleyBoys.webp", name: "Dudley Boys" },
+  { src: "/Images/Roster/TagTeam/JudgementDay.webp", name: "Judgement Day" },
+  { src: "/Images/Roster/TagTeam/LWO.webp", name: "LWO" },
+  { src: "/Images/Roster/TagTeam/NewBloodline.webp", name: "New Bloodline" },
+  { src: "/Images/Roster/TagTeam/StreetProfits.webp", name: "Street Profits" },
+  { src: "/Images/Roster/TagTeam/VikingRaiders.webp", name: "Viking Raiders" },
+  { src: "/Images/Roster/TagTeam/WyattSix.webp", name: "Wyatt Six" },
+];
 
-// ✅ Type for each RAW item
-type RAWItem = {
-  className: string;
-  src: string;
-  name: string;
-  gender?: string;
-  Champion?: string;
-  championRank?: number;
-};
+const gmEntries: WeeklyShowItem[] = [
+  { src: "/Images/Roster/JBL.webp", name: "Wade Barrett", gender: "Man" },
+];
 
-// ✅ RAW data structure
-const RAWData: Record<string, RAWItem[]> = {
-  ALL: [],
-  Men: [],
-  Women: [],
-  "Tag Teams": [
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/AlphaAcadamy.png", name: "Alpha Acadamy" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/Angel&Berto.png", name: "Angel & Berto" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/AOP.png", name: "AOP" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/DudleyBoys.png", name: "Dudley Boys" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/JudgementDay.png", name: "Judgement Day" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/LWO.png", name: "LWO" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/NewBloodline.png", name: "New Bloodline" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/StreetProfits.png", name: "Street Profits" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/VikingRaiders.png", name: "Viking Raiders" },
-    { className: "ALLRAW", src: "/Images/Roster/TagTeam/WyattSix.png", name: "Wyatt Six" },
-  ],
-  Champions: [],
-  GM: [{ className: "ALLRAW", src: "/Images/Roster/JBL.png", name: "Wade Barrett", gender: "Man" }],
-};
-
-// ✅ Populate RAWData.ALL from rosterData
-RAWData.ALL = rosterData.ALL
-  .filter((item) => item.tag === "R")
-  .map((item) => ({
-    className: "ALLRAW",
-    src: item.src,
-    name: item.name,
-    gender: item.gender,
-    Champion: item.champion ?? undefined,
-    championRank: item.championRank ?? undefined,
-  }))
-  .sort((a, b) => a.name.localeCompare(b.name));
-
-// ✅ Sort Men, Women, Champions
-const updateGenderTabs = () => {
-  RAWData.Men = RAWData.ALL.filter((item) => item.gender === "Man");
-  RAWData.Women = RAWData.ALL.filter((item) => item.gender === "Women");
-  RAWData.Champions = RAWData.ALL.filter((item) => item.Champion);
-};
-
-updateGenderTabs();
-
-const RAWTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("ALL");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [, setFilteredData] = useState(RAWData);
-
-  const filteredRAW = (tab: string) => {
-    return (
-      RAWData[tab]?.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      ) || []
-    );
-  };
-
-  useEffect(() => {
-    updateGenderTabs();
-    const updatedData: Record<string, RAWItem[]> = { ...RAWData };
-
-    for (let tab of tabs) {
-      updatedData[tab] = RAWData[tab].filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    setFilteredData(updatedData);
-  }, [searchTerm]);
-
+export default function RAW() {
   return (
-    <>
-      <Header />
-      <div className="PageBackground">
-        <div className="PageContainer">
-          <img className="RAWBanner" src="/Images/RAWHeader.png" alt="RAW Header" />
-
-          <div className="RAWInfo">
-            <div className="RAWLocation">Location: Arena Near You</div>
-            <div className="RAWDate">Date/Time: Every Monday Night</div>
-          </div>
-
-          <div className="RAWText1">Monday Night RAW</div>
-          <div className="RAWText2">
-            Monday Night’s flagship WWE show delivers top superstars, thrilling matches, and exciting storylines every week.
-          </div>
-
-          {/* ✅ Search + Tabs */}
-          <input
-            type="text"
-            placeholder="Search for a wrestler..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="RAWsearchBar"
-          />
-
-          <div className="RAWTab">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                className={`RAWtablinks ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab} ({filteredRAW(tab).length})
-              </button>
-            ))}
-          </div>
-
-          {/* ✅ Tab Content */}
-          {tabs.map((tab) => (
-            <div key={tab} className="RAWtabcontent" style={{ display: activeTab === tab ? "block" : "none" }}>
-              <div className="RAWText3">Current {tab} Roster</div>
-              {filteredRAW(tab)
-                ?.reduce((acc: RAWItem[][], item: RAWItem, index: number) => {
-                  const groupSize = tab === "Champions" ? 4 : 6;
-                  if (index % groupSize === 0) acc.push([]);
-                  acc[acc.length - 1].push(item);
-                  return acc;
-                }, [])
-                .map((group, groupIndex) => (
-                  <div key={groupIndex} className="centerRoster">
-                    {group.map((item, index) => (
-                      <div
-                        key={index}
-                        className={`profile-card ${item.Champion || "ALLRAW"}`}
-                        title={item.name}
-                      >
-                        <img
-                          src={item.src}
-                          alt={item.name}
-                          className="wrestler-img"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-
-                  </div>
-                ))}
-            </div>
-          ))}
-
-          <div className="RAWText1">.....</div>
-        </div>
-      </div>
-      <Footer />
-    </>
+    <WeeklyShowPage
+      tag="R"
+      classPrefix="RAW"
+      bannerSrc="/Images/RAWHeader.webp"
+      bannerAlt="RAW Header"
+      title="Monday Night RAW"
+      description="Monday Night’s flagship WWE show delivers top superstars, thrilling matches, and exciting storylines every week."
+      schedule="Every Monday Night"
+      tagTeams={tagTeams}
+      gmEntries={gmEntries}
+    />
   );
-};
-
-export default RAWTabs;
+}

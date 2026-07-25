@@ -43,7 +43,7 @@ const matchCard2025: Match[] = [
 const MITBEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/MITB/MITBHeader2027.png",
+    banner: "/Images/PPV/MITB/MITBHeader2027.webp",
     location: "Intuit Dome, Los Angles, CA",
     date: "Saturday 10th July 2027",
     matches: matchCard2027,
@@ -62,7 +62,7 @@ const MITBEvents: PPVEvent[] = [
 
   {
     year: 2026,
-    banner: "/Images/PPV/MITB/MITBHeader2026.png",
+    banner: "/Images/PPV/MITB/MITBHeader2026.webp",
     location: "T-Mobile Arena, Las Vegas",
     date: "Saturday, July 18th 2026",
     matches: matchCard2026,
@@ -81,7 +81,7 @@ const MITBEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/MITB/MITBHeader2025.png",
+    banner: "/Images/PPV/MITB/MITBHeader2025.webp",
     location: "Scotiabank Arena, Toronto, Canada",
     date: "Saturday, 21st June 2025",
     matches: matchCard2025,

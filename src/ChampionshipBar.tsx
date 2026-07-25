@@ -3,18 +3,18 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./Roster.css"; // Ensure the CSS file is correctly linked
 
 const championships = [
-    { id: 1, image: "/Images/ChampionshipGraphics/Undisputed.png", alt: "WWE Undisputed Championship", link: "/WWEUndisputedChamp" },
-    { id: 2, image: "/Images/ChampionshipGraphics/WomenUndisputed.png", alt: "Women's Undisputed Championship", link: "/WomenUndisputedChamp" },
-    { id: 3, image: "/Images/ChampionshipGraphics/WorldHeavyweight.png", alt: "World Heavyweight Championship", link: "/WorldHeavyweightChamp" },
-    { id: 4, image: "/Images/ChampionshipGraphics/WomenWorld.png", alt: "Women's World Championship", link: "/WomenWorldChamp" },
-    { id: 5, image: "/Images/ChampionshipGraphics/IC.png", alt: "Intercontinental Championship", link: "/IntercontinentalChamp" },
-    { id: 6, image: "/Images/ChampionshipGraphics/US.png", alt: "United States Championship", link: "/UnitedStatesChamp" },
-    { id: 5, image: "/Images/ChampionshipGraphics/WomenIC.png", alt: "Women's Intercontinental Championship", link: "/WomenIntercontinentalChamp" },
-    { id: 6, image: "/Images/ChampionshipGraphics/WomenUS.png", alt: "Women's United States Championship", link: "/WomenUnitedStatesChamp" },
-    { id: 7, image: "/Images/ChampionshipGraphics/RAWTT.png", alt: "Raw Tag Team Championships", link: "/RawTagTeamChamps" },
-    { id: 8, image: "/Images/ChampionshipGraphics/SDTT.png", alt: "Smackdown Tag Team Championships", link: "/SmackdownTagTeamChamps" },
-    { id: 9, image: "/Images/Championships/MenMITB.png", alt: "Men's Money In The Bank", link: "/MMITB" },
-    { id: 10, image: "/Images/Championships/WomenMITB.png", alt: "Women's Money In The Bank", link: "/WMITB" }
+    { image: "/Images/ChampionshipGraphics/Undisputed.webp", alt: "WWE Undisputed Championship", link: "/WWEUndisputedChamp" },
+    { image: "/Images/ChampionshipGraphics/WomenUndisputed.webp", alt: "Women's Undisputed Championship", link: "/WomenUndisputedChamp" },
+    { image: "/Images/ChampionshipGraphics/WorldHeavyweight.webp", alt: "World Heavyweight Championship", link: "/WorldHeavyweightChamp" },
+    { image: "/Images/ChampionshipGraphics/WomenWorld.webp", alt: "Women's World Championship", link: "/WomenWorldChamp" },
+    { image: "/Images/ChampionshipGraphics/IC.webp", alt: "Intercontinental Championship", link: "/IntercontinentalChamp" },
+    { image: "/Images/ChampionshipGraphics/US.webp", alt: "United States Championship", link: "/UnitedStatesChamp" },
+    { image: "/Images/ChampionshipGraphics/WomenIC.webp", alt: "Women's Intercontinental Championship", link: "/WomenIntercontinentalChamp" },
+    { image: "/Images/ChampionshipGraphics/WomenUS.webp", alt: "Women's United States Championship", link: "/WomenUnitedStatesChamp" },
+    { image: "/Images/ChampionshipGraphics/RAWTT.webp", alt: "Raw Tag Team Championships", link: "/RawTagTeamChamps" },
+    { image: "/Images/ChampionshipGraphics/SDTT.webp", alt: "Smackdown Tag Team Championships", link: "/SmackdownTagTeamChamps" },
+    { image: "/Images/Championships/MenMITB.webp", alt: "Men's Money In The Bank", link: "/MMITB" },
+    { image: "/Images/Championships/WomenMITB.webp", alt: "Women's Money In The Bank", link: "/WMITB" }
 ];
 
 const ChampionshipBar: React.FC = () => {
@@ -33,7 +33,7 @@ const ChampionshipBar: React.FC = () => {
       </button>
       <div className="championship-bar" ref={scrollRef}>
         {championships.map((champ) => (
-          <Link key={champ.id} to={champ.link}>
+          <Link key={champ.link} to={champ.link}>
             <img src={champ.image} alt={champ.alt} className="championship-image" />
           </Link>
         ))}

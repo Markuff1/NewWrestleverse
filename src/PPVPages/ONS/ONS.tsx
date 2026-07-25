@@ -18,7 +18,7 @@ const matchCard2025: Match[] = [
 const ONSEvent: PPVEvent[] = [
   {
     year: 2025,
-    banner: "/Images/PPV/ONS/ONSHeader.png",
+    banner: "/Images/PPV/ONS/ONSHeader.webp",
     location: "Wells Fargo Center, Philadelphia, Pennsylvania",
     date: "Saturday, July 26th, 2025, 7e/5p",
     matches: matchCard2025,

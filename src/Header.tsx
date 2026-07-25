@@ -26,7 +26,7 @@ function Header() {
         <Link to="/Home">
           <img
             className="WLogo"
-            src="/Images/Wrestleverse2K26.png"
+            src="/Images/Wrestleverse2K26.webp"
             alt="Wrestleverse"
           />
         </Link>
@@ -37,14 +37,14 @@ function Header() {
 
             <li>
               <Link to="/Home" className="NavItem">
-                <img src="/Images/Icons/Home.png" alt="" />
+                <img src="/Images/Icons/Home.webp" alt="" />
                 <span>Home</span>
               </Link>
             </li>
 
             <li className="Dropdown">
               <Link to="/shows" className="NavItem">
-                <img src="/Images/Icons/Show.png" alt="" />
+                <img src="/Images/Icons/Show.webp" alt="" />
                 <span>Shows</span>
               </Link>
 
@@ -58,14 +58,14 @@ function Header() {
 
             <li>
               <Link to="/Roster" className="NavItem">
-                <img src="/Images/Icons/Roster.png" alt="" />
+                <img src="/Images/Icons/Roster.webp" alt="" />
                 <span>Roster</span>
               </Link>
             </li>
 
             <li>
               <Link to="/News" className="NavItem">
-                <img src="/Images/Icons/News.png" alt="" />
+                <img src="/Images/Icons/News.webp" alt="" />
                 <span>News</span>
               </Link>
             </li>
@@ -83,7 +83,7 @@ function Header() {
                 {/* Logout icon */}
                 <li>
                   <button className="LogoutIconBtn" onClick={handleLogout}>
-                    <img src="/Images/Icons/SignOut.png" alt="Sign Out" />
+                    <img src="/Images/Icons/SignOut.webp" alt="Sign Out" />
                   </button>
                 </li>
               </>

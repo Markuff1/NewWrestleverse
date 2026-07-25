@@ -19,7 +19,7 @@ const matchCard2028: Match[] = [
 const BraggingRightsEvents: PPVEvent[] = [
   {
     year: 2028,
-    banner: "/Images/PPV/BR/BRHeader2028.png",
+    banner: "/Images/PPV/BR/BRHeader2028.webp",
     location: "Benchmark International Arena, Tampa, Fl",
     date: "Saturday, January 8th 2028, 7e/5p",
     matches: matchCard2028,

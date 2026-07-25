@@ -9,20 +9,12 @@
     "test:e2e:report": "playwright show-report",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "images:webp": "node scripts/convert-to-webp.mjs"
   },
   "dependencies": {
-    "axios": "^1.8.4",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
     "firebase": "^11.3.1",
     "framer-motion": "^12.23.12",
-    "imagemin": "^9.0.1",
-    "imagemin-cli": "^8.0.0",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
-    "imagemin-webp": "^8.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5"
@@ -39,9 +31,12 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
+    "sharp": "^0.35.3",
+    "svgo": "^4.0.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.22.0",
     "vite": "^6.1.0",
+    "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-svgr": "^4.5.0"
   }
 }

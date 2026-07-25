@@ -77,7 +77,7 @@ function Draft() {
 
           <img
             className="DraftBanner"
-            src="Images/DraftHeader.png"
+            src="Images/DraftHeader.webp"
             alt="Draft Banner"
           />
 

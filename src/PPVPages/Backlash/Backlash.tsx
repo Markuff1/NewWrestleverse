@@ -45,7 +45,7 @@ const matchCard2025: Match[] = [
 const BacklashEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/Backlash/Backlash2027Header.png",
+    banner: "/Images/PPV/Backlash/Backlash2027Header.webp",
     location: "Ryoguko Arena, Tokyo, Japan",
     date: "Saturday, May 22nd, 2027",
     matches: matchCard2027,
@@ -64,7 +64,7 @@ const BacklashEvents: PPVEvent[] = [
 
   {
     year: 2026,
-    banner: "/Images/PPV/Backlash/BacklashHeaderV2.png",
+    banner: "/Images/PPV/Backlash/BacklashHeaderV2.webp",
     location: "Gainbridge Fieldhouse, Indianapolis, Indiana",
     date: "Saturday, May 23rd, 2026",
     matches: matchCard2026,
@@ -83,7 +83,7 @@ const BacklashEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/Backlash/BacklashHeader.png",
+    banner: "/Images/PPV/Backlash/BacklashHeader.webp",
     location: "Allstate Arena, Rosemont, Illinois",
     date: "Saturday, May 24th, 2025",
     matches: matchCard2025,

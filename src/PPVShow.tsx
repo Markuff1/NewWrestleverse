@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import MatchTypeTooltip from "./PPVPages/MatchTypeTooltop";
 import { Link, useLocation } from "react-router-dom";
-import { useLayoutEffect } from "react";
+import { Fragment, useLayoutEffect } from "react";
 
 // ---------- Types ----------
 export type Match = {
@@ -172,7 +172,7 @@ function PPVShow({ events, bannerAlt }: PPVShowProps) {
                           event.matches[i - 1].night);
 
                     return (
-                      <>
+                      <Fragment key={i}>
                         {showNightHeader && (
                           <tr
                             key={`night-${i}`}
@@ -184,7 +184,7 @@ function PPVShow({ events, bannerAlt }: PPVShowProps) {
                           </tr>
                         )}
 
-                        <tr key={i}>
+                        <tr>
                           <td>{i + 1}</td>
 
                           <td>{match.match}</td>
@@ -199,7 +199,7 @@ function PPVShow({ events, bannerAlt }: PPVShowProps) {
 
                           <td>{match.type}</td>
                         </tr>
-                      </>
+                      </Fragment>
                     );
                   })}
                 </tbody>
@@ -258,7 +258,7 @@ function PPVShow({ events, bannerAlt }: PPVShowProps) {
                           className="MatchImage"
                           src={`/Images/PPV/${event.imageFolder}/M${
                             i + 1
-                          }.PNG`}
+                          }.webp`}
                           alt={match.match}
                           loading="lazy"
                           decoding="async"

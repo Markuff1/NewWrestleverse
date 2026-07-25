@@ -9,7 +9,7 @@ const matchCard2025: Match[] = [
 const NoWayOutEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/NoWayOut/NoWayOutHeader.png",
+    banner: "/Images/PPV/NoWayOut/NoWayOutHeader.webp",
     location: "",
     date: "",
     matches: matchCard2025,

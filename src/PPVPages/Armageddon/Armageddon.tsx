@@ -22,7 +22,7 @@ const matchCard2027: Match[] = [
 const ArmageddonEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/Armageddon/ArmageddonHeader2027.png",
+    banner: "/Images/PPV/Armageddon/ArmageddonHeader2027.webp",
     location: "Smoothie King Centre, New Orleans, LA",
     date: "Saturday, December 18th 2027, 7e/5p",
     matches: matchCard2027,

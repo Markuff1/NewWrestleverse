@@ -48,7 +48,7 @@ const matchCard2027: Match[] = [
 const ECEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/EC/ECHeader2027.png",
+    banner: "/Images/PPV/EC/ECHeader2027.webp",
     location: "Optus Stadium,  Perth, Australia",
     date: "Saturday, 27th February 2027, 7pm ET / 5pm PT",
     matches: matchCard2027,

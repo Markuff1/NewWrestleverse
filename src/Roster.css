@@ -124,46 +124,46 @@
 
 /* World titles */
 .WH::after {
-  background-image: url(/Images/ChampionshipGraphics/WorldHeavyweight.png);
+  background-image: url(/Images/ChampionshipGraphics/WorldHeavyweight.webp);
 }
 
 .UC::after {
-  background-image: url(/Images/ChampionshipGraphics/Undisputed.png);
+  background-image: url(/Images/ChampionshipGraphics/Undisputed.webp);
 }
 
 /* Mid-card */
 .IC::after {
-  background-image: url(/Images/ChampionshipGraphics/IC.png);
+  background-image: url(/Images/ChampionshipGraphics/IC.webp);
 }
 
 .US::after {
-  background-image: url(/Images/ChampionshipGraphics/US.png);
+  background-image: url(/Images/ChampionshipGraphics/US.webp);
 }
 
 /* Tag titles */
 .RAWTT::after {
-  background-image: url(/Images/ChampionshipGraphics/RAWTT.png);
+  background-image: url(/Images/ChampionshipGraphics/RAWTT.webp);
 }
 
 .SDTT::after {
-  background-image: url(/Images/ChampionshipGraphics/SDTT.png);
+  background-image: url(/Images/ChampionshipGraphics/SDTT.webp);
 }
 
 /* Women */
 .WIC::after {
-  background-image: url(/Images/ChampionshipGraphics/WomenIC.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenIC.webp);
 }
 
 .WUS::after {
-  background-image: url(/Images/ChampionshipGraphics/WomenUS.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenUS.webp);
 }
 
 .WWH::after {
-  background-image: url(/Images/ChampionshipGraphics/WomenWorld.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenWorld.webp);
 }
 
 .WUC::after {
-  background-image: url(/Images/ChampionshipGraphics/WomenUndisputed.png);
+  background-image: url(/Images/ChampionshipGraphics/WomenUndisputed.webp);
 }
 
 /* =========================================================
@@ -179,7 +179,7 @@
 }
 
 .MMITB::after {
-  background-image: url(/Images/Championships/MenMITB.png);
+  background-image: url(/Images/Championships/MenMITB.webp);
   background-size: 50%; /* smaller than titles */
 }
 
@@ -192,7 +192,7 @@
 }
 
 .WMITB::after {
-  background-image: url(/Images/Championships/WomenMITB.png);
+  background-image: url(/Images/Championships/WomenMITB.webp);
   background-size: 50%; /* smaller than titles */
 }
 

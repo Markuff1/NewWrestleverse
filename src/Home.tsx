@@ -2,20 +2,10 @@ import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { currentPPV } from "./currentPPV";
 import { newsArticles } from "./newsData";
 
 function Home() {
-  const [, setUsername] = useState("");
-
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []);
-
   const latestArticle = newsArticles[0];
 
   return (
@@ -30,7 +20,7 @@ function Home() {
               <h2>Description</h2>
               <img 
               className="WrestleLogo" 
-              src="/Images/Wrestleverse2K26.png" 
+              src="/Images/Wrestleverse2K26.webp" 
               alt="Logo"
               />
               <p className="DescriptionTextTitle">Welcome to Wrestleverse</p>

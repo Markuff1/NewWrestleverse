@@ -26,11 +26,19 @@ type ChampionshipPageProps = {
   bannerSrc: string;
 };
 
+type TitleHolder = {
+  id: string;
+  name: string;
+  date: string;
+  event: string;
+  days: number;
+};
+
 const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   collectionId,
   bannerSrc,
 }) => {
-  const [titleHolders, setTitleHolders] = useState<any[]>([]);
+  const [titleHolders, setTitleHolders] = useState<TitleHolder[]>([]);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [event, setEvent] = useState("");
@@ -41,8 +49,8 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     event: "",
   });
 
-  const [longestReign, setLongestReign] = useState<any | null>(null);
-  const [shortestReign, setShortestReign] = useState<any | null>(null);
+  const [longestReign, setLongestReign] = useState<TitleHolder | null>(null);
+  const [shortestReign, setShortestReign] = useState<TitleHolder | null>(null);
   const [mostReigns, setMostReigns] = useState<{
     names: string[];
     count: number;
@@ -56,11 +64,11 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     let records = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    })) as any[];
+    })) as TitleHolder[];
 
     // sort newest first
     records = records.sort(
-      (a: any, b: any) =>
+      (a, b) =>
         new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
@@ -83,7 +91,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     calculateStats(records);
   };
 
-  const calculateStats = (records: any[]) => {
+  const calculateStats = (records: TitleHolder[]) => {
     if (records.length === 0) {
       setLongestReign(null);
       setShortestReign(null);
@@ -128,7 +136,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     const maxCount = Math.max(...Object.values(countMap));
 
     const topNames = Object.entries(countMap)
-      .filter(([_, count]) => count === maxCount)
+      .filter(([, count]) => count === maxCount)
       .map(([name]) => {
         const original = records.find(
           (r) => r.name.trim().toLowerCase() === name
@@ -150,15 +158,14 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     if (name && date && event) {
       const newRecord = { name, date, event, days: 0 };
 
-      const docRef = await addDoc(
+      // Adding a title change shifts every reign's "days" value (the
+      // previous champion's reign length now ends at this date instead
+      // of today), so a full refetch is needed to recompute them —
+      // an optimistic local update here would just be overwritten anyway.
+      await addDoc(
         collection(db, "Wrestleverse", "ChampionshipData", collectionId),
         newRecord
       );
-
-      const newData = [{ id: docRef.id, ...newRecord }, ...titleHolders];
-
-      setTitleHolders(newData);
-      calculateStats(newData);
 
       setName("");
       setDate("");
@@ -177,7 +184,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     calculateStats(updated);
   };
 
-  const startEdit = (record: any) => {
+  const startEdit = (record: TitleHolder) => {
     setEditingId(record.id);
     setEditData({
       name: record.name,
@@ -263,7 +270,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
               onChange={(e) => setEvent(e.target.value)}
             />
             <button className="icon-btn" onClick={addRecord}>
-              <img src="/Images/Icons/Add.png" alt="Add" />
+              <img src="/Images/Icons/Add.webp" alt="Add" />
             </button>
           </div>
 

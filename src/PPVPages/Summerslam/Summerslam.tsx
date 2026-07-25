@@ -52,7 +52,7 @@ const matchCard2025: Match[] = [
 const SummerSlamEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/SummerSlam/SSHeader2027.png",
+    banner: "/Images/PPV/SummerSlam/SSHeader2027.webp",
     location: "Metlife Stadium, New York, NJ",
     date: "Saturday, August 7th 2027, 7e/5p",
     matches: matchCard2027,
@@ -71,7 +71,7 @@ const SummerSlamEvents: PPVEvent[] = [
 
   {
     year: 2026,
-    banner: "/Images/PPV/SummerSlam/SSHeader2026.png",
+    banner: "/Images/PPV/SummerSlam/SSHeader2026.webp",
     location: "SoFi Stadium, Los Angeles, CA",
     date: "Saturday, August 8th 2026, 7e/5p",
     matches: matchCard2026,
@@ -90,7 +90,7 @@ const SummerSlamEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/SummerSlam/SSHeader2025.png",
+    banner: "/Images/PPV/SummerSlam/SSHeader2025.webp",
     location: "Cleveland Browns Stadium, Cleveland, Ohio",
     date: "Saturday, August 30th 2025, 7e/5p",
     matches: matchCard2025,

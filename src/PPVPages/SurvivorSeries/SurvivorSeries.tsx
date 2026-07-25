@@ -45,7 +45,7 @@ const matchCard2025: Match[] = [
 const SurvivorSeriesEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/SurvivorSeries/SSHeader2027.png",
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2027.webp",
     location: "Petco Park, San Diego, CA",
     date: "Saturday, November 13th 2027, 7e/5p",
     matches: matchCard2027,
@@ -64,7 +64,7 @@ const SurvivorSeriesEvents: PPVEvent[] = [
 
   {
     year: 2026,
-    banner: "/Images/PPV/SurvivorSeries/SSHeader2026.png",
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2026.webp",
     location: "Enterprise Center, St Louis, Mi",
     date: "Saturday, November 21st 2026, 7e/5p",
     matches: matchCard2026,
@@ -83,7 +83,7 @@ const SurvivorSeriesEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/SurvivorSeries/SSHeader2025.png",
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2025.webp",
     location: "TD Garden, Boston, Massachusetts",
     date: "Saturday, November 22nd 2025, 7e/5p",
     matches: matchCard2025,

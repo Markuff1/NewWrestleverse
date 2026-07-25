@@ -31,7 +31,7 @@ const matchCard2025: Match[] = [
 const TLCEvents: PPVEvent[] = [
   {
     year: 2026,
-    banner: "/Images/PPV/TLC/TLC2026Header.png",
+    banner: "/Images/PPV/TLC/TLC2026Header.webp",
     location: "Bell Centre. Montreal, Canada",
     date: "Saturday, December 12th 2026, 7e/5p",
     matches: matchCard2026,
@@ -50,7 +50,7 @@ const TLCEvents: PPVEvent[] = [
 
   {
     year: 2025,
-    banner: "/Images/PPV/TLC/TLC2025Header.png",
+    banner: "/Images/PPV/TLC/TLC2025Header.webp",
     location: "Smoothie King Centre, New Orleans, LA",
     date: "Saturday, December 13th 2025, 7e/5p",
     matches: matchCard2025,

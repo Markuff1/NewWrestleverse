@@ -27,9 +27,9 @@ const matchCard2026: Match[] = [
 const RoyalRumbleEvents: PPVEvent[] = [
   {
     year: 2028,
-    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2028.png",
+    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2028.webp",
     location: "Lucas Oil Stadium, Indianapolis, Indiana",
-    date: "Saturday, February 5th 2027, 7pm ET / 5pm PT",
+    date: "Saturday, February 5th 2028, 7pm ET / 5pm PT",
     matches: matchCard2028,
     imageFolder: "RoyalRumble/2028MC",
 
@@ -45,7 +45,7 @@ const RoyalRumbleEvents: PPVEvent[] = [
   },
   {
     year: 2027,
-    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2027.png",
+    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2027.webp",
     location: "Kingdom Arena, Riyadh, Saudi Arabia",
     date: "Saturday, January 30th 2027, 2pm ET / 11am PT",
     matches: matchCard2027,
@@ -63,7 +63,7 @@ const RoyalRumbleEvents: PPVEvent[] = [
   },
   {
     year: 2026,
-    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2026.png",
+    banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2026.webp",
     location: "Wembly Stadium, London, England",
     date: "Saturday, January 31st 2026, 2pm ET / 11am PT",
     matches: matchCard2026,

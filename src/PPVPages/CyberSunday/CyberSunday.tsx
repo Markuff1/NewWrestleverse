@@ -19,7 +19,7 @@ const matchCard2025: Match[] = [
 const CyberSundayEvents: PPVEvent[] = [
   {
     year: 2025,
-    banner: "/Images/PPV/CyberSunday/CyberSundayHeader.png",
+    banner: "/Images/PPV/CyberSunday/CyberSundayHeader.webp",
     location: "Capital One Arena, Washington, DC",
     date: "Saturday, October 25th 2025, 7e/5p",
     matches: matchCard2025,

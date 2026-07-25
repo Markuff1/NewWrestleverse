@@ -34,7 +34,7 @@ const matchCard2026: Match[] = [
 const NYREvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/NYR/NYR2027Header.png",
+    banner: "/Images/PPV/NYR/NYR2027Header.webp",
     location: "Allstate Arena , Illinois, Chicago",
     date: "Saturday, January 2nd 2027, 7e/5p",
     matches: matchCard2027,
@@ -53,7 +53,7 @@ const NYREvents: PPVEvent[] = [
 
   {
     year: 2026,
-    banner: "/Images/PPV/NYR/NYR2026Header.png",
+    banner: "/Images/PPV/NYR/NYR2026Header.webp",
     location: "Nationwide Arena, Columbus, Ohio",
     date: "Saturday, January 3rd 2026, 7e/5p",
     matches: matchCard2026,

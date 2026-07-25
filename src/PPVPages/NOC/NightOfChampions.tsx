@@ -36,7 +36,7 @@ const matchCard2026: Match[] = [
 const NOCEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "/Images/PPV/NOC/NOCHeader2027.png",
+    banner: "/Images/PPV/NOC/NOCHeader2027.webp",
     location: "Kingdom Arena, Riyadh, Saudi Arabia",
     date: "Saturday, September 25th 2027, 2pm ET / 11am PT",
     matches: matchCard2027,
@@ -54,7 +54,7 @@ const NOCEvents: PPVEvent[] = [
   },
   {
     year: 2026,
-    banner: "/Images/PPV/NOC/NOCHeader2026.png",
+    banner: "/Images/PPV/NOC/NOCHeader2026.webp",
     location: "American Airlines Center, Dallas, TX",
     date: "Saturday, September 19th 2026, 7e/5p",
     matches: matchCard2026,

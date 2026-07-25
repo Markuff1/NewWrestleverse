@@ -102,7 +102,7 @@ const WM2027Matches: Match[] = [
 const WMEvents: PPVEvent[] = [
   {
     year: 2027,
-    banner: "Images/PPV/Wrestlemania/WrestlemaniaHeader2027.png",
+    banner: "Images/PPV/Wrestlemania/WrestlemaniaHeader2027.webp",
     location: "Allegiant Stadium, Las Vegas, Nevada",
     date: "April 10–11, 2027, 7e/5p",
     matches: WM2027Matches,
