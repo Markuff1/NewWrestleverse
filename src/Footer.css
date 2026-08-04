@@ -1,18 +1,16 @@
 .FooterBackground{
     background-color:var(--primary-color);
-    height: vh;
     width: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
     z-index: 1000;
-
+    box-shadow: var(--shadow-sm);
 }
 
 
 .FooterText{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     text-align: center;
     padding: 1vh;
     font-size: 1.5vh;

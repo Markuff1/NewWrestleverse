@@ -3,12 +3,12 @@
 ========================================================= */
 
 .RosterText1 {
-  color: #fff;
+  color: var(--text-color);
   text-align: center;
   margin-top: 1vh;
   text-transform: uppercase;
-  font-size: 2.5vw;
-  font-family: var(--font-2);
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  font-family: var(--font-3);
 }
 
 .centerRoster {
@@ -23,9 +23,9 @@
 ========================================================= */
 
 .profile-card {
-  width: 10vw;
+  width: clamp(10rem, 10vw, 20rem);
   margin-top: 2vh;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   background-size: 100% 100%;
   position: relative;
   overflow: hidden;
@@ -88,7 +88,7 @@
 ========================================================= */
 
 /* Champions keep whatever background the card already has */
-.UC,
+.WH,
 .IC,
 .WIC,
 .WWH,
@@ -98,7 +98,7 @@
   background: var(--RAWPChampbackground);
 }
 
-.WH,
+.UC,
 .US,
 .WUS,
 .WUC,
@@ -209,39 +209,38 @@
 }
 
 .tablinks {
-  background: var(--Secondary-color);
-  color: #fff;
+  background: var(--primary-color-dark);
+  color: var(--text-color);
   font-size: 0.85rem;
   text-transform: uppercase;
   font-weight: bold;
   padding: 0.5rem 0.8rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-family: var(--font-1);
 }
 
 .tablinks:hover {
-  background: var(--hover-bg-colorV2);
   transform: scale(1.06);
   box-shadow: 0px 0px 10px var(--primary-colorV2);
 }
 
 .tablinks.active {
-  background: var(--hover-bg-colorV2);
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(255,204,0,0.5);
+  background: var(--Secondary-color);
+  color: #241c00;
+  box-shadow: 0 4px 10px rgba(242, 183, 5, 0.5);
+}
+
+.tablinks:focus-visible {
+  outline: 2px solid var(--primary-colorV2);
+  outline-offset: 2px;
 }
 
 .tabcontent {
   display: none;
   animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================================
@@ -254,10 +253,17 @@
   margin: 20px auto;
   display: block;
   border: 2px solid var(--primary-colorV2);
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-size: 16px;
+  background: rgba(4, 18, 11, 0.55);
+  color: var(--text-color);
+  font-family: var(--font-1);
   outline: none;
   transition: all 0.3s ease-in-out;
+}
+
+.searchBar::placeholder {
+  color: rgba(245, 251, 248, 0.55);
 }
 
 .searchBar:focus {

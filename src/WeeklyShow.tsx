@@ -5,6 +5,8 @@ import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import rosterData from "./RosterData";
+import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions";
+import { championshipOrder } from "./championships";
 
 const tabs = ["ALL", "Men", "Women", "Tag Teams", "Champions", "GM"];
 
@@ -23,7 +25,6 @@ type WeeklyShowPageProps = {
   title: string;
   description: string;
   schedule: string;
-  tagTeams: WeeklyShowItem[];
   gmEntries: WeeklyShowItem[];
 };
 
@@ -35,13 +36,19 @@ function WeeklyShowPage({
   title,
   description,
   schedule,
-  tagTeams,
   gmEntries,
 }: WeeklyShowPageProps) {
   const [activeTab, setActiveTab] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
 
   const allClassName = `ALL${classPrefix}`;
+
+  // Who currently holds each title, fetched live from Firestore.
+  const { championByAbbrev } = useCurrentChampions();
+  const nameToAbbrev = useMemo(
+    () => buildNameToAbbrevMap(championByAbbrev),
+    [championByAbbrev]
+  );
 
   const showData = useMemo(() => {
     const all: WeeklyShowItem[] = rosterData.ALL
@@ -50,19 +57,36 @@ function WeeklyShowPage({
         src: item.src,
         name: item.name,
         gender: item.gender,
-        Champion: item.champion || undefined,
+        Champion: nameToAbbrev.get(item.name.trim().toLowerCase()),
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
+
+    const enrichedTagTeams: WeeklyShowItem[] = rosterData["Tag Teams"]
+      .filter((item) => item.tag === tag)
+      .map((item) => ({
+        src: item.src,
+        name: item.name,
+        Champion: nameToAbbrev.get(item.name.trim().toLowerCase()),
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    const champions = [...all, ...enrichedTagTeams]
+      .filter((item) => item.Champion)
+      .sort(
+        (a, b) =>
+          (championshipOrder[a.Champion!] ?? 999) -
+          (championshipOrder[b.Champion!] ?? 999)
+      );
 
     return {
       ALL: all,
       Men: all.filter((item) => item.gender === "Man"),
       Women: all.filter((item) => item.gender === "Women"),
-      Champions: all.filter((item) => item.Champion),
-      "Tag Teams": tagTeams,
+      Champions: champions,
+      "Tag Teams": enrichedTagTeams,
       GM: gmEntries,
     } as Record<string, WeeklyShowItem[]>;
-  }, [tag, tagTeams, gmEntries]);
+  }, [tag, gmEntries, nameToAbbrev]);
 
   const filteredByTab = useMemo(() => {
     const result: Record<string, WeeklyShowItem[]> = {};

@@ -7,7 +7,7 @@
   height: 4.5rem;
   z-index: 1000;
   background: var(--primary-color);
-  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Inner layout */
@@ -22,7 +22,9 @@
 /* Logo */
 .WLogo {
   height: 3rem;
-  width: 12.5rem;
+  width: auto;
+  max-width: 12.5rem;
+  filter: sepia(1) saturate(5) brightness(0.85);
   transition: transform 0.3s ease;
 }
 
@@ -50,8 +52,13 @@
   font-size: 1rem;
   color: var(--text-color);
   padding: 0.5rem 0.8rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.NavItem:focus-visible {
+  outline: 2px solid var(--primary-colorV2);
+  outline-offset: 2px;
 }
 
 /* Nav icons */
@@ -96,10 +103,10 @@
   left: 0;
   min-width: 13rem;
   padding: 0.5rem 0;
-  border-radius: 0.6rem;
-  background: rgba(0, 0, 0, 0.85);
+  border-radius: var(--radius-md);
+  background: rgba(4, 18, 11, 0.85);
   backdrop-filter: blur(6px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-md);
 
   opacity: 0;
   transform: translateY(-10px) scale(0.98);
@@ -123,7 +130,7 @@
   font-size: 0.95rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   transition: background 0.25s ease, padding-left 0.25s ease;
 }
 
@@ -143,8 +150,9 @@
   display: flex;
   flex-direction: column;
   padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   background: var(--primary-color-dark);
+  border: 1px solid var(--Secondary-color);
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
 }
@@ -178,8 +186,13 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.LogoutIconBtn:focus-visible {
+  outline: 2px solid var(--primary-colorV2);
+  outline-offset: 2px;
 }
 
 .LogoutIconBtn img {

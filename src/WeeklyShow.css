@@ -5,30 +5,30 @@
 }
 
 .RAWText1, .SDText1{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 2vh;
-    font-size: 3.5vh;
-    font-family: 'Impact';
+    font-size: clamp(1.6rem, 3.5vh, 2.75rem);
+    font-family: var(--font-3);
 }
 
 .RAWText2, .SDText2{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     text-align: center;
     margin-top: 1vh;
     margin-bottom: 1vh;
-    font-size: 1.5vw;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+    font-family: var(--font-1);
 }
 
 .RAWText3, .SDText3{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     text-align: center;
     margin-top: 1vh;
     margin-bottom: 0.5vh;
-    font-size: 3vh;
-    font-family:'Impact';
+    font-size: clamp(1.3rem, 3vh, 2.25rem);
+    font-family: var(--font-3);
 }
 
 
@@ -44,26 +44,31 @@
 }
 
 .RAWtablinks {
-    background: rgb(70, 70, 70);
-    color: white;
+    background: var(--primary-color-dark);
+    color: var(--text-color);
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 .RAWtablinks:hover {
-    background: rgb(226, 0, 0);
     transform: scale(1.05);
+    box-shadow: 0 0 12px var(--raw-brand-color);
+}
+
+.RAWtablinks:focus-visible {
+    outline: 2px solid var(--raw-brand-color);
+    outline-offset: 2px;
 }
 
 .RAWtablinks.active {
-    background: #ffcc00;
-    color: #000;
-    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+    background: var(--Secondary-color);
+    color: #241c00;
+    box-shadow: 0 4px 10px rgba(242, 183, 5, 0.5);
 }
 
 /* Tab Content */
@@ -83,26 +88,31 @@
 }
 
 .SDtablinks {
-    background: rgb(70, 70, 70);
-    color: white;
+    background: var(--primary-color-dark);
+    color: var(--text-color);
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 .SDtablinks:hover {
-    background: rgb(0, 105, 226);
     transform: scale(1.05);
+    box-shadow: 0 0 12px var(--sd-brand-color);
+}
+
+.SDtablinks:focus-visible {
+    outline: 2px solid var(--sd-brand-color);
+    outline-offset: 2px;
 }
 
 .SDtablinks.active {
-    background: #ffcc00;
-    color: #000;
-    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+    background: var(--Secondary-color);
+    color: #241c00;
+    box-shadow: 0 4px 10px rgba(242, 183, 5, 0.5);
 }
 
 /* Tab Content */
@@ -111,41 +121,28 @@
     animation: fadeIn 0.5s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.centerRoster{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: 1vw;
-    margin-right: 1vw;
-}
-
 .RAWsearchBar {
     width: 50%;
     padding: 10px;
     margin: 20px auto;
     display: block;
-    border: 2px solid #ffbf00;
-    border-radius: 5px;
+    border: 2px solid var(--primary-colorV2);
+    border-radius: var(--radius-sm);
     font-size: 16px;
+    background: rgba(4, 18, 11, 0.55);
+    color: var(--text-color);
+    font-family: var(--font-1);
     outline: none;
     transition: all 0.3s ease-in-out;
 }
-  
+
+.RAWsearchBar::placeholder, .SDsearchBar::placeholder {
+    color: rgba(245, 251, 248, 0.55);
+}
+
 .RAWsearchBar:focus {
-    border-color: #ff0000;
-    box-shadow: 0 0 10px rgba(185, 20, 20, 0.5);
+    border-color: var(--raw-brand-color);
+    box-shadow: 0 0 10px var(--raw-brand-color);
 }
 
 .SDsearchBar {
@@ -153,16 +150,19 @@
     padding: 10px;
     margin: 20px auto;
     display: block;
-    border: 2px solid #ffbf00;
-    border-radius: 5px;
+    border: 2px solid var(--primary-colorV2);
+    border-radius: var(--radius-sm);
     font-size: 16px;
+    background: rgba(4, 18, 11, 0.55);
+    color: var(--text-color);
+    font-family: var(--font-1);
     outline: none;
     transition: all 0.3s ease-in-out;
 }
-  
+
 .SDsearchBar:focus {
-    border-color: #0066ff;
-    box-shadow: 0 0 10px #002e72;
+    border-color: var(--sd-brand-color);
+    box-shadow: 0 0 10px var(--sd-brand-color);
 }
 
 .SD-image, .RAW-image {
@@ -175,23 +175,23 @@
 }
 
 .SDLocation, .RAWLocation{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     margin-left: 4vh;
     margin-top: 2vh;
     margin-bottom: 1vh;
     font-size: 2.5vh;
-    font-weight: 500px;
-    font-family: impact;
+    font-weight: 500;
+    font-family: var(--font-3);
 }
 
 .SDDate, .RAWDate{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     margin-right: 4vh;
     margin-top: 2vh;
     margin-bottom: 1vh;
     font-size: 2.5vh;
-    font-weight: 500px;
-    font-family: impact;
+    font-weight: 500;
+    font-family: var(--font-3);
 }
 
 .SDInfo, .RAWInfo{

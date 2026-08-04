@@ -1,14 +1,3 @@
-/* ---------- Global Reset ---------- */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  background: var(--background);
-  color: var(--text-color);
-  font-family: var(--font-1);
-}
-
 /* ---------- Header ---------- */
 header {
   position: relative;
@@ -21,18 +10,19 @@ header {
   width: min(95%, 115rem);
   height: auto;
   margin: clamp(4rem, 8vh, 8rem) auto 0;
-  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ---------- Event Info ---------- */
 .PPVInfo {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 18, 11, 0.5);
   border: 1.5px solid var(--primary-color);
-  color: white;
+  color: var(--text-color);
   padding: 5px 50px;
   text-decoration: none;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-weight: bold;
   font-size: 20px;
   transition: 0.2s ease;
@@ -48,13 +38,13 @@ header {
 }
 
 .PPVNavButton {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 18, 11, 0.5);
   border: 1.5px solid var(--primary-color);
-  color: white;
+  color: var(--text-color);
   padding: 2.5px 10px;
   text-decoration: none;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-size: 20px;
   transition: 0.2s ease;
 }
@@ -62,6 +52,11 @@ header {
 .PPVNavButton:hover {
   background: var(--primary-color);
   transform: scale(1.05);
+}
+
+.PPVNavButton:focus-visible {
+  outline: 2px solid var(--primary-colorV2);
+  outline-offset: 2px;
 }
 
 /* ---------- Titles ---------- */
@@ -99,7 +94,7 @@ header {
 }
 
 .MCList td {
-  background-color: rgb(56, 56, 56);
+  background-color: rgba(20, 28, 24, 0.92);
   color: var(--text-color);
 }
 
@@ -124,13 +119,13 @@ header {
 /* ---------- Match Text ---------- */
 
 .MatchTitle {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 18, 11, 0.5);
   border: 1.5px solid var(--primary-color);
-  color: white;
+  color: var(--text-color);
   padding: 15px 10px;
   text-decoration: none;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-weight: bold;
   font-size: 25px;
   margin-bottom: -25px;
@@ -138,13 +133,13 @@ header {
 }
 
 .MatchChampionship, .MatchType {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(4, 18, 11, 0.5);
   border: 1.5px solid var(--primary-color);
-  color: white;
+  color: var(--text-color);
   padding: 10px 100px;
   text-decoration: none;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-weight: bold;
   font-size: 20px;
   transition: 0.2s ease;
@@ -165,7 +160,8 @@ header {
   width: min(95%, 75rem);
   height: auto;
   margin-bottom: 2rem;
-  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ---------- Divider ---------- */

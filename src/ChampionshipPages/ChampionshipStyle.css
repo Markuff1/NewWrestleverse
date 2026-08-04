@@ -5,10 +5,10 @@
 .ChampionshipTitle,
 .reignstitle,
 .statstitle {
-  font-family: 'Impact', sans-serif;
+  font-family: var(--font-3);
   text-align: center;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .ChampionshipText1 {
@@ -35,7 +35,10 @@
 ============================== */
 .ChampionshipLogo {
   display: block;
-  height: 15vh;
+  height: clamp(6rem, 15vh, 11rem);
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
   margin: 4vh auto 0;
 }
 
@@ -52,10 +55,10 @@
   width: 90%;
   margin: 1rem auto;
   padding: 0.75rem;
-  background: linear-gradient(145deg, #d97f00, #946f00);
+  background: linear-gradient(145deg, var(--Secondary-color), #b8860b);
   text-align: center;
-  border-radius: 0.75rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.25s ease;
 }
 
@@ -70,6 +73,7 @@
   font-family: var(--font-1);
   text-transform: uppercase;
   margin: 0.25rem 0;
+  color: #241c00;
 }
 
 .ccTitle {
@@ -80,14 +84,12 @@
 .ccName {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #fff;
 }
 
 .ccRegin,
 .ccDate {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #222;
 }
 
 
@@ -100,14 +102,14 @@
   width: 90%;
   margin: 1rem auto;
   padding: 0.75rem;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
   background: linear-gradient(
     145deg,
     var(--primary-color),
     var(--primary-colorV2)
   );
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  color: #fff;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-color);
   transition: transform 0.25s ease;
 }
 
@@ -119,8 +121,8 @@
   flex: 1;
   padding: 0.75rem;
   text-align: center;
-  border-radius: 0.75rem;
-  background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
+  background: rgba(4, 18, 11, 0.4);
   text-transform: uppercase;
 }
 
@@ -148,7 +150,7 @@
   margin: 1rem auto;
   padding: 0.75rem;
   background: var(--primary-color);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
 }
 
 .InputContainerChamp input {
@@ -158,14 +160,18 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   padding: 0.6rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   border: none;
+}
+
+.InputContainerChamp input:focus {
+  outline: 2px solid var(--primary-colorV2);
 }
 
 .InputContainerChamp button {
   background: var(--primary-colorV3);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   padding: 8px;
   display: flex;
@@ -180,7 +186,7 @@
 }
 
 .InputContainerChamp button:hover {
-  background: white;
+  background: var(--Secondary-color);
   transform: scale(1.08);
 }
 
@@ -192,10 +198,10 @@
   width: 90%;
   margin: 1rem auto 4rem;
   border-collapse: collapse;
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 0.75rem;
+  background: rgba(4, 18, 11, 0.92);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-sm);
 }
 
 .TitleHolderTable th,
@@ -209,25 +215,25 @@
   font-family: var(--font-1);
   font-size: 0.8rem;
   background: var(--primary-color);
-  color: #fff;
+  color: var(--text-color);
   font-weight: bold;
 }
 
 .TitleHolderTable td {
   font-family: var(--font-1);
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-color);
 }
 
-.TitleHolderTable tbody tr:nth-child(even) { background: #555; }
-.TitleHolderTable tbody tr:nth-child(odd)  { background: #444; }
-.TitleHolderTable tbody tr:hover           { background: #2d2d2d; }
+.TitleHolderTable tbody tr:nth-child(even) { background: #17211d; }
+.TitleHolderTable tbody tr:nth-child(odd)  { background: #111814; }
+.TitleHolderTable tbody tr:hover           { background: var(--primary-color-washout); }
 
 /* Table Buttons (Icon Buttons) */
 .TitleHolderTable button {
   background: var(--primary-colorV3);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   margin-left: 0.5rem;
   cursor: pointer;
   padding: 6px;
@@ -243,7 +249,7 @@
 }
 
 .TitleHolderTable button:hover {
-  background: white;
+  background: var(--Secondary-color);
   transform: scale(1.08);
 }
 
@@ -272,16 +278,16 @@
   font-family: var(--font-1);
   font-weight: 700;
   border: 2px solid var(--primary-color);
-  border-radius: 6px;
-  background: #f9fcffa7;
-  color: #000000;
+  border-radius: var(--radius-sm);
+  background: rgba(207, 247, 232, 0.75);
+  color: #04120b;
 }
 
 .edit-save-btn,
 .edit-cancel-btn {
   background: var(--primary-colorV3);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   margin-left: 0.5rem;
   cursor: pointer;
   padding: 6px;
@@ -289,6 +295,12 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.edit-save-btn:hover,
+.edit-cancel-btn:hover {
+  background: var(--Secondary-color);
+  transform: scale(1.08);
 }
 
 .edit-save-btn img,

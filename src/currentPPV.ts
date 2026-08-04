@@ -2,8 +2,8 @@
 
 export const currentPPV = {
   name: "Bragging Rights",
-  location: "Benchmark International Arena, Tampa, Fl",
-  date: "Saturday, January 8th 2028, 7e/5p",
-  image: "/Images/PPV/BR/BR2028.webp",
-  link: "/BraggingRights"
+  location: "O2 Arena, London, England",
+  date: "Saturday, May 6th 2028, 7e/5p",
+  image: "/Images/PPV/Backlash/Backlash2028.webp",
+  link: "/Backlash"
 };

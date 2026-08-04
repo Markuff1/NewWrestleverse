@@ -28,8 +28,10 @@
 .NewsImage {
   width: 80%;
   max-width: 50rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   margin: 20px 0;
+  border: 0.2rem solid var(--primary-color-dark);
+  box-shadow: var(--shadow-sm);
 }
 
 .NewsDescription {

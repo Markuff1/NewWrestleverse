@@ -24,8 +24,8 @@
    Left branding panel
 ========================= */
 .LoginBrand {
-  background: linear-gradient(135deg, #000000, #5b0000);
-  color: white;
+  background: var(--background);
+  color: var(--text-color);
 
   display: flex;
   flex-direction: column;
@@ -38,6 +38,8 @@
 
 .LoginBrand img {
   width: 16rem;
+  max-width: 100%;
+  filter: sepia(1) saturate(5) brightness(0.85);
   margin-bottom: 2rem;
 }
 
@@ -68,7 +70,7 @@
    Right login panel
 ========================= */
 .LoginPanel {
-  background: #ffffff;
+  background: var(--hover-bg-color);
 
   display: flex;
   flex-direction: column;
@@ -120,8 +122,14 @@
   padding: 0.9rem;
   margin-bottom: 1.2rem;
 
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   border: 1px solid #ccc;
+}
+
+.LoginPanel input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color-washout);
 }
 
 /* Button */
@@ -130,11 +138,12 @@
   padding: 1rem;
 
   background: var(--Secondary-color);
-  color: white;
+  color: #241c00;
 
   border: none;
-  border-radius: 0.4rem;
+  border-radius: var(--radius-sm);
   font-size: 1.2rem;
+  font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
 
@@ -143,6 +152,7 @@
 
 .LoginPanel button:hover {
   background: var(--hover-bg-colorV2);
+  color: var(--text-color);
   transform: translateY(-1px);
 }
 

@@ -12,9 +12,9 @@
   height: 1.5rem;
   font-size: 1.2rem;
   line-height: 1;
-  border-radius: 10%;
+  border-radius: 50%;
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--text-color);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -30,10 +30,11 @@
   min-width: 20rem;
   max-width: 30rem;
 
-  background-color: rgba(52, 52, 52, 0.85);
-  color: #fff;
+  background-color: rgba(11, 24, 19, 0.92);
+  color: var(--text-color);
+  border: 1px solid var(--primary-colorV2);
 
-  border-radius: 0.25rem;
+  border-radius: var(--radius-sm);
   padding: 1rem 5rem;
 
   position: absolute;

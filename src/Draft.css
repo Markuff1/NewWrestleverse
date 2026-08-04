@@ -1,10 +1,10 @@
 .DraftText1 {
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     text-align: center;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
     font-size: 3rem;
-    font-family: var(--font-2);
+    font-family: var(--font-3);
     text-transform: uppercase;
 }
 
@@ -25,7 +25,8 @@
   margin-top: 8rem;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 0 5vh rgba(0, 0, 0, 1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .DraftTableWrapper {
@@ -62,19 +63,19 @@
 }
 
 .DraftRaw {
-    color: hsl(0, 100%, 50%);
+    color: var(--raw-brand-color);
     font-weight: 600;
 }
 
 .DraftSmackdown {
-    color: #0084ff;
+    color: var(--sd-brand-color);
     font-weight: 600;
 }
 
 /* Table background */
 .DraftTable {
-    background: rgba(15, 0, 0, 0.80); /* subtle dark panel */
-    border-radius: 12px;
+    background: rgba(4, 18, 11, 0.85); /* subtle dark panel */
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -100,5 +101,5 @@
 
 /* Slight row hover (nice draft-board feel) */
 .DraftTable tbody tr:hover {
-    background: rgba(61, 13, 0, 0.986);
+    background: var(--primary-color-washout);
 }

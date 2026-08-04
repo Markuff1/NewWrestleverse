@@ -5,6 +5,8 @@ import Header from "./Header.tsx";
 import Footer from "./Footer.tsx";
 import ChampionshipBar from "./ChampionshipBar.tsx";
 import rosterData, { Wrestler } from "./RosterData.ts";
+import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions.ts";
+import { championshipOrder } from "./championships.ts";
 
 /*
   List of available roster tabs.
@@ -29,38 +31,74 @@ const tabs = [
   "Tag Teams"
 ]
 
+// Tag-based default background when a wrestler doesn't currently hold a title.
+const tagClassNames: Record<string, string> = {
+  R: "ALLRAW",
+  SD: "ALLSD",
+  AAA: "ALLAAA",
+  L: "ALLLegend",
+  U: "ALLGeneral",
+  A: "AllAlumni",
+};
+
+type DisplayWrestler = Wrestler & { className: string; championRank?: number };
+
+/*
+  Attaches each entry's display className: the live champion abbreviation
+  (from Firestore, via nameToAbbrev) when they currently hold a title,
+  otherwise the tag-based default background.
+*/
+function enrichWithChampionStatus(
+  list: Wrestler[],
+  nameToAbbrev: Map<string, string>
+): DisplayWrestler[] {
+  return list.map(item => {
+    const abbrev = nameToAbbrev.get(item.name.trim().toLowerCase());
+
+    if (abbrev) {
+      return { ...item, className: abbrev, championRank: championshipOrder[abbrev] ?? 999 };
+    }
+
+    return { ...item, className: (item.tag && tagClassNames[item.tag]) || "" };
+  });
+}
+
 /*
   Returns filtered roster data for a single tab and search term.
-  Pulled out of the component so it can be called once per tab
-  from a memoized map instead of being recomputed inline.
 */
-function filteredRoster(tab: string, searchTerm: string): Wrestler[] {
-  let filteredData: Wrestler[] = [];
+function filteredRoster(
+  tab: string,
+  searchTerm: string,
+  enrichedAll: DisplayWrestler[],
+  enrichedChampions: DisplayWrestler[],
+  enrichedTagTeams: DisplayWrestler[]
+): DisplayWrestler[] {
+  let filteredData: DisplayWrestler[] = [];
 
   switch (tab) {
     case "Raw":
-      filteredData = rosterData.ALL.filter(item => item.tag === "R");
+      filteredData = enrichedAll.filter(item => item.tag === "R");
       break;
 
     case "Smackdown":
-      filteredData = rosterData.ALL.filter(item => item.tag === "SD");
+      filteredData = enrichedAll.filter(item => item.tag === "SD");
       break;
 
     case "AAA":
-      filteredData = rosterData.ALL.filter(item => item.tag === "AAA");
+      filteredData = enrichedAll.filter(item => item.tag === "AAA");
       break;
 
     case "Legend":
-      filteredData = rosterData.ALL.filter(item => item.tag === "L");
+      filteredData = enrichedAll.filter(item => item.tag === "L");
       break;
 
     case "Undrafted":
-      filteredData = rosterData.ALL.filter(item => item.tag === "U");
+      filteredData = enrichedAll.filter(item => item.tag === "U");
       break;
 
     case "Current":
       // Includes Raw, Smackdown and Undrafted
-      filteredData = rosterData.ALL.filter(
+      filteredData = enrichedAll.filter(
         item =>
           item.tag === "R" ||
           item.tag === "SD" ||
@@ -70,38 +108,38 @@ function filteredRoster(tab: string, searchTerm: string): Wrestler[] {
 
 
     case "Alumni":
-      filteredData = rosterData.ALL.filter(item => item.tag === "A");
+      filteredData = enrichedAll.filter(item => item.tag === "A");
       break;
 
     case "Men":
-      filteredData = rosterData.ALL.filter(item => item.gender === "Man");
+      filteredData = enrichedAll.filter(item => item.gender === "Man");
       break;
 
     case "Women":
-      filteredData = rosterData.ALL.filter(item => item.gender === "Women");
+      filteredData = enrichedAll.filter(item => item.gender === "Women");
       break;
 
     case "GM":
-      filteredData = rosterData.ALL.filter(item => item.tag2 === "GM");
+      filteredData = enrichedAll.filter(item => item.tag2 === "GM");
       break;
 
     case "Champions":
-      // Champions use separate dataset and are sorted by champion rank
-      filteredData = rosterData.Champions
+      // Champions are derived live from Firestore, sorted by title rank
+      filteredData = enrichedChampions
         .slice()
         .sort((a, b) => (a.championRank ?? 999) - (b.championRank ?? 999));
       break;
 
     case "Tag Teams":
       // Tag teams use their own dataset
-      return rosterData["Tag Teams"]
+      return enrichedTagTeams
         .filter(item =>
           item.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
         .sort((a, b) => a.name.localeCompare(b.name));
 
     default:
-      filteredData = rosterData.ALL;
+      filteredData = enrichedAll;
   }
 
   // Apply search filter to all non Tag Team tabs
@@ -120,8 +158,8 @@ function filteredRoster(tab: string, searchTerm: string): Wrestler[] {
 /*
   Groups wrestlers into rows of 6 for display layout.
 */
-function groupRoster(data: Wrestler[], groupSize = 6): Wrestler[][] {
-    const groups: Wrestler[][] = [];
+function groupRoster<T>(data: T[], groupSize = 6): T[][] {
+    const groups: T[][] = [];
 
     data.forEach((item, index) => {
       if (index % groupSize === 0) {
@@ -140,17 +178,39 @@ const RosterTabs: React.FC = () => {
   // Search input value
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter every tab once per search-term change, reused for both
-  // the tab-button counts and the tab content below.
+  // Who currently holds each title, fetched live from Firestore.
+  const { championByAbbrev } = useCurrentChampions();
+  const nameToAbbrev = useMemo(
+    () => buildNameToAbbrevMap(championByAbbrev),
+    [championByAbbrev]
+  );
+
+  const enrichedAll = useMemo(
+    () => enrichWithChampionStatus(rosterData.ALL, nameToAbbrev),
+    [nameToAbbrev]
+  );
+
+  const enrichedTagTeams = useMemo(
+    () => enrichWithChampionStatus(rosterData["Tag Teams"], nameToAbbrev),
+    [nameToAbbrev]
+  );
+
+  const enrichedChampions = useMemo(
+    () => [...enrichedAll, ...enrichedTagTeams].filter(item => item.championRank !== undefined),
+    [enrichedAll, enrichedTagTeams]
+  );
+
+  // Filter every tab once per search-term/champion-data change, reused for
+  // both the tab-button counts and the tab content below.
   const rosterByTab = useMemo(() => {
-    const result: Record<string, Wrestler[]> = {};
+    const result: Record<string, DisplayWrestler[]> = {};
 
     for (const tab of tabs) {
-      result[tab] = filteredRoster(tab, searchTerm);
+      result[tab] = filteredRoster(tab, searchTerm, enrichedAll, enrichedChampions, enrichedTagTeams);
     }
 
     return result;
-  }, [searchTerm]);
+  }, [searchTerm, enrichedAll, enrichedChampions, enrichedTagTeams]);
 
   return (
     <>

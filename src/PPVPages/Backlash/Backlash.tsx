@@ -1,5 +1,8 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
+const matchCard2028: Match[] = [
+]
+
 const matchCard2027: Match[] = [
   { match: "John Cena Def. The Fiend", title: "", type: "Inferno Match" },
   { match: "Sol Ruca Def. Nikki Bella (c)", title: "Women's United States Championship", type: "Normal Match" },
@@ -43,6 +46,19 @@ const matchCard2025: Match[] = [
 
 // ---------- Event Data ----------
 const BacklashEvents: PPVEvent[] = [
+  {
+    year: 2027,
+    banner: "/Images/PPV/Backlash/BacklashHeader2028.webp",
+    location: "O2 Arena, London, England",
+    date: "Saturday, May 6th, 2028",
+    matches: matchCard2028,
+    imageFolder: "Backlash/2028MC",
+
+    previousEvent: {
+      label: "Wrestlemania 2027",
+      link: "/Wrestlemania",
+    },
+  },
   {
     year: 2027,
     banner: "/Images/PPV/Backlash/Backlash2027Header.webp",
