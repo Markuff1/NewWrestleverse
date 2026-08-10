@@ -26,7 +26,7 @@ function Header() {
         <Link to="/Home">
           <img
             className="WLogo"
-            src="/Images/Wrestleverse2K26.webp"
+            src="/Images/WrestleVerseLogoV5.webp"
             alt="Wrestleverse"
           />
         </Link>

@@ -1,0 +1,48 @@
+.CookieConsent {
+  position: fixed;
+  left: 1.5vh;
+  right: 1.5vh;
+  bottom: 6vh;
+  z-index: 3000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vh;
+  background: var(--contentBackground);
+  border: 1px solid var(--primary-colorV2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5vh 2vh;
+  font-family: var(--font-1);
+  color: var(--text-color);
+}
+
+.CookieConsentText {
+  margin: 0;
+  flex: 1 1 20rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.CookieConsentText a {
+  color: var(--Secondary-color);
+}
+
+.CookieConsentButton {
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.CookieConsentButton:hover {
+  background: var(--hover-bg-colorV2);
+  transform: scale(1.05);
+}

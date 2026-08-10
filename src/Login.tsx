@@ -63,7 +63,7 @@ const Login: React.FC = () => {
     <div className="LoginPage">
       {/* Left panel */}
       <div className="LoginBrand">
-        <img src="/Images/Wrestleverse2K26S.webp" alt="Wrestleverse" />
+        <img src="/Images/WrestleVerseIconV5.webp" alt="Wrestleverse" />
         <h1>Wrestleverse</h1>
         <p>
           Control the <span className="textImp">Chaos</span>

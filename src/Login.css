@@ -39,7 +39,6 @@
 .LoginBrand img {
   width: 16rem;
   max-width: 100%;
-  filter: sepia(1) saturate(5) brightness(0.85);
   margin-bottom: 2rem;
 }
 

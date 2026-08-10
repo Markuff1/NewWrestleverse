@@ -4,9 +4,11 @@ import "./Roster.css";
 import "./Home.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import rosterData from "./RosterData";
+import rosterData, { normalizeWrestlerName } from "./RosterData";
 import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions";
+import { useAllTitleHistory } from "./hooks/useTitleHistory";
 import { championshipOrder } from "./championships";
+import WrestlerModal from "./WrestlerModal";
 
 const tabs = ["ALL", "Men", "Women", "Tag Teams", "Champions", "GM"];
 
@@ -15,6 +17,7 @@ export type WeeklyShowItem = {
   name: string;
   gender?: string;
   Champion?: string;
+  tag?: string;
 };
 
 type WeeklyShowPageProps = {
@@ -40,6 +43,7 @@ function WeeklyShowPage({
 }: WeeklyShowPageProps) {
   const [activeTab, setActiveTab] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedWrestler, setSelectedWrestler] = useState<WeeklyShowItem | null>(null);
 
   const allClassName = `ALL${classPrefix}`;
 
@@ -50,6 +54,10 @@ function WeeklyShowPage({
     [championByAbbrev]
   );
 
+  // Full championship history, fetched live from Firestore, for the
+  // wrestler profile pop-up.
+  const { historyByName } = useAllTitleHistory();
+
   const showData = useMemo(() => {
     const all: WeeklyShowItem[] = rosterData.ALL
       .filter((item) => item.tag === tag)
@@ -57,6 +65,7 @@ function WeeklyShowPage({
         src: item.src,
         name: item.name,
         gender: item.gender,
+        tag: item.tag,
         Champion: nameToAbbrev.get(item.name.trim().toLowerCase()),
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
@@ -66,6 +75,7 @@ function WeeklyShowPage({
       .map((item) => ({
         src: item.src,
         name: item.name,
+        tag: item.tag,
         Champion: nameToAbbrev.get(item.name.trim().toLowerCase()),
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
@@ -84,7 +94,7 @@ function WeeklyShowPage({
       Women: all.filter((item) => item.gender === "Women"),
       Champions: champions,
       "Tag Teams": enrichedTagTeams,
-      GM: gmEntries,
+      GM: gmEntries.map((item) => ({ ...item, tag })),
     } as Record<string, WeeklyShowItem[]>;
   }, [tag, gmEntries, nameToAbbrev]);
 
@@ -157,6 +167,7 @@ function WeeklyShowPage({
                         key={index}
                         className={`profile-card ${item.Champion || allClassName}`}
                         title={item.name}
+                        onClick={() => setSelectedWrestler(item)}
                       >
                         <img
                           src={item.src}
@@ -174,6 +185,16 @@ function WeeklyShowPage({
           <div className={`${classPrefix}Text1`}>.....</div>
         </div>
       </div>
+
+      {selectedWrestler && (
+        <WrestlerModal
+          profile={selectedWrestler}
+          titles={historyByName[normalizeWrestlerName(selectedWrestler.name)] || []}
+          championByAbbrev={championByAbbrev}
+          onClose={() => setSelectedWrestler(null)}
+        />
+      )}
+
       <Footer />
     </>
   );

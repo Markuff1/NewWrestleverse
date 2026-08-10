@@ -4,9 +4,11 @@ import "./Home.css";
 import Header from "./Header.tsx";
 import Footer from "./Footer.tsx";
 import ChampionshipBar from "./ChampionshipBar.tsx";
-import rosterData, { Wrestler } from "./RosterData.ts";
+import rosterData, { Wrestler, normalizeWrestlerName } from "./RosterData.ts";
 import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions.ts";
+import { useAllTitleHistory } from "./hooks/useTitleHistory.ts";
 import { championshipOrder } from "./championships.ts";
+import WrestlerModal from "./WrestlerModal.tsx";
 
 /*
   List of available roster tabs.
@@ -93,8 +95,8 @@ function filteredRoster(
       break;
 
     case "Undrafted":
-      filteredData = enrichedAll.filter(item => item.tag === "U");
-      break;
+    filteredData = enrichedAll.filter(item => item.tag === "U");
+    break;
 
     case "Current":
       // Includes Raw, Smackdown and Undrafted
@@ -185,6 +187,13 @@ const RosterTabs: React.FC = () => {
     [championByAbbrev]
   );
 
+  // Full championship history, fetched live from Firestore, for the
+  // wrestler profile pop-up.
+  const { historyByName } = useAllTitleHistory();
+
+  // Wrestler whose profile pop-up is currently open, if any.
+  const [selectedWrestler, setSelectedWrestler] = useState<DisplayWrestler | null>(null);
+
   const enrichedAll = useMemo(
     () => enrichWithChampionStatus(rosterData.ALL, nameToAbbrev),
     [nameToAbbrev]
@@ -268,6 +277,7 @@ const RosterTabs: React.FC = () => {
                         key={index}
                         className={`profile-card ${item.className}`}
                         title={item.name}
+                        onClick={() => setSelectedWrestler(item)}
                       >
                         <img
                           src={item.src}
@@ -287,6 +297,15 @@ const RosterTabs: React.FC = () => {
 
         </div>
       </div>
+
+      {selectedWrestler && (
+        <WrestlerModal
+          profile={selectedWrestler}
+          titles={historyByName[normalizeWrestlerName(selectedWrestler.name)] || []}
+          championByAbbrev={championByAbbrev}
+          onClose={() => setSelectedWrestler(null)}
+        />
+      )}
 
       <Footer />
     </>

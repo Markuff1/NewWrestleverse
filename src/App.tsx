@@ -4,6 +4,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 import Login from "./Login";
 import NotFound from "./NotFound";
+import CookieConsent from "./legal/CookieConsent";
 
 const Home = lazy(() => import("./Home"));
 const Roster = lazy(() => import("./Roster"));
@@ -12,6 +13,8 @@ const SD = lazy(() => import("./SD"));
 const RAW = lazy(() => import("./RAW"));
 const Draft = lazy(() => import("./Draft"));
 const News = lazy(() => import("./News"));
+const PrivacyPolicy = lazy(() => import("./legal/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("./legal/TermsAndConditions"));
 
 const WWEUndisputed = lazy(() => import("./ChampionshipPages/WWEUndisputedChamp"));
 const WomenUndisputed = lazy(() => import("./ChampionshipPages/WomenUndisputedChamp"));
@@ -54,6 +57,8 @@ function App() {
         <Routes>
           {/* Public Route */}
           <Route path="/" element={<Login />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
           <Route path="*" element={<NotFound />} />
 
           {/* Protected Routes */}
@@ -104,6 +109,8 @@ function App() {
           <Route path="/BraggingRights" element={<ProtectedRoute><BraggingRights /></ProtectedRoute>} />
         </Routes>
       </Suspense>
+
+      <CookieConsent />
     </Router>
   );
 }

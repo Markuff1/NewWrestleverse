@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-label="Wrestleverse">
+  <defs>
+    <clipPath id="wv-clip">
+      <rect x="0" y="0" width="900" height="380" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#wv-clip)">
+    <g transform="skewX(-8)">
+      <!-- flanking angle marks -->
+      <polygon points="60,90 110,90 70,190 20,190" fill="#f2b705" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+      <polygon points="90,210 130,210 100,300 60,300" fill="#0e9f52" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+      <polygon points="800,90 850,90 800,190 750,190" fill="#0e9f52" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+      <polygon points="830,210 870,210 840,300 800,300" fill="#f2b705" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+
+      <!-- WRESTLE -->
+      <text
+        x="470" y="150"
+        text-anchor="middle"
+        font-family="Impact, 'Arial Narrow', sans-serif"
+        font-size="126"
+        letter-spacing="2"
+        fill="#0e9f52"
+        stroke="#04120b"
+        stroke-width="9"
+        stroke-linejoin="round"
+        paint-order="stroke"
+      >WRESTLE</text>
+
+      <!-- VERSE -->
+      <text
+        x="470" y="290"
+        text-anchor="middle"
+        font-family="Impact, 'Arial Narrow', sans-serif"
+        font-size="148"
+        letter-spacing="4"
+        fill="#f2b705"
+        stroke="#04120b"
+        stroke-width="9"
+        stroke-linejoin="round"
+        paint-order="stroke"
+      >VERSE</text>
+
+      <!-- impact crack slashing across the lockup -->
+      <polygon
+        points="150,20 210,20 330,170 300,190 380,230 350,255 240,360 190,360 300,220 250,205 300,170 190,60"
+        fill="#f5fbf8"
+        opacity="0.9"
+      />
+      <polygon
+        points="150,20 210,20 330,170 300,190 380,230 350,255 240,360 190,360 300,220 250,205 300,170 190,60"
+        fill="none"
+        stroke="#04120b"
+        stroke-width="4"
+        stroke-linejoin="round"
+        opacity="0.9"
+      />
+
+      <!-- underline bar, flat two-tone split -->
+      <polygon points="140,322 490,322 475,348 125,348" fill="#0e9f52" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+      <polygon points="490,322 840,322 810,348 475,348" fill="#f2b705" stroke="#04120b" stroke-width="6" stroke-linejoin="round" />
+    </g>
+  </g>
+</svg>

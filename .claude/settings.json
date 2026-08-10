@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/debug-modal3.mjs)",
+      "Bash(rm -f /tmp/debug.mjs /tmp/vite.log)",
+      "Bash(git -C /c/Users/markn/Wrestleverse2k25/wv status --short scripts/)",
+      "Bash(git -C /c/Users/markn/Wrestleverse2k25/wv status --short)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

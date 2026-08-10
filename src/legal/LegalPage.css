@@ -1,0 +1,33 @@
+.LegalContainer {
+  max-width: 55rem;
+  margin: 0 auto;
+  padding: 2vh 2vh 4vh;
+  color: var(--text-color);
+  font-family: var(--font-1);
+  line-height: 1.6;
+}
+
+.LegalUpdated {
+  text-align: center;
+  color: var(--primary-colorV3);
+  font-size: 0.85rem;
+  margin-bottom: 3vh;
+}
+
+.LegalSection {
+  margin-bottom: 2.5vh;
+}
+
+.LegalSection h2 {
+  font-size: 1.2rem;
+  color: var(--primary-colorV2);
+  margin-bottom: 0.8vh;
+}
+
+.LegalSection ul {
+  padding-left: 1.4rem;
+}
+
+.LegalSection li {
+  margin-bottom: 0.4vh;
+}

@@ -1,0 +1,128 @@
+.WrestlerModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 8, 5, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2vh;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.WrestlerModalCard {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vh;
+  max-width: 60rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--contentBackground);
+  border: 1px solid var(--primary-colorV2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5vh;
+}
+
+.WrestlerModalClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--primary-color-dark);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.WrestlerModalClose:hover {
+  background: var(--primary-color);
+  transform: scale(1.08);
+}
+
+.WrestlerModalImage {
+  flex: 1 1 16rem;
+  min-width: 14rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+.WrestlerModalImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.WrestlerModalDetails {
+  flex: 2 1 20rem;
+  color: var(--text-color);
+  font-family: var(--font-1);
+}
+
+.WrestlerModalName {
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  margin: 0 0 1.5vh;
+  color: var(--Secondary-color);
+}
+
+.WrestlerModalRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2vh;
+  flex-wrap: wrap;
+}
+
+.WrestlerModalRow--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.WrestlerModalLabel {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--primary-colorV3);
+}
+
+.WrestlerModalValue {
+  font-size: 1.2rem;
+}
+
+.WrestlerModalTitleList {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.WrestlerModalTitleList li {
+  margin-bottom: 0.4rem;
+}
+
+.WrestlerModalBrandLogo {
+  height: 2.4rem;
+  width: auto;
+}
+
+.WrestlerModalTitleIcon {
+  height: 1.4rem;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

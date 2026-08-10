@@ -17,3 +17,9 @@
   font-family: var(--font-1);
   padding: 0.5rem;
 }
+
+.PendingBadge {
+  color: var(--Secondary-color);
+  font-style: italic;
+  font-weight: bold;
+}

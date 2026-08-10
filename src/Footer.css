@@ -11,8 +11,26 @@
 
 .FooterText{
     color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5vh;
     text-align: center;
     padding: 1vh;
-    font-size: 1.5vh;
+    font-size: 1vh;
     font-family: var(--font-1);
+}
+
+.FooterLinks {
+    display: inline-flex;
+}
+
+.FooterLinks a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.FooterLinks a:hover {
+    color: var(--hover-text-color);
 }

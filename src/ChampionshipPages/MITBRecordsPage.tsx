@@ -39,7 +39,7 @@ const EMPTY_FORM: MITBRecord = {
   dateWon: "",
   eventCashed: "",
   dateCashed: "",
-  successful: "Yes",
+  successful: "",
 };
 
 type MITBRecordsPageProps = {
@@ -57,6 +57,10 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
   const [form, setForm] = useState<MITBRecord>(EMPTY_FORM);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editData, setEditData] = useState<MITBRecord>(EMPTY_FORM);
+
+  // Fallback end date for a briefcase that hasn't been cashed in yet, so
+  // "weeks held" still shows how long they've held it so far.
+  const today = new Date().toISOString().slice(0, 10);
 
   const fetchData = async () => {
     const querySnapshot = await getDocs(
@@ -83,12 +87,10 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
   }, [collectionId]);
 
   const addRecord = async () => {
-    if (
-      form.name &&
-      form.dateWon &&
-      form.eventCashed &&
-      form.dateCashed
-    ) {
+    // Event/date cashed and successful are left blank for a briefcase
+    // holder who hasn't cashed in yet — useCurrentChampions treats any
+    // record with no dateCashed as the current holder.
+    if (form.name && form.dateWon) {
       const docRef = await addDoc(
         collection(db, "Wrestleverse", "ChampionshipData", collectionId),
         form
@@ -202,6 +204,7 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
                 })
               }
             >
+              <option value="">Not Cashed In Yet</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
@@ -233,7 +236,7 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
               {entries.map((entry) => {
                 const weeksHeld = calculateWeeksBetween(
                   entry.dateWon,
-                  entry.dateCashed
+                  entry.dateCashed || today
                 );
 
                 return (
@@ -304,7 +307,7 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
                         <td>
                           {calculateWeeksBetween(
                             editData.dateWon,
-                            editData.dateCashed
+                            editData.dateCashed || today
                           )}
                         </td>
 
@@ -319,6 +322,9 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
                               })
                             }
                           >
+                            <option value="">
+                              Not Cashed In Yet
+                            </option>
                             <option value="Yes">
                               Yes
                             </option>
@@ -363,15 +369,19 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
                               entry.dateWon
                             ).toLocaleDateString("en-GB")}
                         </td>
-                        <td>{entry.eventCashed}</td>
+                        <td>{entry.eventCashed || "—"}</td>
                         <td>
-                          {entry.dateCashed &&
-                            new Date(
-                              entry.dateCashed
-                            ).toLocaleDateString("en-GB")}
+                          {entry.dateCashed ? (
+                            new Date(entry.dateCashed).toLocaleDateString("en-GB")
+                          ) : (
+                            <span className="PendingBadge">Not Cashed In Yet</span>
+                          )}
                         </td>
-                        <td>{weeksHeld}</td>
-                        <td>{entry.successful}</td>
+                        <td>
+                          {weeksHeld}
+                          {!entry.dateCashed && " (so far)"}
+                        </td>
+                        <td>{entry.dateCashed ? (entry.successful || "—") : "—"}</td>
 
                         <td>
                           <button
