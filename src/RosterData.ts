@@ -11,6 +11,19 @@ export interface Wrestler {
   tag?: string;
   tag2?: string;
   members?: string[];
+  // Tag teams only, all optional:
+  // - formerMembers: wrestlers no longer on the team, kept here so their
+  //   past title reigns with this team still show on their own profile.
+  // - aliases: other names this team's championship reigns might be
+  //   recorded under in Firestore (e.g. an abbreviation), so those records
+  //   still get matched to this team.
+  // - disbanded: hides the team from the live Roster/RAW/Smackdown tag-team
+  //   listings while still keeping it (and its members/aliases) around so
+  //   past title reigns keep showing on each former member's own profile.
+  //   A disbanded team is never rendered, so `src` can just be "".
+  formerMembers?: string[];
+  aliases?: string[];
+  disbanded?: boolean;
 }
 
 const rosterData: Record<string, Wrestler[]> = {
@@ -311,13 +324,13 @@ const rosterData: Record<string, Wrestler[]> = {
         { src: "/Images/Roster/TavionHights.webp", name: "Tavion Hights", gender: "Man", tag: "A"},
         { src: "/Images/Roster/TeganNox.webp", name: "Tegan Nox", gender: "Women", tag: "A"},
         { src: "/Images/Roster/TerryFunk.webp", name: "Terry Funk", gender: "Man", tag: "L"},
-        { src: "/Images/Roster/TheFiend.webp", name: "The Fiend", gender: "Man", tag: "R"},
+        { src: "/Images/Roster/TheFiend.webp", name: "Fiend", gender: "Man", tag: "R"},
         { src: "/Images/Roster/TheGreatKhali.webp", name: "The Great Khali", gender: "Man", tag: "L"},
         { src: "/Images/Roster/TheGreatMuta.webp", name: "The Great Muta", gender: "Man", tag: "L"},
         { src: "/Images/Roster/TheHurricane.webp", name: "The Hurricane", gender: "Man", tag: "L"},
         { src: "/Images/Roster/TheIronSheik.webp", name: "The Iron Sheik", gender: "Man", tag: "L"},
-        { src: "/Images/Roster/TheMiz.webp", name: "The Miz", gender: "Man", tag: "R"},
-        { src: "/Images/Roster/TheRock.webp", name: "The Rock", gender: "Man", tag: "L"},
+        { src: "/Images/Roster/TheMiz.webp", name: "Miz", gender: "Man", tag: "R"},
+        { src: "/Images/Roster/TheRock.webp", name: "Rock", gender: "Man", tag: "L"},
         { src: "/Images/Roster/TheaHail.webp", name: "Thea Hail", gender: "Women", tag: "R"},
         { src: "/Images/Roster/TiffanyStratton.webp", name: "Tiffany Stratton", gender: "Women", tag: "SD"},
         { src: "/Images/Roster/TitoSantana.webp", name: "Tito Santana", gender: "Man", tag: "L"},
@@ -378,7 +391,7 @@ const rosterData: Record<string, Wrestler[]> = {
     { src: "/Images/Roster/TagTeam/HardyBoys.webp", name: "Hardy Boys", tag: "SD", members: ["Jeff Hardy","Matt Hardy"]},
     { src: "/Images/Roster/TagTeam/LuchaBrothers.webp", name: "Lucha Brothers", tag: "R", members: ["Rey Fenix","Penta"]},
     { src: "/Images/Roster/TagTeam/LWO.webp", name: "LWO", tag: "R", members: ["Cruz Del Toro","Joaquin Wilde"]},
-    { src: "/Images/Roster/TagTeam/MCMG.webp", name: "MCMG", tag: "R", members: ["Chris Sabin","Alex Shelley"]},
+    { src: "/Images/Roster/TagTeam/MCMG.webp", name: "Motor City Machine Guns", tag: "R", members: ["Chris Sabin","Alex Shelley"], aliases: ["MCMG"]},
     { src: "/Images/Roster/TagTeam/NewBloodline.webp", name: "New Bloodline", tag: "SD", members: ["Solo Sikoa","Talla Tonga","Tama Tonga","Tank","Tonga Loa","JC Mateo"]},
     { src: "/Images/Roster/TagTeam/NewDay.webp", name: "New Day", tag: "R", members: ["Kofi Kingston","Xavier Woods"]},
     { src: "/Images/Roster/TagTeam/PrettyDeadly.webp", name: "Pretty Deadly", tag: "SD", members: ["Kit Wilson","Elton Prince"]},
@@ -386,6 +399,9 @@ const rosterData: Record<string, Wrestler[]> = {
     { src: "/Images/Roster/TagTeam/Usos.webp", name: "The Usos", tag: "R", members: ["Jimmy Uso","Jey Uso"]},
     { src: "/Images/Roster/TagTeam/VikingRaiders.webp", name: "Viking Raiders", tag: "SD", members: ["Ivar","Erik"]},
     { src: "/Images/Roster/TagTeam/WyattSix.webp", name: "Wyatt Six", tag: "R", members: ["Dexter Lumis","Erick Rowan","Joe Gacy","Uncle Howdy","Nikki Cross"]},
+    { src: "", name: "DIY", tag: "", members: [], formerMembers: ["Johnny Gargano", "Tommaso Ciampa"], aliases: ["#DIY"], disbanded: true },
+    { src: "", name: "New Catch Republic", tag: "", members: [], formerMembers: ["Tyler Bate", "Pete Dunne"], disbanded: true },
+
   ],
 };
 
@@ -393,7 +409,7 @@ const rosterData: Record<string, Wrestler[]> = {
 // team is assigned to a brand here, every wrestler listed in its `members`
 // is looked up by name in ALL and given that same tag automatically.
 rosterData["Tag Teams"].forEach((team) => {
-  if (!team.tag || !team.members) return;
+  if (!team.tag || !team.members || team.disbanded) return;
   team.members.forEach((memberName) => {
     const member = rosterData.ALL.find((w) => w.name === memberName);
     if (member) {
@@ -409,14 +425,19 @@ export function normalizeWrestlerName(name: string): string {
   return name.trim().toLowerCase().replace(/^the\s+/, "");
 }
 
-// Every tag team name a wrestler belongs to, so championship data recorded
-// under the team's name (e.g. "The Usos") can also be attributed to each
-// individual member (e.g. "Jey Uso").
+// Every name a wrestler's tag team(s) might be recorded under — the team's
+// own name plus any aliases (e.g. "MCMG" for "Motor City Machine Guns") —
+// so championship data recorded under any of those can be attributed to
+// each individual member, whether they're a current or former member.
 export function getTeamNamesForMember(name: string): string[] {
   const key = normalizeWrestlerName(name);
   return rosterData["Tag Teams"]
-    .filter((team) => team.members?.some((member) => normalizeWrestlerName(member) === key))
-    .map((team) => team.name);
+    .filter(
+      (team) =>
+        team.members?.some((member) => normalizeWrestlerName(member) === key) ||
+        team.formerMembers?.some((member) => normalizeWrestlerName(member) === key)
+    )
+    .flatMap((team) => [team.name, ...(team.aliases ?? [])]);
 }
 
 export default rosterData;

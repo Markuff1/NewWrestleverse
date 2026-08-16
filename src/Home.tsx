@@ -14,12 +14,13 @@ const championAbbrevs = Object.keys(TITLE_CHAMPION_LABELS).sort(
 
 const menCount = rosterData.ALL.filter((w) => w.gender === "Man").length;
 const womenCount = rosterData.ALL.filter((w) => w.gender === "Women").length;
+const activeTagTeamCount = rosterData["Tag Teams"].filter((team) => !team.disbanded).length;
 
 const homeStats = [
   { value: rosterData.ALL.length, label: "Superstars" },
   { value: menCount, label: "Men" },
   { value: womenCount, label: "Women" },
-  { value: rosterData["Tag Teams"].length, label: "Tag Teams" },
+  { value: activeTagTeamCount, label: "Tag Teams" },
   { value: championAbbrevs.length, label: "Championships" },
 ];
 

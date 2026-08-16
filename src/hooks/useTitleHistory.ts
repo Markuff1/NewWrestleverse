@@ -62,17 +62,31 @@ export function useAllTitleHistory() {
       }
 
       // Tag team titles are recorded under the team's name (e.g. "The
-      // Usos"), not each wrestler's — attribute those reigns to every
-      // member too so their individual profile shows the belts they've won.
+      // Usos") or an alias (e.g. "MCMG" for "Motor City Machine Guns"), not
+      // each wrestler's — attribute those reigns to every current AND
+      // former member too, so their individual profile shows the belts
+      // they've won even after leaving the team.
       for (const team of rosterData["Tag Teams"]) {
-        const teamHistory = result[normalizeWrestlerName(team.name)];
-        if (!teamHistory || !team.members) continue;
+        const teamNames = [team.name, ...(team.aliases ?? [])];
+        const teamHistory: Record<string, TitleReignSummary> = {};
 
-        for (const member of team.members) {
+        for (const teamName of teamNames) {
+          for (const title of result[normalizeWrestlerName(teamName)] ?? []) {
+            const existing = teamHistory[title.abbrev];
+            teamHistory[title.abbrev] = existing
+              ? { ...existing, reigns: existing.reigns + title.reigns }
+              : { ...title };
+          }
+        }
+
+        const members = [...(team.members ?? []), ...(team.formerMembers ?? [])];
+        if (Object.keys(teamHistory).length === 0 || members.length === 0) continue;
+
+        for (const member of members) {
           const memberKey = normalizeWrestlerName(member);
           const memberHistory = (result[memberKey] ??= []);
 
-          for (const title of teamHistory) {
+          for (const title of Object.values(teamHistory)) {
             const existing = memberHistory.find((t) => t.abbrev === title.abbrev);
             if (existing) {
               existing.reigns = Math.max(existing.reigns, title.reigns);

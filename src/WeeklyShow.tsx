@@ -71,7 +71,7 @@ function WeeklyShowPage({
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const enrichedTagTeams: WeeklyShowItem[] = rosterData["Tag Teams"]
-      .filter((item) => item.tag === tag)
+      .filter((item) => item.tag === tag && !item.disbanded)
       .map((item) => ({
         src: item.src,
         name: item.name,

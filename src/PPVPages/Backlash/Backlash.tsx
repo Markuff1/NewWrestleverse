@@ -3,7 +3,7 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 const matchCard2028: Match[] = [
   { match: "Lola Vice Vs Lyra Valkyria Vs Piper Niven Vs Jacy Jayne", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match" },
   { match: "Perros Del Mal Vs New Day", title: "Raw Tag Team Championships", type: "Tag Team Match" },
-  { match: "Drew Mcintyre Vs Aleister Black", title: "Intercontiental Championship", type: "Normal Match" },
+  { match: "Drew Mcintyre Vs Tyler Bate Vs Aleister Black", title: "Intercontiental Championship", type: "Triple Threat Match" },
   { match: "Roxanne Perez Vs Sol Ruca", title: "Women's United States Championship", type: "Normal Match" },
   { match: "Seth Rollins Vs Kevin Owens", title: "", type: "Extreme Rules Match" },
   { match: "Ricky Saints Vs Tommaso Ciampa Vs LA Knight", title: "United States Championship", type: "Triple Threat Match" },
@@ -61,7 +61,7 @@ const BacklashEvents: PPVEvent[] = [
     year: 2027,
     banner: "/Images/PPV/Backlash/BacklashHeader2028.webp",
     location: "O2 Arena, London, England",
-    date: "Saturday, May 6th, 2028",
+    date: "Saturday, May 20th, 2028",
     matches: matchCard2028,
     imageFolder: "Backlash/2028MC",
 

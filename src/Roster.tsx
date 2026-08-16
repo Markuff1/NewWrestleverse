@@ -200,7 +200,11 @@ const RosterTabs: React.FC = () => {
   );
 
   const enrichedTagTeams = useMemo(
-    () => enrichWithChampionStatus(rosterData["Tag Teams"], nameToAbbrev),
+    () =>
+      enrichWithChampionStatus(
+        rosterData["Tag Teams"].filter((team) => !team.disbanded),
+        nameToAbbrev
+      ),
     [nameToAbbrev]
   );
 
