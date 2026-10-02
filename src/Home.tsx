@@ -6,9 +6,11 @@ import { currentPPV } from "./currentPPV";
 import { newsArticles } from "./newsData";
 import rosterData from "./RosterData";
 import { useCurrentChampions } from "./hooks/useCurrentChampions";
-import { TITLE_ICONS, TITLE_CHAMPION_LABELS, championshipOrder } from "./championships";
+import { TITLE_ICONS, TITLE_CHAMPION_LABELS, RETIRED_TITLES, championshipOrder } from "./championships";
 
-const championAbbrevs = Object.keys(TITLE_CHAMPION_LABELS).sort(
+const championAbbrevs = Object.keys(TITLE_CHAMPION_LABELS)
+  .filter((abbrev) => !RETIRED_TITLES.has(abbrev))
+  .sort(
   (a, b) => (championshipOrder[a] ?? 999) - (championshipOrder[b] ?? 999)
 );
 
@@ -68,7 +70,9 @@ function Home() {
               <ul className="ChampsList">
                 {championAbbrevs.map((abbrev) => (
                   <li className="ChampsListItem" key={abbrev}>
-                    <img src={TITLE_ICONS[abbrev]} alt="" className="ChampsListIcon" />
+                    <span className="ChampsListIconWrap">
+                      <img src={TITLE_ICONS[abbrev]} alt="" className="ChampsListIcon" />
+                    </span>
                     <div className="ChampsListText">
                       <span className="ChampsListTitle">
                         {TITLE_CHAMPION_LABELS[abbrev].replace(/ Champion$/, "")}

@@ -27,6 +27,8 @@ const WomenUnitedStates = lazy(() => import("./ChampionshipPages/WomenUnitedStat
 const RawTagTeam = lazy(() => import("./ChampionshipPages/RawTagTeamChamps"));
 const SmackdownTagTeam = lazy(() => import("./ChampionshipPages/SmackdownTagTeamChamps"));
 const MMITB = lazy(() => import("./ChampionshipPages/MMITB"));
+const RawMMITB = lazy(() => import("./ChampionshipPages/RawMMITB"));
+const SmackdownMMITB = lazy(() => import("./ChampionshipPages/SmackdownMMITB"));
 const WMITB = lazy(() => import("./ChampionshipPages/WMITB"));
 
 const Backlash = lazy(() => import("./PPVPages/Backlash/Backlash"));
@@ -84,6 +86,8 @@ function App() {
           <Route path="/RawTagTeamChamps" element={<ProtectedRoute><RawTagTeam /></ProtectedRoute>} />
           <Route path="/SmackdownTagTeamChamps" element={<ProtectedRoute><SmackdownTagTeam /></ProtectedRoute>} />
           <Route path="/MMITB" element={<ProtectedRoute><MMITB /></ProtectedRoute>} />
+          <Route path="/RawMMITB" element={<ProtectedRoute><RawMMITB /></ProtectedRoute>} />
+          <Route path="/SmackdownMMITB" element={<ProtectedRoute><SmackdownMMITB /></ProtectedRoute>} />
           <Route path="/WMITB" element={<ProtectedRoute><WMITB /></ProtectedRoute>} />
 
           {/* PPVs */}

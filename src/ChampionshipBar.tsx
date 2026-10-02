@@ -13,8 +13,11 @@ const championships = [
     { image: "/Images/ChampionshipGraphics/WomenUS.webp", alt: "Women's United States Championship", link: "/WomenUnitedStatesChamp" },
     { image: "/Images/ChampionshipGraphics/RAWTT.webp", alt: "Raw Tag Team Championships", link: "/RawTagTeamChamps" },
     { image: "/Images/ChampionshipGraphics/SDTT.webp", alt: "Smackdown Tag Team Championships", link: "/SmackdownTagTeamChamps" },
-    { image: "/Images/Championships/MenMITB.webp", alt: "Men's Money In The Bank", link: "/MMITB" },
-    { image: "/Images/Championships/WomenMITB.webp", alt: "Women's Money In The Bank", link: "/WMITB" }
+    { image: "/Images/Championships/RawMenMITB.webp", alt: "Men's RAW Money In The Bank", link: "/RawMMITB" },
+    { image: "/Images/Championships/SDMenMITB.webp", alt: "Men's Smackdown Money In The Bank", link: "/SmackdownMMITB" },
+    { image: "/Images/Championships/WomenMITB.webp", alt: "Women's Money In The Bank", link: "/WMITB" },
+    // Retired — kept at the end of the bar for the historical record.
+    { image: "/Images/Championships/MenMITB.webp", alt: "Men's Money In The Bank (Retired)", link: "/MMITB" }
 ];
 
 const ChampionshipBar: React.FC = () => {

@@ -183,6 +183,32 @@
   background-size: 50%; /* smaller than titles */
 }
 
+.RMMITB {
+  background: var(--RAWPbackground);
+}
+
+.RMMITB::before {
+  opacity: 1;
+}
+
+.RMMITB::after {
+  background-image: url(/Images/Championships/RawMenMITB.webp);
+  background-size: 50%; /* smaller than titles */
+}
+
+.SDMMITB {
+  background: var(--SDPbackground);
+}
+
+.SDMMITB::before {
+  opacity: 1;
+}
+
+.SDMMITB::after {
+  background-image: url(/Images/Championships/SDMenMITB.webp);
+  background-size: 50%; /* smaller than titles */
+}
+
 .WMITB {
   background: var(--SDPbackground);
 }

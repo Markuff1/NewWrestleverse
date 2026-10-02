@@ -1,6 +1,9 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------//
+const matchCard2028: Match[] = [
+]
+
 const matchCard2027: Match[] = [
   { match: "Stratton Def. Parker and Belair and Vaquer and Bayley and Bella and Perez and Lee", title: "Women's MITB Briefcase", type: "Money In The Bank Ladder Match" },
   { match: "The Fiend Def. John Cena", title: "", type: "Last Man Standing Match" },
@@ -41,6 +44,25 @@ const matchCard2025: Match[] = [
 
 // ---------- Event Data ----------
 const MITBEvents: PPVEvent[] = [
+  {
+    year: 2028,
+    banner: "/Images/PPV/MITB/MITBHeader2028.webp",
+    location: "Scottrade Centre, St Louis, Missouri",
+    date: "Saturday 22nd July 2028",
+    matches: matchCard2028,
+    imageFolder: "MITB/2028MC",
+
+    previousEvent: {
+      label: "Clash In Paris 2028",
+      link: "/ClashInParis#2028",
+    },
+
+    nextEvent: {
+      label: "Summerslam 2028",
+      link: "/Summerslam#2028",
+    },
+  },
+
   {
     year: 2027,
     banner: "/Images/PPV/MITB/MITBHeader2027.webp",

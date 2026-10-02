@@ -1,17 +1,17 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 const matchCard2028: Match[] = [
-  { match: "Lola Vice Vs Lyra Valkyria Vs Piper Niven Vs Jacy Jayne", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match" },
-  { match: "Perros Del Mal Vs New Day", title: "Raw Tag Team Championships", type: "Tag Team Match" },
-  { match: "Drew Mcintyre Vs Tyler Bate Vs Aleister Black", title: "Intercontiental Championship", type: "Triple Threat Match" },
-  { match: "Roxanne Perez Vs Sol Ruca", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "Seth Rollins Vs Kevin Owens", title: "", type: "Extreme Rules Match" },
-  { match: "Ricky Saints Vs Tommaso Ciampa Vs LA Knight", title: "United States Championship", type: "Triple Threat Match" },
-  { match: "Auska Vs Stephanie Vaquer", title: "Women's Undisputed Championship", type: "Normal Match" },
-  { match: "CM Punk Vs Kane", title: "World Heavyweight Championship", type: "Normal Match" },
-  { match: "Dudley Boys Vs Hardy Boys", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
-  { match: "Becky Lynch Vs Bianca Belair", title: "Women's World Championship", type: "Normal Match" },
-  { match: "Gunther Vs Roman Reigns", title: "WWE Undisputed Championship", type: "Normal Match" },
+  { match: "Lyra Valkyria Def. Lola Vice (c) and Piper Niven and Jacy Jayne", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match" },
+  { match: "Perros Del Mal (c) Def. New Day", title: "Raw Tag Team Championships", type: "Tag Team Match" },
+  { match: "Tyler Bate Def. Drew Mcintyre (c) and Aleister Black", title: "Intercontiental Championship", type: "Triple Threat Match" },
+  { match: "Roxanne Perez (c) Def. Sol Ruca", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Seth Rollins Def. Kevin Owens", title: "", type: "Extreme Rules Match" },
+  { match: "LA Knight Def. Ricky Saints (c) and Tommaso Ciampa", title: "United States Championship", type: "Triple Threat Match" },
+  { match: "Tiffany Stratton Def. Auska (c) and Stephanie Vaquer", title: "Women's Undisputed Championship (Cash In)", type: "Normal Match" },
+  { match: "Kane Def. CM Punk (c)", title: "World Heavyweight Championship", type: "Normal Match" },
+  { match: "Hardy Boys Def. Dudley Boys (c)", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
+  { match: "Becky Lynch (c) Def. Bianca Belair", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Gunther (c) Def. Roman Reigns", title: "WWE Undisputed Championship", type: "Normal Match" },
 ];
 
 const matchCard2027: Match[] = [

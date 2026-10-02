@@ -68,7 +68,7 @@
 }
 
 .WrestlerModalName {
-  font-family: var(--font-3);
+  font-family: var(--font-2);
   text-transform: uppercase;
   font-size: clamp(1.4rem, 3vw, 2.2rem);
   margin: 0 0 1.5vh;

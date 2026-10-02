@@ -12,6 +12,7 @@ import {
 import { db } from "../firebaseConfig";
 import Header from "../Header";
 import Footer from "../Footer";
+import { formatChampionName } from "../RosterData";
 
 // Utility to calculate weeks between two dates (never negative)
 const calculateWeeksBetween = (start: string, end: string) => {
@@ -67,10 +68,10 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
       collection(db, "Wrestleverse", "ChampionshipData", collectionId)
     );
 
-    const records = querySnapshot.docs.map((docSnap) => ({
-      id: docSnap.id,
-      ...(docSnap.data() as MITBRecord),
-    }));
+    const records = querySnapshot.docs.map((docSnap) => {
+      const data = docSnap.data() as MITBRecord;
+      return { id: docSnap.id, ...data, name: formatChampionName(data.name) };
+    });
 
     // Sort newest first (by dateWon, fallback to dateCashed)
     records.sort((a, b) => {
@@ -91,12 +92,13 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
     // holder who hasn't cashed in yet — useCurrentChampions treats any
     // record with no dateCashed as the current holder.
     if (form.name && form.dateWon) {
+      const record = { ...form, name: formatChampionName(form.name) };
       const docRef = await addDoc(
         collection(db, "Wrestleverse", "ChampionshipData", collectionId),
-        form
+        record
       );
 
-      setEntries([{ id: docRef.id, ...form }, ...entries]);
+      setEntries([{ id: docRef.id, ...record }, ...entries]);
       setForm(EMPTY_FORM);
     }
   };
@@ -129,11 +131,12 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
       id
     );
 
-    await updateDoc(ref, editData);
+    const updated = { ...editData, name: formatChampionName(editData.name) };
+    await updateDoc(ref, updated);
 
     setEntries(
       entries.map((entry) =>
-        entry.id === id ? { id, ...editData } : entry
+        entry.id === id ? { id, ...updated } : entry
       )
     );
     setEditingId(null);

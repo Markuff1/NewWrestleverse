@@ -7,6 +7,7 @@ import ChampionshipBar from "./ChampionshipBar.tsx";
 import rosterData, { Wrestler, normalizeWrestlerName } from "./RosterData.ts";
 import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions.ts";
 import { useAllTitleHistory } from "./hooks/useTitleHistory.ts";
+import { useTitleRecords } from "./hooks/useTitleRecords.ts";
 import { championshipOrder } from "./championships.ts";
 import WrestlerModal from "./WrestlerModal.tsx";
 
@@ -191,6 +192,10 @@ const RosterTabs: React.FC = () => {
   // wrestler profile pop-up.
   const { historyByName } = useAllTitleHistory();
 
+  // Longest-reign records per title, fetched live from Firestore, for the
+  // wrestler profile pop-up's Records section.
+  const { recordsByAbbrev } = useTitleRecords();
+
   // Wrestler whose profile pop-up is currently open, if any.
   const [selectedWrestler, setSelectedWrestler] = useState<DisplayWrestler | null>(null);
 
@@ -307,6 +312,7 @@ const RosterTabs: React.FC = () => {
           profile={selectedWrestler}
           titles={historyByName[normalizeWrestlerName(selectedWrestler.name)] || []}
           championByAbbrev={championByAbbrev}
+          titleRecords={recordsByAbbrev}
           onClose={() => setSelectedWrestler(null)}
         />
       )}

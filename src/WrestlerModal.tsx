@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import "./WrestlerModal.css";
 import { TitleReignSummary } from "./hooks/useTitleHistory";
+import { TitleRecords } from "./hooks/useTitleRecords";
 import { getTeamNamesForMember, normalizeWrestlerName } from "./RosterData";
 import { RosterHometowns } from "./RosterHometowns";
+import { royalRumbleWinners } from "./RoyalRumbleWinners";
 import { TITLE_ICONS } from "./championships";
 
 export type WrestlerModalProfile = {
@@ -15,6 +17,7 @@ type WrestlerModalProps = {
   profile: WrestlerModalProfile;
   titles: TitleReignSummary[];
   championByAbbrev: Record<string, string>;
+  titleRecords: Record<string, TitleRecords>;
   onClose: () => void;
 };
 
@@ -29,31 +32,35 @@ const BRAND_INFO: Record<string, { label: string; logo?: string }> = {
   A: { label: "Alumni" },
 };
 
-function TitleList({ titles }: { titles: TitleReignSummary[] }) {
-  if (titles.length === 0) {
+// Money In The Bank is won, not held as a championship, so the pop-up says
+// "Winner" instead of the shared "Champion" label.
+const MODAL_TITLE_LABELS: Record<string, string> = {
+  RMMITB: "RAW Money In The Bank Winner",
+  SDMMITB: "Smackdown Money In The Bank Winner",
+  WMITB: "Women's Money In The Bank Winner",
+  MMITB: "Men's Money In The Bank Winner",
+};
+
+type AccomplishmentEntry = { key: string; icon?: string; text: string };
+
+function AccomplishmentList({ items }: { items: AccomplishmentEntry[] }) {
+  if (items.length === 0) {
     return <span className="WrestlerModalValue">None</span>;
   }
 
   return (
     <ul className="WrestlerModalTitleList">
-      {titles.map((title) => (
-        <li key={title.abbrev}>
-          {TITLE_ICONS[title.abbrev] && (
-            <img
-              className="WrestlerModalTitleIcon"
-              src={TITLE_ICONS[title.abbrev]}
-              alt=""
-            />
-          )}
-          {title.titleName}
-          {title.reigns > 1 ? ` x${title.reigns}` : ""}
+      {items.map((item) => (
+        <li key={item.key}>
+          {item.icon && <img className="WrestlerModalTitleIcon" src={item.icon} alt="" />}
+          {item.text}
         </li>
       ))}
     </ul>
   );
 }
 
-function WrestlerModal({ profile, titles, championByAbbrev, onClose }: WrestlerModalProps) {
+function WrestlerModal({ profile, titles, championByAbbrev, titleRecords, onClose }: WrestlerModalProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -77,18 +84,74 @@ function WrestlerModal({ profile, titles, championByAbbrev, onClose }: WrestlerM
       .map(([abbrev]) => abbrev)
   );
 
+  const titleToEntry = (title: TitleReignSummary): AccomplishmentEntry => ({
+    key: title.abbrev,
+    icon: TITLE_ICONS[title.abbrev],
+    text: `${MODAL_TITLE_LABELS[title.abbrev] ?? title.titleName}${title.reigns > 1 ? ` x${title.reigns}` : ""}`,
+  });
+
   // Currently held titles are shown by name only — "x2" would misleadingly
   // read as holding the same title twice at once, rather than this being
   // the wrestler's 2nd reign.
   const currentTitles = titles
     .filter((title) => currentAbbrevs.has(title.abbrev))
-    .map((title) => ({ ...title, reigns: 1 }));
+    .map((title) => titleToEntry({ ...title, reigns: 1 }));
+
   const pastTitles = titles
     .map((title) => ({
       ...title,
       reigns: currentAbbrevs.has(title.abbrev) ? title.reigns - 1 : title.reigns,
     }))
-    .filter((title) => title.reigns > 0);
+    .filter((title) => title.reigns > 0)
+    .map(titleToEntry);
+
+  // Royal Rumble wins are an individual accomplishment, not tied to a tag
+  // team, so match on the wrestler's own name only. They live alongside
+  // past championships under "Past Accomplishments".
+  const royalRumbleWins = royalRumbleWinners.filter(
+    (win) => normalizeWrestlerName(win.name) === normalizeWrestlerName(profile.name)
+  ).length;
+
+  const pastAccomplishments = [...pastTitles];
+  if (royalRumbleWins > 0) {
+    pastAccomplishments.push({
+      key: "royal-rumble",
+      icon: "/Images/PPV/RoyalRumble/RRLogo.webp",
+      text: `Royal Rumble Winner${royalRumbleWins > 1 ? ` x${royalRumbleWins}` : ""}`,
+    });
+  }
+
+  // One entry per record this wrestler holds — a title can contribute up to
+  // three (longest reign, shortest reign, most reigns). "Most reigns" only
+  // counts as a record when someone is actually ahead of a single reign.
+  const recordEntries: { key: string; abbrev: string; text: string }[] = [];
+  for (const record of Object.values(titleRecords)) {
+    if (record.longest && relevantKeys.has(record.longest.holderKey)) {
+      recordEntries.push({
+        key: `${record.abbrev}-longest`,
+        abbrev: record.abbrev,
+        text: `Longest Reigning ${record.titleName} (${record.longest.weeks} weeks)`,
+      });
+    }
+    if (record.shortest && relevantKeys.has(record.shortest.holderKey)) {
+      recordEntries.push({
+        key: `${record.abbrev}-shortest`,
+        abbrev: record.abbrev,
+        text: `Shortest Reigning ${record.titleName} (${record.shortest.weeks} weeks)`,
+      });
+    }
+    if (
+      record.mostReigns &&
+      record.mostReigns.count > 1 &&
+      record.mostReigns.holderKeys.some((key) => relevantKeys.has(key))
+    ) {
+      recordEntries.push({
+        key: `${record.abbrev}-mostReigns`,
+        abbrev: record.abbrev,
+        text: `Most ${record.titleName.replace(/ Champion$/, "")} Reigns (${record.mostReigns.count} times)`,
+      });
+    }
+  }
 
   return (
     <div className="WrestlerModalOverlay" onClick={onClose}>
@@ -128,13 +191,33 @@ function WrestlerModal({ profile, titles, championByAbbrev, onClose }: WrestlerM
 
           <div className="WrestlerModalRow WrestlerModalRow--stacked">
             <span className="WrestlerModalLabel">Current Champion(s)</span>
-            <TitleList titles={currentTitles} />
+            <AccomplishmentList items={currentTitles} />
           </div>
 
           <div className="WrestlerModalRow WrestlerModalRow--stacked">
-            <span className="WrestlerModalLabel">Past Champion(s)</span>
-            <TitleList titles={pastTitles} />
+            <span className="WrestlerModalLabel">Past Accomplishments</span>
+            <AccomplishmentList items={pastAccomplishments} />
           </div>
+
+          {recordEntries.length > 0 && (
+            <div className="WrestlerModalRow WrestlerModalRow--stacked">
+              <span className="WrestlerModalLabel">Records</span>
+              <ul className="WrestlerModalTitleList">
+                {recordEntries.map((entry) => (
+                  <li key={entry.key}>
+                    {TITLE_ICONS[entry.abbrev] && (
+                      <img
+                        className="WrestlerModalTitleIcon"
+                        src={TITLE_ICONS[entry.abbrev]}
+                        alt=""
+                      />
+                    )}
+                    {entry.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

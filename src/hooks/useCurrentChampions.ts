@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { TITLE_COLLECTIONS, MITB_COLLECTIONS } from "../championships";
+import { TITLE_COLLECTIONS, MITB_COLLECTIONS, RETIRED_TITLES } from "../championships";
+import { formatChampionName } from "../RosterData";
 
 type TitleRecord = { name: string; date: string };
 type MITBRecord = { name: string; dateWon: string; dateCashed?: string };
@@ -54,7 +55,9 @@ export function useCurrentChampions() {
             return [abbrev, null] as const;
           }
         }),
-        ...Object.entries(MITB_COLLECTIONS).map(async ([abbrev, collectionId]) => {
+        ...Object.entries(MITB_COLLECTIONS)
+          .filter(([abbrev]) => !RETIRED_TITLES.has(abbrev))
+          .map(async ([abbrev, collectionId]) => {
           try {
             const name = await fetchCurrentMITBHolder(collectionId);
             return [abbrev, name] as const;
@@ -68,7 +71,7 @@ export function useCurrentChampions() {
 
       const result: Record<string, string> = {};
       for (const [abbrev, name] of entries) {
-        if (name) result[abbrev] = name;
+        if (name) result[abbrev] = formatChampionName(name);
       }
       setChampionByAbbrev(result);
       setLoading(false);

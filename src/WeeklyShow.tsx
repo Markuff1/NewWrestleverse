@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import rosterData, { normalizeWrestlerName } from "./RosterData";
 import { useCurrentChampions, buildNameToAbbrevMap } from "./hooks/useCurrentChampions";
 import { useAllTitleHistory } from "./hooks/useTitleHistory";
+import { useTitleRecords } from "./hooks/useTitleRecords";
 import { championshipOrder } from "./championships";
 import WrestlerModal from "./WrestlerModal";
 
@@ -57,6 +58,10 @@ function WeeklyShowPage({
   // Full championship history, fetched live from Firestore, for the
   // wrestler profile pop-up.
   const { historyByName } = useAllTitleHistory();
+
+  // Longest-reign records per title, fetched live from Firestore, for the
+  // wrestler profile pop-up's Records section.
+  const { recordsByAbbrev } = useTitleRecords();
 
   const showData = useMemo(() => {
     const all: WeeklyShowItem[] = rosterData.ALL
@@ -191,6 +196,7 @@ function WeeklyShowPage({
           profile={selectedWrestler}
           titles={historyByName[normalizeWrestlerName(selectedWrestler.name)] || []}
           championByAbbrev={championByAbbrev}
+          titleRecords={recordsByAbbrev}
           onClose={() => setSelectedWrestler(null)}
         />
       )}

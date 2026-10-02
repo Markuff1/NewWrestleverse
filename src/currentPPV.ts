@@ -1,9 +1,9 @@
 // currentPPV.ts
 
 export const currentPPV = {
-  name: "Backlash",
-  location: "O2 Arena, London, England",
-  date: "Saturday, May 20th 2028, 7e/5p",
-  image: "/Images/PPV/Backlash/Backlash2028.webp",
-  link: "/Backlash"
+  name: "Clash in Paris",
+  location: "Paris La Défense Arena, Nanterre, France",
+  date: "Saturday, June 24th, 2028, 7e/5p",
+  image: "/Images/PPV/ClashInParis/CIP2027.webp",
+  link: "/ClashInParis"
 };

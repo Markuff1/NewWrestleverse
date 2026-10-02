@@ -17,6 +17,8 @@ export const TITLE_COLLECTIONS: Record<string, string> = {
 
 export const MITB_COLLECTIONS: Record<string, string> = {
   MMITB: "MMITB",
+  RMMITB: "RawMMITB",
+  SDMMITB: "SmackdownMMITB",
   WMITB: "WMITB",
 };
 
@@ -34,6 +36,8 @@ export const TITLE_CHAMPION_LABELS: Record<string, string> = {
   RAWTT: "RAW Tag Team Champion",
   SDTT: "Smackdown Tag Team Champion",
   MMITB: "Men's Money In The Bank Champion",
+  RMMITB: "Men's RAW Money In The Bank Champion",
+  SDMMITB: "Men's Smackdown Money In The Bank Champion",
   WMITB: "Women's Money In The Bank Champion",
 };
 
@@ -51,6 +55,8 @@ export const TITLE_ICONS: Record<string, string> = {
   RAWTT: "/Images/Championships/RawTag.webp",
   SDTT: "/Images/Championships/SDTag.webp",
   MMITB: "/Images/Championships/MenMITB.webp",
+  RMMITB: "/Images/Championships/RawMenMITB.webp",
+  SDMMITB: "/Images/Championships/SDMenMITB.webp",
   WMITB: "/Images/Championships/WomenMITB.webp",
 };
 
@@ -65,6 +71,13 @@ export const championshipOrder: Record<string, number> = {
   WUS: 8,
   RAWTT: 9,
   SDTT: 10,
-  MMITB: 11,
-  WMITB: 12,
+  RMMITB: 11,
+  SDMMITB: 12,
+  WMITB: 13,
+  MMITB: 14,
 };
+
+// Titles no longer in use. Their records and pages are kept (and still show
+// in a wrestler's past title history), but they're left out of the "current
+// champion" lookups — roster badges, profile pop-up, and the home page list.
+export const RETIRED_TITLES = new Set<string>(["MMITB"]);

@@ -12,6 +12,7 @@ import {
 import { db } from "../firebaseConfig";
 import Header from "../Header";
 import Footer from "../Footer";
+import { formatChampionName } from "../RosterData";
 
 // Utility to calculate weeks between two dates (never negative)
 const calculateWeeksBetween = (start: string, end: string) => {
@@ -65,6 +66,11 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
       id: doc.id,
       ...doc.data(),
     })) as TitleHolder[];
+
+    // Correct each name's capitalization once here so every downstream
+    // display (current champion, stats, table) is consistent regardless of
+    // how it was originally typed in.
+    records = records.map((r) => ({ ...r, name: formatChampionName(r.name) }));
 
     // sort newest first
     records = records.sort(
@@ -156,7 +162,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
 
   const addRecord = async () => {
     if (name && date && event) {
-      const newRecord = { name, date, event, days: 0 };
+      const newRecord = { name: formatChampionName(name), date, event, days: 0 };
 
       // Adding a title change shifts every reign's "days" value (the
       // previous champion's reign length now ends at this date instead
@@ -195,7 +201,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
 
   const saveEdit = async (id: string) => {
     const ref = doc(db, "Wrestleverse", "ChampionshipData", collectionId, id);
-    await updateDoc(ref, editData);
+    await updateDoc(ref, { ...editData, name: formatChampionName(editData.name) });
     setEditingId(null);
     fetchData();
   };

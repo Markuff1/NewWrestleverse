@@ -22,7 +22,7 @@ const ppvShows = [
     { name: "ClashInParis", image: "/Images/PPV/ClashInParis/CIP2027.webp" },
   ],
   [
-    { name: "MITB", image: "/Images/PPV/MITB/MITB2027.webp" },
+    { name: "MITB", image: "/Images/PPV/MITB/MITB2028.webp" },
     { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SS2027.webp" },
     { name: "NOC", image: "/Images/PPV/NOC/NOC2027.webp" },
   ],

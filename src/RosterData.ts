@@ -440,4 +440,35 @@ export function getTeamNamesForMember(name: string): string[] {
     .flatMap((team) => [team.name, ...(team.aliases ?? [])]);
 }
 
+// Every wrestler/tag-team name already known to the roster, keyed by its
+// normalized form, so a Firestore name typed in any casing (e.g. "tIFFANY
+// StraTTOn") can be corrected back to how it's actually spelled here.
+const CANONICAL_NAME_BY_KEY: Record<string, string> = {};
+rosterData.ALL.forEach((w) => {
+  CANONICAL_NAME_BY_KEY[normalizeWrestlerName(w.name)] = w.name;
+});
+rosterData["Tag Teams"].forEach((team) => {
+  CANONICAL_NAME_BY_KEY[normalizeWrestlerName(team.name)] = team.name;
+  team.aliases?.forEach((alias) => {
+    CANONICAL_NAME_BY_KEY[normalizeWrestlerName(alias)] = alias;
+  });
+});
+
+// Fallback for a name that isn't in the roster at all (e.g. a one-off
+// historical name) — capitalizes the first letter of each word/hyphen/
+// apostrophe-separated segment and lowercases the rest.
+function toTitleCase(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/(^|[\s'-])([a-z])/g, (_match, sep, char) => sep + char.toUpperCase());
+}
+
+// Corrects a champion name's capitalization for display, or for saving back
+// to Firestore: uses the roster's own spelling when the name is recognized,
+// otherwise falls back to simple title-casing.
+export function formatChampionName(name: string): string {
+  if (!name) return name;
+  return CANONICAL_NAME_BY_KEY[normalizeWrestlerName(name)] ?? toTitleCase(name);
+}
+
 export default rosterData;
