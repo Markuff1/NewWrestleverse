@@ -3,17 +3,17 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 // ---------- Match Cards ----------
 
 const matchCard2028: Match[] = [
-{ match: "Drew Mcintyre Vs Aleister Black Vs Tyler Bate", title: "Intercontinental", type: "Triple Threat Match" },
-{ match: "Perros Del Mal Vs Usos", title: "Raw Tag Team", type: "Normal Match" },
-{ match: "Roxanne Perez Vs Raquel Roderiques", title: "Women's United States", type: "Normal Match" },
-{ match: "Randy Orton Vs Kevin Owens", title: "", type: "Extreme Rules Match" },
-{ match: "Lyra Valkyria Vs Piper Niven", title: "Women's Intercontinental", type: "Extreme Rules Match" },
-{ match: "LA Knight Vs Ricky Saints Vs Tomaso Ciampa Vs Finn Balor Vs Sheamus", title: "United States", type: "Fatal 5-Way Match" },
-{ match: "Becky Lynch Vs Alexa Bliss", title: "Women's World", type: "Normal Match" },
-{ match: "Kane Vs CM Punk", title: "World Heavyweight", type: "Extreme Rules Match" },
-{ match: "Tiffiany Stratton Vs Auska", title: "Women's Undisputed", type: "Normal Match" },
-{ match: "Hardy Boys Vs Dudley Boys", title: "Smackdown Tag Team", type: "Tag Team Ladder match" },
-{ match: "Gunther Vs Seth Rollins Vs Roman Reigns", title: "WWE Undisputed", type: "Triple Threat Match" },
+  { match: "Tyler Bate (c) Def. Drew McIntyre and Aleister Black", title: "Intercontinental Championship", type: "Triple Threat Match" },
+  { match: "Perros Del Mal (c) Def. Usos", title: "Raw Tag Team Championship", type: "Normal Match" },
+  { match: "Roxanne Perez (c) Def. Raquel Rodriguez", title: "Women's United States Championship", type: "Normal Match" },
+  { match: "Kevin Owens Def. Randy Orton", title: "", type: "Extreme Rules Match" },
+  { match: "Lyra Valkyria (c) Def. Piper Niven", title: "Women's Intercontinental Championship", type: "Extreme Rules Match" },
+  { match: "LA Knight (c) Def. Ricky Saints and Tomaso Ciampa and Finn Balor and Sheamus", title: "United States Championship", type: "Fatal 5-Way Match" },
+  { match: "Becky Lynch (c) Def. Alexa Bliss", title: "Women's World Championship", type: "Normal Match" },
+  { match: "Kane (c) Def. CM Punk", title: "World Heavyweight Championship", type: "Extreme Rules Match" },
+  { match: "Tiffany Stratton (c) Def. Asuka", title: "Women's Undisputed Championship", type: "Normal Match" },
+  { match: "Hardy Boys (c) Def. Dudley Boys", title: "Smackdown Tag Team Championship", type: "Tag Team Ladder Match" },
+  { match: "Roman Reigns Def. Gunther (c) and Seth Rollins", title: "WWE Undisputed Championship", type: "Triple Threat Match" },
 ];
 
 const matchCard2027: Match[] = [
