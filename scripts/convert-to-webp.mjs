@@ -48,16 +48,13 @@ async function main() {
     const webpPath = join(dir, `${name}.webp`);
 
     try {
-      let webpAlreadyExists = true;
-      try {
-        await stat(webpPath);
-      } catch {
-        webpAlreadyExists = false;
-      }
+      const existingWebp = await stat(webpPath).catch(() => null);
+      const pngModified = (await stat(filePath)).mtimeMs;
 
-      if (webpAlreadyExists) {
-        // webp already exists (e.g. from a prior interrupted run) — just
-        // make sure the stale source png doesn't linger alongside it.
+      if (existingWebp && existingWebp.mtimeMs >= pngModified) {
+        // webp already exists and is newer (e.g. from a prior interrupted run) —
+        // just make sure the stale source png doesn't linger alongside it.
+        // A png newer than its webp is a replacement image, so it falls through and reconverts.
         await withRetry(() => unlink(filePath)).catch(() => {});
         skipped++;
         continue;

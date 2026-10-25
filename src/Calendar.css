@@ -1,0 +1,421 @@
+/* Calendar fills more of the page than the standard 70% PageContainer */
+.CalendarPageContainer {
+  width: min(95%, 110rem);
+}
+
+/* =========================================================
+   TOOLBAR — prev / month title / next
+========================================================= */
+
+.CalendarToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(94%, 100rem);
+  margin: 2rem auto 1rem;
+}
+
+.CalendarMonthTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.CalendarMonthTitle h2 {
+  margin: 0;
+  font-family: var(--font-3);
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  color: var(--text-color);
+}
+
+.CalendarNavBtn {
+  flex-shrink: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  border: 0.12rem solid var(--primary-colorV2);
+  background: var(--primary-color-dark);
+  color: var(--text-color);
+  font-size: 2.2rem;
+  line-height: 1;
+  padding-bottom: 0.3rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.CalendarNavBtn:hover {
+  background: var(--primary-colorV2);
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0 1.25rem var(--primary-colorV2);
+}
+
+.CalendarTodayBtn {
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  padding: 0.45rem 1.3rem;
+  border-radius: 999px;
+  border: 0.12rem solid var(--Secondary-color);
+  background: var(--Secondary-color);
+  color: #241c00;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.CalendarTodayBtn:hover:not(:disabled) {
+  background: #fff3c4;
+  box-shadow: 0 0 1.25rem rgba(242, 183, 5, 0.7);
+}
+
+.CalendarTodayBtn:disabled {
+  background: transparent;
+  color: var(--Secondary-color);
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.CalendarLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.6rem;
+  margin: 0 auto 1.2rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04rem;
+  color: var(--primary-colorV3);
+}
+
+.CalendarLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.CalendarSwatch {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 0.2rem;
+}
+
+.CalendarSwatch--raw { background: var(--raw-brand-color); }
+.CalendarSwatch--sd { background: var(--sd-brand-color); }
+.CalendarSwatch--ppv { background: var(--Secondary-color); }
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.CalendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: min(94%, 100rem);
+  margin: 0 auto;
+}
+
+.CalendarWeekday {
+  text-align: center;
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: var(--primary-colorV3);
+  padding: 0.6rem 0;
+  border-radius: var(--radius-md);
+  background: var(--primary-color-dark);
+}
+
+.CalendarDay {
+  position: relative;
+  min-height: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  background: rgba(4, 18, 11, 0.55);
+  border: 1px solid rgba(15, 181, 176, 0.2);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.CalendarDay:hover {
+  border-color: rgba(15, 181, 176, 0.6);
+}
+
+.CalendarDay--outside {
+  opacity: 0.3;
+  background: transparent;
+}
+
+.CalendarDayNumber {
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  font-family: var(--font-3);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-color);
+  text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.95);
+}
+
+/* ---------- RAW / Smackdown ---------- */
+
+.CalendarWeekly {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.CalendarWeekly img {
+  width: 100%;
+  max-width: 9rem;
+  max-height: 3.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0.15rem 0.3rem rgba(0, 0, 0, 0.6));
+}
+
+.CalendarWeekly--raw { background: var(--RAWbackground); }
+.CalendarWeekly--sd { background: var(--SDbackground); }
+
+.CalendarWeekly:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 1.1rem var(--primary-colorV2);
+}
+
+/* ---------- PPV ---------- */
+
+.CalendarDay--ppv {
+  padding: 0;
+  border-color: rgba(242, 183, 5, 0.55);
+}
+
+.CalendarDay--ppv .CalendarDayNumber {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: rgba(2, 8, 5, 0.75);
+}
+
+.CalendarDay--nextPPV {
+  border: 0.15rem solid var(--Secondary-color);
+  box-shadow: 0 0 1.4rem rgba(242, 183, 5, 0.55);
+}
+
+.CalendarPPV {
+  position: relative;
+  flex: 1;
+  display: block;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.CalendarPPVImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.CalendarPPVScrim {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: linear-gradient(to top, rgba(2, 8, 5, 0.95) 0%, rgba(2, 8, 5, 0.35) 55%, rgba(2, 8, 5, 0.25) 100%);
+  transition: background 0.3s ease-in-out;
+}
+
+.CalendarPPV:hover .CalendarPPVScrim {
+  background: linear-gradient(to top, rgba(2, 8, 5, 0.9) 0%, transparent 60%);
+}
+
+.CalendarPPVBadge {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  font-size: 0.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #241c00;
+  background: var(--Secondary-color);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.CalendarPPVName {
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.45rem;
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: clamp(0.85rem, 1.2vw, 1.15rem);
+  line-height: 1.1;
+  text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.95);
+}
+
+.CalendarPPVNight {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 0.6rem;
+  letter-spacing: 0.05rem;
+  color: #241c00;
+  background: var(--Secondary-color);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  text-shadow: none;
+}
+
+/* ---------- PPV hover tooltip ---------- */
+
+.CalendarTooltip {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: calc(100% + 0.6rem);
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--primary-color-dark);
+  border: 1px solid var(--Secondary-color);
+  box-shadow: var(--shadow-md), 0 0 1.25rem rgba(242, 183, 5, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0.4rem);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
+}
+
+.CalendarTooltip--below {
+  bottom: auto;
+  top: calc(100% + 0.6rem);
+  transform: translate(-50%, -0.4rem);
+}
+
+.CalendarTooltip--alignLeft { left: 0; transform: translate(0, 0.4rem); }
+.CalendarTooltip--alignRight { left: auto; right: 0; transform: translate(0, 0.4rem); }
+.CalendarTooltip--below.CalendarTooltip--alignLeft,
+.CalendarTooltip--below.CalendarTooltip--alignRight { transform: translate(0, -0.4rem); }
+
+.CalendarPPV:hover .CalendarTooltip,
+.CalendarPPV:focus-visible .CalendarTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.CalendarPPV:hover .CalendarTooltip--alignLeft,
+.CalendarPPV:hover .CalendarTooltip--alignRight,
+.CalendarPPV:focus-visible .CalendarTooltip--alignLeft,
+.CalendarPPV:focus-visible .CalendarTooltip--alignRight {
+  transform: translate(0, 0);
+}
+
+.CalendarTooltipImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.CalendarTooltipBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.8rem 1rem 0.9rem;
+}
+
+.CalendarTooltipName {
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  color: var(--text-color);
+}
+
+.CalendarTooltipNight {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04rem;
+  color: var(--Secondary-color);
+}
+
+.CalendarTooltipMeta {
+  font-size: 0.85rem;
+  color: var(--primary-colorV3);
+}
+
+.CalendarTooltipCTA {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--Secondary-color);
+}
+
+/* =========================================================
+   FOOTNOTE
+========================================================= */
+
+.CalendarFootnote {
+  text-align: center;
+  margin: 1.6rem auto 0.5rem;
+  font-size: 0.95rem;
+  color: var(--primary-colorV3);
+}
+
+.CalendarFootnote a {
+  color: var(--Secondary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.CalendarFootnote a:hover {
+  color: var(--hover-text-color);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .CalendarGrid { gap: 0.3rem; width: 97%; }
+  .CalendarDay { min-height: 5.5rem; padding: 0.3rem; }
+  .CalendarWeekday { font-size: 0.7rem; letter-spacing: 0; }
+  .CalendarWeekly { padding: 0.25rem; }
+  .CalendarPPVBadge { display: none; }
+  .CalendarTooltip { width: 13rem; }
+}
+
+@media (max-width: 600px) {
+  .CalendarPPVName { display: none; }
+  .CalendarDayNumber { font-size: 0.95rem; }
+  .CalendarNavBtn { width: 2.6rem; height: 2.6rem; font-size: 1.7rem; }
+}

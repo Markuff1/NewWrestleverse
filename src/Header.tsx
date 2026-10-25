@@ -64,9 +64,9 @@ function Header() {
             </li>
 
             <li>
-              <Link to="/News" className="NavItem">
-                <img src="/Images/Icons/News.webp" alt="" />
-                <span>News</span>
+              <Link to="/Calendar" className="NavItem">
+                <img src="/Images/Icons/Calendar.webp" alt="" />
+                <span>Calendar</span>
               </Link>
             </li>
 

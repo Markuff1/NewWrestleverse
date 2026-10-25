@@ -1,6 +1,7 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
+const matchCard2028: Match[] = [];
 
 const matchCard2027: Match[] = [
   { match: "Bron Breakker (c) Def. Logan Paul and Rusev", title: "Intercontinental Championship", type: "Triple Threat Match" },
@@ -34,6 +35,24 @@ const matchCard2026: Match[] = [
 
 // ---------- Event Data ----------
 const NOCEvents: PPVEvent[] = [
+  {
+    year: 2028,
+    banner: "/Images/PPV/NOC/NOCHeader2028.webp",
+    location: "",
+    date: "Saturday, September 16th 2028, 2pm ET / 11am PT",
+    matches: matchCard2028,
+    imageFolder: "NOC/2028MC",
+
+    previousEvent: {
+      label: "Summerslam 2028",
+      link: "/SummerSlam#2028",
+    },
+
+    nextEvent: {
+      label: "Extreme Rules 2028",
+      link: "/ER#2028",
+    },
+  },
   {
     year: 2027,
     banner: "/Images/PPV/NOC/NOCHeader2027.webp",

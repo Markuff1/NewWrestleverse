@@ -1,6 +1,11 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
+const matchCard2028: Match[] = [
+  {night: 1, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
+  {night: 1, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
+  {night: 2, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
+]
 
 const matchCard2027: Match[] = [
   { match: "Bron Breakker Def. Rusev (c) and Carmelo Hayes and Jacob Fatu", title: "Intercontinental Championship", type: "Fatal 4-Way Match" },
@@ -50,6 +55,24 @@ const matchCard2025: Match[] = [
 
 // ---------- Event Data ----------
 const SummerSlamEvents: PPVEvent[] = [
+  {
+    year: 2028,
+    banner: "/Images/PPV/SummerSlam/SSHeader2028.webp",
+    location: "Metlife Stadium, New York, NJ",
+    date: "August 19th - 20th 2028, 7e/5p",
+    matches: matchCard2028,
+    imageFolder: "SummerSlam/2028MC",
+
+    previousEvent: {
+      label: "Money In The Bank 2028",
+      link: "/MITB#2028",
+    },
+
+    nextEvent: {
+      label: "Night Of Champions 2028",
+      link: "/NOC#2028",
+    },
+  },
   {
     year: 2027,
     banner: "/Images/PPV/SummerSlam/SSHeader2027.webp",

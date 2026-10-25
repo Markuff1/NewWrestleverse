@@ -2,6 +2,19 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------//
 const matchCard2028: Match[] = [
+{ match: "Breakker Vs Balor Vs Fatu Vs Owens Vs Orton Vs Rollins Vs Evans Vs Saints", title: "Smackdown Money In The Bank", type: "Ladder Match" },
+{ match: "Lyra Valkyria Vs Jacy Jayne", title: "Women's Intercontinental Championship", type: "Normal Match" },
+{ match: "LA Knight Vs Ilja Dragunov", title: "United States Championship", type: "Normal Match" },
+{ match: "Roxanne Perez Vs Blake Monroe Vs Raquel Rodriques", title: "Women's United States Championship", type: "Triple Threat Match" },
+{ match: "Perros Del Mal Vs MCMG", title: "Raw Tag Team Championships", type: "Tag Team Match" },
+{ match: "Tyler Bate Vs Dominik Mysterio", title: "Intercontinetal Championship", type: "Normal Match" },
+{ match: "Belair Vs Bella Vs Vice Vs Grace Vs Giulia Vs Vaquer Vs Ruca Vs Legend", title: "Women's Money In The Bank", type: "Ladder Match" },
+{ match: "Hardy Boys Vs Viking Raiders", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
+{ match: "Tiffiany Stratton Vs Iyo Sky", title: "WWE Women's Championship", type: "Normal Match" },
+{ match: "Kane Vs AJ Styles Vs CM Punk Vs Oba Femi", title: "World Heavyweight Championship", type: "Fatal 4-Way Match" },
+{ match: "Becky Lynch Vs Naomi", title: "Women's World Championship", type: "Ladder Match" },
+{ match: "Gargano Vs Rhodes Vs McIntyre Vs Hayes Vs Gable Vs Reed Vs Zayn", title: "RAW Money In The Bank", type: "Ladder Match" },
+{ match: "Roman Reigns Vs Gunther", title: "WWE Championship", type: "Normal Match" },
 ]
 
 const matchCard2027: Match[] = [

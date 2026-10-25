@@ -7,6 +7,15 @@ import { newsArticles } from "./newsData";
 import rosterData from "./RosterData";
 import { useCurrentChampions } from "./hooks/useCurrentChampions";
 import { TITLE_ICONS, TITLE_CHAMPION_LABELS, RETIRED_TITLES, championshipOrder } from "./championships";
+import { getCurrentPPVDate, getEventsForDate } from "./calendarEvents";
+
+// The Monday–Sunday week containing the next PPV, for the "Coming Up" calendar strip.
+const ppvDate = getCurrentPPVDate();
+const ppvWeek = Array.from({ length: 7 }, (_, i) => {
+  const day = new Date(ppvDate);
+  day.setDate(ppvDate.getDate() - ((ppvDate.getDay() + 6) % 7) + i);
+  return day;
+});
 
 const championAbbrevs = Object.keys(TITLE_CHAMPION_LABELS)
   .filter((abbrev) => !RETIRED_TITLES.has(abbrev))
@@ -30,7 +39,7 @@ const quickLinks = [
   { to: "/Home", label: "Home", icon: "/Images/Icons/Home.webp" },
   { to: "/Roster", label: "Roster", icon: "/Images/Icons/Roster.webp" },
   { to: "/Shows", label: "Shows", icon: "/Images/Icons/Show.webp" },
-  { to: "/News", label: "News", icon: "/Images/Icons/News.webp" },
+  { to: "/Calendar", label: "Calendar", icon: "/Images/Icons/Calendar.webp" },
   { to: "/RAW", label: "RAW", icon: "/Images/Icons/Show.webp" },
   { to: "/SD", label: "Smackdown", icon: "/Images/Icons/Show.webp" },
   { to: "/Draft", label: "Draft", icon: "/Images/Icons/Show.webp" },
@@ -132,7 +141,39 @@ function Home() {
               </div>
             </section>
 
-            {/* ROW 3: quick links */}
+            {/* ROW 3: this PPV week from the calendar */}
+            <section className="HomeCalendarBox">
+              <div className="HomeCalendarHeader">
+                <h2 className="HomeBoxTitle">Coming Up · Road to {currentPPV.name}</h2>
+                <Link to="/Calendar" className="HomeCalendarLink">Full Calendar &rarr;</Link>
+              </div>
+              <div className="HomeCalendarWeek">
+                {ppvWeek.map((day) => {
+                  const events = getEventsForDate(day);
+                  return (
+                    <div className="HomeCalendarDay" key={day.toDateString()}>
+                      <span className="HomeCalendarDate">
+                        {day.toLocaleDateString("en-GB", { weekday: "short" })}{" "}
+                        <strong>{day.getDate()}</strong>
+                      </span>
+                      {events.map((event) => (
+                        <Link
+                          key={event.name}
+                          to={event.link}
+                          title={event.night ? `${event.name} – Night ${event.night}` : event.name}
+                          className={`HomeCalendarEvent HomeCalendarEvent--${event.kind.toLowerCase()}`}
+                        >
+                          <img src={event.image} alt={event.name} loading="lazy" decoding="async" />
+                          {event.night && <span className="HomeCalendarNight">Night {event.night}</span>}
+                        </Link>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* ROW 4: quick links */}
             <section className="HomeLinks">
               {quickLinks.map((link) => (
                 <Link key={link.label} to={link.to} className="HomeLinkCard">

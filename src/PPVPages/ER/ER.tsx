@@ -1,6 +1,8 @@
 import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
+const matchCard2028: Match[] = [
+]
 
 const matchCard2027: Match[] = [
   { match: "Bron Breakker (c) Def. Ethan Page", title: "Intercontinental Championship", type: "Extreme Rules Match" },
@@ -18,6 +20,24 @@ const matchCard2027: Match[] = [
 
 // ---------- Event Data ----------
 const EREvents: PPVEvent[] = [
+  {
+    year: 2028,
+    banner: "/Images/PPV/ER/ERHeader2028.webp",
+    location: "Toyota Cener, Houston Texas",
+    date: "Saturday, October 21th 2028, 7e/5p",
+    matches: matchCard2028,
+    imageFolder: "ER/2028MC",
+
+    previousEvent: {
+      label: "Night Of Champions 2028",
+      link: "/NOC#2028",
+    },
+
+    nextEvent: {
+      label: "Survivor Series 2028",
+      link: "/SurvivorSeries#2028",
+    },
+  },
   {
     year: 2027,
     banner: "/Images/PPV/ER/ERHeader2027.webp",

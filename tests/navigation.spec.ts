@@ -24,9 +24,9 @@ test.describe('Header navigation', () => {
     await expect(page.getByRole('heading', { name: 'SHOWS' })).toBeVisible();
   });
 
-  test('navigates to News via the header link', async ({ page }) => {
-    await page.locator('.Nav').getByRole('link', { name: 'News' }).click();
-    await expect(page).toHaveURL('/News');
+  test('navigates to Calendar via the header link', async ({ page }) => {
+    await page.locator('.Nav').getByRole('link', { name: 'Calendar' }).click();
+    await expect(page).toHaveURL('/Calendar');
   });
 
   test('opens the Shows dropdown and navigates to RAW', async ({ page }) => {

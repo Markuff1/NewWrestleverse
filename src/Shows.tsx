@@ -23,11 +23,11 @@ const ppvShows = [
   ],
   [
     { name: "MITB", image: "/Images/PPV/MITB/MITB2028.webp" },
-    { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SS2027.webp" },
-    { name: "NOC", image: "/Images/PPV/NOC/NOC2027.webp" },
+    { name: "SummerSlam", image: "/Images/PPV/SummerSlam/SS2028.webp" },
+    { name: "NOC", image: "/Images/PPV/NOC/NOC2028.webp" },
   ],
   [
-    { name: "ER", image: "/Images/PPV/ER/ER2027.webp" },
+    { name: "ER", image: "/Images/PPV/ER/ER2028.webp" },
     { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SS2027.webp" },
     { name: "Armageddon", image: "/Images/PPV/Armageddon/Armageddon2027.webp" }
   ]

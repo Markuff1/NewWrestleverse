@@ -13,6 +13,7 @@ const SD = lazy(() => import("./SD"));
 const RAW = lazy(() => import("./RAW"));
 const Draft = lazy(() => import("./Draft"));
 const News = lazy(() => import("./News"));
+const Calendar = lazy(() => import("./Calendar"));
 const PrivacyPolicy = lazy(() => import("./legal/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./legal/TermsAndConditions"));
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="/Roster" element={<ProtectedRoute><Roster /></ProtectedRoute>} />
           <Route path="/Shows" element={<ProtectedRoute><Shows /></ProtectedRoute>} />
           <Route path="/News" element={<ProtectedRoute><News /></ProtectedRoute>} />
+          <Route path="/Calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
 
           {/* Weekly Shows */}
           <Route path="/RAW" element={<ProtectedRoute><RAW /></ProtectedRoute>} />
