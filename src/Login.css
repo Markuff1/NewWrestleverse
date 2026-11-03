@@ -91,20 +91,43 @@
   }
 }
 
-/* Panel state change */
-.LoginPanel.register {
-  animation: panelSwitch 0.45s ease;
+/* =========================
+   Login <-> Register swap
+   The panels glide past each other and trade sides, then each side's text
+   fades in. Kept short and soft on purpose.
+========================= */
+.LoginBrand,
+.LoginPanel {
+  position: relative;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes panelSwitch {
-  from {
-    opacity: 0;
-    transform: translateX(-2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.LoginBrand {
+  z-index: 2;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.LoginPage.is-register .LoginBrand { transform: translateX(100%); }
+.LoginPage.is-register .LoginPanel { transform: translateX(-100%); }
+
+.LoginPanelContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginSwapIn {
+  animation: swapIn 0.3s ease-out 0.3s both;
+}
+
+@keyframes swapIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .LoginBrand,
+  .LoginPanel { transition: none; }
+  .LoginSwapIn { animation: none; }
 }
 
 /* Panel title */
@@ -155,6 +178,12 @@
   transform: translateY(-1px);
 }
 
+.LoginPanel button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
 /* Error */
 .LoginError {
   color: red;
@@ -194,4 +223,7 @@
   .LoginPanel {
     padding: 3rem;
   }
+
+  /* One column — nothing to swap, just the text fade. */
+  .LoginPage.is-register .LoginPanel { transform: none; }
 }

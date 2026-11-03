@@ -77,6 +77,24 @@ export const championshipOrder: Record<string, number> = {
   MMITB: 14,
 };
 
+// Which brand each title belongs to, by roster tag ("R" = RAW, "SD" = Smackdown).
+// The weekly planner only offers a show its own titles; titles not listed here
+// (e.g. the Women's MITB briefcase) are shared and offered on both shows.
+export const TITLE_BRANDS: Record<string, "R" | "SD"> = {
+  WH: "R",
+  WWH: "R",
+  IC: "R",
+  WIC: "R",
+  RAWTT: "R",
+  RMMITB: "R",
+  UC: "SD",
+  WUC: "SD",
+  US: "SD",
+  WUS: "SD",
+  SDTT: "SD",
+  SDMMITB: "SD",
+};
+
 // Titles no longer in use. Their records and pages are kept (and still show
 // in a wrestler's past title history), but they're left out of the "current
 // champion" lookups — roster badges, profile pop-up, and the home page list.

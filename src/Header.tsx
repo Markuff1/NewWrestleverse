@@ -1,20 +1,19 @@
 import "./Header.css";
-import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "./firebaseConfig";
+import { E2E_USER_KEY, e2eUser, useAuthUser } from "./auth";
 import { currentPPV } from "./currentPPV";
 
 function Header() {
-  const [username, setUsername] = useState("");
+  const user = useAuthUser();
+  const username = user?.displayName ?? e2eUser() ?? "";
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) setUsername(storedUsername);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("username");
-    setUsername("");
+  const handleLogout = async () => {
+    localStorage.removeItem(E2E_USER_KEY);
+    localStorage.removeItem("username"); // left over from the old login
+    await signOut(auth);
     navigate("/");
   };
 

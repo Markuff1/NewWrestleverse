@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { RosterPickContext } from "./rosterPick";
 import rosterData from "../RosterData";
-import { TITLE_ICONS } from "../championships";
+import { TITLE_BRANDS, TITLE_ICONS } from "../championships";
 import { PARTICIPANT_LABELS, type ParticipantCount } from "../PPVPages/MatchTypeInfo";
 import MatchTypeTooltip from "../PPVPages/MatchTypeTooltop";
 import {
@@ -10,16 +10,50 @@ import {
   isFilled,
   matchTypesFor,
   newMatch,
+  titleLabel,
   type PlannedMatch,
 } from "./planData";
 
 const SEPARATOR = /(\s+vs\.?\s+|\s*&\s*|,\s*)/i;
+const SIDE_SEPARATOR = /\s+vs\.?\s+/i;
+const TRAILING_SEPARATOR = /(\s+vs\.?|\s*&|\s*,)\s*$/i;
 
-/** "A" + "B" -> "A vs B"; leaves an already-typed separator alone ("A & " + "B" -> "A & B"). */
-function appendCompetitor(value: string, name: string) {
-  if (!value.trim()) return name;
-  if (/(\s+vs\.?|&|,)\s*$/i.test(value)) return value.replace(/\s*$/, " ") + name;
-  return `${value.trimEnd()} vs ${name}`;
+// Sides in a full match of each size; no "vs" is added after the last one.
+const MAX_SIDES: Partial<Record<ParticipantCount, number>> = { "2": 2, "3": 3, "4": 4, "2T": 2 };
+
+type IsTeam = (name: string) => boolean;
+
+/**
+ * What goes after `value` (which ends in a name just added) so the next name can go straight in:
+ * " & " while a team is still being made up, " vs " to start the next side, or "" once the match is full.
+ * A tag team's own name is a whole side. In a team match a side of wrestlers is 2 (or as many as the
+ * first side); with the size on "Any" it mirrors the first side, so "A & B vs C" gets an " & ".
+ */
+function nextSeparator(value: string, participants: ParticipantCount | "", isTeam: IsTeam) {
+  const members = (side: string) => side.split(/\s*&\s*|,\s*/).map((n) => n.trim()).filter(Boolean);
+  const sides = value.split(SIDE_SEPARATOR);
+  const first = members(sides[0]);
+  const current = members(sides[sides.length - 1]);
+
+  let teamSize = 1;
+  if (participants === "2T" || participants === "3T") {
+    teamSize = sides.length > 1 && !first.some(isTeam) ? Math.max(2, first.length) : 2;
+  } else if (participants === "" && sides.length > 1 && !first.some(isTeam)) {
+    teamSize = first.length;
+  }
+
+  if (!current.some(isTeam) && current.length < teamSize) return " & ";
+  if (sides.length >= (MAX_SIDES[participants || "5+"] ?? Infinity)) return "";
+  return " vs ";
+}
+
+/** Adds `name` after what's typed (keeping a typed separator: "A & " + "B" -> "A & B"), then the next separator. */
+function appendCompetitor(value: string, name: string, participants: ParticipantCount | "", isTeam: IsTeam) {
+  let next: string;
+  if (!value.trim()) next = name;
+  else if (TRAILING_SEPARATOR.test(value)) next = value.replace(/\s*$/, " ") + name;
+  else next = `${value.trimEnd()}${nextSeparator(value.trimEnd(), participants, isTeam) || " vs "}${name}`;
+  return next + nextSeparator(next, participants, isTeam);
 }
 
 // ---------- Editable card ----------
@@ -36,9 +70,16 @@ type PlanCardProps = {
   onSave: (matches: PlannedMatch[]) => Promise<void>;
 };
 
-/** One show's match card. Edits save automatically shortly after you stop typing. */
+/** One show's match card, collapsed to its header until clicked. Edits save automatically shortly after you stop typing. */
 export function PlanCard({ title, meta, variant, initial, rosterTag, note, onSave }: PlanCardProps) {
   const [matches, setMatches] = useState<PlannedMatch[]>(initial);
+  const [expanded, setExpanded] = useState(false);
+
+  // A RAW / Smackdown card only offers that brand's titles plus the shared ones; PPVs offer every title.
+  const titleOptions = useMemo(
+    () => (rosterTag ? TITLE_OPTIONS.filter((t) => (TITLE_BRANDS[t.abbr] ?? rosterTag) === rosterTag) : TITLE_OPTIONS),
+    [rosterTag],
+  );
   const [status, setStatus] = useState<"" | "pending" | "saving" | "saved" | "error">("");
 
   const onSaveRef = useRef(onSave);
@@ -91,10 +132,26 @@ export function PlanCard({ title, meta, variant, initial, rosterTag, note, onSav
   const statusText = { "": "", pending: "Editing…", saving: "Saving…", saved: "Saved", error: "Save failed" }[status];
 
   return (
-    <article className={`PlanCard PlanCard--${variant}`}>
-      {/* A div, not <header>: PPVShow.css gives every <header> a high z-index. */}
-      <div className="PlanCardHeader">
-        <div className="PlanCardTitle">{title}</div>
+    <article className={`PlanCard PlanCard--${variant}${expanded ? "" : " is-collapsed"}`}>
+      {/* A div, not <header>: PPVShow.css gives every <header> a high z-index.
+          Clicking it toggles the card, except on a link in the title (e.g. the PPV's page). */}
+      <div
+        className="PlanCardHeader"
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        onClick={(e) => { if (!(e.target as HTMLElement).closest("a")) setExpanded(!expanded); }}
+        onKeyDown={(e) => {
+          if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            setExpanded(!expanded);
+          }
+        }}
+      >
+        <div className="PlanCardTitle">
+          {title}
+          <span className="PlanCardChevron" aria-hidden="true">&#9662;</span>
+        </div>
         <div className="PlanCardMeta">
           <span>{meta}</span>
           <span className={`PlanCardStatus PlanCardStatus--${status}`}>
@@ -103,105 +160,110 @@ export function PlanCard({ title, meta, variant, initial, rosterTag, note, onSav
         </div>
       </div>
 
-      <table className="PlanTable">
-        <colgroup>
-          <col className="PlanColNum" />
-          <col className="PlanColMatch" />
-          <col className="PlanColParticipants" />
-          <col className="PlanColType" />
-          <col className="PlanColTitle" />
-          <col className="PlanColActions" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Match</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Title</th>
-            <th aria-label="Actions" />
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => {
-            const participants = match.participants ?? "";
-            const typeOptions = matchTypesFor(participants);
-            // Keep an older/unlisted saved value visible rather than silently blanking it.
-            if (match.matchType && !typeOptions.includes(match.matchType)) typeOptions.unshift(match.matchType);
-
-            return (
-              <tr key={match.id}>
-                <td className="PlanNum">#{index + 1}</td>
-                <td>
-                  <CompetitorInput
-                    value={match.competitors}
-                    rosterTag={rosterTag}
-                    onChange={(competitors) => updateMatch(match.id, { competitors })}
-                  />
-                </td>
-                <td>
-                  <select
-                    className="PlanInput"
-                    value={participants}
-                    onChange={(e) => changeParticipants(match, e.target.value as ParticipantCount | "")}
-                    title="Number of participants"
-                  >
-                    <option value="">Any</option>
-                    {PARTICIPANT_OPTIONS.map((count) => (
-                      <option key={count} value={count}>{PARTICIPANT_LABELS[count]}</option>
-                    ))}
-                  </select>
-                </td>
-                <td>
-                  <div className="PlanCellRow">
-                    <select
-                      className="PlanInput"
-                      value={match.matchType}
-                      onChange={(e) => updateMatch(match.id, { matchType: e.target.value })}
-                    >
-                      <option value="">—</option>
-                      {typeOptions.map((type) => <option key={type} value={type}>{type}</option>)}
-                    </select>
-                    {match.matchType && <MatchTypeTooltip matchType={match.matchType} />}
-                  </div>
-                </td>
-                <td>
-                  <div className="PlanCellRow">
-                    {TITLE_ICONS[match.championship] && (
-                      <img src={TITLE_ICONS[match.championship]} alt="" className="PlanTitleIcon" />
-                    )}
-                    <select
-                      className="PlanInput"
-                      value={match.championship}
-                      onChange={(e) => updateMatch(match.id, { championship: e.target.value })}
-                    >
-                      <option value="">—</option>
-                      {/* A title name from a PPV page that isn't a known title is kept as-is. */}
-                      {match.championship && !TITLE_OPTIONS.some((t) => t.abbr === match.championship) && (
-                        <option value={match.championship}>{match.championship}</option>
-                      )}
-                      {TITLE_OPTIONS.map((t) => <option key={t.abbr} value={t.abbr}>{t.label}</option>)}
-                    </select>
-                  </div>
-                </td>
-                <td className="PlanActions">
-                  <button onClick={() => moveMatch(index, -1)} disabled={index === 0} aria-label="Move up">&#9650;</button>
-                  <button onClick={() => moveMatch(index, 1)} disabled={index === matches.length - 1} aria-label="Move down">&#9660;</button>
-                  <button
-                    className="PlanActions--danger"
-                    onClick={() => update(matches.filter((m) => m.id !== match.id))}
-                    aria-label="Remove match"
-                  >
-                    &#10005;
-                  </button>
-                </td>
+      {expanded && (
+        <>
+          <table className="PlanTable">
+            <colgroup>
+              <col className="PlanColNum" />
+              <col className="PlanColMatch" />
+              <col className="PlanColParticipants" />
+              <col className="PlanColType" />
+              <col className="PlanColTitle" />
+              <col className="PlanColActions" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Match</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th aria-label="Actions" />
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {matches.map((match, index) => {
+                const participants = match.participants ?? "";
+                const typeOptions = matchTypesFor(participants);
+                // Keep an older/unlisted saved value visible rather than silently blanking it.
+                if (match.matchType && !typeOptions.includes(match.matchType)) typeOptions.unshift(match.matchType);
 
-      <button className="PlanAddRow" onClick={() => update([...matches, newMatch()])}>+ Add match</button>
+                return (
+                  <tr key={match.id}>
+                    <td className="PlanNum">#{index + 1}</td>
+                    <td>
+                      <CompetitorInput
+                        value={match.competitors}
+                        rosterTag={rosterTag}
+                        participants={participants}
+                        onChange={(competitors) => updateMatch(match.id, { competitors })}
+                      />
+                    </td>
+                    <td>
+                      <select
+                        className="PlanInput"
+                        value={participants}
+                        onChange={(e) => changeParticipants(match, e.target.value as ParticipantCount | "")}
+                        title="Number of participants"
+                      >
+                        <option value="">Any</option>
+                        {PARTICIPANT_OPTIONS.map((count) => (
+                          <option key={count} value={count}>{PARTICIPANT_LABELS[count]}</option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <div className="PlanCellRow">
+                        <select
+                          className="PlanInput"
+                          value={match.matchType}
+                          onChange={(e) => updateMatch(match.id, { matchType: e.target.value })}
+                        >
+                          <option value="">—</option>
+                          {typeOptions.map((type) => <option key={type} value={type}>{type}</option>)}
+                        </select>
+                        {match.matchType && <MatchTypeTooltip matchType={match.matchType} />}
+                      </div>
+                    </td>
+                    <td>
+                      <div className="PlanCellRow">
+                        {TITLE_ICONS[match.championship] && (
+                          <img src={TITLE_ICONS[match.championship]} alt="" className="PlanTitleIcon" />
+                        )}
+                        <select
+                          className="PlanInput"
+                          value={match.championship}
+                          onChange={(e) => updateMatch(match.id, { championship: e.target.value })}
+                        >
+                          <option value="">—</option>
+                          {/* Keep a saved title that isn't offered here (another brand's, or a title name from a PPV page) as-is. */}
+                          {match.championship && !titleOptions.some((t) => t.abbr === match.championship) && (
+                            <option value={match.championship}>{titleLabel(match.championship)}</option>
+                          )}
+                          {titleOptions.map((t) => <option key={t.abbr} value={t.abbr}>{t.label}</option>)}
+                        </select>
+                      </div>
+                    </td>
+                    <td className="PlanActions">
+                      <button onClick={() => moveMatch(index, -1)} disabled={index === 0} aria-label="Move up">&#9650;</button>
+                      <button onClick={() => moveMatch(index, 1)} disabled={index === matches.length - 1} aria-label="Move down">&#9660;</button>
+                      <button
+                        className="PlanActions--danger"
+                        onClick={() => update(matches.filter((m) => m.id !== match.id))}
+                        aria-label="Remove match"
+                      >
+                        &#10005;
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+
+          <button className="PlanAddRow" onClick={() => update([...matches, newMatch()])}>+ Add match</button>
+        </>
+      )}
     </article>
   );
 }
@@ -220,15 +282,32 @@ function useCompetitorNames(rosterTag?: string) {
   }, [rosterTag]);
 }
 
-/** Free-text competitors box that autocompletes the name currently being typed (the part after the last "vs" / "&" / ","). */
-function CompetitorInput({ value, rosterTag, onChange }: { value: string; rosterTag?: string; onChange: (v: string) => void }) {
+type CompetitorInputProps = {
+  value: string;
+  rosterTag?: string;
+  participants: ParticipantCount | "";
+  onChange: (v: string) => void;
+};
+
+/**
+ * Free-text competitors box that autocompletes the name currently being typed (the part after the last
+ * "vs" / "&" / ","). Picking a name (here or from the roster panel) adds the next " vs " / " & " for you;
+ * one left dangling at the end is dropped when you leave the box.
+ */
+function CompetitorInput({ value, rosterTag, participants, onChange }: CompetitorInputProps) {
   const names = useCompetitorNames(rosterTag);
   const rosterPick = useContext(RosterPickContext);
   const [open, setOpen] = useState(false);
   const [highlight, setHighlight] = useState(0);
 
-  const latest = useRef({ value, onChange });
-  useEffect(() => { latest.current = { value, onChange }; });
+  const isTeam = useMemo(() => {
+    const teams = new Set(names.filter((n) => n.isTeam).map((n) => n.name.toLowerCase()));
+    return (name: string) => teams.has(name.toLowerCase());
+  }, [names]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const latest = useRef({ value, onChange, participants, isTeam });
+  useEffect(() => { latest.current = { value, onChange, participants, isTeam }; });
 
   const parts = value.split(SEPARATOR);
   const current = parts[parts.length - 1].trim().toLowerCase();
@@ -237,7 +316,8 @@ function CompetitorInput({ value, rosterTag, onChange }: { value: string; roster
     : [];
 
   const pick = (name: string) => {
-    onChange([...parts.slice(0, -1), name].join(""));
+    const next = [...parts.slice(0, -1), name].join("");
+    onChange(next + nextSeparator(next, participants, isTeam));
     setOpen(false);
   };
 
@@ -252,15 +332,23 @@ function CompetitorInput({ value, rosterTag, onChange }: { value: string; roster
   return (
     <div className="PlanAutocomplete">
       <input
+        ref={inputRef}
         className="PlanInput"
         placeholder="Cody Rhodes vs Drew McIntyre"
         value={value}
         onChange={(e) => { onChange(e.target.value); setOpen(true); setHighlight(0); }}
         onFocus={() => {
           setOpen(true);
-          rosterPick?.setTarget((name) => latest.current.onChange(appendCompetitor(latest.current.value, name)));
+          rosterPick?.setTarget((name) => {
+            const { value, onChange, participants, isTeam } = latest.current;
+            onChange(appendCompetitor(value, name, participants, isTeam));
+            inputRef.current?.focus(); // so a dangling separator still gets tidied on blur
+          });
         }}
-        onBlur={() => setOpen(false)}
+        onBlur={() => {
+          setOpen(false);
+          if (TRAILING_SEPARATOR.test(value)) onChange(value.replace(TRAILING_SEPARATOR, ""));
+        }}
         onKeyDown={onKeyDown}
       />
       {open && suggestions.length > 0 && (

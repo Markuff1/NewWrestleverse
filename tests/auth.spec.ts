@@ -70,7 +70,7 @@ test.describe('Route protection', () => {
 
     await expect(page).toHaveURL('/');
     await expect(
-      await page.evaluate(() => window.localStorage.getItem('username'))
+      await page.evaluate(() => window.localStorage.getItem('e2eUser'))
     ).toBeNull();
   });
 });

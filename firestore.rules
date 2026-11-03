@@ -1,0 +1,29 @@
+rules_version = '2';
+
+// Deploy with: npx firebase-tools deploy --only firestore:rules
+// Anything not matched below is denied.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Title-reign history, one subcollection per championship (src/championships.ts).
+    match /Wrestleverse/ChampionshipData/{collectionId}/{recordId} {
+      allow read, write: if signedIn();
+    }
+
+    // Weekly / PPV show plans and the match ideas list (src/PlanningPages/planData.ts).
+    match /Wrestleverse/ShowPlans/{board}/{planId} {
+      allow read, write: if signedIn();
+    }
+
+    // TRANSITIONAL — old plaintext logins, moved to Firebase Auth on each user's first sign-in
+    // (src/Login.tsx). While this block exists anyone can still read these records, so once
+    // everyone has logged in once, delete this whole block (and the leftover documents) and redeploy.
+    match /Wrestleverse/LoginDetails/Users/{userId} {
+      allow read: if true;
+      allow delete: if signedIn();
+    }
+  }
+}

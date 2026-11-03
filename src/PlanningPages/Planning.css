@@ -440,7 +440,27 @@ a.PlanningCyclePPV:hover { color: var(--hover-text-color); }
 .PlanCardHeader {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   background: var(--plan-head);
+  cursor: pointer;
+  user-select: none;
 }
+
+.PlanCardHeader:hover { filter: brightness(1.12); }
+
+.PlanCardHeader:focus-visible {
+  outline: 0.15rem solid var(--Secondary-color);
+  outline-offset: 0.1rem;
+}
+
+.PlanCard.is-collapsed .PlanCardHeader { border-radius: var(--radius-md); }
+
+.PlanCard.is-collapsed .PlanCardMeta { border-radius: 0 0 var(--radius-md) var(--radius-md); }
+
+.PlanCardChevron {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.PlanCard.is-collapsed .PlanCardChevron { transform: rotate(-90deg); }
 
 .PlanCardTitle {
   display: flex;
