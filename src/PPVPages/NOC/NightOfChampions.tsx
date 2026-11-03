@@ -34,7 +34,7 @@ const matchCard2026: Match[] = [
 
 
 // ---------- Event Data ----------
-const NOCEvents: PPVEvent[] = [
+export const NOCEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/NOC/NOCHeader2028.webp",

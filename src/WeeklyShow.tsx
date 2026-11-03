@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./WeeklyShow.css";
 import "./Roster.css";
 import "./Home.css";
@@ -10,6 +11,9 @@ import { useAllTitleHistory } from "./hooks/useTitleHistory";
 import { useTitleRecords } from "./hooks/useTitleRecords";
 import { championshipOrder } from "./championships";
 import WrestlerModal from "./WrestlerModal";
+import PlannedShowCard from "./PlanningPages/PlannedShowCard";
+import { isFilled, usePlans, type ShowKind } from "./PlanningPages/planData";
+import { fromDateKey } from "./calendarEvents";
 
 const tabs = ["ALL", "Men", "Women", "Tag Teams", "Champions", "GM"];
 
@@ -30,6 +34,7 @@ type WeeklyShowPageProps = {
   description: string;
   schedule: string;
   gmEntries: WeeklyShowItem[];
+  plannerShow: ShowKind;
 };
 
 function WeeklyShowPage({
@@ -41,10 +46,23 @@ function WeeklyShowPage({
   description,
   schedule,
   gmEntries,
+  plannerShow,
 }: WeeklyShowPageProps) {
   const [activeTab, setActiveTab] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedWrestler, setSelectedWrestler] = useState<WeeklyShowItem | null>(null);
+
+  // Top-level tabs: "roster", or a planned show's date (YYYY-MM-DD). The Calendar links
+  // in with ?date= to open that week straight away.
+  const [searchParams] = useSearchParams();
+  const dateParam = searchParams.get("date");
+  const [view, setView] = useState(dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : "roster");
+  const { plans } = usePlans(plannerShow);
+  const plannedDates = useMemo(() => {
+    const dates = Object.keys(plans ?? {}).filter((key) => plans![key].some(isFilled));
+    if (view !== "roster" && !dates.includes(view)) dates.push(view);
+    return dates.sort();
+  }, [plans, view]);
 
   const allClassName = `ALL${classPrefix}`;
 
@@ -122,72 +140,93 @@ function WeeklyShowPage({
         <div className="PageContainer">
           <img className={`${classPrefix}Banner`} src={bannerSrc} alt={bannerAlt} />
 
-          <div className={`${classPrefix}Info`}>
-            <div className={`${classPrefix}Location`}>Location: Arena Near You</div>
-            <div className={`${classPrefix}Date`}>Date/Time: {schedule}</div>
-          </div>
-
-          <div className={`${classPrefix}Text1`}>{title}</div>
-          <div className={`${classPrefix}Text2`}>{description}</div>
-
-          <input
-            type="text"
-            placeholder="Search for a wrestler..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={`${classPrefix}searchBar`}
-          />
-
-          <div className={`${classPrefix}Tab`}>
-            {tabs.map((tab) => (
+          <div className="ShowViewTabs">
+            <button className={view === "roster" ? "is-active" : ""} onClick={() => setView("roster")}>
+              Roster
+            </button>
+            {plannedDates.map((key) => (
               <button
-                key={tab}
-                className={`${classPrefix}tablinks ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
+                key={key}
+                className={[key === view ? "is-active" : "", plans?.[key]?.some(isFilled) ? "" : "ShowViewTabs--empty"].join(" ")}
+                onClick={() => setView(key)}
               >
-                {tab} ({filteredByTab[tab].length})
+                {fromDateKey(key).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}
               </button>
             ))}
           </div>
 
-          {tabs.map((tab) => (
-            <div
-              key={tab}
-              className={`${classPrefix}tabcontent`}
-              style={{ display: activeTab === tab ? "block" : "none" }}
-            >
-              <div className={`${classPrefix}Text3`}>Current {tab} Roster</div>
-
-              {filteredByTab[tab]
-                .reduce((acc: WeeklyShowItem[][], item, index) => {
-                  const groupSize = tab === "Champions" ? 4 : 6;
-                  if (index % groupSize === 0) acc.push([]);
-                  acc[acc.length - 1].push(item);
-                  return acc;
-                }, [])
-                .map((group, groupIndex) => (
-                  <div key={groupIndex} className="centerRoster">
-                    {group.map((item, index) => (
-                      <div
-                        key={index}
-                        className={`profile-card ${item.Champion || allClassName}`}
-                        title={item.name}
-                        onClick={() => setSelectedWrestler(item)}
-                      >
-                        <img
-                          src={item.src}
-                          alt={item.name}
-                          className="wrestler-img"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+          {view !== "roster" ? (
+            <PlannedShowCard show={plannerShow} date={fromDateKey(view)} dateKey={view} matches={plans?.[view] ?? []} />
+          ) : (
+            <>
+            <div className={`${classPrefix}Info`}>
+              <div className={`${classPrefix}Location`}>Location: Arena Near You</div>
+              <div className={`${classPrefix}Date`}>Date/Time: {schedule}</div>
             </div>
-          ))}
 
-          <div className={`${classPrefix}Text1`}>.....</div>
+            <div className={`${classPrefix}Text1`}>{title}</div>
+            <div className={`${classPrefix}Text2`}>{description}</div>
+
+            <input
+              type="text"
+              placeholder="Search for a wrestler..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`${classPrefix}searchBar`}
+            />
+
+            <div className={`${classPrefix}Tab`}>
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  className={`${classPrefix}tablinks ${activeTab === tab ? "active" : ""}`}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  {tab} ({filteredByTab[tab].length})
+                </button>
+              ))}
+            </div>
+
+            {tabs.map((tab) => (
+              <div
+                key={tab}
+                className={`${classPrefix}tabcontent`}
+                style={{ display: activeTab === tab ? "block" : "none" }}
+              >
+                <div className={`${classPrefix}Text3`}>Current {tab} Roster</div>
+
+                {filteredByTab[tab]
+                  .reduce((acc: WeeklyShowItem[][], item, index) => {
+                    const groupSize = tab === "Champions" ? 4 : 6;
+                    if (index % groupSize === 0) acc.push([]);
+                    acc[acc.length - 1].push(item);
+                    return acc;
+                  }, [])
+                  .map((group, groupIndex) => (
+                    <div key={groupIndex} className="centerRoster">
+                      {group.map((item, index) => (
+                        <div
+                          key={index}
+                          className={`profile-card ${item.Champion || allClassName}`}
+                          title={item.name}
+                          onClick={() => setSelectedWrestler(item)}
+                        >
+                          <img
+                            src={item.src}
+                            alt={item.name}
+                            className="wrestler-img"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+              </div>
+            ))}
+
+            <div className={`${classPrefix}Text1`}>.....</div>
+            </>
+          )}
         </div>
       </div>
 

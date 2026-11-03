@@ -54,7 +54,7 @@ const matchCard2025: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const SummerSlamEvents: PPVEvent[] = [
+export const SummerSlamEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/SummerSlam/SSHeader2028.webp",

@@ -32,7 +32,7 @@ const matchCard2027: Match[] = [
 
 
 // ---------- Event Data ----------
-const CIPEvents: PPVEvent[] = [
+export const CIPEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/ClashInParis/CIPHeader2027.webp",

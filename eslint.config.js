@@ -21,7 +21,14 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        {
+          allowConstantExport: true,
+          // PPV pages also export their event data for the PPV planner (src/PlanningPages/ppvResults.ts).
+          allowExportNames: [
+            'ArmageddonEvents', 'BraggingRightsEvents', 'BacklashEvents', 'CIPEvents', 'ECEvents', 'EREvents',
+            'MITBEvents', 'NOCEvents', 'RoyalRumbleEvents', 'SummerSlamEvents', 'SurvivorSeriesEvents', 'WMEvents',
+          ],
+        },
       ],
     },
   },

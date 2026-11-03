@@ -150,4 +150,11 @@ export const ppvCalendar: CalendarPPV[] = [
     image: "/Images/PPV/ER/ER2028.webp",
     link: "/ER",
   },
+  {
+    name: "Survivor Series",
+    date: "2028-11-18",
+    location: "Daikin Park, Houston, Texas",
+    image: "/Images/PPV/SurvivorSeries/SS2028.webp",
+    link: "/SurvivorSeries",
+  },
 ];

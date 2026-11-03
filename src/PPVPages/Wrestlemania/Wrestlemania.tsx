@@ -99,7 +99,7 @@ const WM2027Matches: Match[] = [
 ];
 
 // ---------- Event ----------
-const WMEvents: PPVEvent[] = [
+export const WMEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "Images/PPV/Wrestlemania/WrestlemaniaHeader2027.webp",

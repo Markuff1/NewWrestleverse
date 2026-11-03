@@ -56,9 +56,9 @@ const matchCard2025: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const BacklashEvents: PPVEvent[] = [
+export const BacklashEvents: PPVEvent[] = [
   {
-    year: 2027,
+    year: 2028,
     banner: "/Images/PPV/Backlash/BacklashHeader2028.webp",
     location: "O2 Arena, London, England",
     date: "Saturday, May 20th, 2028",

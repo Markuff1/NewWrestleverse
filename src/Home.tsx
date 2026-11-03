@@ -40,6 +40,7 @@ const quickLinks = [
   { to: "/Roster", label: "Roster", icon: "/Images/Icons/Roster.webp" },
   { to: "/Shows", label: "Shows", icon: "/Images/Icons/Show.webp" },
   { to: "/Calendar", label: "Calendar", icon: "/Images/Icons/Calendar.webp" },
+  { to: "/Planning", label: "Planning", icon: "/Images/Icons/Edit.webp" },
   { to: "/RAW", label: "RAW", icon: "/Images/Icons/Show.webp" },
   { to: "/SD", label: "Smackdown", icon: "/Images/Icons/Show.webp" },
   { to: "/Draft", label: "Draft", icon: "/Images/Icons/Show.webp" },
@@ -173,7 +174,21 @@ function Home() {
               </div>
             </section>
 
-            {/* ROW 4: quick links */}
+            {/* ROW 4: planning */}
+            <section className="HomePlanningBox">
+              <div>
+                <h2 className="HomeBoxTitle">Planning</h2>
+                <p className="HomePlanningText">
+                  Book the road to {currentPPV.name}: plan RAW and Smackdown week by week, and build every PPV card.
+                </p>
+              </div>
+              <div className="HomePlanningButtons">
+                <Link to="/Planning/Weekly" className="HomeHeroButton HomeHeroButton--primary">Weekly Shows</Link>
+                <Link to="/Planning/PPV" className="HomeHeroButton">PPVs</Link>
+              </div>
+            </section>
+
+            {/* ROW 5: quick links */}
             <section className="HomeLinks">
               {quickLinks.map((link) => (
                 <Link key={link.label} to={link.to} className="HomeLinkCard">

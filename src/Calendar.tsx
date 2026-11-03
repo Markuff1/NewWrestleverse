@@ -120,9 +120,9 @@ function Calendar() {
                   {weeklyShows.map((show) => (
                     <Link
                       key={show.kind}
-                      to={show.link}
+                      to={`${show.link}?date=${toDateKey(day)}`}
                       className={`CalendarWeekly CalendarWeekly--${show.kind.toLowerCase()}`}
-                      title={show.name}
+                      title={`Plan ${show.name}`}
                     >
                       <img src={show.image} alt={show.name} loading="lazy" decoding="async" />
                     </Link>

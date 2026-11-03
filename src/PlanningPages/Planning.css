@@ -1,0 +1,915 @@
+/* =========================================================
+   PLANNING HUB — the two "Weekly" / "PPV" boxes
+========================================================= */
+
+.PlanningHub {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+  width: min(92%, 80rem);
+  margin: 3rem auto;
+}
+
+.PlanningHubCard {
+  position: relative;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 0.2rem solid var(--primary-color-dark);
+  color: var(--text-color);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.PlanningHubCard:hover {
+  transform: translateY(-0.3rem);
+  border-color: var(--Secondary-color);
+  box-shadow: 0 0 2rem rgba(242, 183, 5, 0.45);
+}
+
+.PlanningHubCard--weekly {
+  background: linear-gradient(135deg, var(--raw-brand-color) 0%, #2a0a10 48%, #08142b 52%, var(--sd-brand-color) 100%);
+}
+
+.PlanningHubLogos {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem 1.5rem 0;
+}
+
+.PlanningHubLogos img {
+  width: 42%;
+  max-height: 7rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0.3rem 0.6rem rgba(0, 0, 0, 0.7));
+}
+
+.PlanningHubPoster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.PlanningHubScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4, 18, 11, 0.95) 0%, rgba(4, 18, 11, 0.4) 55%, transparent 100%);
+}
+
+.PlanningHubBody {
+  position: relative;
+  padding: 1.5rem 1.75rem 1.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+}
+
+.PlanningHubBody h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-3);
+  font-weight: normal;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.PlanningHubBody p {
+  margin: 0 0 1rem;
+  opacity: 0.85;
+}
+
+.PlanningHubCTA {
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  color: var(--Secondary-color);
+}
+
+/* =========================================================
+   PLANNING PAGES — full-width layout
+========================================================= */
+
+.PlanningPage {
+  width: 98%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 7rem 1rem 2rem;
+  box-sizing: border-box;
+  background: var(--contentBackground);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.PlanningTopBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--primary-color-dark);
+  border-bottom: 0.2rem solid var(--Secondary-color);
+}
+
+.PlanningBack {
+  color: var(--primary-colorV3);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.PlanningBack:hover { color: var(--Secondary-color); }
+
+.PlanningTitle {
+  margin: 0;
+  font-family: var(--font-3);
+  font-weight: normal;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+}
+
+.PlanningHint {
+  margin-left: auto;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.PlanningLayout {
+  display: grid;
+  grid-template-columns: clamp(44rem, 30vw, 62rem) minmax(0, 1fr) 16rem;
+  gap: 1rem;
+  align-items: start;
+}
+
+.PlanningMain { min-width: 0; }
+
+.PlanningLoading,
+.PlanningError {
+  text-align: center;
+  padding: 2rem 0;
+  opacity: 0.75;
+}
+
+.PlanningError { color: #ff8a8a; opacity: 1; }
+
+/* ---------- Side panels ---------- */
+
+.PlanningPanel {
+  position: sticky;
+  top: 7rem;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.25);
+  border: 0.1rem solid rgba(255, 255, 255, 0.1);
+}
+
+.PlanningPanelTitle {
+  margin: -0.75rem -0.75rem 0.75rem;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  background: var(--primary-color-dark);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.PlanningPanelNote {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* ---------- Roster panel ---------- */
+
+.PlanningRosterSearch { margin-bottom: 0.75rem; }
+
+/* Male / Female / Tag Team rosters side by side */
+.PlanningRosterSections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.PlanningRosterSection h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: var(--Secondary-color);
+}
+
+.PlanningRosterTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.72rem;
+}
+
+.PlanningRosterTable th {
+  padding: 0.2rem;
+  font-size: 0.68rem;
+}
+
+.PlanningRosterRaw { background: var(--raw-brand-color); }
+.PlanningRosterSD { background: var(--sd-brand-color); }
+
+.PlanningRosterTable td {
+  padding: 0;
+  border: 0.05rem solid rgba(255, 255, 255, 0.08);
+}
+
+.PlanningRosterNum {
+  width: 1.9rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.PlanningRosterTable button {
+  width: 100%;
+  padding: 0.22rem 0.3rem;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font: inherit;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.PlanningRosterTable button:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* ---------- Planned matches (ideas) panel ---------- */
+
+.PlanningIdeaForm {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.PlanningIdeaForm button {
+  padding: 0 0.8rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--Secondary-color);
+  color: #241c00;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.PlanningIdeaForm button:disabled { opacity: 0.4; cursor: default; }
+
+.PlanningIdeaList {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 0.8rem;
+}
+
+.PlanningIdeaList li {
+  padding: 0.35rem 0;
+  border-bottom: 0.05rem solid rgba(255, 255, 255, 0.1);
+}
+
+.PlanningIdeaList li > * { vertical-align: middle; }
+
+.PlanningIdeaList li button {
+  float: right;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.PlanningIdeaList li button:hover { opacity: 1; color: #ff8a8a; }
+
+/* ---------- Weekly: PPV cycle bar + week rows ---------- */
+
+.PlanningCycleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.PlanningCycleTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.PlanningEyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: var(--Secondary-color);
+}
+
+.PlanningCyclePPV {
+  font-family: var(--font-3);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a.PlanningCyclePPV:hover { color: var(--hover-text-color); }
+
+.PlanningCycleMeta { font-size: 0.8rem; opacity: 0.75; }
+
+.PlanningNavBtn {
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  border: 0.12rem solid var(--primary-colorV2);
+  background: var(--primary-color-dark);
+  color: var(--text-color);
+  font-size: 1.8rem;
+  line-height: 1;
+  padding-bottom: 0.25rem;
+  cursor: pointer;
+}
+
+.PlanningNavBtn:hover:not(:disabled) { background: var(--primary-colorV2); }
+.PlanningNavBtn:disabled { opacity: 0.3; cursor: default; }
+
+.PlanningWeek { margin-bottom: 1.25rem; }
+
+.PlanningWeekTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-3);
+  font-weight: normal;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.PlanningWeekTag {
+  font-family: var(--font-1);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--Secondary-color);
+  color: #241c00;
+}
+
+.PlanningWeekDates {
+  font-family: var(--font-1);
+  font-size: 0.8rem;
+  opacity: 0.65;
+  text-transform: none;
+}
+
+.PlanningWeekCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+  gap: 1rem;
+}
+
+/* ---------- PPV: year tabs + grid ---------- */
+
+.PlanningYearTabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.PlanningYearTabs button {
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  border: 0.12rem solid var(--primary-colorV2);
+  background: transparent;
+  color: var(--text-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.PlanningYearTabs button.is-active {
+  background: var(--Secondary-color);
+  border-color: var(--Secondary-color);
+  color: #241c00;
+}
+
+.PlanningPPVGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36rem, 1fr));
+  gap: 1rem;
+}
+
+/* =========================================================
+   PLAN CARD — one show's editable match card
+========================================================= */
+
+.PlanCard {
+  --plan-head: var(--primary-color-dark);
+  min-width: 0;
+  border-radius: var(--radius-md);
+  overflow: visible;
+  background: rgba(0, 0, 0, 0.3);
+  border: 0.1rem solid rgba(255, 255, 255, 0.12);
+}
+
+.PlanCard--raw { --plan-head: var(--RAWbackground); }
+.PlanCard--sd { --plan-head: var(--SDbackground); }
+.PlanCard--ppv { --plan-head: linear-gradient(to bottom, #0b5a6b, #0a3f4d); }
+
+.PlanCardHeader {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--plan-head);
+}
+
+.PlanCardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  font-family: var(--font-3);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04rem;
+}
+
+.PlanCardTitle a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.PlanCardTitle a:hover { color: var(--Secondary-color); }
+
+.PlanCardNight {
+  margin-left: 0.5rem;
+  color: var(--Secondary-color);
+}
+
+.PlanCardLogo {
+  height: 1.8rem;
+  width: auto;
+}
+
+.PlanCardMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.72rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.PlanCardStatus { font-weight: bold; color: var(--primary-colorV3); white-space: nowrap; }
+.PlanCardStatus--saved { color: var(--hover-text-color); }
+.PlanCardStatus--pending,
+.PlanCardStatus--saving { color: var(--Secondary-color); }
+.PlanCardStatus--error { color: #ff8a8a; }
+
+.PlanCardEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6rem;
+  border-radius: var(--radius-md);
+  border: 0.1rem dashed rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.PlanTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.78rem;
+}
+
+.PlanColNum { width: 2.4rem; }
+.PlanColMatch { width: 36%; }
+.PlanColParticipants { width: 15%; }
+.PlanColType { width: 22%; }
+.PlanColTitle { width: 22%; }
+.PlanColActions { width: 4.6rem; }
+
+.PlanTable th {
+  padding: 0.3rem 0.35rem;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  text-align: left;
+  color: var(--Secondary-color);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.PlanTable td {
+  padding: 0.2rem 0.25rem;
+  border-bottom: 0.05rem solid rgba(255, 255, 255, 0.08);
+}
+
+.PlanNum {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 0.72rem;
+}
+
+.PlanInput {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius-sm);
+  border: 0.08rem solid rgba(255, 255, 255, 0.15);
+  background: rgba(207, 247, 232, 0.08);
+  color: var(--text-color);
+  font-family: var(--font-1);
+  font-size: 0.78rem;
+}
+
+.PlanInput:focus {
+  outline: none;
+  border-color: var(--primary-colorV2);
+  box-shadow: 0 0 0.5rem rgba(15, 181, 176, 0.5);
+}
+
+.PlanInput option { background: #0b2a1c; }
+
+.PlanCellRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.PlanTitleIcon {
+  width: 1.8rem;
+  height: 1.2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.PlanActions { white-space: nowrap; text-align: right; }
+
+.PlanActions button {
+  width: 1.35rem;
+  height: 1.35rem;
+  padding: 0;
+  margin-left: 0.1rem;
+  border-radius: 0.25rem;
+  border: 0.06rem solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+.PlanActions button:disabled { opacity: 0.25; cursor: default; }
+.PlanActions button:hover:not(:disabled) { border-color: var(--primary-colorV2); }
+.PlanActions .PlanActions--danger:hover:not(:disabled) { background: #8a1020; border-color: #c8102e; }
+
+.PlanAddRow {
+  width: 100%;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: transparent;
+  color: var(--primary-colorV3);
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.PlanAddRow:hover { background: var(--primary-color-washout); }
+
+/* ---------- Competitor autocomplete ---------- */
+
+.PlanAutocomplete { position: relative; }
+
+.PlanSuggestions {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.2rem);
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: 22rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  border-radius: var(--radius-sm);
+  border: 0.1rem solid var(--primary-colorV2);
+  background: #0a2419;
+  box-shadow: var(--shadow-md);
+}
+
+.PlanSuggestions li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.PlanSuggestions li.is-active { background: var(--primary-color-dark); }
+
+.PlanSuggestionTag {
+  font-size: 0.65rem;
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RAW / SMACKDOWN PAGES — week tabs + read-only card
+========================================================= */
+
+.ShowViewTabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 1rem 0.25rem;
+}
+
+.ShowViewTabs button {
+  flex-shrink: 0;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border: 0.1rem solid rgba(255, 255, 255, 0.15);
+  border-bottom: 0.2rem solid transparent;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+  font-family: var(--font-1);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ShowViewTabs button.is-active {
+  background: var(--primary-color-dark);
+  border-bottom-color: var(--Secondary-color);
+  font-weight: bold;
+}
+
+.ShowViewTabs--empty { opacity: 0.6; font-style: italic; }
+
+.PlannedShowActions {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 1rem;
+}
+
+.PlannedShowEdit {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  border: 0.12rem solid var(--Secondary-color);
+  color: var(--Secondary-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.PlannedShowEdit:hover { background: var(--Secondary-color); color: #241c00; }
+
+/* =========================================================
+   SMALLER SCREENS
+========================================================= */
+
+@media (max-width: 1400px) {
+  .PlanningLayout { grid-template-columns: minmax(0, 1fr); }
+  .PlanningPanel { position: static; max-height: 22rem; }
+  .PlanningMain { order: -1; }
+  .PlanningWeekCards,
+  .PlanningPPVGrid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .PlanningPage { width: 100%; padding: 6rem 0.5rem 1rem; border-radius: 0; }
+  .PlanningHint { display: none; }
+  .PlanTable thead { display: none; }
+  .PlanTable, .PlanTable tbody, .PlanTable tr, .PlanTable td { display: block; width: 100%; box-sizing: border-box; }
+  .PlanTable colgroup { display: none; }
+  .PlanTable tr { padding: 0.5rem; border-bottom: 0.1rem solid rgba(255, 255, 255, 0.15); }
+  .PlanTable td { border: none; padding: 0.15rem 0; }
+  .PlanNum, .PlanActions { text-align: left; }
+}
+
+/* =========================================================
+   WEEKLY MATCH GRAPHIC — built from roster photos when a
+   planned match has no M<n>.webp of its own. Sized in cqw
+   (% of the graphic's width) so it scales as one image.
+========================================================= */
+
+.WeeklyMatchItem { width: min(100%, 75rem); }
+
+.WMG {
+  --wmg-accent: var(--raw-brand-color);
+  --wmg-glow: rgba(200, 16, 46, 0.75);
+  --wmg-dark: #120306;
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 35%, color-mix(in srgb, var(--wmg-accent) 55%, transparent), transparent 70%),
+    linear-gradient(160deg, #000 0%, var(--wmg-dark) 45%, color-mix(in srgb, var(--wmg-accent) 35%, #000) 100%);
+  font-family: var(--font-3);
+  color: #fff;
+}
+
+.WMG--sd {
+  --wmg-accent: var(--sd-brand-color);
+  --wmg-glow: rgba(47, 127, 224, 0.8);
+  --wmg-dark: #020a1c;
+}
+
+.WMGStreaks {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -24deg,
+    transparent 0 6cqw,
+    color-mix(in srgb, var(--wmg-accent) 22%, transparent) 6cqw 6.4cqw
+  );
+  mask-image: linear-gradient(to bottom, #000, transparent 75%);
+}
+
+.WMGSpotlight {
+  position: absolute;
+  inset: -20% 25% 30%;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.28), transparent 65%);
+  pointer-events: none;
+}
+
+.WMGTop {
+  position: absolute;
+  inset: 2.2cqw 2.8cqw auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.WMGLogo {
+  height: 6cqw;
+  width: auto;
+  filter: drop-shadow(0 0.4cqw 0.8cqw rgba(0, 0, 0, 0.8));
+}
+
+.WMGDate {
+  font-size: 2.2cqw;
+  letter-spacing: 0.2cqw;
+  text-transform: uppercase;
+  padding: 0.5cqw 1.4cqw;
+  border-radius: 0.5cqw;
+  background: rgba(0, 0, 0, 0.55);
+  border: 0.15cqw solid var(--wmg-accent);
+}
+
+/* Photos sit on the "stage" and run down behind the name banner. */
+.WMGStage {
+  position: absolute;
+  inset: 8.5cqw 2cqw 12.5cqw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1cqw;
+}
+
+.WMGSideWrap {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+
+/* Each side (or, for 3+ way matches, everyone) is a grid: WeeklyMatchGraphic picks the
+   column count and photo size that make the photos as big as possible. */
+.WMGSide {
+  display: grid;
+  grid-template-columns: repeat(var(--wmg-cols, 1), var(--wmg-photo));
+  justify-content: center;
+  gap: 1.2cqw;
+}
+
+.WMGPhoto {
+  box-sizing: border-box;
+  width: var(--wmg-photo);
+  /* Roster cards are 734x984 with the name plate in the bottom quarter: crop to the photo. */
+  aspect-ratio: 734 / 730;
+  overflow: hidden;
+  border-radius: 0.6cqw;
+  border: 0.25cqw solid color-mix(in srgb, var(--wmg-accent) 70%, #fff);
+  box-shadow: 0 0 2.5cqw var(--wmg-glow), 0 1cqw 2cqw rgba(0, 0, 0, 0.8);
+  background: #0b0b0b;
+}
+
+.WMGPhoto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.WMGSilhouette {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, #2b2b2b, #050505 75%);
+}
+
+.WMGSilhouette circle,
+.WMGSilhouette path {
+  fill: #151515;
+  stroke: var(--wmg-accent);
+  stroke-width: 1.5;
+}
+
+.WMGSilhouette text {
+  fill: var(--wmg-accent);
+  font-family: var(--font-3);
+  font-size: 22px;
+}
+
+.WMGVs {
+  font-size: 9cqw;
+  line-height: 1;
+  padding: 0 0.5cqw;
+  color: #fff;
+  -webkit-text-stroke: 0.25cqw var(--wmg-accent);
+  text-shadow: 0 0 2cqw var(--wmg-glow), 0 0.5cqw 1cqw #000;
+  transform: skew(-8deg);
+}
+
+.WMGBanner {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 2.5cqw;
+  z-index: 2;
+  padding: 1cqw 2cqw 1.1cqw;
+  text-align: center;
+  border-radius: 0.6cqw;
+  background: linear-gradient(90deg, var(--wmg-accent), rgba(0, 0, 0, 0.88) 22%, rgba(0, 0, 0, 0.88) 78%, var(--wmg-accent));
+  border: 0.15cqw solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0.6cqw 2cqw rgba(0, 0, 0, 0.8);
+}
+
+.WMGNames {
+  font-size: var(--wmg-names, 4.2cqw);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.15cqw;
+  /* Long lists wrap onto a second line instead of being cut off. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.WMGNames em {
+  font-style: normal;
+  color: var(--Secondary-color);
+  font-size: 0.75em;
+  padding: 0 0.8cqw;
+}
+
+.WMGDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8cqw;
+  margin-top: 0.4cqw;
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 1.6cqw;
+  text-transform: uppercase;
+  letter-spacing: 0.1cqw;
+}
+
+.WMGDetails img {
+  height: 2.6cqw;
+  width: auto;
+}
+
+.WMGTitle { color: var(--Secondary-color); }
+.WMGDot { opacity: 0.6; }

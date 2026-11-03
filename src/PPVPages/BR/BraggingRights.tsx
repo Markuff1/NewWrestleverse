@@ -16,7 +16,7 @@ const matchCard2028: Match[] = [
 
 
 // ---------- Event Data ----------
-const BraggingRightsEvents: PPVEvent[] = [
+export const BraggingRightsEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/BR/BRHeader2028.webp",

@@ -15,6 +15,7 @@ export default function RAW() {
       description="Monday Night’s flagship WWE show delivers top superstars, thrilling matches, and exciting storylines every week."
       schedule="Every Monday Night"
       gmEntries={gmEntries}
+      plannerShow="RAW"
     />
   );
 }

@@ -506,6 +506,35 @@
 }
 
 /* =========================================================
+   ROW 4 — PLANNING
+========================================================= */
+
+.HomePlanningBox {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--contentBackgroundV2);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(242, 183, 5, 0.4);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(245, 251, 248, 0.08);
+}
+
+.HomePlanningText {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.HomePlanningButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* =========================================================
    ROW 4 — QUICK LINKS
 ========================================================= */
 

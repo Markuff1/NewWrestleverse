@@ -6,7 +6,7 @@ type Props = {
 };
 
 function MatchTypeTooltip({ matchType }: Props) {
-  const description = MatchTypeInfo[matchType];
+  const description = MatchTypeInfo[matchType]?.description;
 
   if (!description) return null;
 

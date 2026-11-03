@@ -28,7 +28,7 @@ const ppvShows = [
   ],
   [
     { name: "ER", image: "/Images/PPV/ER/ER2028.webp" },
-    { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SS2027.webp" },
+    { name: "SurvivorSeries", image: "/Images/PPV/SurvivorSeries/SS2028.webp" },
     { name: "Armageddon", image: "/Images/PPV/Armageddon/Armageddon2027.webp" }
   ]
 ];

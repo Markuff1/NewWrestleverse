@@ -14,6 +14,9 @@ const RAW = lazy(() => import("./RAW"));
 const Draft = lazy(() => import("./Draft"));
 const News = lazy(() => import("./News"));
 const Calendar = lazy(() => import("./Calendar"));
+const Planning = lazy(() => import("./PlanningPages/Planning"));
+const WeeklyPlanning = lazy(() => import("./PlanningPages/WeeklyPlanning"));
+const PPVPlanning = lazy(() => import("./PlanningPages/PPVPlanning"));
 const PrivacyPolicy = lazy(() => import("./legal/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("./legal/TermsAndConditions"));
 
@@ -70,6 +73,11 @@ function App() {
           <Route path="/Shows" element={<ProtectedRoute><Shows /></ProtectedRoute>} />
           <Route path="/News" element={<ProtectedRoute><News /></ProtectedRoute>} />
           <Route path="/Calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+
+          {/* Planning */}
+          <Route path="/Planning" element={<ProtectedRoute><Planning /></ProtectedRoute>} />
+          <Route path="/Planning/Weekly" element={<ProtectedRoute><WeeklyPlanning /></ProtectedRoute>} />
+          <Route path="/Planning/PPV" element={<ProtectedRoute><PPVPlanning /></ProtectedRoute>} />
 
           {/* Weekly Shows */}
           <Route path="/RAW" element={<ProtectedRoute><RAW /></ProtectedRoute>} />

@@ -19,7 +19,7 @@ const matchCard2027: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const EREvents: PPVEvent[] = [
+export const EREvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/ER/ERHeader2028.webp",

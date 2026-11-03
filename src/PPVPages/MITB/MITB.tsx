@@ -2,18 +2,18 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------//
 const matchCard2028: Match[] = [
-{ match: "Breakker Vs Balor Vs Fatu Vs Owens Vs Orton Vs Rollins Vs Evans Vs Saints", title: "Smackdown Money In The Bank", type: "Ladder Match" },
-{ match: "Lyra Valkyria Vs Jacy Jayne", title: "Women's Intercontinental Championship", type: "Normal Match" },
-{ match: "LA Knight Vs Ilja Dragunov", title: "United States Championship", type: "Normal Match" },
-{ match: "Roxanne Perez Vs Blake Monroe Vs Raquel Rodriques", title: "Women's United States Championship", type: "Triple Threat Match" },
-{ match: "Perros Del Mal Vs MCMG", title: "Raw Tag Team Championships", type: "Tag Team Match" },
-{ match: "Tyler Bate Vs Dominik Mysterio", title: "Intercontinetal Championship", type: "Normal Match" },
-{ match: "Belair Vs Bella Vs Vice Vs Grace Vs Giulia Vs Vaquer Vs Ruca Vs Legend", title: "Women's Money In The Bank", type: "Ladder Match" },
-{ match: "Hardy Boys Vs Viking Raiders", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
-{ match: "Tiffiany Stratton Vs Iyo Sky", title: "WWE Women's Championship", type: "Normal Match" },
-{ match: "Kane Vs AJ Styles Vs CM Punk Vs Oba Femi", title: "World Heavyweight Championship", type: "Fatal 4-Way Match" },
-{ match: "Becky Lynch Vs Naomi", title: "Women's World Championship", type: "Ladder Match" },
-{ match: "Gargano Vs Rhodes Vs McIntyre Vs Hayes Vs Gable Vs Reed Vs Zayn", title: "RAW Money In The Bank", type: "Ladder Match" },
+{ match: "Finn Balor Wins Smackdown Money In The Bank", title: "Smackdown Money In The Bank", type: "Ladder Match" },
+{ match: "Lyra Valkyria (c) Def. Jacy Jayne", title: "Women's Intercontinental Championship", type: "Normal Match" },
+{ match: "Ilja Dragunov Def. LA Knight (c)", title: "United States Championship", type: "Normal Match" },
+{ match: "Roxanne Perez (c) Def. Blake Monroe and Raquel Rodriques", title: "Women's United States Championship", type: "Triple Threat Match" },
+{ match: "Perros Del Mal (c) Def. MCMG", title: "Raw Tag Team Championships", type: "Tag Team Match" },
+{ match: "Dominik Mysterio Def. Tyler Bate (c)", title: "Intercontinetal Championship", type: "Normal Match" },
+{ match: "Jordynne Grace Wins Women's Money In The Bank", title: "Women's Money In The Bank", type: "Ladder Match" },
+{ match: "Hardy Boys (c) Def. Viking Raiders", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
+{ match: "Tiffiany Stratton (c) Def. Iyo Sky", title: "WWE Women's Championship", type: "Normal Match" },
+{ match: "CM Punk Def. Kane (c) and AJ Styles and Oba Femi", title: "World Heavyweight Championship", type: "Fatal 4-Way Match" },
+{ match: "Becky Lynch (c) Def. Naomi", title: "Women's World Championship", type: "Ladder Match" },
+{ match: "Johnny Gargano wins RAW Money in the bank", title: "RAW Money In The Bank", type: "Ladder Match" },
 { match: "Roman Reigns Vs Gunther", title: "WWE Championship", type: "Normal Match" },
 ]
 
@@ -56,7 +56,7 @@ const matchCard2025: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const MITBEvents: PPVEvent[] = [
+export const MITBEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/MITB/MITBHeader2028.webp",

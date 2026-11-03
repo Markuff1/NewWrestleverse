@@ -70,6 +70,18 @@ function Header() {
               </Link>
             </li>
 
+            <li className="Dropdown">
+              <Link to="/Planning" className="NavItem">
+                <img src="/Images/Icons/Edit.webp" alt="" />
+                <span>Planning</span>
+              </Link>
+
+              <div className="DropdownMenu">
+                <Link to="/Planning/Weekly">Weekly Shows</Link>
+                <Link to="/Planning/PPV">PPVs</Link>
+              </div>
+            </li>
+
             {username && (
               <>
                 {/* Next PPV box */}

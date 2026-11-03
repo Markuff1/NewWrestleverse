@@ -19,7 +19,7 @@ const matchCard2027: Match[] = [
 
 
 // ---------- Event Data ----------
-const ArmageddonEvents: PPVEvent[] = [
+export const ArmageddonEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/Armageddon/ArmageddonHeader2027.webp",

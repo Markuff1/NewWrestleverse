@@ -1,9 +1,9 @@
 // currentPPV.ts
 
 export const currentPPV = {
-  name: "Money In The Bank",
+  name: "Summerslam",
   location: "Scottrade Centre, St Louis, Missouri",
-  date: "Saturday, July 22nd, 2028, 7e/5p",
-  image: "/Images/PPV/MITB/MITB2028.webp",
-  link: "/MITB"
+  date: "Saturday, August 19th, 2028, 7e/5p",
+  image: "/Images/PPV/SummerSlam/SS2028.webp",
+  link: "/Summerslam"
 };

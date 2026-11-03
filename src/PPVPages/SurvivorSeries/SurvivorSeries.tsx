@@ -4,6 +4,9 @@ import PPVShow, {
 } from "../../PPVShow";
 
 // ---------- Match Cards -----------
+const matchCard2028: Match[] = [
+  { match: "Women's 4 VS 4 Elimination Tag Match", score: "1 : 0", type: "4 V 4 Elimination Tag Team Match" },
+]
 
 const matchCard2027: Match[] = [
   { match: "Seth Rollins, New Day, Ricky Saints Def. CM Punk, Dudley Boys, RVD", title: "", type: "Wargames Match" },
@@ -42,7 +45,26 @@ const matchCard2025: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const SurvivorSeriesEvents: PPVEvent[] = [
+export const SurvivorSeriesEvents: PPVEvent[] = [
+  {
+    year: 2028,
+    banner: "/Images/PPV/SurvivorSeries/SSHeader2028.webp",
+    location: " Daikin Park, Houston, Texas",
+    date: "Saturday, November 18th 2028, 7e/5p",
+    matches: matchCard2028,
+    imageFolder: "SurvivorSeries/2028MC",
+
+    previousEvent: {
+      label: "Extreme Rules 2028",
+      link: "/ER#2028",
+    },
+
+    nextEvent: {
+      label: "Armageddon 2028",
+      link: "/Armageddon#2028",
+    },
+  },
+
   {
     year: 2027,
     banner: "/Images/PPV/SurvivorSeries/SSHeader2027.webp",

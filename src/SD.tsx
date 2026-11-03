@@ -15,6 +15,7 @@ export default function SD() {
       description="WWE’s blue brand delivers high-energy action, intense rivalries, and unforgettable moments every week."
       schedule="Every Friday Night"
       gmEntries={gmEntries}
+      plannerShow="SD"
     />
   );
 }

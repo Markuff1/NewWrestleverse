@@ -45,7 +45,7 @@ const matchCard2027: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const ECEvents: PPVEvent[] = [
+export const ECEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/EC/ECHeader2027.webp",

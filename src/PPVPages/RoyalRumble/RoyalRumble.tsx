@@ -24,7 +24,7 @@ const matchCard2026: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const RoyalRumbleEvents: PPVEvent[] = [
+export const RoyalRumbleEvents: PPVEvent[] = [
   {
     year: 2028,
     banner: "/Images/PPV/RoyalRumble/RoyalRumbleHeader2028.webp",
