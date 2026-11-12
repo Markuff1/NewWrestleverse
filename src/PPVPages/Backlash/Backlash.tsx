@@ -32,7 +32,7 @@ const matchCard2026: Match[] = [
   { match: "LA Knight Def. Penta (c) and Carmelo Hayes and Solo Sikoa", title: "Intercontinental Championship", type: "Fatal 4-Way Match" },
   { match: "MCMG (c) Def. #DIY", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
   { match: "Stephanie Vaquer (c) Def. Nia Jax", title: "Women's United States Championship", type: "Normal Match" },
-  { match: "Mark Henry Def. Dominic Mysterio", title: "", type: "Normal Match" },
+  { match: "Mark Henry Def. Dominik Mysterio", title: "", type: "Normal Match" },
   { match: "Jordynne Grace Def. Michelle McCool", title: "Women's Intercontinental Championship", type: "Normal Match" },
   { match: "Aleister Black Def. Finn Balor", title: "United States Championship", type: "Normal Match" },
   { match: "Dudley Boys Def. AOP", title: "Raw Tag Team Championships", type: "Tag Team Match" },
@@ -64,11 +64,6 @@ export const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 20th, 2028",
     matches: matchCard2028,
     imageFolder: "Backlash/2028MC",
-
-    previousEvent: {
-      label: "Wrestlemania 2027",
-      link: "/Wrestlemania",
-    },
   },
   {
     year: 2027,
@@ -77,16 +72,6 @@ export const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 22nd, 2027",
     matches: matchCard2027,
     imageFolder: "Backlash/2027MC",
-
-    previousEvent: {
-      label: "Wrestlemania 2027",
-      link: "/Wrestlemania#2027",
-    },
-
-    nextEvent: {
-      label: "Clash In Paris 2027",
-      link: "/ClashInParis#2027",
-    },
   },
 
   {
@@ -96,16 +81,6 @@ export const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 23rd, 2026",
     matches: matchCard2026,
     imageFolder: "Backlash/2026MC",
-
-    previousEvent: {
-      label: "Wrestlemania 2026",
-      link: "/Wrestlemania#2026",
-    },
-
-    nextEvent: {
-      label: "Over the limit 2026",
-      link: "/OverTheLimit#2026",
-    },
   },
 
   {
@@ -115,16 +90,6 @@ export const BacklashEvents: PPVEvent[] = [
     date: "Saturday, May 24th, 2025",
     matches: matchCard2025,
     imageFolder: "Backlash/2025MC",
-
-    previousEvent: {
-      label: "Wrestlemania 2025",
-      link: "/Wrestlemania#2025",
-    },
-
-    nextEvent: {
-      label: "Money In The Bank 2025",
-      link: "/MITB#2025",
-    },
   },
 ];
 

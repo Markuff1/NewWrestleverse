@@ -32,16 +32,6 @@ export const RoyalRumbleEvents: PPVEvent[] = [
     date: "Saturday, February 5th 2028, 7pm ET / 5pm PT",
     matches: matchCard2028,
     imageFolder: "RoyalRumble/2028MC",
-
-    previousEvent: {
-      label: "Bragging Rights 2028",
-      link: "/BraggingRights#2028",
-    },
-
-    nextEvent: {
-      label: "Elimination Chamber 2028",
-      link: "/EC#2028",
-    },
   },
   {
     year: 2027,
@@ -50,16 +40,6 @@ export const RoyalRumbleEvents: PPVEvent[] = [
     date: "Saturday, January 30th 2027, 2pm ET / 11am PT",
     matches: matchCard2027,
     imageFolder: "RoyalRumble/2027MC",
-
-    previousEvent: {
-      label: "New Year's Revolution 2027",
-      link: "/NYR#2027",
-    },
-
-    nextEvent: {
-      label: "Elimination Chamber 2027",
-      link: "/EC#2027",
-    },
   },
   {
     year: 2026,
@@ -68,16 +48,6 @@ export const RoyalRumbleEvents: PPVEvent[] = [
     date: "Saturday, January 31st 2026, 2pm ET / 11am PT",
     matches: matchCard2026,
     imageFolder: "RoyalRumble/2026MC",
-
-    previousEvent: {
-      label: "New Year's Revolution 2026",
-      link: "/NYR#2026",
-    },
-
-    nextEvent: {
-      label: "Elimination Chamber 2026",
-      link: "/EC#2026",
-    },
   },
 ];
 

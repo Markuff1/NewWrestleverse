@@ -13,6 +13,7 @@ import { db } from "../firebaseConfig";
 import Header from "../Header";
 import Footer from "../Footer";
 import { formatChampionName } from "../RosterData";
+import { championNameError, championOptions } from "./championNames";
 
 // Utility to calculate weeks between two dates (never negative)
 const calculateWeeksBetween = (start: string, end: string) => {
@@ -58,6 +59,10 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
   const [form, setForm] = useState<MITBRecord>(EMPTY_FORM);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editData, setEditData] = useState<MITBRecord>(EMPTY_FORM);
+  const [originalEditName, setOriginalEditName] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [editNameError, setEditNameError] = useState("");
+  const nameListId = `champion-names-${collectionId}`;
 
   // Fallback end date for a briefcase that hasn't been cashed in yet, so
   // "weeks held" still shows how long they've held it so far.
@@ -91,6 +96,10 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
     // Event/date cashed and successful are left blank for a briefcase
     // holder who hasn't cashed in yet — useCurrentChampions treats any
     // record with no dateCashed as the current holder.
+    const error = championNameError(form.name, collectionId);
+    setNameError(error);
+    if (error) return;
+
     if (form.name && form.dateWon) {
       const record = { ...form, name: formatChampionName(form.name) };
       const docRef = await addDoc(
@@ -120,9 +129,17 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
       dateCashed: entry.dateCashed,
       successful: entry.successful,
     });
+    setOriginalEditName(entry.name);
+    setEditNameError("");
   };
 
   const saveEdit = async (id: string) => {
+    // An older record whose name isn't on today's roster can still be saved with that name unchanged.
+    const error =
+      editData.name.trim() === originalEditName.trim() ? "" : championNameError(editData.name, collectionId);
+    setEditNameError(error);
+    if (error) return;
+
     const ref = doc(
       db,
       "Wrestleverse",
@@ -156,15 +173,22 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
 
           <div className="reignstitle">MITB Records</div>
 
+          {/* Suggestions for both the add box and the edit box below. */}
+          <datalist id={nameListId}>
+            {championOptions(collectionId).map((n) => <option key={n} value={n} />)}
+          </datalist>
+
           {/* Inputs */}
           <div className="InputContainerChamp">
             <input
               type="text"
               placeholder="Name"
+              list={nameListId}
               value={form.name}
-              onChange={(e) =>
-                setForm({ ...form, name: e.target.value })
-              }
+              onChange={(e) => {
+                setForm({ ...form, name: e.target.value });
+                setNameError("");
+              }}
             />
 
             <input
@@ -220,6 +244,7 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
               <img src="/Images/Icons/Add.webp" alt="Add" />
             </button>
           </div>
+          {nameError && <p className="ChampNameError">{nameError}</p>}
 
           {/* Table */}
           <table className="TitleHolderTable">
@@ -254,14 +279,17 @@ const MITBRecordsPage: React.FC<MITBRecordsPageProps> = ({
                         <td>
                           <input
                             className="edit-input"
+                            list={nameListId}
                             value={editData.name}
-                            onChange={(e) =>
+                            onChange={(e) => {
                               setEditData({
                                 ...editData,
                                 name: e.target.value,
-                              })
-                            }
+                              });
+                              setEditNameError("");
+                            }}
                           />
+                          {editNameError && <p className="ChampNameError ChampNameError--inline">{editNameError}</p>}
                         </td>
 
                         <td>

@@ -328,3 +328,20 @@
     padding: 4px;
   }
 }
+/* Name not on the roster (championNames.ts) */
+.ChampNameError {
+  width: 90%;
+  margin: -0.5rem auto 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(200, 16, 46, 0.15);
+  border-left: 0.25rem solid #c8102e;
+  color: #ffb3bf;
+  font-size: 0.85rem;
+}
+
+.ChampNameError--inline {
+  width: auto;
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+}

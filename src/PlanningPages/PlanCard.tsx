@@ -68,12 +68,17 @@ type PlanCardProps = {
   /** Shown beside the match count until the card is edited (e.g. where the matches came from). */
   note?: string;
   onSave: (matches: PlannedMatch[]) => Promise<void>;
+  /** Pass both to open/close cards together (e.g. a week's RAW + Smackdown); otherwise the card manages it itself. */
+  expanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
 };
 
 /** One show's match card, collapsed to its header until clicked. Edits save automatically shortly after you stop typing. */
-export function PlanCard({ title, meta, variant, initial, rosterTag, note, onSave }: PlanCardProps) {
+export function PlanCard({ title, meta, variant, initial, rosterTag, note, onSave, ...props }: PlanCardProps) {
   const [matches, setMatches] = useState<PlannedMatch[]>(initial);
-  const [expanded, setExpanded] = useState(false);
+  const [ownExpanded, setOwnExpanded] = useState(false);
+  const expanded = props.expanded ?? ownExpanded;
+  const setExpanded = props.onExpandedChange ?? setOwnExpanded;
 
   // A RAW / Smackdown card only offers that brand's titles plus the shared ones; PPVs offer every title.
   const titleOptions = useMemo(

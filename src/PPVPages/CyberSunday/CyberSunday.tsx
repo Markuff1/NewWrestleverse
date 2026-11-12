@@ -11,12 +11,12 @@ const matchCard2025: Match[] = [
     {match: "CM Punk Def. AJ Styles", title: "", type: "Ambulance Match"},
     {match: "Tiffiany Stratton Def. Roxanne Perez (c)", title: "Women's Undisputed Championship", type: "Extreme Rules Match"},
     {match: "Roman Reigns (c) Def. RVD", title: "WWE Undisputed Championship", type: "Normal Match"},
-    {match: "Cody Rhoads (c) Def. Gunther and Drew McIntyre", title: "World Heavyweight Championship", type: "Triple Threat Match"}
+    {match: "Cody Rhodes (c) Def. Gunther and Drew McIntyre", title: "World Heavyweight Championship", type: "Triple Threat Match"}
   ];
 
 
 // ---------- Event Data ----------
-const CyberSundayEvents: PPVEvent[] = [
+export const CyberSundayEvents: PPVEvent[] = [
   {
     year: 2025,
     banner: "/Images/PPV/CyberSunday/CyberSundayHeader.webp",
@@ -24,16 +24,6 @@ const CyberSundayEvents: PPVEvent[] = [
     date: "Saturday, October 25th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "CyberSunday/2025MC",
-
-    previousEvent: {
-      label: "No Mercy 2025",
-      link: "/NoMercy#2025",
-    },
-
-    nextEvent: {
-      label: "Survivor Series 2025",
-      link: "/SurvivorSeries#2025",
-    },
   },
 ];
 

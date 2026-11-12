@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./WrestlerModal.css";
 import { TitleReignSummary } from "./hooks/useTitleHistory";
 import { TitleRecords } from "./hooks/useTitleRecords";
-import { getTeamNamesForMember, normalizeWrestlerName } from "./RosterData";
+import rosterData, { getTeamNamesForMember, normalizeWrestlerName } from "./RosterData";
 import { RosterHometowns } from "./RosterHometowns";
 import { royalRumbleWinners } from "./RoyalRumbleWinners";
 import { TITLE_ICONS } from "./championships";
+import type { RecentMatch } from "./recentMatches";
 
 export type WrestlerModalProfile = {
   src: string;
@@ -60,6 +62,81 @@ function AccomplishmentList({ items }: { items: AccomplishmentEntry[] }) {
   );
 }
 
+const RECENT_MATCHES_PAGE = 6;
+
+/**
+ * Matches `names` appeared in, newest first (null while loading). The match data is
+ * loaded on first use rather than bundled with the roster page.
+ */
+function useRecentMatches(names: string[]) {
+  const [matches, setMatches] = useState<RecentMatch[] | null>(null);
+  const namesKey = names.join("|");
+
+  useEffect(() => {
+    let cancelled = false;
+    setMatches(null);
+    import("./recentMatches")
+      .then(({ findRecentMatches }) => findRecentMatches(namesKey.split("|")))
+      .then((found) => !cancelled && setMatches(found))
+      .catch(() => !cancelled && setMatches([]));
+    return () => { cancelled = true; };
+  }, [namesKey]);
+
+  return matches;
+}
+
+const formatMatchDate = (key: string) => {
+  const [year, month, day] = key.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+};
+
+function RecentMatches({ names }: { names: string[] }) {
+  const matches = useRecentMatches(names);
+  const [shown, setShown] = useState(RECENT_MATCHES_PAGE);
+
+  return (
+    <section className="WrestlerModalMatches">
+      <h3 className="WrestlerModalMatchesTitle">Recent Matches</h3>
+
+      {!matches && <p className="WrestlerModalMatchesNote">Loading…</p>}
+      {matches?.length === 0 && <p className="WrestlerModalMatchesNote">No matches yet.</p>}
+
+      {matches && matches.length > 0 && (
+        <ol className="RecentMatchList">
+          {matches.slice(0, shown).map((m) => (
+            <li key={m.id} className="RecentMatch">
+              <div className="RecentMatchMeta">
+                <Link to={m.eventLink} className="RecentMatchEvent">{m.event}</Link>
+                <span className="RecentMatchDate">{formatMatchDate(m.date)}</span>
+              </div>
+              {/* The match title jumps to this match in the PPV page's match card summary. */}
+              <Link to={m.matchLink} className="RecentMatchText">
+                {m.result && (
+                  <span className={`RecentMatchResult RecentMatchResult--${m.result.toLowerCase()}`}>
+                    {m.result === "Win" ? "W" : "L"}
+                  </span>
+                )}
+                {m.match}
+              </Link>
+              {(m.type || m.title) && (
+                <div className="RecentMatchSub">
+                  {[m.type, m.title].filter(Boolean).join(" · ")}
+                </div>
+              )}
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {matches && matches.length > shown && (
+        <button className="RecentMatchMore" onClick={() => setShown(shown + RECENT_MATCHES_PAGE)}>
+          Show more ({matches.length - shown} more)
+        </button>
+      )}
+    </section>
+  );
+}
+
 function WrestlerModal({ profile, titles, championByAbbrev, titleRecords, onClose }: WrestlerModalProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -78,6 +155,16 @@ function WrestlerModal({ profile, titles, championByAbbrev, titleRecords, onClos
     normalizeWrestlerName(profile.name),
     ...getTeamNamesForMember(profile.name).map(normalizeWrestlerName),
   ]);
+  // Matches are found under the superstar's own name, any tag team they've been in,
+  // or (for a team's own pop-up) the team's other names.
+  const matchNames = [
+    profile.name,
+    ...getTeamNamesForMember(profile.name),
+    ...(rosterData["Tag Teams"].find(
+      (team) => normalizeWrestlerName(team.name) === normalizeWrestlerName(profile.name)
+    )?.aliases ?? []),
+  ];
+
   const currentAbbrevs = new Set(
     Object.entries(championByAbbrev)
       .filter(([, holder]) => relevantKeys.has(normalizeWrestlerName(holder)))
@@ -219,6 +306,8 @@ function WrestlerModal({ profile, titles, championByAbbrev, titleRecords, onClos
             </div>
           )}
         </div>
+
+        <RecentMatches names={matchNames} />
       </div>
     </div>
   );

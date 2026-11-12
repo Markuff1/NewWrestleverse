@@ -6,7 +6,7 @@ const matchCard2025: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const NoWayOutEvents: PPVEvent[] = [
+export const NoWayOutEvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/NoWayOut/NoWayOutHeader.webp",

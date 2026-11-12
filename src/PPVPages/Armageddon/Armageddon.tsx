@@ -3,7 +3,7 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 // ---------- Match Cards ----------
 
 const matchCard2027: Match[] = [
-{ match: "Randy Orton Def. Dominic Mysterio", title: "", type: "Normal Match" },
+{ match: "Randy Orton Def. Dominik Mysterio", title: "", type: "Normal Match" },
 { match: "Lola Vice (c) Def. Blake Monroe", title: "Women's Intercontinental Championship", type: "Normal Match" },
 { match: "Dudley Boys (c) Def. Pretty Deadly", title: "Smackdown Tag Team Championships", type: "Tag Team Match" },
 { match: "Bron Breakker (c) Def. Pete Dunne", title: "Intercontinental Championship", type: "Triple Threat Match" },
@@ -27,16 +27,6 @@ export const ArmageddonEvents: PPVEvent[] = [
     date: "Saturday, December 18th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "Armageddon/2027MC",
-
-    previousEvent: {
-      label: "Survivor Series 2027",
-      link: "/SurvivorSeries#2027",
-    },
-
-    nextEvent: {
-      label: "BraggingRights 2028",
-      link: "/BraggingRights#2028",
-    },
   },
 ];
 

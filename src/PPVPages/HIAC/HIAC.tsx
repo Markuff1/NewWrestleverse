@@ -15,7 +15,7 @@ const matchCard2026: Match[] = [
 
 
 // ---------- Event Data ----------
-const HIACEvents: PPVEvent[] = [
+export const HIACEvents: PPVEvent[] = [
   {
     year: 2026,
     banner: "/Images/PPV/HIAC/HIACHeader2026.webp",
@@ -23,16 +23,6 @@ const HIACEvents: PPVEvent[] = [
     date: "Saturday, October 24th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "HIAC/2026MC",
-
-    previousEvent: {
-      label: "Night Of Champions 2026",
-      link: "/NOC#2026",
-    },
-
-    nextEvent: {
-      label: "Survivor Series 2026",
-      link: "/SurvivorSeries#2026",
-    },
   },
 ];
 

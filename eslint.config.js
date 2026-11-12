@@ -23,10 +23,13 @@ export default tseslint.config(
         'warn',
         {
           allowConstantExport: true,
-          // PPV pages also export their event data for the PPV planner (src/PlanningPages/ppvResults.ts).
+          // PPV pages also export their event data, collected in src/PPVPages/ppvPages.ts (PPV planner,
+          // recent matches, previous / next PPV buttons).
           allowExportNames: [
-            'ArmageddonEvents', 'BraggingRightsEvents', 'BacklashEvents', 'CIPEvents', 'ECEvents', 'EREvents',
-            'MITBEvents', 'NOCEvents', 'RoyalRumbleEvents', 'SummerSlamEvents', 'SurvivorSeriesEvents', 'WMEvents',
+            'ArmageddonEvents', 'BraggingRightsEvents', 'BacklashEvents', 'CIPEvents', 'CyberSundayEvents', 'ECEvents',
+            'EREvents', 'HIACEvents', 'MITBEvents', 'NOCEvents', 'NoMercyEvents', 'NoWayOutEvents', 'NYREvents',
+            'ONSEvent', 'OTLEvents', 'RoyalRumbleEvents', 'SummerSlamEvents', 'SurvivorSeriesEvents', 'TLCEvents',
+            'WMEvents',
           ],
         },
       ],

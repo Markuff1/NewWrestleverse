@@ -13,6 +13,7 @@ import { db } from "../firebaseConfig";
 import Header from "../Header";
 import Footer from "../Footer";
 import { formatChampionName } from "../RosterData";
+import { championNameError, championOptions } from "./championNames";
 
 // Utility to calculate weeks between two dates (never negative)
 const calculateWeeksBetween = (start: string, end: string) => {
@@ -49,6 +50,10 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
     date: "",
     event: "",
   });
+  const [originalEditName, setOriginalEditName] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [editNameError, setEditNameError] = useState("");
+  const nameListId = `champion-names-${collectionId}`;
 
   const [longestReign, setLongestReign] = useState<TitleHolder | null>(null);
   const [shortestReign, setShortestReign] = useState<TitleHolder | null>(null);
@@ -161,6 +166,10 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
   }, []);
 
   const addRecord = async () => {
+    const error = championNameError(name, collectionId);
+    setNameError(error);
+    if (error) return;
+
     if (name && date && event) {
       const newRecord = { name: formatChampionName(name), date, event, days: 0 };
 
@@ -197,9 +206,17 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
       date: record.date,
       event: record.event,
     });
+    setOriginalEditName(record.name);
+    setEditNameError("");
   };
 
   const saveEdit = async (id: string) => {
+    // An older record whose name isn't on today's roster can still be saved with that name unchanged.
+    const error =
+      editData.name.trim() === originalEditName.trim() ? "" : championNameError(editData.name, collectionId);
+    setEditNameError(error);
+    if (error) return;
+
     const ref = doc(db, "Wrestleverse", "ChampionshipData", collectionId, id);
     await updateDoc(ref, { ...editData, name: formatChampionName(editData.name) });
     setEditingId(null);
@@ -257,12 +274,21 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
             )}
           </div>
 
+          {/* Suggestions for both the add box and the edit box below. */}
+          <datalist id={nameListId}>
+            {championOptions(collectionId).map((n) => <option key={n} value={n} />)}
+          </datalist>
+
           <div className="InputContainerChamp">
             <input
               type="text"
               placeholder="Name"
+              list={nameListId}
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                setNameError("");
+              }}
             />
             <input
               type="date"
@@ -279,6 +305,7 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
               <img src="/Images/Icons/Add.webp" alt="Add" />
             </button>
           </div>
+          {nameError && <p className="ChampNameError">{nameError}</p>}
 
           <table className="TitleHolderTable">
             <thead>
@@ -298,14 +325,17 @@ const ChampionshipPage: React.FC<ChampionshipPageProps> = ({
                     <>
                       <td>
                         <input
+                          list={nameListId}
                           value={editData.name}
-                          onChange={(e) =>
+                          onChange={(e) => {
                             setEditData({
                               ...editData,
                               name: e.target.value,
-                            })
-                          }
+                            });
+                            setEditNameError("");
+                          }}
                         />
+                        {editNameError && <p className="ChampNameError ChampNameError--inline">{editNameError}</p>}
                       </td>
                       <td>{holder.days}</td>
                       <td>

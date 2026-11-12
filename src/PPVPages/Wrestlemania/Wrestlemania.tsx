@@ -107,16 +107,6 @@ export const WMEvents: PPVEvent[] = [
     date: "April 10–11, 2027, 7e/5p",
     matches: WM2027Matches,
     imageFolder: "Wrestlemania/2027MC",
-
-    previousEvent: {
-      label: "Elimination Chamber 2027",
-      link: "/EC#2027",
-    },
-
-    nextEvent: {
-      label: "Backlash 2027",
-      link: "/Backlash#2027",
-    },
   },
 ];
 

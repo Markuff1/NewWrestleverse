@@ -164,10 +164,197 @@ header {
   box-shadow: var(--shadow-lg);
 }
 
+/* ---------- Under each match image ---------- */
+/* Same width as the image: who's in it on the left, the result panel on the right. */
+.MatchFooter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1rem;
+  width: min(95%, 75rem);
+  margin: -0.75rem auto 1.75rem;
+  text-align: left;
+}
+
+/* Photo + name chips; each links to that superstar on the roster. */
+.MatchParticipants {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.MatchParticipant {
+  --chip-accent: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.85rem 0.2rem 0.2rem;
+  border: 1.5px solid var(--chip-accent);
+  border-radius: 999px;
+  background: rgba(4, 18, 11, 0.6);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-color);
+  text-decoration: none;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Tag teams get teal so they stand apart from individual superstars. */
+.MatchParticipant--team { --chip-accent: var(--primary-colorV2); }
+
+.MatchParticipantPhoto {
+  flex-shrink: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.15rem solid var(--chip-accent);
+  background: rgba(4, 18, 11, 0.6);
+  transition: border-color 0.35s ease;
+}
+
+.MatchParticipantPhoto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%; /* the face, not the name plate at the bottom of the card */
+  transform: scale(1.18);
+  transform-origin: 50% 25%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.MatchParticipantName {
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 0.78rem;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.MatchParticipant:hover,
+.MatchParticipant:focus-visible {
+  transform: translateY(-0.2rem);
+  border-color: var(--Secondary-color);
+  box-shadow: var(--shadow-sm), 0 0 1rem rgba(242, 183, 5, 0.45);
+  outline: none;
+}
+
+.MatchParticipant:hover .MatchParticipantPhoto,
+.MatchParticipant:focus-visible .MatchParticipantPhoto { border-color: var(--Secondary-color); }
+
+.MatchParticipant:hover .MatchParticipantPhoto img { transform: scale(1.28); }
+
+/* Big matches (5+ people): photos only, the chip shrinks to just the circle. */
+.MatchParticipants--compact .MatchParticipant { padding: 0.2rem; }
+
+/* ---------- Result panel (right) ---------- */
+/* Title and winner stacked in one column, pinned to the right. */
+.MatchResult {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-width: 15rem;
+  max-width: 24rem;
+}
+
+/* Phones: chips on top, result underneath, full width. */
+@media (max-width: 700px) {
+  .MatchFooter { grid-template-columns: minmax(0, 1fr); }
+  .MatchResult { grid-column: 1; max-width: none; }
+}
+
+.MatchResultRow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.9rem;
+  border: 1.5px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  background: rgba(4, 18, 11, 0.6);
+  box-shadow: var(--shadow-sm);
+}
+
+.MatchResultBelt {
+  height: 2.6rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.MatchResultText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  font-family: var(--font-1);
+  text-transform: uppercase;
+}
+
+.MatchResultLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.15rem;
+  color: var(--Secondary-color);
+  font-weight: bold;
+}
+
+.MatchResultValue {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.MatchResultStatus {
+  margin-top: 0.15rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+}
+
+.MatchResultStatus--new { background: var(--Secondary-color); color: #241c00; }
+.MatchResultStatus--retained { background: var(--primary-color); color: var(--text-color); }
+
 /* ---------- Divider ---------- */
 .MatchDivider {
   border: 0;
   height: 0.25vh;
   background: var(--text-color);
   margin: 0.5vw 0;
+}
+
+/* ---------- Jump-to-match ---------- */
+/* Match card rows link to their match below (and Recent Matches link straight to one). */
+.MCRow:focus-visible td {
+  outline: 0.15rem solid var(--primary-colorV2);
+  outline-offset: -0.15rem;
+}
+
+/* The match you landed on glows gold for a moment so it's easy to spot. */
+.MatchItem.is-targeted .MatchTitle {
+  animation: matchTargetGlow 2.4s ease-out;
+}
+
+@keyframes matchTargetGlow {
+  0%, 35% {
+    border-color: var(--Secondary-color);
+    box-shadow: 0 0 1.5rem rgba(242, 183, 5, 0.75);
+  }
+  100% {
+    border-color: var(--primary-color);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .MatchItem.is-targeted .MatchTitle { animation: none; border-color: var(--Secondary-color); }
 }

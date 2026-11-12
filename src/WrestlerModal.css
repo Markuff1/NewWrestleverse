@@ -7,7 +7,7 @@
   justify-content: center;
   z-index: 2000;
   padding: 2vh;
-  animation: fadeIn 0.25s ease-in-out;
+  animation: fadeIn 0.35s ease-out;
 }
 
 .WrestlerModalCard {
@@ -24,6 +24,18 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: 2.5vh;
+  animation: modalRise 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The card rises gently into place as the backdrop fades in. */
+@keyframes modalRise {
+  from { opacity: 0; transform: translateY(1.25rem) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .WrestlerModalOverlay,
+  .WrestlerModalCard { animation: none; }
 }
 
 .WrestlerModalClose {
@@ -125,4 +137,158 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* =========================
+   Recent matches (full width, under the profile)
+   Same look as the rest of the site: Impact section title (like the PPV
+   pages' "MATCH CARD"), dark green panels with a green border, uppercase
+   text, small letter-spaced labels, teal glow on hover, pill button.
+========================= */
+.WrestlerModalMatches {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 1.5vh;
+  border-top: 1px solid rgba(242, 183, 5, 0.4);
+  color: var(--text-color);
+  font-family: var(--font-1);
+}
+
+.WrestlerModalMatchesTitle {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-3);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: normal;
+  letter-spacing: 0.05rem;
+  text-decoration: underline;
+  text-decoration-color: var(--Secondary-color);
+  text-underline-offset: 0.3rem;
+  -webkit-text-stroke: 0.05vh black;
+  color: var(--text-color);
+}
+
+.WrestlerModalMatchesNote {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.85rem;
+  color: var(--primary-colorV3);
+  opacity: 0.85;
+}
+
+.RecentMatchList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.75rem;
+}
+
+.RecentMatch {
+  --match-accent: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(4, 18, 11, 0.5);
+  border: 1.5px solid var(--match-accent);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+.RecentMatch:hover {
+  transform: translateY(-0.15rem);
+  border-color: var(--primary-colorV2);
+  box-shadow: var(--shadow-sm), 0 0 1rem rgba(15, 181, 176, 0.45);
+}
+
+.RecentMatchMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(245, 251, 248, 0.12);
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+}
+
+.RecentMatchEvent {
+  color: var(--Secondary-color);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a.RecentMatchEvent:hover { color: var(--hover-text-color); }
+
+.RecentMatchDate {
+  color: var(--primary-colorV3);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.RecentMatchText {
+  font-weight: bold;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.RecentMatchText:hover { color: var(--hover-text-color); }
+
+.RecentMatchSub {
+  font-size: 0.7rem;
+  letter-spacing: 0.08rem;
+  color: var(--primary-colorV3);
+  opacity: 0.85;
+}
+
+.RecentMatchResult {
+  display: inline-block;
+  min-width: 1.4rem;
+  margin-right: 0.45rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  text-align: center;
+  vertical-align: 0.1rem;
+  color: var(--text-color);
+}
+
+.RecentMatchResult--win { background: var(--primary-color); }
+.RecentMatchResult--loss { background: var(--raw-brand-color); }
+
+.RecentMatchMore {
+  align-self: center;
+  padding: 0.55rem 1.6rem;
+  border: 0.12rem solid var(--primary-colorV2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-color);
+  font-family: var(--font-1);
+  font-weight: bold;
+  font-size: 0.8rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.RecentMatchMore:hover {
+  background: var(--primary-colorV2);
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0 1.5rem var(--primary-colorV2);
 }

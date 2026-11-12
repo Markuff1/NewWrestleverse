@@ -17,7 +17,7 @@ const matchCard2026: Match[] = [
 const matchCard2025: Match[] = [
     { match: "Bron Breakker (c) Def. Axiom and Wes Lee and Karrion Kross", title: "United States Championship", type: "Ladder Match" },
     { match: "AOP Def. New Catch Republic (c)", title: "Smackdown Tag Team Championships", type: "Tables Match" },
-    { match: "The Fiend Def. Dominic Mysterio", title: "", type: "Extreme Rules Match" },
+    { match: "The Fiend Def. Dominik Mysterio", title: "", type: "Extreme Rules Match" },
     { match: "Tiffany Stratton (c) Def. Bayley", title: "Women's World Championship", type: "Ladder Match" },
     { match: "JD McDonagh Def. Damian Priest (c) and Jacob Fatu", title: "Intercontinental Championship", type: "Chairs Match" },
     { match: "Stephanie Vaquer Def. Chelsea Green", title: "", type: "Normal Match" },
@@ -28,7 +28,7 @@ const matchCard2025: Match[] = [
 
 
 // ---------- Event Data ----------
-const TLCEvents: PPVEvent[] = [
+export const TLCEvents: PPVEvent[] = [
   {
     year: 2026,
     banner: "/Images/PPV/TLC/TLC2026Header.webp",
@@ -36,16 +36,6 @@ const TLCEvents: PPVEvent[] = [
     date: "Saturday, December 12th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "TLC/2026MC",
-
-    previousEvent: {
-      label: "Survivor Series 2026",
-      link: "/SurvivorSeries#2026",
-    },
-
-    nextEvent: {
-      label: "New Year's Revolution 2027",
-      link: "/NYR#2027",
-    },
   },
 
   {
@@ -55,16 +45,6 @@ const TLCEvents: PPVEvent[] = [
     date: "Saturday, December 13th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "TLC/2025MC",
-
-    previousEvent: {
-      label: "Survivor Series 2025",
-      link: "/SurvivorSeries#2025",
-    },
-
-    nextEvent: {
-      label: "New Year's Revolution 2026",
-      link: "/NYR#2026",
-    },
   },
 ];
 

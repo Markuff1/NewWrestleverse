@@ -2,9 +2,25 @@ import PPVShow, { Match, PPVEvent } from "../../PPVShow";
 
 // ---------- Match Cards ----------
 const matchCard2028: Match[] = [
-  {night: 1, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
-  {night: 1, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
-  {night: 2, match: "Naomi Def. Shayna Baszler (c) and Sol Ruca and Bianca Belair", title: "Women's Intercontinental Championship", type: "Fatal 4-Way Match",},
+  {night: 1, match: "Alba Fyre def. Roxanne Perez (c) and Raquel Rodriguez and Blake Monroe", title: "Women's United States Championship", type: "Fatal 4-Way Match"},
+  {night: 1, match: "Lucha Brothers Def. Perros Del Mal (c)", title: "Raw Tag Team Championship", type: "Tag Team Match"},
+  {night: 1, match: "Jordynne Grace Def. Nikki Bella", title: "", type: "Normal Match"},
+  {night: 1, match: "Bron Breakker Def. Randy Orton", title: "", type: "Extreme Rules Match"},
+  {night: 1, match: "Dominik Mysterio Vs Tyler Bate", title: "Intercontinental Championship", type: "Steel Cage Match"},
+  {night: 1, match: "AJ Styles Vs Mark Henry", title: "", type: "Normal Match"},
+  {night: 1, match: "Shawn Michaels Vs Kevin Owens", title: "", type: "Street Fight"},
+  {night: 1, match: "Becky Lynch Vs Charlotte Flair Vs Naomi", title: "Women's World Championship", type: "Triple Threat Match"},
+  {night: 1, match: "CM Punk Vs Brock Lesnar", title: "World Heavyweight Championship", type: "Extreme Rules Match"},
+
+  {night: 2, match: "Kane Vs Oba Femi", title: "", type: "Inferno Match"},
+  {night: 2, match: "Lyra Valkyria Vs Jacy Jayne", title: "Women's Intercontinental Championship", type: "Normal Match"},
+  {night: 2, match: "Finn Balor Vs Umaga", title: "", type: "Extreme Rules Match"},
+  {night: 2, match: "Ilja Dragunov Vs LA Knight Vs Jacob Fatu", title: "United States Championship", type: "Triple Threat Match"},
+  {night: 2, match: "Johnny Gargano Vs Cody Rhodes", title: "", type: "Extreme Rules Match"},
+  {night: 2, match: "Hardy Boys Vs Street Profits Vs Viking Raiders", title: "SmackDown Tag Team Championship", type: "3-Way Ladder Match"},
+  {night: 2, match: "Triple H Vs Gunther", title: "", type: "Extreme Rules Match"},
+  {night: 2, match: "Tiffany Stratton Vs Rhea Ripley", title: "Women's Undisputed Championship", type: "Normal Match"},
+  {night: 2, match: "Roman Reigns Vs Seth Rollins", title: "WWE Undisputed Championship", type: "Extreme Rules Match"},
 ]
 
 const matchCard2027: Match[] = [
@@ -62,16 +78,6 @@ export const SummerSlamEvents: PPVEvent[] = [
     date: "August 19th - 20th 2028, 7e/5p",
     matches: matchCard2028,
     imageFolder: "SummerSlam/2028MC",
-
-    previousEvent: {
-      label: "Money In The Bank 2028",
-      link: "/MITB#2028",
-    },
-
-    nextEvent: {
-      label: "Night Of Champions 2028",
-      link: "/NOC#2028",
-    },
   },
   {
     year: 2027,
@@ -80,16 +86,6 @@ export const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 7th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "SummerSlam/2027MC",
-
-    previousEvent: {
-      label: "Money In The Bank 2027",
-      link: "/MITB#2027",
-    },
-
-    nextEvent: {
-      label: "Night Of Champions 2027",
-      link: "/NOC#2027",
-    },
   },
 
   {
@@ -99,16 +95,6 @@ export const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 8th 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "SummerSlam/2026MC",
-
-    previousEvent: {
-      label: "Money In The Bank 2026",
-      link: "/MITB#2026",
-    },
-
-    nextEvent: {
-      label: "Night Of Champions 2026",
-      link: "/NOC#2026",
-    },
   },
 
   {
@@ -118,16 +104,6 @@ export const SummerSlamEvents: PPVEvent[] = [
     date: "Saturday, August 30th 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "SummerSlam/2025MC",
-
-    previousEvent: {
-      label: "One Night Stand 2025",
-      link: "/ONS#2025",
-    },
-
-    nextEvent: {
-      label: "No Mercy 2025",
-      link: "/NoMercy#2025",
-    },
   },
 ];
 

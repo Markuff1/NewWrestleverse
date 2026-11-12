@@ -7,7 +7,7 @@ const matchCard2026: Match[] = [
   { match: "Stephanie Vaquer(c) Def. Roxanne Perez", title: "Women's United States Championship", type: "Normal Match" },
   { match: "LA Knight(c) Def. Penta", title: "United States Championship", type: "Normal Match" },
   { match: "Auska(c) Def. Dakota Kai", title: "Women's World Championship", type: "Normal Match" },
-  { match: "Mark Henry Def. Dominic Mysterio", title: "", type: "Steel Cage Match" },
+  { match: "Mark Henry Def. Dominik Mysterio", title: "", type: "Steel Cage Match" },
   { match: "CM Punk Def. AJ Styles(c)", title: "World Heavyweight Championship", type: "Normal Match" },
   { match: "Rhea Ripley(c) Def. Shayna Baszler", title: "Women's Undisputed Championship", type: "Normal Match" },
   { match: "John Cena(c) Def. Drew McIntyre", title: "WWE Undisputed Championship", type: "Normal Match" },
@@ -15,7 +15,7 @@ const matchCard2026: Match[] = [
 ];
 
 // ---------- Event Data ----------
-const OTLEvents: PPVEvent[] = [
+export const OTLEvents: PPVEvent[] = [
   {
     year: 2026,
     banner: "/Images/PPV/OverTheLimit/OTLHeader2026.webp",
@@ -23,16 +23,6 @@ const OTLEvents: PPVEvent[] = [
     date: "Saturday, June 27th 2026",
     matches: matchCard2026,
     imageFolder: "OverTheLimit/2026MC",
-
-    previousEvent: {
-      label: "Backlash 2025",
-      link: "/Backlash#2025",
-    },
-
-    nextEvent: {
-      label: "Money In The Bank 2025",
-      link: "/MoneyInTheBank#2025",
-    },
   },
 ];
 

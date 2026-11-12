@@ -15,7 +15,7 @@ const matchCard2027: Match[] = [
   { match: "Usos (c) Def. DIY", title: "RAW Tag Team Championships", type: "Tag Team Match" },
   { match: "Lola Vice Def. Blake Monroe (c) and Jaida Parker", title: "Women's Intercontinental Championship", type: "Triple Threat Match" },
   { match: "Bron Breakker (c) Def. Ethan Page", title: "Intercontinental Championship", type: "Normal Match" },
-  { match: "Randy Orton Def. Dominic Mysterio", title: "", type: "Normal Match" },
+  { match: "Randy Orton Def. Dominik Mysterio", title: "", type: "Normal Match" },
   { match: "Ripley, Sky, Vaquer, Belair Def. Lynch, Stratton, Naomi, Nia Jax", title: "", type: "Wargames Match" },
   { match: "Aleister Black (c) Def. AJ Styles and Rey Mysterio and Kevin Owens", title: "World Heavyweight Championship", type: "Fatal 4-way Match" },
   { match: "Charlotte Flair (c) Def. Auska", title: "Women's Undisputed Championship", type: "Normal Match" },
@@ -53,16 +53,6 @@ export const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 18th 2028, 7e/5p",
     matches: matchCard2028,
     imageFolder: "SurvivorSeries/2028MC",
-
-    previousEvent: {
-      label: "Extreme Rules 2028",
-      link: "/ER#2028",
-    },
-
-    nextEvent: {
-      label: "Armageddon 2028",
-      link: "/Armageddon#2028",
-    },
   },
 
   {
@@ -72,16 +62,6 @@ export const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 13th 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "SurvivorSeries/2027MC",
-
-    previousEvent: {
-      label: "Extreme Rules 2027",
-      link: "/ER#2027",
-    },
-
-    nextEvent: {
-      label: "Armageddon 2027",
-      link: "/Armageddon#2027",
-    },
   },
 
   {
@@ -91,16 +71,6 @@ export const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 21st 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "SurvivorSeries/2026MC",
-
-    previousEvent: {
-      label: "Hell In A Cell 2026",
-      link: "/HIAC#2026",
-    },
-
-    nextEvent: {
-      label: "TLC 2026",
-      link: "/TLC#2026",
-    },
   },
 
   {
@@ -110,16 +80,6 @@ export const SurvivorSeriesEvents: PPVEvent[] = [
     date: "Saturday, November 22nd 2025, 7e/5p",
     matches: matchCard2025,
     imageFolder: "SurvivorSeries/2025MC",
-
-    previousEvent: {
-      label: "Cyber Sunday 2025",
-      link: "/CyberSunday#2025",
-    },
-
-    nextEvent: {
-      label: "TLC 2025",
-      link: "/TLC#2025",
-    },
   },
 ];
 

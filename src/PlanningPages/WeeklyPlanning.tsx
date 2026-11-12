@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { fromDateKey, toDateKey } from "../calendarEvents";
 import { PlanningLayout } from "./PlanningLayout";
@@ -26,13 +27,23 @@ function WeeklyPlanning() {
   const sd = usePlans("SD");
   const boards = { RAW: raw, SD: sd };
 
+  // A week's RAW and Smackdown cards open and close together, keyed by the week's Monday.
+  const [openWeeks, setOpenWeeks] = useState<Set<string>>(new Set());
+  const setWeekOpen = (weekKey: string, open: boolean) =>
+    setOpenWeeks((prev) => {
+      const next = new Set(prev);
+      if (open) next.add(weekKey);
+      else next.delete(weekKey);
+      return next;
+    });
+
   const goToCycle = (direction: -1 | 1) =>
     setSearchParams({ date: toDateKey(direction === -1 ? addDays(start, -2) : addDays(end, 1)) });
 
   const loading = !raw.plans || !sd.plans;
   const error = raw.error || sd.error;
 
-  const card = (show: ShowKind, day: Date | undefined) => {
+  const card = (show: ShowKind, day: Date | undefined, weekKey: string) => {
     if (!day) return <div className="PlanCardEmpty">No {show === "RAW" ? "RAW" : "Smackdown"} this week</div>;
     const key = toDateKey(day);
     const { plans, savePlan } = boards[show];
@@ -45,6 +56,8 @@ function WeeklyPlanning() {
         initial={plans?.[key] ?? []}
         rosterTag={SHOWS[show].rosterTag}
         onSave={(matches) => savePlan(key, matches)}
+        expanded={openWeeks.has(weekKey)}
+        onExpandedChange={(open) => setWeekOpen(weekKey, open)}
       />
     );
   };
@@ -80,8 +93,8 @@ function WeeklyPlanning() {
               <span className="PlanningWeekDates">w/c {shortDateLabel(week.monday)}</span>
             </h2>
             <div className="PlanningWeekCards">
-              {card("RAW", week.raw)}
-              {card("SD", week.sd)}
+              {card("RAW", week.raw, toDateKey(week.monday))}
+              {card("SD", week.sd, toDateKey(week.monday))}
             </div>
           </section>
         ))}

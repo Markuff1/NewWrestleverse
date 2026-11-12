@@ -11,7 +11,7 @@ const matchCard2028: Match[] = [
 { match: "Street Profits Vs Dudley Boys", score: "3 : 3", type: "Tag Team Match" },
 { match: "Becky Lynch Vs Charlotte Flair", score: "3 : 4", type: "Normal Match" },
 { match: "Brock Lesnar Vs Aleister Black", score: "4 : 4", type: "Normal Match" },
-{ match: "JBL, Roman Reigns, Drew McIntyre, Randy Orton Vs CM Punk, John Cena, Oba Femi, Booker T", score: "5 : 4", type: "4 V 4 Elimination Match" },
+{ match: "JBL, Roman Reigns, Drew McIntyre, Randy Orton Def. CM Punk, John Cena, Oba Femi, Booker T", score: "5 : 4", type: "4 V 4 Elimination Match" },
 ]
 
 
@@ -24,16 +24,6 @@ export const BraggingRightsEvents: PPVEvent[] = [
     date: "Saturday, January 8th 2028, 7e/5p",
     matches: matchCard2028,
     imageFolder: "BR/2028MC",
-
-    previousEvent: {
-      label: "Armageddon 2027",
-      link: "/Armageddon#2027",
-    },
-
-    nextEvent: {
-      label: "Royal Rumble 2028",
-      link: "/RoyalRumble#2028",
-    },
   },
 ];
 

@@ -29,13 +29,26 @@
   background-size: 100% 100%;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
+  /* Long, soft ease-out: the card glides up rather than snapping. */
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .profile-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   cursor: pointer;
   box-shadow: 0px 0px 50px var(--primary-color);
+}
+
+/* The superstar you were linked to (e.g. from a PPV match) glows gold for a moment. */
+.profile-card.is-linked {
+  animation: linkedCardGlow 2.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes linkedCardGlow {
+  0%, 40% { box-shadow: 0 0 2.5rem rgba(242, 183, 5, 0.85); transform: scale(1.06); }
+  100% { box-shadow: none; transform: none; }
 }
 
 /* Wrestler image */
@@ -210,7 +223,7 @@
 }
 
 .WMITB {
-  background: var(--SDPbackground);
+  background: var(--RAWPbackground);
 }
 
 .WMITB::before {

@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Roster.css";
 import "./Home.css";
 import Header from "./Header.tsx";
@@ -218,6 +219,67 @@ const RosterTabs: React.FC = () => {
     [enrichedAll, enrichedTagTeams]
   );
 
+  // "/Roster?superstar=<name>" (e.g. from a superstar circle under a PPV match) opens that
+  // superstar: switches to the tab they're on, glides to their card, and opens their pop-up.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const linkedName = searchParams.get("superstar");
+  const [highlightedName, setHighlightedName] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!linkedName) return;
+    const key = normalizeWrestlerName(linkedName);
+    const matches = (w: Wrestler) => normalizeWrestlerName(w.name) === key;
+
+    const wrestler = enrichedAll.find(matches);
+    // Disbanded teams have no card on the roster, but their pop-up still opens.
+    const team = wrestler
+      ? undefined
+      : enrichedTagTeams.find(matches) ??
+        enrichWithChampionStatus(rosterData["Tag Teams"].filter(matches), nameToAbbrev)[0];
+    const found = wrestler ?? team;
+    if (!found) return;
+
+    setActiveTab(wrestler ? "ALL" : "Tag Teams");
+    setSearchTerm("");
+    setSelectedWrestler(found);
+    setHighlightedName(found.name);
+
+    // Once the tab has rendered, bring their card into view behind the pop-up. Roster images
+    // load lazily and push the card down as they arrive, so keep re-centring it whenever the
+    // tab changes size — for a few seconds, or until the user scrolls themselves.
+    let observer: ResizeObserver | undefined;
+    const userEvents = ["wheel", "touchstart", "keydown"] as const;
+    const stopFollowing = () => {
+      observer?.disconnect();
+      userEvents.forEach((type) => window.removeEventListener(type, stopFollowing));
+    };
+
+    const frame = requestAnimationFrame(() => {
+      const tab = document.querySelector<HTMLElement>('.tabcontent[data-active="true"]');
+      const card = tab?.querySelector(`.profile-card[title="${CSS.escape(found.name)}"]`);
+      if (!tab || !card) return;
+
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      observer = new ResizeObserver(() => card.scrollIntoView({ behavior: "smooth", block: "center" }));
+      observer.observe(tab);
+      userEvents.forEach((type) => window.addEventListener(type, stopFollowing, { passive: true }));
+    });
+    const stopTimer = window.setTimeout(stopFollowing, 4000);
+    const clearHighlight = window.setTimeout(() => setHighlightedName(null), 2600);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      stopFollowing();
+      window.clearTimeout(stopTimer);
+      window.clearTimeout(clearHighlight);
+    };
+  }, [linkedName, enrichedAll, enrichedTagTeams, nameToAbbrev]);
+
+  const closeProfile = () => {
+    setSelectedWrestler(null);
+    if (linkedName) setSearchParams({}, { replace: true });
+  };
+
   // Filter every tab once per search-term/champion-data change, reused for
   // both the tab-button counts and the tab content below.
   const rosterByTab = useMemo(() => {
@@ -275,6 +337,7 @@ const RosterTabs: React.FC = () => {
               <div
                 key={tab}
                 className="tabcontent"
+                data-active={activeTab === tab}
                 style={{ display: activeTab === tab ? "block" : "none" }}
               >
                 <div className="RosterText1">{`${tab} Roster`}</div>
@@ -284,7 +347,9 @@ const RosterTabs: React.FC = () => {
                     {group.map((item, index) => (
                       <div
                         key={index}
-                        className={`profile-card ${item.className}`}
+                        className={`profile-card ${item.className}${
+                          item.name === highlightedName ? " is-linked" : ""
+                        }`}
                         title={item.name}
                         onClick={() => setSelectedWrestler(item)}
                       >
@@ -313,7 +378,7 @@ const RosterTabs: React.FC = () => {
           titles={historyByName[normalizeWrestlerName(selectedWrestler.name)] || []}
           championByAbbrev={championByAbbrev}
           titleRecords={recordsByAbbrev}
-          onClose={() => setSelectedWrestler(null)}
+          onClose={closeProfile}
         />
       )}
 

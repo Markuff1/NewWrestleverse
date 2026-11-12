@@ -31,7 +31,7 @@ const matchCard2026: Match[] = [
 
 
 // ---------- Event Data ----------
-const NYREvents: PPVEvent[] = [
+export const NYREvents: PPVEvent[] = [
   {
     year: 2027,
     banner: "/Images/PPV/NYR/NYR2027Header.webp",
@@ -39,16 +39,6 @@ const NYREvents: PPVEvent[] = [
     date: "Saturday, January 2nd 2027, 7e/5p",
     matches: matchCard2027,
     imageFolder: "NYR/2027MC",
-
-    previousEvent: {
-      label: "TLC 2026",
-      link: "/TLC#2026",
-    },
-
-    nextEvent: {
-      label: "Royal Rumble 2027",
-      link: "/RoyalRumble#2027",
-    },
   },
 
   {
@@ -58,16 +48,6 @@ const NYREvents: PPVEvent[] = [
     date: "Saturday, January 3rd 2026, 7e/5p",
     matches: matchCard2026,
     imageFolder: "NYR/2026MC",
-
-    previousEvent: {
-      label: "TLC 2025",
-      link: "/TLC#2025",
-    },
-
-    nextEvent: {
-      label: "Royal Rumble 2026",
-      link: "/RoyalRumble#2026",
-    },
   },
 ];
 

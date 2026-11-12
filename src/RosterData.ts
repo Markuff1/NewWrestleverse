@@ -385,7 +385,7 @@ const rosterData: Record<string, Wrestler[]> = {
   "Tag Teams": [
     { src: "/Images/Roster/TagTeam/AlphaAcadamy.webp", name: "Alpha Acadamy", tag: "R", members: ["Otis", "Akira Tozawa","Maxxine Dupri"]},
     { src: "/Images/Roster/TagTeam/AmericanMade.webp", name: "American Made", tag: "SD", members: ["Brutus Creed","Julius Creed"]},
-    { src: "/Images/Roster/TagTeam/PerrosDelMal.webp", name: "Perros Del Mal", tag: "R", members: ["Angel","Berto","Dominic Mysterio"]},
+    { src: "/Images/Roster/TagTeam/PerrosDelMal.webp", name: "Perros Del Mal", tag: "R", members: ["Angel","Berto","Dominik Mysterio"]},
     { src: "/Images/Roster/TagTeam/DudleyBoys.webp", name: "Dudley Boys", tag: "SD", members: ["Bubba Ray Dudley","D-von Dudley"]},
     { src: "/Images/Roster/TagTeam/Hank&Tank.webp", name: "Hank & Tank", tag: "SD", members: ["Hank Walker","Tank Ledger"]},
     { src: "/Images/Roster/TagTeam/HardyBoys.webp", name: "Hardy Boys", tag: "SD", members: ["Jeff Hardy","Matt Hardy"]},
